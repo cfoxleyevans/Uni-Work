@@ -1,0 +1,45 @@
+1. Files in this directory:
+
+- Makefile - ready made makefile to handle all your compilation needs
+- README - this file
+- thread.c - the heart of the thread package - this will not work until you have completed the 
+  queue module
+- thread.h - the interface of the thread package
+- msg.c - a skeleton of the message passing service built on top of semaphores
+- msg.h - interface of the message passing service 
+- queue.c - a skeleton of the queue module used internally by the thread package
+- queue.h - interface of the queue module
+- sem.c - a skeleton of the semaphore module
+- sem.h - interface of the semaphore module
+- test_sieve.c - a skelton file in which to do your sieve of eratosthenes assignment
+- test_concept.c - illustration of the basic coroutine concept underlying the thread package - 
+  this is not part of the thread package itself
+- test_msg.c - a test program for the message service
+- test_queue_menu - a simple test harness for you to use to test your queue module implementation
+- test_queue.c - a test program for the queue module. It tests the basic operation of the thread
+  module with your queue code added.
+- test_sem.c - a test program for the semaphore module
+
+2. What you will do:
+
+- Week 1: Complete the skeleton implementation of the queue module in queue.c according to 
+the interface defined in queue.h. Test this using test_queue.c and/or test_queue_menu.c. 
+Show it to your lab demonstrator.
+
+- Week 2: This builds on the week 1 work. Complete the skeleton implementation of the semaphore 
+module in sem.c according to the interface defined in sem.h. Test this using test_sem.c. Show it 
+to your lab demonstrator.
+
+- Week 3: This builds on the week 2 work. Complete the skeleton implementation of the message 
+passing service in msg.c according to the interface defined in msg.h. Test this using test_msg.c. 
+Show it to your lab demonstrator.
+
+- Weeks 4 and 5: This builds on the week 3 work. Do the sieve of eratosthenes assignment by 
+completing the skeleton in test_sieve.c. Show it to your lab demonstrator. If you have not managed to 
+develop the thread package to the point that it is able to support this assignment (i.e. completed
+queue.c, sem.c and mgs.c) you may ask your lab demonstrator for a copy of the complete thread 
+library (libthread.a). Of course if you have to do this you will have missed out on the marks available
+for the work in weeks 1 to 3! Remember to submit your work electronically as well as getting it
+marked in the lab.
+
+
