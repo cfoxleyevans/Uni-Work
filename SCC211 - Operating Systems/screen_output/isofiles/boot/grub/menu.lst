@@ -1,0 +1,7 @@
+default 0
+timeout 1
+ 
+color white/green yellow/blue
+
+title SCC211 Kernel
+kernel /boot/kernel.bin cmdline=any kernel parameters

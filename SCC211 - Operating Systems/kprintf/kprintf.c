@@ -19,7 +19,7 @@
 // char* string : The string to count
 // return : the number of chars in the string
 ////////////////////////////////////////////////////////////////////
-int _strlen(char* string){
+int strlen(char* string){
 	int num = 0;
 	while (string[num] != 0){
 		num++;
@@ -37,7 +37,7 @@ int _strlen(char* string){
 ////////////////////////////////////////////////////////////////////
 char* itoa(unsigned long number, unsigned int base){
 	
-	if(base < 2 || base > 16) return (char*)NULL; //make sure that i have a valid base
+	if(base < 2 || base > 16) return (char*)0; //make sure that i have a valid base
 	
 	static char buf[32] = {0}; //buffer of 0's 32 long
 	//convert the number
@@ -47,7 +47,6 @@ char* itoa(unsigned long number, unsigned int base){
 		buf[i] = "0123456789abcdef"[number % base]; //insert the char into the buffer
 		number /= base; //remove the digit
 	}
-	
 	return &buf[i+1]; //return the string	
 }
 ////////////////////////////////////////////////////////////////////
@@ -71,10 +70,8 @@ void outstr(char *string){
 void kprintf(char* string, ...){
 
 	int length = strlen(string); //length of the string that im prinnting
-	
 	char *s; // hold any chars or strings that i have to print	
 	int number; //hold any integers that i might have to print
-
 	va_list args; //variable argument list
 	
 	va_start(args, string); //init list
@@ -86,16 +83,6 @@ void kprintf(char* string, ...){
 		if (string[i]!= '%')
 			putchar(string [i]);
 		
-		/*
-		//deal with backslash formatting (didnt read the docs, compiler deals with this)
-		else if(string[i] == 92){
-			switch(string[i] + 1){
-				case 110 : putchar(10); i++; break; //n
-				case 116 : putchar(9); i++; break; //t
-			}	
-		}
-		*/
-
 		//deal with percent formatting
 		else{
 			switch(string[i + 1]){
