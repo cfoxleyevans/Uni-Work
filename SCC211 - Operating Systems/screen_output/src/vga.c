@@ -30,27 +30,21 @@ setcursor (int x, int y) {
 //
 //   Clear the screen and move cursor to position 0,0
 //
-void
-vgainit ( ) {
-   uint16_t * screenp = videoram;
+void vgainit ( ) {
+   uint16_t * screenp = videoram; //alias for pointer to video ram
+   
+   int i;
+   for (i = 0; i < 2000; i++) //loop over all of the pixels
+   {
+      *screenp++ = ' ' | FOREGROUND(WHITE) | BACKGROUND(BLUE); //write nothing to the screen
+   }
 
-   //
-   //   The following just shows how you can output three characters
-   //
-   *screenp++ = 'A' | FOREGROUND(WHITE) | BACKGROUND(BLUE);
-   *screenp++ = 'C' | FOREGROUND(WHITE) | BACKGROUND(BLUE);
-   *screenp++ = 'S' | FOREGROUND(WHITE) | BACKGROUND(BLUE);
-
-   //
-   //   Clear the screen
-   //
-
+   //set the cursor position for new
    x = 0; y = 0;
    setcursor(x, y);
 }
 
-//void
-//putchar (char c) {
+void putchar (char c) {
    //
    //   Store character value (with colour information) at memory location
    //   of current x,y screen position and update x and y ready to move
@@ -61,8 +55,13 @@ vgainit ( ) {
    //   a status line you need to ensure you consider this when you're
    //   calculating the limit of the display area.
    //
-//   setcursor (x, y);
-//}
+
+   uint16_t * screenp = videoram; //alias for pointer to video ram
+
+   *screenp = c | FOREGROUND(WHITE) | BACKGROUND(BLUE);
+
+   setcursor (++x, ++y);
+}
 
 void
 status ( char * str ) {

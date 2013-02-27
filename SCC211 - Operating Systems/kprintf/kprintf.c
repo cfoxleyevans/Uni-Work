@@ -10,7 +10,6 @@
 
 ////////////////////////////////////////////////////////////////////
 // INCLUDES
-#include <stdio.h>
 #include <stdarg.h>
 ////////////////////////////////////////////////////////////////////
 
@@ -36,7 +35,6 @@ int strlen(char* string){
 // return : a string representing the number
 ////////////////////////////////////////////////////////////////////
 char* itoa(unsigned long number, unsigned int base){
-	
 	if(base < 2 || base > 16) return (char*)0; //make sure that i have a valid base
 	
 	static char buf[32] = {0}; //buffer of 0's 32 long
@@ -68,7 +66,6 @@ void outstr(char *string){
 // char* string : the string that is to per printed
 ////////////////////////////////////////////////////////////////////
 void kprintf(char* string, ...){
-
 	int length = strlen(string); //length of the string that im prinnting
 	char *s; // hold any chars or strings that i have to print	
 	int number; //hold any integers that i might have to print
@@ -106,7 +103,6 @@ void kprintf(char* string, ...){
 // char** argv : The arguments passed to the function
 ////////////////////////////////////////////////////////////////////
 int main(int argc, char** argv){
-	
 	kprintf("This is a string: %s\n", "Test String");
 	kprintf("This is a binary number: %b\n", 23);
 	kprintf("This is a octal number: %o\n", 45);
