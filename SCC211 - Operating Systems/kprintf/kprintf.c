@@ -19,7 +19,7 @@
 // char* string : The string to count
 // return : the number of chars in the string
 ////////////////////////////////////////////////////////////////////
-int strlen(char* string){
+int my_strlen(char* string){
 	int num = 0;
 	while (string[num] != 0){
 		num++;
@@ -67,9 +67,13 @@ int is_digit(char test){
 // outstr : prints a string
 // char* string : the string that is to be printed
 ////////////////////////////////////////////////////////////////////
-void outstr(char *string){
+void outstr(char *string, int pad_width, char pad_char){
 	int i;
-	for (i = 0; i < strlen(string); i++){
+	if (my_strlen(string) < pad_width)
+		while(pad_width-- > my_strlen(string))
+			putchar(pad_char);
+
+	for (i = 0; i < my_strlen(string); i++){
 		putchar(string[i]);
 	}
 }
@@ -80,49 +84,58 @@ void outstr(char *string){
 // char* string : the string that is to per printed
 ////////////////////////////////////////////////////////////////////
 void kprintf(char* string, ...){
-	int length = strlen(string); //length of the string that im prinnting
+	int length = my_strlen(string); //length of the string that im prinnting
+
 	char *s; // hold any chars or strings that i have to print	
 	int number; //hold any integers that i might have to print
+
 	int pad_width = 0; //the width of the padding
-	char pad_char = 'S'; //the padding char
+	int pad_char = 's'; //the padding char
+	
 	va_list args; //variable argument list
 	
 	va_start(args, string); //init list
 	
-	int i; //loop index
-	for(i = 0; i < length; i++){
+	int i = 0; //loop index
+	while (i < length){
 		
-		//output chars that are not fmt string
+		//is this a normal char ?????
 		if (string[i] != '%')
-			putchar(string [i]);
+			putchar(string[i++]); //yes it is so print it
+		
 
+		//we have found a percent so parse the fmt code
 		else{
+			i++; //move past the percent
 			
-			i++; //move to the next char after the %
+			if(is_digit(string[i])){
+				
+				//check if i am using spaces or 0
+				if(string[i] == '0'){
+					pad_char = '0';
+					i++;
+				}
 
-			//see if this is a 0
-			if(string[i] == '0')
-			pad_char = '0'; i++; //set the pad_char and move on
-
-			//loop over the digits to find out padding
-			while(is_digit(string[i])){
-				pad_width *= 10; pad_width += (string[i] - 48); i++;
-			} 
-
-			printf("%c\n", pad_char);
-			printf("%i\n", pad_width);
-
-			/*
-			switch(string[i]){
-				case 99 : s = va_arg(args, int); putchar((int)s); i++; break; //c
-				case 105 : number = va_arg(args, int); outstr(itoa(number, 10)); i++; break; //i
-				case 98 : number = va_arg(args, int); outstr(itoa(number, 2)); i++; break; //b
-				case 111 : number = va_arg(args, int); outstr(itoa(number, 8)); i++; break; //o
-				case 120 : number = va_arg(args, int); outstr(itoa(number, 16)); i++; break; //x
-				case 115 : s = va_arg(args, char*); outstr(s); i++; break; //s
-				case 37 : putchar(37); //%
+				//now calculate the padding
+				while(is_digit(string[i])){
+						pad_width *= 10;
+						pad_width += (string[i] - 48);
+						i++;
+				}
 			}
-			*/	
+
+			//printf("pad char : %c\n", pad_char);
+			//printf("pad width : %i\n", pad_width);
+		
+			switch(string[i]){
+				case 99 : s = va_arg(args, int); putchar(s); i++; break; //c
+				case 105 : number = va_arg(args, int); outstr(itoa(number, 10), pad_width, pad_char); i++; break; //i
+				case 98 : number = va_arg(args, int); outstr(itoa(number, 2), pad_width, pad_char); i++; break; //b
+				case 111 : number = va_arg(args, int); outstr(itoa(number, 8), pad_width, pad_char); i++; break; //o
+				case 120 : number = va_arg(args, int); outstr(itoa(number, 16), pad_width, pad_char); i++; break; //x
+				case 115 : s = va_arg(args, char*); outstr(s, pad_width, pad_char); i++; break; //s
+				case 37 : putchar(37); i++; break;//%
+			}	
 		}
 	}
 	va_end(args);
@@ -135,7 +148,15 @@ void kprintf(char* string, ...){
 // char** argv : The arguments passed to the function
 ////////////////////////////////////////////////////////////////////
 int main(int argc, char** argv){
-	kprintf("This is a string: %05i\n", 45);
+
+	
+	kprintf("This is an integer:%i\n", 45);
+	kprintf("This is a binary number:%08b\n", 45);
+	kprintf("This is an octal number:%o\n", 45);
+	kprintf("This is a hexadecimal number:%x\n", 45);
+	kprintf("This is a string:%s\n", "Test String");
+	kprintf("This is a percent sign:%%\n");
+	//kprintf(char *string, ...)
 	return 0;
 }
 ////////////////////////////////////////////////////////////////////
