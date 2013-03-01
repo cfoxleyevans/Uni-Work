@@ -10,6 +10,7 @@
 
 ////////////////////////////////////////////////////////////////////
 // INCLUDES
+#include <stdio.h>
 #include <stdarg.h>
 ////////////////////////////////////////////////////////////////////
 
@@ -50,6 +51,19 @@ char* itoa(unsigned long number, unsigned int base){
 ////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////
+// isdigit : returns true is the passed value is a digit
+// char test : the char that is to be tested
+// return : 1 if test is digit 0 if not
+////////////////////////////////////////////////////////////////////
+int is_digit(char test){
+	if (test >='0' && test <='9') 
+		return 1;
+	else 
+		return 0;
+}
+////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////
 // outstr : prints a string
 // char* string : the string that is to be printed
 ////////////////////////////////////////////////////////////////////
@@ -69,6 +83,8 @@ void kprintf(char* string, ...){
 	int length = strlen(string); //length of the string that im prinnting
 	char *s; // hold any chars or strings that i have to print	
 	int number; //hold any integers that i might have to print
+	int pad_width = 0; //the width of the padding
+	char pad_char = 'S'; //the padding char
 	va_list args; //variable argument list
 	
 	va_start(args, string); //init list
@@ -76,13 +92,28 @@ void kprintf(char* string, ...){
 	int i; //loop index
 	for(i = 0; i < length; i++){
 		
-		//output chars
-		if (string[i]!= '%')
+		//output chars that are not fmt string
+		if (string[i] != '%')
 			putchar(string [i]);
-		
-		//deal with percent formatting
+
 		else{
-			switch(string[i + 1]){
+			
+			i++; //move to the next char after the %
+
+			//see if this is a 0
+			if(string[i] == '0')
+			pad_char = '0'; i++; //set the pad_char and move on
+
+			//loop over the digits to find out padding
+			while(is_digit(string[i])){
+				pad_width *= 10; pad_width += (string[i] - 48); i++;
+			} 
+
+			printf("%c\n", pad_char);
+			printf("%i\n", pad_width);
+
+			/*
+			switch(string[i]){
 				case 99 : s = va_arg(args, int); putchar((int)s); i++; break; //c
 				case 105 : number = va_arg(args, int); outstr(itoa(number, 10)); i++; break; //i
 				case 98 : number = va_arg(args, int); outstr(itoa(number, 2)); i++; break; //b
@@ -90,7 +121,8 @@ void kprintf(char* string, ...){
 				case 120 : number = va_arg(args, int); outstr(itoa(number, 16)); i++; break; //x
 				case 115 : s = va_arg(args, char*); outstr(s); i++; break; //s
 				case 37 : putchar(37); //%
-			}	
+			}
+			*/	
 		}
 	}
 	va_end(args);
@@ -103,13 +135,7 @@ void kprintf(char* string, ...){
 // char** argv : The arguments passed to the function
 ////////////////////////////////////////////////////////////////////
 int main(int argc, char** argv){
-	kprintf("This is a string: %s\n", "Test String");
-	kprintf("This is a binary number: %b\n", 23);
-	kprintf("This is a octal number: %o\n", 45);
-	kprintf("This is a integer number %i\n", 101);
-	kprintf("This is a hexadecimal number %x\n", 13456);
-	kprintf("This inserts a tab \t in the middle\n");
-	
+	kprintf("This is a string: %05i\n", 45);
 	return 0;
 }
 ////////////////////////////////////////////////////////////////////
