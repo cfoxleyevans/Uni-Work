@@ -20,5 +20,5 @@ kmain( void* mbd, unsigned int magic ) {
 
    abort( );
 
-   //kprintf("Hello this is kprintf %04i\n", 45);
+   //kprintf("Hello this is kprintf %04i", 45);
 }

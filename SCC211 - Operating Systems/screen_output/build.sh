@@ -23,7 +23,7 @@ fi
 AS=${CPATH}/i586-elf-as
 CC=${CPATH}/i586-elf-gcc
 LD=${CPATH}/i586-elf-ld
-CFLAGS="-Wall -Wextra -Werror -fno-builtin"
+CFLAGS="-Wall -Wextra -fno-builtin"
 LDFLAGS="-nostdlib -nostartfiles -nodefaultlibs"
 
 ${AS} -o ${OBJ}/boot.o   ${SRC}/boot.s
@@ -31,9 +31,9 @@ ${AS} -o ${OBJ}/loader.o ${SRC}/loader.s
 
 ${CC} ${CFLAGS} -o ${OBJ}/io.o        -c ${SRC}/io.c
 ${CC} ${CFLAGS} -o ${OBJ}/kernel.o    -c ${SRC}/kernel.c
-${CC} ${CFLAGS} -o ${OBJ}/kprintf.o   -c ${SRC}/kprintf.c
 ${CC} ${CFLAGS} -o ${OBJ}/multiboot.o -c ${SRC}/multiboot.c
 ${CC} ${CFLAGS} -o ${OBJ}/vga.o       -c ${SRC}/vga.c
+${CC} ${CFLAGS} -o ${OBJ}/kprintf.o   -c ${SRC}/kprintf.c
 
 ${LD} ${LDFLAGS} -T ${SRC}/linker.ld -o kernel.bin \
 	${OBJ}/boot.o \
