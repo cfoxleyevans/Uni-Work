@@ -10,18 +10,18 @@ abort( ) {
 
 void
 kmain( void* mbd, unsigned int magic ) {
-   vgainit  ( );	
+   vgainit();	
 
    status ("SCC211 Operating Systems kernel");
 
-   //kprintf("Hello this is a int: %08i\n", 45);
-   //kprintf("Hello this is a hex: %08x\n", 45);
-   //kprintf("Hello this is a oct: %08o\n", 45);
-   //kprintf("Hello this is a bin: %08b\n", 45);
-   //kprintf("Hello this is a string: %s\n", "String 001");
-   //kprintf("Hello this is a percent: %%\n");
-
-   getbootinfo (mbd, magic);
    
-   abort( );
+   int i = 0;
+   for(; i < 25; i++){
+      kprintf("This is line %i\n", i);
+   }
+   
+
+   //getbootinfo(mbd, magic);
+   
+   //abort();
 }

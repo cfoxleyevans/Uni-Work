@@ -23,7 +23,7 @@ fi
 AS=${CPATH}/i586-elf-as
 CC=${CPATH}/i586-elf-gcc
 LD=${CPATH}/i586-elf-ld
-CFLAGS="-Wall -Wextra -Werror -fno-builtin"
+CFLAGS="-Wall -Wextra  -fno-builtin"
 LDFLAGS="-nostdlib -nostartfiles -nodefaultlibs"
 
 ${AS} -o ${OBJ}/boot.o   ${SRC}/boot.s

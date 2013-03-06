@@ -86,11 +86,9 @@ void outstr(char *string, int pad_width, char pad_char){
 void kprintf(char* string, ...){
 	int length = my_strlen(string); //length of the string that im prinnting
 
-	char *s = " "; // hold any chars or strings that i have to print	
-	int number = 0; //hold any integers that i might have to print
-	char charater = ' '; //hold charaters
-
-	//int unsigned_flag = 0;
+	char *s; // hold any chars or strings that i have to print	
+	int number; //hold any integers that i might have to print
+	char charater; //hold charaters
 
 	int pad_width = 0; //the width of the padding
 	int pad_char = 's'; //the padding char
@@ -129,18 +127,9 @@ void kprintf(char* string, ...){
 
 			if(string[i] == 'u'){
 				i++;
-				///unsigned_flag = 1;
 			}
 
-			if(string[i] == 'h'){
-				i++;
-			}
-				
-			//printf("pad char : %c\n", pad_char);
-			//printf("pad width : %i\n", pad_width);
-		
 			switch(string[i]){
-				case 'h' : i++; break;
 				case 'c' : charater = va_arg(args, int); putchar(charater); i++; break; //c
 				case 'i' : number = va_arg(args, int); outstr(itoa(number, 10), pad_width, pad_char); i++; break; //i
 				case 'b' : number = va_arg(args, int); outstr(itoa(number, 2), pad_width, pad_char); i++; break; //b

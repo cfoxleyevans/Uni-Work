@@ -43,6 +43,9 @@ public class RibbonBuilder extends JFrame implements ActionListener
 	private int errors; //number of errors for this selection
 	private int totalErrors; //total number of errors for this test
 	
+	private FileWriter writer;
+	private BufferedWriter out;
+	
 	private int clicked; //spin on this
 	////////////////////////////////////////////////////////////////////////////////////
 	
@@ -365,6 +368,20 @@ public class RibbonBuilder extends JFrame implements ActionListener
 		basePanel.add(ribbonPanel, BorderLayout.NORTH);
 		basePanel.add(controlPanel, BorderLayout.CENTER);
 		basePanel.add(controlText, BorderLayout.SOUTH);
+		
+		//create the file writer
+		String fileName = String.valueOf(System.currentTimeMillis());
+		FileWriter writer;
+		try
+		{
+			writer = new FileWriter(fileName);
+			out = new BufferedWriter(writer);
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	////////////////////////////////////////////////////////////////////////////////////
 	
@@ -375,173 +392,606 @@ public class RibbonBuilder extends JFrame implements ActionListener
 	{
 		if(e.getSource() == startTabTest)
 		{
-			System.out.println("Start the tab test");
-			try
-			{
-				tabTest();
-			}
-			catch (IOException e1)
-			{
-				e1.printStackTrace();
-			}
+			tabTest();
 		}
 			
 		else if(e.getSource() == startMenuTest)
-			System.out.println("Start menu test");
-		
+		{
+			menuTest();
+		}
 		else if(e.getSource() == resetTest)
-			System.out.println("Reset");
+		{
+			resetTest();
+		}
 		
 		else if(e.getSource() == ribbonOpen)
-			System.out.println("Open");
-		
-		else if(e.getSource() == ribbonSave)
-			System.out.println("Save");
-		
-		else if(e.getSource() == ribbonSaveAs)
-			System.out.println("Save As");
-		
-		else if(e.getSource() == ribbonExit)
-			System.out.println("Exit");
-		
-		else if(e.getSource() == ribbonUndo)
-			System.out.println("Undo");
-		
-		else if(e.getSource() == ribbonRedo)
-			System.out.println("Redo");
-		
-		else if(e.getSource() == ribbonCopy)
-			System.out.println("Copy");
-		
-		else if(e.getSource() == ribbonCut)
-			System.out.println("Cut");
-		
-		else if(e.getSource() == ribbonPaste)
-			System.out.println("Paste");
-		
-		else if(e.getSource() == ribbonSize)
-			System.out.println("Size");
-		
-		else if(e.getSource() == ribbonFace)
-			System.out.println("Face");
-		
-		else if(e.getSource() == ribbonBold)
-			System.out.println("Bold");
-		
-		else if(e.getSource() == ribbonItalic)
-			System.out.println("Italic");
-		
-		else if(e.getSource() == ribbonUnderline)
-			System.out.println("Underline");
-		
-		else if(e.getSource() == ribbonLeftJustify)
-			System.out.println("Left Justify");
-		
-		else if(e.getSource() == ribbonCenterJustify)
-			System.out.println("Center Justify");
-		
-		else if(e.getSource() == ribbonRightJustify)
-			System.out.println("Right Justify");
-		
-		else if(e.getSource() == ribbonCrop)
-			System.out.println("Crop");
-		
-		else if(e.getSource() == ribbonRotate)
-			System.out.println("Rotate");
-		
-		else if(e.getSource() == ribbonLighten)
-			System.out.println("Lighten");
-		
-		else if(e.getSource() == ribbonDarken)
-			System.out.println("Darken");
-		
-		else if(e.getSource() == ribbonGrey)
 		{
-			errors++; 
+			System.out.println("Wrong");
+			errors++;
 			totalErrors++;
 		}
 		
-		else if(e.getSource() == ribbonGrey && testProgress == 0)
+		else if(e.getSource() == ribbonSave)
 		{
-			finishTime = System.currentTimeMillis();
-			finalTime = (long) ((finishTime - startTime) /1000F);
-			System.out.println("Selection made in " + finishTime +"s with " + errors + " errors\n");
+			if(testProgress == 6)
+			{
+				finishTime = System.currentTimeMillis(); //stop the timer
+				finalTime = (long) ((finishTime - startTime) / 1000F); //calculate the selection time
+				totalTime += finalTime;
+
+				try
+				{
+					out.write("Ribbon Test 6 : Selected in " + finalTime + "s with " + errors + " errors\n");
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+
+				//reset vars
+				errors = 0; startTime = 0; finalTime = 0;
+				
+				//start next test
+				controlText.append("\nPlease right justify the text!!\n"); testProgress++;
+				startTime = System.currentTimeMillis();
+			}
+			else
+			{
+				errors++; totalErrors++;
+			}
+		}
+		
+		else if(e.getSource() == ribbonSaveAs)
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
+		
+		else if(e.getSource() == ribbonExit)
+		{
+			if(testProgress == 10)
+			{
+				finishTime = System.currentTimeMillis(); //stop the timer
+				finalTime = (long) ((finishTime - startTime) / 1000F); //calculate the selection time
+				totalTime += finalTime;
+
+				try
+				{
+					out.write("Ribbon Test 10 : Selected in " + finalTime + "s with " + errors + " errors\n");
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+
+				//reset vars
+				errors = 0; startTime = 0; finalTime = 0;
+				
+				//start next test
+				controlText.append("\nFinished!!\n"); testProgress++;
+				
+				//write the final stats and close the file
+				try
+				{
+					out.write("Ribbon Test Final Results : 10 selections made in " + totalTime + "s with " + totalErrors + " errors");
+					out.close();
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+			}
+			else
+			{
+				errors++; totalErrors++;
+			}
+			resetTest();
+		}
+		
+		else if(e.getSource() == ribbonUndo)
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
+		
+		else if(e.getSource() == ribbonRedo)
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
+
+		else if(e.getSource() == ribbonCopy)
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
+		
+		else if(e.getSource() == ribbonCut)
+		{
+			if(testProgress == 2)
+			{
+				finishTime = System.currentTimeMillis(); //stop the timer
+				finalTime = (long) ((finishTime - startTime) / 1000F); //calculate the selection time
+				totalTime += finalTime;
+
+				try
+				{
+					out.write("Ribbon Test 2 : Selected in " + finalTime + "s with " + errors + " errors\n");
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+
+				//reset vars
+				errors = 0; startTime = 0; finalTime = 0;
+				
+				//start next test
+				controlText.append("\nPlease underline the text!!\n"); testProgress++;
+				startTime = System.currentTimeMillis();
+			}
+			else
+			{
+				errors++; totalErrors++;
+			}
+		}
+		
+		else if(e.getSource() == ribbonPaste)
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
+		
+		else if(e.getSource() == ribbonSize)
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
+		
+		else if(e.getSource() == ribbonFace)
+		{
+			if(testProgress == 5)
+			{
+				finishTime = System.currentTimeMillis(); //stop the timer
+				finalTime = (long) ((finishTime - startTime) / 1000F); //calculate the selection time
+				totalTime += finalTime;
+
+				try
+				{
+					out.write("Ribbon Test 5 : Selected in " + finalTime + "s with " + errors + " errors\n");
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+
+				//reset vars
+				errors = 0; startTime = 0; finalTime = 0;
+				
+				//start next test
+				controlText.append("\nPlease save the file!!\n"); testProgress++;
+				startTime = System.currentTimeMillis();
+			}
+			else
+			{
+				errors++; totalErrors++;
+			}
+		}
+		
+		else if(e.getSource() == ribbonBold)
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
+
+		else if(e.getSource() == ribbonItalic)
+		{
+			if(testProgress == 9)
+			{
+				finishTime = System.currentTimeMillis(); //stop the timer
+				finalTime = (long) ((finishTime - startTime) / 1000F); //calculate the selection time
+				totalTime += finalTime;
+
+				try
+				{
+					out.write("Ribbon Test 9 : Selected in " + finalTime + "s with " + errors + " errors\n");
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+
+				//reset vars
+				errors = 0; startTime = 0; finalTime = 0;
+				
+				//start next test
+				controlText.append("\nPlease exit!!\n"); testProgress++;
+				startTime = System.currentTimeMillis();
+			}
+			else
+			{
+				errors++; totalErrors++;
+			}
+		}
+		
+		else if(e.getSource() == ribbonUnderline)
+		{
+			if(testProgress == 3)
+			{
+				finishTime = System.currentTimeMillis(); //stop the timer
+				finalTime = (long) ((finishTime - startTime) / 1000F); //calculate the selection time
+				totalTime += finalTime;
+
+				try
+				{
+					out.write("Ribbon Test 3 : Selected in " + finalTime + "s with " + errors + " errors\n");
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+
+				//reset vars
+				errors = 0; startTime = 0; finalTime = 0;
+				
+				//start next test
+				controlText.append("\nPlease rotate the image!!\n"); testProgress++;
+				startTime = System.currentTimeMillis();
+			}
+			else
+			{
+				errors++; totalErrors++;
+			}
+		}	
+		
+		else if(e.getSource() == ribbonLeftJustify)
+		{
+			if(testProgress == 1)
+			{
+				finishTime = System.currentTimeMillis(); //stop the timer
+				finalTime = (long) ((finishTime - startTime) / 1000F); //calculate the selection time
+				totalTime += finalTime;
+
+				try
+				{
+					out.write("Ribbon Test 1 : Selected in " + finalTime + "s with " + errors + " errors\n");
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+
+				//reset vars
+				errors = 0; startTime = 0; finalTime = 0;
+				
+				//start next test
+				controlText.append("\nPlease cut the text!!\n"); testProgress++;
+				startTime = System.currentTimeMillis();
+			}
+			else
+			{
+				errors++; totalErrors++;
+			}
+		}
+		
+		else if(e.getSource() == ribbonCenterJustify)
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
+		
+		else if(e.getSource() == ribbonRightJustify)
+		{
+			if(testProgress == 7)
+			{
+				finishTime = System.currentTimeMillis(); //stop the timer
+				finalTime = (long) ((finishTime - startTime) / 1000F); //calculate the selection time
+				totalTime += finalTime;
+
+				try
+				{
+					out.write("Ribbon Test 7 : Selected in " + finalTime + "s with " + errors + " errors\n");
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+
+				//reset vars
+				errors = 0; startTime = 0; finalTime = 0;
+				
+				//start next test
+				controlText.append("\nPlease lighten the image!!\n"); testProgress++;
+				startTime = System.currentTimeMillis();
+			}
+			else
+			{
+				errors++; totalErrors++;
+			}
+		}
+		
+		else if(e.getSource() == ribbonCrop)
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
+		
+		else if(e.getSource() == ribbonRotate)
+		{
+			if(testProgress == 4)
+			{
+				finishTime = System.currentTimeMillis(); //stop the timer
+				finalTime = (long) ((finishTime - startTime) / 1000F); //calculate the selection time
+				totalTime += finalTime;
+
+				try
+				{
+					out.write("Ribbon Test 4 : Selected in " + finalTime + "s with " + errors + " errors\n");
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+
+				//reset vars
+				errors = 0; startTime = 0; finalTime = 0;
+				
+				//start next test
+				controlText.append("\nPlease change the font face!!\n"); testProgress++;
+				startTime = System.currentTimeMillis();
+			}
+			else
+			{
+				errors++; totalErrors++;
+			}
+		}
+		
+		else if(e.getSource() == ribbonLighten)
+		{
+			if(testProgress == 8)
+			{
+				finishTime = System.currentTimeMillis(); //stop the timer
+				finalTime = (long) ((finishTime - startTime) / 1000F); //calculate the selection time
+				totalTime += finalTime;
+
+				try
+				{
+					out.write("Ribbon Test 8 : Selected in " + finalTime + "s with " + errors + " errors\n");
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+
+				//reset vars
+				errors = 0; startTime = 0; finalTime = 0;
+				
+				//start next test
+				controlText.append("\nPlease make the text italic!!\n"); testProgress++;
+				startTime = System.currentTimeMillis();
+			}
+			else
+			{
+				errors++; totalErrors++;
+			}
+		}
+			
+		else if(e.getSource() == ribbonDarken)
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
+			
+		else if(e.getSource() == ribbonGrey)
+		{
+			if(testProgress == 1)
+			{
+				finishTime = System.currentTimeMillis(); //stop the timer
+				finalTime = (long) ((finishTime - startTime) / 1000F); //calculate the selection time
+				totalTime += finalTime;
+
+				try
+				{
+					out.write("Ribbon Test 1 : Selected in " + finalTime + "s with " + errors + " errors\n");
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+
+				//reset vars
+				errors = 0; startTime = 0; finalTime = 0;
+				
+				//start next test
+				controlText.append("\nPlease cut the text!!\n"); testProgress++;
+				startTime = System.currentTimeMillis();
+			}
+			else
+			{
+				errors++; totalErrors++;
+			}
 		}
 		
 		else if(e.getSource() == ribbonUndoImageEdit)
-			System.out.println("Undo Edit");
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
 		
 		else if(e.getSource() == menuOpen)
-			System.out.println("Open");
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
 		
 		else if(e.getSource() == menuSave)
-			System.out.println("Save");
-		
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
+
 		else if(e.getSource() == menuSaveAs)
-			System.out.println("Save As");
-		
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
+
 		else if(e.getSource() == menuExit)
-			System.out.println("Exit");
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
 		
 		else if(e.getSource() == menuUndo)
-			System.out.println("Undo");
-		
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
+			
 		else if(e.getSource() == menuRedo)
-			System.out.println("Redo");
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
 		
 		else if(e.getSource() == menuCopy)
-			System.out.println("Copy");
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
 		
 		else if(e.getSource() == menuCut)
-			System.out.println("Cut");
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
 		
 		else if(e.getSource() == menuPaste)
-			System.out.println("Paste");
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
 		
 		else if(e.getSource() == menuSize)
-			System.out.println("Size");
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
 		
 		else if(e.getSource() == menuFace)
-			System.out.println("Face");
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
 		
 		else if(e.getSource() == menuBold)
-			System.out.println("Bold");
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
 		
 		else if(e.getSource() == menuItalic)
-			System.out.println("Italic");
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
 		
 		else if(e.getSource() == menuUnderline)
-			System.out.println("Underline");
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
 		
 		else if(e.getSource() == menuLeftJustify)
-			System.out.println("Left Justify");
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
 		
 		else if(e.getSource() == menuCenterJustify)
-			System.out.println("Center Justify");
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
 		
 		else if(e.getSource() == menuRightJustify)
-			System.out.println("Right Justify");
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
 		
 		else if(e.getSource() == menuCrop)
-			System.out.println("Crop");
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
 		
 		else if(e.getSource() == menuRotate)
-			System.out.println("Rotate");
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
 		
 		else if(e.getSource() == menuLighten)
-			System.out.println("Lighten");
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
 		
 		else if(e.getSource() == menuDarken)
-			System.out.println("Darken");
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
 		
 		else if(e.getSource() == menuGrey)
-			System.out.println("Grey");
-		
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
+
 		else if(e.getSource() == menuUndoImageEdit)
-			System.out.println("Undo Edit");
+		{
+			System.out.println("Wrong");
+			errors++;
+			totalErrors++;
+		}
 	}
 	
-	public void tabTest() throws IOException
+	public void tabTest()
 	{
 		//reset all of the vars to count stuff
 		startTime = 0;
@@ -553,61 +1003,56 @@ public class RibbonBuilder extends JFrame implements ActionListener
 		totalErrors = 0;
 		testProgress = 0;
 		
-		//create the file writer
-		String fileName = String.valueOf(System.currentTimeMillis());
-		FileWriter writer = new FileWriter(fileName);
-		BufferedWriter out = new BufferedWriter(writer);
-		
 		//write initial info to the screen disable other buttons
 		controlText.append("\nYou have started the ribbon test!!\n");
 		startMenuTest.setEnabled(false);
 		resetTest.setEnabled(false);
 		
 		//1st selection
-		controlText.append("Please make the image grey!!\n");
+		testProgress = 1;
+		controlText.append("\nPlease make the image grey!!\n");
 		startTime = System.currentTimeMillis();
-		
-		
-		/*
-		//2nd selection
-		controlText.append("Please underline the text!!\n");
-		
-		//3rd selection
-		controlText.append("Please cut the text!!\n");
-		
-		//4th selection
-		controlText.append("Please rotate the image!!\n");
-		
-		//5th selection
-		controlText.append("Please change the face of the font the!!\n");
-		
-		//6th selection
-		controlText.append("Please save the file!!\n");
-		
-		//7th selection
-		controlText.append("Please Right Justify the text!!\n");
-		
-		//8th selection
-		controlText.append("Please Lighten the image!!\n");
-		
-		//9th selection
-		controlText.append("Please set the text to italic!!\n");
-		
-		//10th selection
-		controlText.append("Please Exit!!\n");
-		
-		//close to file to flush it to disk
-		out.close();
-		*/
-		
 	}
 	
 	public void menuTest()
 	{
-		
-		
-		
+		//reset all of the vars to count stuff
+		startTime = 0;
+		finishTime = 0;
+		finalTime = 0;
+		totalTime = 0;
+
+		errors = 0;
+		totalErrors = 0;
+		testProgress = 0;
+
+		//write initial info to the screen disable other buttons
+		controlText.append("\nYou have started the ribbon test!!\n");
+		startMenuTest.setEnabled(false);
+		resetTest.setEnabled(false);
+
+		//1st selection
+		testProgress = 20;
+		controlText.append("\nPlease make the image grey!!\n");
+		startTime = System.currentTimeMillis();
 	}
 	
-	
+	public void resetTest()
+	{
+		resetTest.setEnabled(true);
+		startTabTest.setEnabled(true);
+		startMenuTest.setEnabled(true);
+		
+		controlText.setText("Welcome to the HCI interface test!!!\n");
+		
+		startTime = 0;
+		finishTime = 0;
+		finalTime = 0;
+		totalTime = 0;
+		
+		errors = 0;
+		totalErrors = 0;
+		testProgress = 0;	
+	}
+
 }
