@@ -34,8 +34,8 @@ void     outb    ( uint16_t, uint8_t  );
 void getbootinfo (void *, unsigned int );
 
 // printk.c
-char * itoa   ( int    );
-int  strlen   ( char * );
+char * itoa   (unsigned long number, unsigned int base);
+int my_strlen (char* string);
 void kprintf  ( char *, ... );
 
 // vga.c
