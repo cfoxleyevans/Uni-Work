@@ -1,5 +1,4 @@
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
@@ -14,8 +13,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 
@@ -45,8 +42,6 @@ public class RibbonBuilder extends JFrame implements ActionListener
 	
 	private FileWriter writer;
 	private BufferedWriter out;
-	
-	private int clicked; //spin on this
 	////////////////////////////////////////////////////////////////////////////////////
 	
 	////////////////////////////////////////////////////////////////////////////////////
@@ -653,36 +648,6 @@ public class RibbonBuilder extends JFrame implements ActionListener
 		
 		else if(e.getSource() == ribbonLeftJustify)
 		{
-			if(testProgress == 1)
-			{
-				finishTime = System.currentTimeMillis(); //stop the timer
-				finalTime = (long) ((finishTime - startTime) / 1000F); //calculate the selection time
-				totalTime += finalTime;
-
-				try
-				{
-					out.write("Ribbon Test 1 : Selected in " + finalTime + "s with " + errors + " errors\n");
-				}
-				catch (IOException e1)
-				{
-					e1.printStackTrace();
-				}
-
-				//reset vars
-				errors = 0; startTime = 0; finalTime = 0;
-				
-				//start next test
-				controlText.append("\nPlease cut the text!!\n"); testProgress++;
-				startTime = System.currentTimeMillis();
-			}
-			else
-			{
-				errors++; totalErrors++;
-			}
-		}
-		
-		else if(e.getSource() == ribbonCenterJustify)
-		{
 			System.out.println("Wrong");
 			errors++;
 			totalErrors++;
@@ -838,9 +803,32 @@ public class RibbonBuilder extends JFrame implements ActionListener
 		
 		else if(e.getSource() == menuSave)
 		{
-			System.out.println("Wrong");
-			errors++;
-			totalErrors++;
+			if(testProgress == 26)
+			{
+				finishTime = System.currentTimeMillis(); //stop the timer
+				finalTime = (long) ((finishTime - startTime) / 1000F); //calculate the selection time
+				totalTime += finalTime;
+
+				try
+				{
+					out.write("Menu Test 6 : Selected in " + finalTime + "s with " + errors + " errors\n");
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+
+				//reset vars
+				errors = 0; startTime = 0; finalTime = 0;
+				
+				//start next test
+				controlText.append("\nPlease right justify the text!!\n"); testProgress++;
+				startTime = System.currentTimeMillis();
+			}
+			else
+			{
+				errors++; totalErrors++;
+			}
 		}
 
 		else if(e.getSource() == menuSaveAs)
@@ -852,9 +840,43 @@ public class RibbonBuilder extends JFrame implements ActionListener
 
 		else if(e.getSource() == menuExit)
 		{
-			System.out.println("Wrong");
-			errors++;
-			totalErrors++;
+			if(testProgress == 30)
+			{
+				finishTime = System.currentTimeMillis(); //stop the timer
+				finalTime = (long) ((finishTime - startTime) / 1000F); //calculate the selection time
+				totalTime += finalTime;
+
+				try
+				{
+					out.write("Menu Test 10 : Selected in " + finalTime + "s with " + errors + " errors\n");
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+
+				//reset vars
+				errors = 0; startTime = 0; finalTime = 0;
+				
+				//start next test
+				controlText.append("\nFinished!!\n"); testProgress++;
+				
+				//write the final stats and close the file
+				try
+				{
+					out.write("Ribbon Test Final Results : 10 selections made in " + totalTime + "s with " + totalErrors + " errors");
+					out.close();
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+			}
+			else
+			{
+				errors++; totalErrors++;
+			}
+			resetTest();
 		}
 		
 		else if(e.getSource() == menuUndo)
@@ -880,9 +902,32 @@ public class RibbonBuilder extends JFrame implements ActionListener
 		
 		else if(e.getSource() == menuCut)
 		{
-			System.out.println("Wrong");
-			errors++;
-			totalErrors++;
+			if(testProgress == 22)
+			{
+				finishTime = System.currentTimeMillis(); //stop the timer
+				finalTime = (long) ((finishTime - startTime) / 1000F); //calculate the selection time
+				totalTime += finalTime;
+
+				try
+				{
+					out.write("Menu Test 2 : Selected in " + finalTime + "s with " + errors + " errors\n");
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+
+				//reset vars
+				errors = 0; startTime = 0; finalTime = 0;
+				
+				//start next test
+				controlText.append("\nPlease underline the text!!\n"); testProgress++;
+				startTime = System.currentTimeMillis();
+			}
+			else
+			{
+				errors++; totalErrors++;
+			}
 		}
 		
 		else if(e.getSource() == menuPaste)
@@ -901,9 +946,32 @@ public class RibbonBuilder extends JFrame implements ActionListener
 		
 		else if(e.getSource() == menuFace)
 		{
-			System.out.println("Wrong");
-			errors++;
-			totalErrors++;
+			if(testProgress == 25)
+			{
+				finishTime = System.currentTimeMillis(); //stop the timer
+				finalTime = (long) ((finishTime - startTime) / 1000F); //calculate the selection time
+				totalTime += finalTime;
+
+				try
+				{
+					out.write("Menu Test 5 : Selected in " + finalTime + "s with " + errors + " errors\n");
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+
+				//reset vars
+				errors = 0; startTime = 0; finalTime = 0;
+				
+				//start next test
+				controlText.append("\nPlease save the file!!\n"); testProgress++;
+				startTime = System.currentTimeMillis();
+			}
+			else
+			{
+				errors++; totalErrors++;
+			}
 		}
 		
 		else if(e.getSource() == menuBold)
@@ -915,16 +983,62 @@ public class RibbonBuilder extends JFrame implements ActionListener
 		
 		else if(e.getSource() == menuItalic)
 		{
-			System.out.println("Wrong");
-			errors++;
-			totalErrors++;
+			if(testProgress == 29)
+			{
+				finishTime = System.currentTimeMillis(); //stop the timer
+				finalTime = (long) ((finishTime - startTime) / 1000F); //calculate the selection time
+				totalTime += finalTime;
+
+				try
+				{
+					out.write("Menu Test 9 : Selected in " + finalTime + "s with " + errors + " errors\n");
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+
+				//reset vars
+				errors = 0; startTime = 0; finalTime = 0;
+				
+				//start next test
+				controlText.append("\nPlease exit!!\n"); testProgress++;
+				startTime = System.currentTimeMillis();
+			}
+			else
+			{
+				errors++; totalErrors++;
+			}
 		}
 		
 		else if(e.getSource() == menuUnderline)
 		{
-			System.out.println("Wrong");
-			errors++;
-			totalErrors++;
+			if(testProgress == 23)
+			{
+				finishTime = System.currentTimeMillis(); //stop the timer
+				finalTime = (long) ((finishTime - startTime) / 1000F); //calculate the selection time
+				totalTime += finalTime;
+
+				try
+				{
+					out.write("Menu Test 3 : Selected in " + finalTime + "s with " + errors + " errors\n");
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+
+				//reset vars
+				errors = 0; startTime = 0; finalTime = 0;
+				
+				//start next test
+				controlText.append("\nPlease rotate the image!!\n"); testProgress++;
+				startTime = System.currentTimeMillis();
+			}
+			else
+			{
+				errors++; totalErrors++;
+			}
 		}
 		
 		else if(e.getSource() == menuLeftJustify)
@@ -943,9 +1057,32 @@ public class RibbonBuilder extends JFrame implements ActionListener
 		
 		else if(e.getSource() == menuRightJustify)
 		{
-			System.out.println("Wrong");
-			errors++;
-			totalErrors++;
+			if(testProgress == 27)
+			{
+				finishTime = System.currentTimeMillis(); //stop the timer
+				finalTime = (long) ((finishTime - startTime) / 1000F); //calculate the selection time
+				totalTime += finalTime;
+
+				try
+				{
+					out.write("Menu Test 7 : Selected in " + finalTime + "s with " + errors + " errors\n");
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+
+				//reset vars
+				errors = 0; startTime = 0; finalTime = 0;
+				
+				//start next test
+				controlText.append("\nPlease lighten the image!!\n"); testProgress++;
+				startTime = System.currentTimeMillis();
+			}
+			else
+			{
+				errors++; totalErrors++;
+			}
 		}
 		
 		else if(e.getSource() == menuCrop)
@@ -957,16 +1094,62 @@ public class RibbonBuilder extends JFrame implements ActionListener
 		
 		else if(e.getSource() == menuRotate)
 		{
-			System.out.println("Wrong");
-			errors++;
-			totalErrors++;
+			if(testProgress == 24)
+			{
+				finishTime = System.currentTimeMillis(); //stop the timer
+				finalTime = (long) ((finishTime - startTime) / 1000F); //calculate the selection time
+				totalTime += finalTime;
+
+				try
+				{
+					out.write("Menu Test 4 : Selected in " + finalTime + "s with " + errors + " errors\n");
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+
+				//reset vars
+				errors = 0; startTime = 0; finalTime = 0;
+				
+				//start next test
+				controlText.append("\nPlease change the font face!!\n"); testProgress++;
+				startTime = System.currentTimeMillis();
+			}
+			else
+			{
+				errors++; totalErrors++;
+			}
 		}
 		
 		else if(e.getSource() == menuLighten)
 		{
-			System.out.println("Wrong");
-			errors++;
-			totalErrors++;
+			if(testProgress == 28)
+			{
+				finishTime = System.currentTimeMillis(); //stop the timer
+				finalTime = (long) ((finishTime - startTime) / 1000F); //calculate the selection time
+				totalTime += finalTime;
+
+				try
+				{
+					out.write("Menu Test 8 : Selected in " + finalTime + "s with " + errors + " errors\n");
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+
+				//reset vars
+				errors = 0; startTime = 0; finalTime = 0;
+				
+				//start next test
+				controlText.append("\nPlease make the text italic!!\n"); testProgress++;
+				startTime = System.currentTimeMillis();
+			}
+			else
+			{
+				errors++; totalErrors++;
+			}
 		}
 		
 		else if(e.getSource() == menuDarken)
@@ -978,9 +1161,32 @@ public class RibbonBuilder extends JFrame implements ActionListener
 		
 		else if(e.getSource() == menuGrey)
 		{
-			System.out.println("Wrong");
-			errors++;
-			totalErrors++;
+			if(testProgress == 21)
+			{
+				finishTime = System.currentTimeMillis(); //stop the timer
+				finalTime = (long) ((finishTime - startTime) / 1000F); //calculate the selection time
+				totalTime += finalTime;
+
+				try
+				{
+					out.write("Menu Test 1 : Selected in " + finalTime + "s with " + errors + " errors\n");
+				}
+				catch (IOException e1)
+				{
+					e1.printStackTrace();
+				}
+
+				//reset vars
+				errors = 0; startTime = 0; finalTime = 0;
+				
+				//start next test
+				controlText.append("\nPlease cut the text!!\n"); testProgress++;
+				startTime = System.currentTimeMillis();
+			}
+			else
+			{
+				errors++; totalErrors++;
+			}
 		}
 
 		else if(e.getSource() == menuUndoImageEdit)
@@ -991,6 +1197,9 @@ public class RibbonBuilder extends JFrame implements ActionListener
 		}
 	}
 	
+	////////////////////////////////////////////////////////////////////////////////////
+	// Starts the ribbon test
+	////////////////////////////////////////////////////////////////////////////////////
 	public void tabTest()
 	{
 		//reset all of the vars to count stuff
@@ -1014,6 +1223,9 @@ public class RibbonBuilder extends JFrame implements ActionListener
 		startTime = System.currentTimeMillis();
 	}
 	
+	////////////////////////////////////////////////////////////////////////////////////
+	// Starts the menu test
+	////////////////////////////////////////////////////////////////////////////////////
 	public void menuTest()
 	{
 		//reset all of the vars to count stuff
@@ -1032,11 +1244,14 @@ public class RibbonBuilder extends JFrame implements ActionListener
 		resetTest.setEnabled(false);
 
 		//1st selection
-		testProgress = 20;
+		testProgress = 21;
 		controlText.append("\nPlease make the image grey!!\n");
 		startTime = System.currentTimeMillis();
 	}
 	
+	////////////////////////////////////////////////////////////////////////////////////
+	// Resets the session
+	////////////////////////////////////////////////////////////////////////////////////
 	public void resetTest()
 	{
 		resetTest.setEnabled(true);
