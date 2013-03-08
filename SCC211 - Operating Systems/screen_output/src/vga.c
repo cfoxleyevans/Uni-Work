@@ -12,10 +12,6 @@ static const int lines     = 25;
 static int x = 0;
 static int y = 0;
 
-static int chars_on_line = 0; //keep track of how man chars on the current line
-static int total_chars = 0; //how many chars have we written in total
-static int lines_written = 0; //how many lines have been written
-
 //
 //   Move cursor to position x,y
 //   - Notice this uses isolated I/O
@@ -31,16 +27,32 @@ setcursor (int x, int y) {
    outb (datareg, posn &  0xff);
 }
 
+void scroll(){
+
+      uint16_t *screenptr = videoram; //pointer to the start
+      uint16_t *copy = videoram + 80; //
+
+      //copy the data 
+      int i = 0;
+      while(i++ < 1840){
+         *screenptr++ = *copy++;
+      }
+
+      x = 0; y = 23;
+      setcursor(x,y);
+   }
+
+
 //
 //   Clear the screen and move cursor to position 0,0
 //
 void vgainit(){
-   uint16_t *screenp = videoram; //take copy of pointer to start of vram
+   uint16_t *screenptr = videoram; //take copy of pointer to start of vram
    
    int i;
    for (i = 0; i < 2000; i++) //loop over all of the pixels
    {
-      *screenp++ = ' ' | FOREGROUND(WHITE) | BACKGROUND(BLUE); //write nothing to the screen
+      *screenptr++ = ' ' | FOREGROUND(WHITE) | BACKGROUND(BLUE); //write nothing to the screen
    }
 
    //set the cursor position for new writes
@@ -59,36 +71,35 @@ void putchar(char c){
    //   calculating the limit of the display area.
    //
    uint16_t *screenptr = videoram; //take copy of pointer to start of vram
-   screenptr += total_chars; //move pointer to current pos
-   
-   //deal with new line chars
-   switch(c){ 
-      case '\n': 
-         total_chars += (80-chars_on_line); //increase the total by 80 - what we allredy have 
-         chars_on_line = 0; //reset the lines char count
-         lines_written++; //increase the amount of lines written
-         x = 0; y++; //set the cursor co-ord 
-         setcursor(x,y); //set the cursor
+   screenptr += (y * 80) + x; //move to the current pos; 
+
+   if(y >= 24){
+      scroll();
+      return;
+   }
+
+   if(y <= 23){
+      switch(c){
+         case '\n': x = 0; y++; 
+         setcursor(x,y); 
          return;
-   } 
-
-   //flush char to the screen
-   if (chars_on_line < (linelen - 1)){ 
-      *screenptr = c | FOREGROUND(WHITE) | BACKGROUND(BLUE); 
-
-      chars_on_line++; //increase the number of chars on the line
-      x++; //increase x pos of cursor
-      total_chars++; //increase the total number of chars we have printed
-      
-      //now that we have printed the char are we at the end of the line
-      if(chars_on_line == 80){
-         chars_on_line = 0; 
-         lines_written++;
-         y++;
-         x = 0;
       }
    }
-   setcursor(x, y);  
+   else{
+      scroll(); 
+      return;
+   }
+   
+   if (x < 80){
+      *screenptr = c | FOREGROUND(WHITE) | BACKGROUND(BLUE); 
+      x++; //increase x pos of cursor
+      
+      //now that we have printed the char are we at the end of the line
+      if(x == 80){
+         y++; x = 0; setcursor(x,y); return;
+      }
+     setcursor(x,y);
+   }
 }
 
 void
@@ -107,3 +118,5 @@ status (char *str ) {
       *screenptr++ = str[i] | FOREGROUND(BLUE) | BACKGROUND(WHITE);
    }
 }
+
+

@@ -11,17 +11,16 @@ abort( ) {
 void
 kmain( void* mbd, unsigned int magic ) {
    vgainit();	
-
+   
    status ("SCC211 Operating Systems kernel");
+   
+   //testing scrolling with this
+   //int i = 0;
+   //while(i++ < 30000){
+      //kprintf("Hello this is line %i\n", i);
+   //}
+   
+   getbootinfo(mbd, magic);
 
-   
-   int i = 0;
-   for(; i < 25; i++){
-      kprintf("This is line %i\n", i);
-   }
-   
-
-   //getbootinfo(mbd, magic);
-   
-   //abort();
+   abort();
 }
