@@ -60,6 +60,16 @@ int create_multicast_socket(){
 		exit(1);
 	}
 
+	struct ip_mreqn multaddr;
+	multaddr.imr_multiaddr.s_addr = inet_addr("224.0.0.9");
+	multaddr.imr_address.s_addr = INADDR_ANY; 
+	multaddr.imr_ifindex = 0; 
+	
+	if (setsockopt (fd, IPPROTO_IP, IP_ADD_MEMBERSHIP, 
+		(void *)&multaddr, (socklen_t)sizeof(multaddr))) { 
+			perror ("setsockopt( JOIN GROUP )"); 
+	} 
+
 	return fd;
 }
 ////////////////////////////////////////////////////
@@ -86,7 +96,42 @@ uint16_t sum (uint16_t initial, void * buffer, int bytes){
 ////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////
-//Sendrip request message
+//Send rip v2 request message
+////////////////////////////////////////////////////
+void send_rip_v2_request(int skt, struct sockaddr_in dest){
+
+	char buffer[BUFF_SIZE]; 
+	struct rip_msg *msg;
+	
+	//write the message into the buffer
+	memset(&buffer, 0, sizeof(buffer));
+	msg = (struct rip_msg *)buffer;
+
+	//construct rip message
+	msg->command = (unsigned char)1;
+	msg->version = (unsigned char)2;
+	msg->zero= (unsigned short)0;
+
+	//first entry
+	msg->entries[0].rip2.addr_family = htons(0);
+	msg->entries[0].rip2.route_tag = htons(0);
+	inet_pton(AF_INET, "0.0.0.0", &(msg->entries[0].rip2.ip_addr));
+	inet_pton(AF_INET, "0.0.0.0", &(msg->entries[0].rip2.subnet_mask));
+	inet_pton(AF_INET, "0.0.0.0", &(msg->entries[0].rip2.next_hop));
+	msg->entries[0].rip2.metric = htonl(16);
+
+	int update_length = sizeof(struct rip_msg) + 1 * sizeof(struct rip1ent);
+
+	bind(skt,(struct sockaddr *)&dest, sizeof(dest));
+
+	//send the request
+	sendto (skt, buffer, update_length, 0,
+		(struct sockaddr *)&dest, sizeof(dest));
+}
+///////////////////////////////////////////////////
+
+////////////////////////////////////////////////////
+//Send rip v1 request message
 ////////////////////////////////////////////////////
 void send_rip_v1_request(int skt, struct sockaddr_in dest){
 
@@ -103,10 +148,10 @@ void send_rip_v1_request(int skt, struct sockaddr_in dest){
 	msg->zero= (unsigned short)0;
 
 	//first entry
-	//msg->entries[0].rip1.addr_family = AF_INET;
-	//msg->entries[0].rip1.zero = 0;
-	//inet_pton(AF_INET, "7.15.0.0", &(msg->entries[0].rip1.v4addr));
-	//msg->entries[0].rip1.metric = 16;
+	msg->entries[0].rip1.addr_family = htons(0);
+	msg->entries[0].rip1.zero = 0;
+	inet_pton(AF_INET, "0.0.0.0", &(msg->entries[0].rip1.v4addr));
+	msg->entries[0].rip1.metric = htonl(16);
 
 	int update_length = sizeof(struct rip_msg) + 1 * sizeof(struct rip1ent);
 
@@ -124,15 +169,27 @@ void send_rip_v1_request(int skt, struct sockaddr_in dest){
 int main(int argc, char const **argv){
 
 	int skt = create_udp_socket();
-	struct sockaddr_in dest; //destination address
-	
-	//set up the dest address
-	memset(&dest, 0, sizeof(dest));
-	inet_pton(AF_INET, "10.37.211.102", &(dest.sin_addr));
-	dest.sin_family = AF_INET;
-	dest.sin_port = htons(RIP_PORT);
+	int mskt = create_multicast_socket();
 
-	send_rip_v1_request(skt, dest);
+	struct sockaddr_in v1_dest; //v1_dest address
+	struct sockaddr_in v2_dest; //v2_dest address
+	
+	//set up the v1_dest address
+	memset(&v1_dest, 0, sizeof(v1_dest));
+	inet_pton(AF_INET, "192.168.0.1", &(v1_dest.sin_addr));
+	v1_dest.sin_family = AF_INET;
+	v1_dest.sin_port = htons(RIP_PORT);
+
+	//set up the v2_dest address
+	memset(&v2_dest, 0, sizeof(v2_dest));
+	inet_pton(AF_INET, "10.37.211.101", &(v2_dest.sin_addr));
+	v2_dest.sin_family= AF_INET;
+	v2_dest.sin_port = htons(RIP_PORT);
+
+	//send out the requests
+	send_rip_v1_request(skt, v1_dest);
+	//send_rip_v2_request(mskt, v2_dest);
+
 
 	//recive response with the tables
 
