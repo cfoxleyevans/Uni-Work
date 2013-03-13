@@ -126,19 +126,48 @@ void list_print(list *list){
 	else{
 		node *ptr = list->head;
 
-		printf("%s   %s    %s    %s    %s    %s\n\n", "Network", "Netmask", "Gateway", "Interface", "Metric", "TTL");
-		printf("%li %li %li        %i          %i       %i\n", ptr->entry->network, ptr->entry->netmask,
+		printf("%s %s %s  %s  %s  %s\n\n", "Network", "Netmask", "Gateway", "Interface", "Metric", "TTL");
+		printf(" %li    %li      %li     % i        %i     %i\n", ptr->entry->network, ptr->entry->netmask,
 				ptr->entry->gateway, ptr->entry->interface, ptr->entry->metric, ptr->entry->ttl);
 
 		while(ptr->next != NULL){
-			printf("%li %li %li        %i          %i       %i\n", ptr->entry->network, ptr->entry->netmask,
-				ptr->entry->gateway, ptr->entry->interface, ptr->entry->metric, ptr->entry->ttl);
 			ptr = ptr->next;
+			printf(" %li    %li      %li     % i        %i     %i\n", ptr->entry->network, ptr->entry->netmask,
+				ptr->entry->gateway, ptr->entry->interface, ptr->entry->metric, ptr->entry->ttl);
+			
 		}
 		printf("\n");
 	}
 }
 ////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////
+//Finds and prints the the gateway
+//list *list : the list that is to be searched
+//return : void 
+////////////////////////////////////////////////////
+void list_find_next_hop(list *list, long ip){
+
+	node *ptr = list->head;
+
+	if(ptr->entry->network == ip){
+		printf("Next hop for %li is: %li\n", ip, ptr->entry->gateway);
+		return;
+	}
+
+	while(ptr->next != NULL){
+		ptr= ptr->next;
+		if(ptr->entry->network == ip){
+			printf("Next hop for %li is: %li\n", ip, ptr->entry->gateway);
+			return;
+		}
+	}
+
+	perror("Network not found!!");
+
+}
+
+
 //end of file ll.c
 
 
