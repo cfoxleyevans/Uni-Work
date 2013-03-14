@@ -10,9 +10,14 @@
 ////////////////////////////////////////////////////
 #include <stdlib.h>
 #include <stdio.h>
+#include <sys/types.h>
+#include <stdint.h>
 #include "ll.h"
- #include "table_entry.h"
+#include "table_entry.h"
+
 ////////////////////////////////////////////////////
+
+
 
 ////////////////////////////////////////////////////
 //Creates a new list and retruns a ptr
@@ -89,7 +94,7 @@ int list_remove(list *list, int index){
 		free(removed);
 		return 1;
 	}
-	//check the rst of the list
+	//check the rest of the list
 	else{
 		node *ptr = list->head->next;
 		node *previous = list->head;
@@ -114,32 +119,67 @@ int list_remove(list *list, int index){
 }
 
 ////////////////////////////////////////////////////
-//Prints all of the nodes in a list
+//Prints all of the nodes in a list in v2 format
 //list *list : the list that is to be printed
 //return : void 
 ////////////////////////////////////////////////////
-void list_print(list *list){
+void list_print_rip_v2(list *list){
 
-	if(list_is_empty(list))
-		perror("EMPTY LIST"); 
+	if(list_is_empty(list)){
+		printf("ERROR : EMPTY LIST\n");
+	}
 	
 	else{
 		node *ptr = list->head;
 
-		printf("%s %s %s  %s  %s  %s\n\n", "Network", "Netmask", "Gateway", "Interface", "Metric", "TTL");
-		printf(" %li    %li      %li     % i        %i     %i\n", ptr->entry->network, ptr->entry->netmask,
-				ptr->entry->gateway, ptr->entry->interface, ptr->entry->metric, ptr->entry->ttl);
+		printf("|     %s     |     %s     |     %s     | %s | %s | %s |\n", "Network", "Netmask", "Gateway", "Interface", "Metric", "TTL");
+		printf("|   %s       |   %s  |   %s  |     %i     |    %i   | %i |\n", iptos(ptr->entry->network), iptos(ptr->entry->netmask),
+				iptos(ptr->entry->gateway), ptr->entry->interface, ptr->entry->metric, ptr->entry->ttl);
 
 		while(ptr->next != NULL){
 			ptr = ptr->next;
-			printf(" %li    %li      %li     % i        %i     %i\n", ptr->entry->network, ptr->entry->netmask,
-				ptr->entry->gateway, ptr->entry->interface, ptr->entry->metric, ptr->entry->ttl);
+			printf("|   %s  |   %s  |   %s  |     %i     |    %i   | %i |\n", iptos(ptr->entry->network), iptos(ptr->entry->netmask),
+				iptos(ptr->entry->gateway), ptr->entry->interface, ptr->entry->metric, ptr->entry->ttl);
 			
 		}
 		printf("\n");
 	}
 }
 ////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////
+//Prints all of the nodes in a list in v1 format
+//list *list : the list that is to be printed
+//return : void 
+////////////////////////////////////////////////////
+void list_print_rip_v1(list *list){
+
+	if(list_is_empty(list)){
+		printf("ERROR : EMPTY LIST\n");
+	}
+	
+	else{
+		node *ptr = list->head;
+
+		printf("|     %s     |     %s     |     %s     | %s | %s | %s |\n", "Network", "Netmask", "Gateway", "Interface", "Metric", "TTL");
+		printf("|   %s       |   %s  |   %s  |     %i     |    %i   | %i |\n", iptos(ptr->entry->network), iptos(ptr->entry->netmask),
+				iptos(ptr->entry->gateway), ptr->entry->interface, ptr->entry->metric, ptr->entry->ttl);
+
+		while(ptr->next != NULL){
+			ptr = ptr->next;
+			printf("|   %s  |   %s  |   %s  |     %i     |    %i   | %i |\n", iptos(ptr->entry->network), iptos(ptr->entry->netmask),
+				iptos(ptr->entry->gateway), ptr->entry->interface, ptr->entry->metric, ptr->entry->ttl);
+			
+		}
+		printf("\n");
+	}
+}
+////////////////////////////////////////////////////
+
+
+
+
 
 ////////////////////////////////////////////////////
 //Finds and prints the the gateway
@@ -148,8 +188,9 @@ void list_print(list *list){
 ////////////////////////////////////////////////////
 void list_find_next_hop(list *list, long ip){
 
-	node *ptr = list->head;
+	//node *ptr = list->head;
 
+	/*
 	if(ptr->entry->network == ip){
 		printf("Next hop for %li is: %li\n", ip, ptr->entry->gateway);
 		return;
@@ -162,7 +203,7 @@ void list_find_next_hop(list *list, long ip){
 			return;
 		}
 	}
-
+	*/
 	perror("Network not found!!");
 
 }

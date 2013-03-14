@@ -10,12 +10,12 @@
 ////////////////////////////////////////////////////
 typedef struct table_entry{
 
-	long network;
-	long netmask;
-	long gateway;
-	int interface;
-	int metric;
-	int ttl;
+	unsigned long network;
+	unsigned long netmask;
+	unsigned long gateway;
+	unsigned int interface;
+	unsigned int metric;
+	unsigned int ttl;
 } table_entry;
 ////////////////////////////////////////////////////
 //end of file table_entry.h
