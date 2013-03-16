@@ -12,12 +12,14 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <stdint.h>
+
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <netdb.h>
+
 #include "ll.h"
 #include "table_entry.h"
-
 ////////////////////////////////////////////////////
-
-
 
 ////////////////////////////////////////////////////
 //Creates a new list and retruns a ptr
@@ -123,7 +125,7 @@ int list_remove(list *list, int index){
 //list *list : the list that is to be printed
 //return : void 
 ////////////////////////////////////////////////////
-void list_print_rip_v2(list *list){
+void list_print_rip_table(list *list){
 
 	if(list_is_empty(list)){
 		printf("ERROR : EMPTY LIST\n");
@@ -132,14 +134,14 @@ void list_print_rip_v2(list *list){
 	else{
 		node *ptr = list->head;
 
-		printf("|     %s     |     %s     |     %s     | %s | %s | %s |\n", "Network", "Netmask", "Gateway", "Interface", "Metric", "TTL");
-		printf("|   %s       |   %s  |   %s  |     %i     |    %i   | %i |\n", iptos(ptr->entry->network), iptos(ptr->entry->netmask),
-				iptos(ptr->entry->gateway), ptr->entry->interface, ptr->entry->metric, ptr->entry->ttl);
+		printf("| %s      | %s      | %s | %s | %s | %s |\n", "Network", "Netmask", "Gateway", "Interface", "Metric", "TTL");
+		printf("|  %s |  %s |  %s | %i | %i | %i |\n", iptos(ntohl(ptr->entry->network)), iptos(ntohl(ptr->entry->netmask)),
+				iptos(ntohl(ptr->entry->gateway)), ptr->entry->interface, ntohl(ptr->entry->metric), ptr->entry->ttl);
 
 		while(ptr->next != NULL){
 			ptr = ptr->next;
-			printf("|   %s  |   %s  |   %s  |     %i     |    %i   | %i |\n", iptos(ptr->entry->network), iptos(ptr->entry->netmask),
-				iptos(ptr->entry->gateway), ptr->entry->interface, ptr->entry->metric, ptr->entry->ttl);
+			printf("|  %s |  %s |  %s | %i | %i | %i |\n", iptos(ntohl(ptr->entry->network)), iptos(ntohl(ptr->entry->netmask)),
+				iptos(ntohl(ptr->entry->gateway)), ptr->entry->interface, ntohl(ptr->entry->metric), ptr->entry->ttl);
 			
 		}
 		printf("\n");
@@ -147,76 +149,58 @@ void list_print_rip_v2(list *list){
 }
 ////////////////////////////////////////////////////
 
-
 ////////////////////////////////////////////////////
-//Prints all of the nodes in a list in v1 format
+//checks to see if the ip is allredy in the table
 //list *list : the list that is to be printed
+//uint_32_t : the ip that we are checking for
 //return : void 
 ////////////////////////////////////////////////////
-void list_print_rip_v1(list *list){
+int list_contains_route_v2(list *list, uint32_t network, uint32_t netmask){
 
-	if(list_is_empty(list)){
-		printf("ERROR : EMPTY LIST\n");
-	}
+	node *ptr = list->head;
 	
-	else{
-		node *ptr = list->head;
-
-		printf("|     %s     |     %s     |     %s     | %s | %s | %s |\n", "Network", "Netmask", "Gateway", "Interface", "Metric", "TTL");
-		printf("|   %s       |   %s  |   %s  |     %i     |    %i   | %i |\n", iptos(ptr->entry->network), iptos(ptr->entry->netmask),
-				iptos(ptr->entry->gateway), ptr->entry->interface, ptr->entry->metric, ptr->entry->ttl);
-
-		while(ptr->next != NULL){
-			ptr = ptr->next;
-			printf("|   %s  |   %s  |   %s  |     %i     |    %i   | %i |\n", iptos(ptr->entry->network), iptos(ptr->entry->netmask),
-				iptos(ptr->entry->gateway), ptr->entry->interface, ptr->entry->metric, ptr->entry->ttl);
-			
+	while(ptr->next != NULL){
+		if(ptr->entry->network == (network & netmask)){
+			//printf("Found the entry\n");
+			return 1;
 		}
-		printf("\n");
+		else{
+			ptr = ptr->next;
+			//printf("Moving ON\n");
+		}
 	}
+	if(ptr->entry->network == (network & netmask)){
+			//printf("Found the entry\n");
+			return 1;
+	}
+	return 0;
 }
-////////////////////////////////////////////////////
-
-
-
-
 
 ////////////////////////////////////////////////////
-//Finds and prints the the gateway
-//list *list : the list that is to be searched
+//checks to see if the ip is allredy in the table
+//list *list : the list that is to be printed
+//uint_32_t : the ip that we are checking for
 //return : void 
 ////////////////////////////////////////////////////
-void list_find_next_hop(list *list, long ip){
+int list_contains_route_v1(list *list, uint32_t network){
 
-	//node *ptr = list->head;
-
-	/*
-	if(ptr->entry->network == ip){
-		printf("Next hop for %li is: %li\n", ip, ptr->entry->gateway);
-		return;
-	}
-
+	node *ptr = list->head;
+	
 	while(ptr->next != NULL){
-		ptr= ptr->next;
-		if(ptr->entry->network == ip){
-			printf("Next hop for %li is: %li\n", ip, ptr->entry->gateway);
-			return;
+		if(ptr->entry->network == network){
+			//printf("Found the entry\n");
+			return 1;
+		}
+		else{
+			ptr = ptr->next;
+			//printf("Moving ON\n");
 		}
 	}
-	*/
-	perror("Network not found!!");
-
+	if(ptr->entry->network == network){
+			//printf("Found the entry\n");
+			return 1;
+	}
+	return 0;
 }
-
-
+////////////////////////////////////////////////////
 //end of file ll.c
-
-
-
-
-
-
-
-
-
-

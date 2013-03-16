@@ -20,7 +20,7 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 
-#include "ip.h" //the ip header implementation
+//#include "ip.h" //the ip header implementation
 #include "icmp.h" //the icmp header implementation
 #include "rip.h" //the rip header implementation
 #include "ll.h" //the linked linked list
@@ -57,6 +57,19 @@ int create_udp_socket(){
 		exit(1);
 	}
 
+	int optval = 1;
+	
+	if (setsockopt (fd, SOL_SOCKET, SO_BROADCAST,
+		(void *)&optval, (socklen_t)sizeof(optval))){
+			perror ("setsockopt( ADD BROADCAST )");
+	}
+
+	optval = 1;
+	if (setsockopt (fd, SOL_SOCKET, SO_REUSEADDR,
+		(void *)&optval, (socklen_t)sizeof(optval))) {
+			perror ("setsockopt( REUSE ADDR )");
+	}
+
 	return fd; 
 }
 ////////////////////////////////////////////////////
@@ -70,29 +83,6 @@ int create_multicast_socket(){
 	if(fd < 0){
 		perror("Error: problem creating socket");
 		exit(1);
-	}
-
-	int optval;
-	optval = 1;
-	if (setsockopt (fd, SOL_SOCKET, SO_BROADCAST,
-		(void *)&optval, (socklen_t)sizeof(optval))) {
-			perror ("setsockopt( ADD BROADCAST )");
-	}
-
-	optval = 1;
-	if (setsockopt (fd, SOL_SOCKET, SO_REUSEADDR,
-		(void *)&optval, (socklen_t)sizeof(optval))) {
-			perror ("setsockopt( REUSE ADDR )");
-	}
-
-	
-	struct ip_mreqn multaddr;
-	multaddr.imr_multiaddr.s_addr = inet_addr("224.0.0.9");
-	multaddr.imr_address.s_addr = INADDR_ANY;
-	multaddr.imr_ifindex = 0;
-	if (setsockopt (fd, IPPROTO_IP, IP_ADD_MEMBERSHIP,
-		(void *)&multaddr, (socklen_t)sizeof(multaddr))) {
-			perror ("setsockopt( JOIN GROUP )");
 	}
 
 	return fd;
@@ -140,9 +130,14 @@ void send_rip_v2_request(int skt, struct sockaddr_in dest){
 	//first entry
 	msg->entries[0].rip2.addr_family = htons(0);
 	msg->entries[0].rip2.route_tag = htons(0);
-	inet_pton(AF_INET, "0.0.0.0", &(msg->entries[0].rip2.ip_addr));
-	inet_pton(AF_INET, "0.0.0.0", &(msg->entries[0].rip2.subnet_mask));
-	inet_pton(AF_INET, "0.0.0.0", &(msg->entries[0].rip2.next_hop));
+	//inet_pton(AF_INET, "0.0.0.0", &(msg->entries[0].rip2.ip_addr));
+	//inet_pton(AF_INET, "0.0.0.0", &(msg->entries[0].rip2.ip_addr));
+	//inet_pton(AF_INET, "0.0.0.0", &(msg->entries[0].rip2.next_hop));
+
+	msg->entries[0].rip2.ip_addr = inet_addr("0.0.0.0");
+	msg->entries[0].rip2.ip_addr = inet_addr("0.0.0.0");
+	msg->entries[0].rip2.next_hop = inet_addr("0.0.0.0");
+
 	msg->entries[0].rip2.metric = htonl(16);
 
 	int update_length = sizeof(struct rip_msg) + 1 * sizeof(struct rip1ent);
@@ -198,9 +193,11 @@ void rec_rip_v2_respones(int skt, list *table){
       	0, (struct sockaddr*)&from, &from_length );
 	
 	if(received_bytes > 0){
-		//read buffer as rip message		
+		//read buffer as rip message	
 		struct rip_msg *msg;
     	msg = (struct rip_msg *)buffer;
+
+    	printf("Got a V2 Packet from %s\n", iptos(htonl(from.sin_addr.s_addr)));
 
     	//calculate the number of routes
 		int entrys = (received_bytes - 2) / 20;
@@ -209,18 +206,20 @@ void rec_rip_v2_respones(int skt, list *table){
     	int i = 0;
     	for(; i < entrys; i++){
     		table_entry *temp = malloc(sizeof(struct table_entry));
-    		//bzero(temp, sizeof(struct node));
-			
-			temp->network = ntohl(msg->entries[i].rip2.ip_addr);
-    		temp->netmask = ntohl(msg->entries[i].rip2.subnet_mask);
-    		temp->gateway = ntohl(msg->entries[i].rip2.next_hop);
-    		temp->metric = ntohl(msg->entries[i].rip2.metric);
+    		
+    		temp->network = msg->entries[i].rip2.ip_addr;
+    		temp->netmask = msg->entries[i].rip2.subnet_mask;
+    		//printf("%s\n",iptos(ntohl(msg->entries[i].rip2.subnet_mask)));
+    		temp->gateway = msg->entries[i].rip2.next_hop;
+    		temp->metric = msg->entries[i].rip2.metric;
     		temp->ttl = 255;
-			
-			list_insert(table, temp);
+
+    		if(list_contains_route_v2(table, temp->network, temp->netmask));
+    		else
+    			list_insert(table, temp);
     	}
     }
-    list_print_rip_v2(table);
+    list_print_rip_table(table);
 }
 ////////////////////////////////////////////////////
 
@@ -241,23 +240,26 @@ void rec_rip_v1_response(int skt, list *table){
 		struct rip_msg *msg;
     	msg = (struct rip_msg *)buffer;
 
+    	printf("Got a V1 Packet from %s\n", iptos(htonl(from.sin_addr.s_addr)));
+
     	//calculate the number of routes
 		int entrys = (received_bytes - 2) / 20;
-		
+	
 		//put entry into my routing table
     	int i = 0;
     	for(; i < entrys; i++){
     		table_entry *temp = malloc(sizeof(struct table_entry));
-    		//bzero(temp, sizeof(struct node));
-			
-			temp->network = ntohl(msg->entries[i].rip1.v4addr);
-    		temp->metric = ntohl(msg->entries[i].rip1.metric);
-    		temp->ttl = 255;
-			
-			list_insert(table, temp);
+    		
+    		temp->network = msg->entries[i].rip1.v4addr;
+    		temp->metric = msg->entries[i].rip1.metric;
+
+			//see if i allredy have the route in the table
+    		if(list_contains_route_v1(table, temp->network));
+    		else
+    			list_insert(table, temp);
     	}
 	}
-	list_print_rip_v1(table);
+	list_print_rip_table(table);
 }
 ////////////////////////////////////////////////////
 
@@ -281,7 +283,7 @@ void send_rip_v2_update(int skt, struct sockaddr_in dest){
 	//update entry
 	msg->entries[0].rip2.addr_family = htons(AF_INET);
 	msg->entries[0].rip2.route_tag = htons(0);
-	inet_pton(AF_INET, "7.240.2.1", &(msg->entries[0].rip2.ip_addr));
+	inet_pton(AF_INET, "7.242.2.1", &(msg->entries[0].rip2.ip_addr));
 	inet_pton(AF_INET, "255.255.0.0", &(msg->entries[0].rip2.subnet_mask));
 	inet_pton(AF_INET, "0.0.0.0", &(msg->entries[0].rip2.next_hop));
 	msg->entries[0].rip2.metric = htonl(4);
@@ -290,7 +292,7 @@ void send_rip_v2_update(int skt, struct sockaddr_in dest){
 	
 	msg->entries[1].rip2.addr_family = htons(AF_INET);
 	msg->entries[1].rip2.route_tag = htons(0);
-	inet_pton(AF_INET, "7.240.2.128", &(msg->entries[1].rip2.ip_addr));
+	inet_pton(AF_INET, "7.242.2.128", &(msg->entries[1].rip2.ip_addr));
 	inet_pton(AF_INET, "255.255.0.0", &(msg->entries[1].rip2.subnet_mask));
 	inet_pton(AF_INET, "0.0.0.0", &(msg->entries[1].rip2.next_hop));
 	msg->entries[1].rip2.metric = htonl(1);
@@ -321,13 +323,13 @@ void send_rip_v1_update(int skt, struct sockaddr_in dest){
 	//update entry
 	msg->entries[0].rip1.addr_family = htons(AF_INET);
 	msg->entries[0].rip1.zero = 0;
-	inet_pton(AF_INET, "7.240.1.1", &(msg->entries[0].rip1.v4addr));
+	inet_pton(AF_INET, "7.242.1.1", &(msg->entries[0].rip1.v4addr));
 	msg->entries[0].rip1.metric = htonl(2);
 
 	//update entry
 	msg->entries[1].rip1.addr_family = htons(AF_INET);
 	msg->entries[1].rip1.zero = 0;
-	inet_pton(AF_INET, "7.240.1.128", &(msg->entries[1].rip1.v4addr));
+	inet_pton(AF_INET, "7.242.1.128", &(msg->entries[1].rip1.v4addr));
 	msg->entries[1].rip1.metric = htonl(5);
 
 
@@ -343,43 +345,68 @@ void send_rip_v1_update(int skt, struct sockaddr_in dest){
 ////////////////////////////////////////////////////
 int main(int argc, char const **argv){
 
-	list *table_v1 = list_init();
-	list *table_v2 = list_init();
+	//make sure i am root for some functions
+	if(getuid() != 0){
+		printf("ERROR : NEED TO BE ROOT\n");
+		exit(1);
+	}
 
+	//set up routing tables for v1 and v2
+	list *table = list_init();
+	
+	//create sockets for v1 and v2
 	int skt = create_udp_socket();
 	int mskt = create_multicast_socket();
 
 	struct sockaddr_in v1_dest; //v1_dest address
 	struct sockaddr_in v2_dest; //v2_dest address
-	
-	//set up the v1_dest address
+
+	//set up the v1_dest address to use the broadcast address
 	memset(&v1_dest, 0, sizeof(v1_dest));
-	inet_pton(AF_INET, "10.37.211.102", &(v1_dest.sin_addr));
 	v1_dest.sin_family = AF_INET;
 	v1_dest.sin_port = htons(RIP_PORT);
+	v1_dest.sin_addr.s_addr = inet_addr("255.255.255.255");
 	bind(skt,(struct sockaddr *)&v1_dest, sizeof(v1_dest));
 
-	//set up the v2_dest address
+	//set up the v2_dest address to use the multicast address
 	memset(&v2_dest, 0, sizeof(v2_dest));
-	inet_pton(AF_INET, "10.37.211.101", &(v2_dest.sin_addr));
 	v2_dest.sin_family= AF_INET;
 	v2_dest.sin_port = htons(RIP_PORT);
+	v2_dest.sin_addr.s_addr = inet_addr("224.0.0.9");
 	bind(mskt,(struct sockaddr *)&v2_dest, sizeof(v2_dest));
 
-	//send out the requests
-	
-	//send_rip_v1_request(skt, v1_dest);
-	//rec_rip_v1_response(skt, table_v1);
-	
-	send_rip_v2_request(mskt, v2_dest);
-	rec_rip_v2_respones(mskt, table_v2);
-	
-	
-	//updates
-	//send_rip_v1_update(skt, v1_dest);
-	//send_rip_v2_update(mskt, v2_dest);
-	
+	//join the multicast group
+	struct ip_mreqn multaddr;
+	multaddr.imr_multiaddr.s_addr = inet_addr("224.0.0.9");
+	multaddr.imr_address.s_addr = INADDR_ANY;
+	multaddr.imr_ifindex = 0;
+	if (setsockopt (mskt, IPPROTO_IP, IP_ADD_MEMBERSHIP,
+		(void *)&multaddr, sizeof(multaddr))) {
+			perror ("setsockopt( JOIN GROUP )");
+	}	
 
+	//insert default entry int table
+	table_entry *default_entry = malloc(sizeof(table_entry));
+	default_entry->network = inet_addr("0.0.0.0");
+	default_entry->netmask = inet_addr("0.0.0.0");
+	default_entry->gateway = inet_addr("0.0.0.0");
+	default_entry->interface = 0;
+	default_entry->metric = 0;
+	default_entry->ttl = 255;
+
+	list_insert(table, default_entry);
+
+
+	//send_rip_v2_update(mskt, v2_dest);
+	//send_rip_v2_update(skt, v1_dest);
+
+	//program actions
+	
+	while(1){
+		rec_rip_v2_respones(mskt, table);
+		rec_rip_v1_response(skt, table);
+	}
+	
 	return 0;
 }
 ////////////////////////////////////////////////////

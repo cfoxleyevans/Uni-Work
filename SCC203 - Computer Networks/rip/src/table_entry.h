@@ -10,9 +10,9 @@
 ////////////////////////////////////////////////////
 typedef struct table_entry{
 
-	unsigned long network;
-	unsigned long netmask;
-	unsigned long gateway;
+	uint32_t network;
+	uint32_t  netmask;
+	uint32_t  gateway;
 	unsigned int interface;
 	unsigned int metric;
 	unsigned int ttl;
