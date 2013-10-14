@@ -26,10 +26,10 @@ public class Driver {
             //System.out.println("Current Status: " + server.getStatus(uid));
 
             //perform simple auth
-           // simpleAuthentication(server, random.nextInt());
+            simpleAuthentication(server, random.nextInt());
 
             //perform key based auth
-            keyAuthentication(server, random.nextInt());
+            //keyAuthentication(server, random.nextInt());
 
             //check current status
             System.out.println("Current Status: " + server.getStatus(uid));
@@ -41,14 +41,8 @@ public class Driver {
 
     public static void simpleAuthentication(CW_server_interface server, int nonse) {
         try {
-            //construct a client request
-            Client_request request = new Client_request(uid, nonse, passkey);
-
-            //get a response object from the server
-            Server_response response = server.getSpec(request.get_uid(), request);
-
-            //unpack the speck from the server
-            response.write_to(new FileOutputStream(new File("spec.docx")));
+            //get a response object from the server and write it to a file
+            server.getSpec(uid, new Client_request(uid, nonse, passkey)).write_to(new FileOutputStream(new File("spec.docx")));
         }
         catch (Exception e) {
             System.out.println("Problem With Simple Auth: " + e.getMessage());
