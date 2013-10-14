@@ -12,19 +12,15 @@ import java.util.Random;
  * @author Chris Foxley-Evans
  * @version 0.0.1
  */
-public class Server implements IServer{
-
-    //instance vars
+public class Server implements IServer {
     private Random idGenerator;
     public ArrayList<Auction> activeAuctions;
 
-    //constructor
     public Server() {
         this.idGenerator = new Random(105332434);
         this.activeAuctions = new ArrayList<Auction>(50);
     }
 
-    //public methods
     @Override
     public long registerAuction(Auction info) throws RemoteException {
         activeAuctions.add(info);
@@ -39,9 +35,9 @@ public class Server implements IServer{
 
     @Override
     public Boolean registerBid(long auctionID, String username, double bidValue) throws RemoteException {
-        for(Auction i : activeAuctions) {
-            if(i.auctionID == auctionID) {
-                if(bidValue > i.reservePrice && bidValue > i.maxBid.bidValue) {
+        for (Auction i : activeAuctions) {
+            if (i.auctionID == auctionID) {
+                if (bidValue > i.reservePrice && bidValue > i.maxBid.bidValue) {
                     i.updateCurrentMaxBid(new Bid(username, bidValue));
                     return true;
                 }

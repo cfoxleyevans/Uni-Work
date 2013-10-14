@@ -4,12 +4,15 @@
     <list default="true" id="e748ea5f-7539-4612-8cd8-180d1079c551" name="Default" comment="" />
     <ignored path="Coursework 2.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/IServer.java" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1381780927476" ignored="false" />
-    <file path="/Server.java" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1381781147852" ignored="false" />
-    <file path="/Auction.java" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1381781097663" ignored="false" />
+    <file path="/IServer.java" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1381785428067" ignored="false" />
+    <file path="/Server.java" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1381785863225" ignored="false" />
+    <file path="/Auction.java" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1381786631246" ignored="false" />
     <file path="/Bid.java" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1381779935941" ignored="false" />
     <file path="/fragment.java" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1381780378802" ignored="false" />
-    <file path="/IClient.java" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1381780486634" ignored="false" />
+    <file path="/IClient.java" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1381785723785" ignored="false" />
+    <file path="/Client.java" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1381786711723" ignored="false" />
+    <file path="/ClientDriver.java" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1381786936610" ignored="false" />
+    <file path="/ServerDriver.java" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1381786893148" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +72,88 @@
     <favorites_list name="Coursework 2" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="IServer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Interfaces/IServer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="39" column="7" selection-start="1330" selection-end="1330" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Server.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Server.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="4" selection-start="612" selection-end="612" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="docComment;class#Server#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IClient.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/Interfaces/IClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="57" selection-start="516" selection-end="516" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Client.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/Implementations/Client.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="42" column="57" selection-start="1461" selection-end="1461" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServerDriver.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/ServerDriver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="7" selection-start="272" selection-end="278" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientDriver.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/Implementations/ClientDriver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="65" selection-start="331" selection-end="331" vertical-scroll-proportion="0.23291926">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Auction.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Auction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="31" selection-start="769" selection-end="769" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Bid.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Bid.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="5" selection-start="435" selection-end="435" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -85,10 +169,13 @@
         <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/IServer.java" />
         <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Bid.java" />
         <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/IClient.java" />
-        <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/Interfaces/IClient.java" />
         <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Interfaces/IServer.java" />
-        <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Auction.java" />
         <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Server.java" />
+        <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/Interfaces/IClient.java" />
+        <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Auction.java" />
+        <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/Implementations/Client.java" />
+        <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/ServerDriver.java" />
+        <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/Implementations/ClientDriver.java" />
       </list>
     </option>
   </component>
@@ -124,6 +211,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -242,10 +330,13 @@
               <option name="myItemId" value="Client" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Implementations" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -261,8 +352,8 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -282,6 +373,19 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -309,19 +413,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -412,12 +503,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="34" y="22" width="1291" height="790" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32886904" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985073" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -427,10 +517,11 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24979919" sideWeight="0.67113096" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24979919" sideWeight="0.67113096" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32886904" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -498,6 +589,47 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Interfaces/IServer.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="22" selection-start="1120" selection-end="1120" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/Interfaces/IClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="6" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Auction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="49" selection-start="670" selection-end="670" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="104" selection-start="1117" selection-end="1117" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="docComment;class#Server#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Bid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="5" selection-start="435" selection-end="435" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Interfaces/IServer.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
@@ -509,39 +641,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="64" selection-start="121" selection-end="121" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Server#0;class#Server#0" expanded="false" />
-            <element signature="method#registerAuction#0;class#Server#0" expanded="false" />
-            <element signature="method#getActiveAuctions#0;class#Server#0" expanded="false" />
-            <element signature="method#registerBid#0;class#Server#0" expanded="false" />
+            <element signature="docComment;class#Server#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/Interfaces/IClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="279" selection-end="279" vertical-scroll-proportion="0.2562112">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Bid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="5" selection-start="435" selection-end="435" vertical-scroll-proportion="0.41925466">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Auction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="49" selection-start="670" selection-end="670" vertical-scroll-proportion="0.58229816">
-          <folding />
+        <state line="17" column="57" selection-start="516" selection-end="516" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Interfaces/IServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="62" selection-start="1368" selection-end="1368" vertical-scroll-proportion="0.88509315">
+        <state line="39" column="7" selection-start="1330" selection-end="1330" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -550,14 +666,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="104" selection-start="1117" selection-end="1117" vertical-scroll-proportion="0.7220497">
+        <state line="23" column="4" selection-start="612" selection-end="612" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="docComment;class#Server#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Auction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="31" selection-start="769" selection-end="769" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Bid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="5" selection-start="435" selection-end="435" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/Implementations/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="57" selection-start="1461" selection-end="1461" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Server#0;class#Server#0" expanded="false" />
-            <element signature="method#registerAuction#0;class#Server#0" expanded="false" />
-            <element signature="method#getActiveAuctions#0;class#Server#0" expanded="false" />
-            <element signature="method#registerBid#0;class#Server#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/ServerDriver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="7" selection-start="272" selection-end="278" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/Implementations/ClientDriver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="65" selection-start="331" selection-end="331" vertical-scroll-proportion="0.23291926">
+          <folding />
         </state>
       </provider>
     </entry>

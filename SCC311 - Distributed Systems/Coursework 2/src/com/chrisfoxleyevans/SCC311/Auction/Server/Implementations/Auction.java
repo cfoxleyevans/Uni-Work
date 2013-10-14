@@ -1,5 +1,7 @@
 package com.chrisfoxleyevans.SCC311.Auction.Server.Implementations;
 
+import java.util.ArrayList;
+
 /**
  * This class provides the servers internal representation of an auction
  *
@@ -12,6 +14,7 @@ public class Auction {
     public long  auctionID;
     public String itemDescription;
     public double reservePrice;
+    public ArrayList<Bid> bidHistroy;
     public Bid maxBid;
 
     //constructor
@@ -24,6 +27,7 @@ public class Auction {
 
     //public methods
     public void updateCurrentMaxBid(Bid newBid) {
+        bidHistroy.add(newBid);
         maxBid = newBid;
     }
 }
