@@ -22,10 +22,10 @@ public class Server implements IServer {
     }
 
     @Override
-    public long registerAuction(Auction info) throws RemoteException {
-        activeAuctions.add(info);
-        info.auctionID = idGenerator.nextInt();
-        return info.auctionID;
+    public long registerAuction(String description, double reservePrice) throws RemoteException {
+        long id = idGenerator.nextLong();
+        activeAuctions.add(new Auction(id, description, reservePrice));
+        return id;
     }
 
     @Override

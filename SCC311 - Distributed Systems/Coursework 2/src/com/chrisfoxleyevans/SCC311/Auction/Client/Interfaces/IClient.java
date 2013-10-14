@@ -15,5 +15,5 @@ public interface IClient extends Remote {
      *
      * @throws RemoteException
      */
-    public void displayAcutions() throws RemoteException;
+    public void displayAuctions() throws RemoteException;
 }

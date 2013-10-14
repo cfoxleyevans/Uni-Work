@@ -15,11 +15,12 @@ import java.util.ArrayList;
 public interface IServer extends Remote {
     /**
      * This function will allow the client to register a new auction with the server
-     *
-     * @return The ID of the registered auction
+     * @param description The string description of the item
+     * @param reservePrice The value of the reserve price
+     * @return
      * @throws RemoteException
      */
-    public long registerAuction(Auction info) throws RemoteException;
+    public long registerAuction(String description, double reservePrice) throws RemoteException;
 
     /**
      * This function will allow the client to get a list of the active auctions

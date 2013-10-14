@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class Client implements IClient {
 
-    private IServer server;
+    public IServer server;
 
 
     public Client(String hostname) {
@@ -22,25 +22,38 @@ public class Client implements IClient {
     }
 
     @Override
-    public void displayAcutions() throws RemoteException {
+    public void displayAuctions() throws RemoteException {
         ArrayList<Auction> auctions = server.getActiveAuctions();
         System.out.println("AuctionID, Item Description, Current High Bid, Current High Bid User.");
-        for(Auction i : auctions) {
-            System.out.println(i.auctionID + " * " + i.itemDescription + " * " + i.maxBid.bidValue);
+        if (auctions.size() < 1) {
+            System.out.println("There are no auctions.....");
+        } else {
+            for (Auction i : auctions) {
+                System.out.println(i.auctionID + " * " + i.itemDescription + " * " + i.maxBid.bidValue);
+            }
         }
     }
 
+    public void registerAuction(String desciription, double reservePrice) {
+        try {
+            server.registerAuction("This is a nice hat", 10D);
+        } catch (Exception e) {
+            System.out.println("ERROR: " + e.getMessage());
+        }
+    }
+
+
     /**
      * This function is called as part of the constructor
+     *
      * @param hostname The hostname of the server
      */
-    private void connectToServer(String hostname){
+    private void connectToServer(String hostname) {
         try {
             Registry registry = LocateRegistry.getRegistry(hostname, 1099);
             server = (IServer) registry.lookup("AuctionServer");
-        }
-        catch (Exception e){
-          System.out.println("ERROR: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("ERROR: " + e.getMessage());
         }
     }
 }

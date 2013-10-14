@@ -8,6 +8,15 @@ package com.chrisfoxleyevans.SCC311.Auction.Client.Implementations;
  */
 public class ClientDriver {
     public static void main(String args[]) {
-        //TODO code to create a server for clients to connect to.
+        try {
+            Client testclient = new Client("localhost");
+
+            testclient.registerAuction("This is a nice hat", 11.54);
+
+            testclient.displayAuctions();
+        }
+        catch (Exception e) {
+            System.out.println("ERROR: " + e.getMessage());
+        }
     }
 }
