@@ -4,7 +4,7 @@
     <list default="true" id="11ffd843-ae56-49db-b288-345f4a682e49" name="Default" comment="" />
     <ignored path="Coursework 1.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Driver.java" changelist="11ffd843-ae56-49db-b288-345f4a682e49" time="1381744121537" ignored="false" />
+    <file path="/Driver.java" changelist="11ffd843-ae56-49db-b288-345f4a682e49" time="1381771874008" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +19,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -55,7 +56,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -65,19 +65,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Server_response.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Server_response.java">
+      <file leaf-file-name="CW_server_interface.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CW_server_interface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="119" selection-start="618" selection-end="618" vertical-scroll-proportion="0.0">
+            <state line="11" column="36" selection-start="416" selection-end="435" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CW_server_interface.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CW_server_interface.java">
+      <file leaf-file-name="Server_response.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Server_response.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="36" selection-start="416" selection-end="435" vertical-scroll-proportion="0.0">
+            <state line="19" column="119" selection-start="618" selection-end="618" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -95,9 +95,10 @@
       <file leaf-file-name="Driver.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Driver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="68" selection-start="2165" selection-end="2165" vertical-scroll-proportion="0.69720495">
+            <state line="31" column="12" selection-start="1099" selection-end="1099" vertical-scroll-proportion="0.2535545">
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#simpleAuthentication#0;class#Driver#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -150,7 +151,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -185,6 +185,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -344,7 +345,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="17" y="22" width="1936" height="790" extended-state="0" />
+    <frame x="17" y="22" width="1936" height="790" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -355,16 +356,16 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14179894" sideWeight="0.67164177" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3283582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32985073" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -434,6 +435,47 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Driver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="12" selection-start="2737" selection-end="2737" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#simpleAuthentication#0;class#Driver#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server_response.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="119" selection-start="618" selection-end="618" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CW_server_interface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="36" selection-start="416" selection-end="435" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client_request.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="13" selection-start="286" selection-end="286" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Driver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="68" selection-start="2165" selection-end="2165" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#simpleAuthentication#0;class#Driver#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Server_response.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="119" selection-start="618" selection-end="618" vertical-scroll-proportion="0.0">
@@ -460,6 +502,7 @@
         <state line="29" column="14" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#simpleAuthentication#0;class#Driver#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -485,6 +528,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client_request.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="13" selection-start="286" selection-end="286" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Server_response.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="119" selection-start="618" selection-end="618" vertical-scroll-proportion="0.0">
@@ -499,18 +549,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Client_request.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="286" selection-end="286" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Driver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="68" selection-start="2165" selection-end="2165" vertical-scroll-proportion="0.69720495">
+        <state line="31" column="12" selection-start="1099" selection-end="1099" vertical-scroll-proportion="0.2535545">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#simpleAuthentication#0;class#Driver#0" expanded="false" />
           </folding>
         </state>
       </provider>

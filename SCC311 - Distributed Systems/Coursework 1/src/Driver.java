@@ -1,14 +1,18 @@
 import javax.crypto.Cipher;
+import javax.crypto.SealedObject;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.DESKeySpec;
+import java.io.File;
 import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Random;
 
 public class Driver {
-    //constants used for simple auth
-    static final int uid = 1337;
-    static final long passkey = 13371337;
+    //constants used for auth
+    static final int uid = 32879415;
+    static final long passkey = 1052368102;
 
     public static void main(String args[]) {
         Random random = new Random(); //the random number gen
@@ -19,16 +23,13 @@ public class Driver {
             CW_server_interface server = (CW_server_interface) registry.lookup("CW_server");
 
             //check current status
-            System.out.println("Current Status: " + server.getStatus(uid));
+            //System.out.println("Current Status: " + server.getStatus(uid));
 
             //perform simple auth
-            simpleAuthentication(server, random.nextInt());
-
-            //check current status
-            System.out.println("Current Status: " + server.getStatus(uid));
+           // simpleAuthentication(server, random.nextInt());
 
             //perform key based auth
-            //keyAuthentication();
+            keyAuthentication(server, random.nextInt());
 
             //check current status
             System.out.println("Current Status: " + server.getStatus(uid));
@@ -47,7 +48,7 @@ public class Driver {
             Server_response response = server.getSpec(request.get_uid(), request);
 
             //unpack the speck from the server
-            response.write_to(new ObjectOutputStream(new FileOutputStream("spec.doc")));
+            response.write_to(new FileOutputStream(new File("spec.docx")));
         }
         catch (Exception e) {
             System.out.println("Problem With Simple Auth: " + e.getMessage());
@@ -58,6 +59,21 @@ public class Driver {
         try {
             //construct a client request
             Client_request request = new Client_request(uid, nonse);
+
+            DESKeySpec desKeySpec = new DESKeySpec("1052368102".getBytes());
+            SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
+            SecretKey skey = keyFactory.generateSecret(desKeySpec);
+
+            Cipher cipher = Cipher.getInstance("DES");
+            cipher.init(Cipher.ENCRYPT_MODE, skey);
+            cipher.doFinal("1052368102".getBytes());
+
+            SealedObject sealedObject = new SealedObject(request, cipher);
+
+            System.out.println(server.getSpec(uid, sealedObject));
+
+
+
         }
         catch (Exception e){
             System.out.println("Problem With Key Auth: " + e.getMessage());
