@@ -1,3 +1,4 @@
+import javax.crypto.Cipher;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.rmi.registry.LocateRegistry;
@@ -57,7 +58,6 @@ public class Driver {
         try {
             //construct a client request
             Client_request request = new Client_request(uid, nonse);
-
         }
         catch (Exception e){
             System.out.println("Problem With Key Auth: " + e.getMessage());
