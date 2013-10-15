@@ -1,5 +1,3 @@
-import sun.misc.IOUtils;
-
 import javax.crypto.Cipher;
 import javax.crypto.SealedObject;
 import javax.crypto.SecretKey;
@@ -27,7 +25,7 @@ public class Driver {
             CW_server_interface server = (CW_server_interface) registry.lookup("CW_server");
 
             //perform simple auth
-            //simpleAuthentication(server, random.nextInt());
+            simpleAuthentication(server, random.nextInt());
 
             //perform key based auth
             keyAuthentication(server, random.nextInt());
@@ -43,7 +41,8 @@ public class Driver {
     public static void simpleAuthentication(CW_server_interface server, int nonse) {
         try {
             //get a response object from the server and write it to a file
-            server.getSpec(uid, new Client_request(uid, nonse, passkey)).write_to(new FileOutputStream(new File("spec.docx")));
+            server.getSpec(uid, new Client_request(uid, nonse, passkey))
+                    .write_to(new FileOutputStream(new File("spec.docx")));
         }
         catch (Exception e) {
             System.out.println("Problem With Simple Auth: " + e.getMessage());

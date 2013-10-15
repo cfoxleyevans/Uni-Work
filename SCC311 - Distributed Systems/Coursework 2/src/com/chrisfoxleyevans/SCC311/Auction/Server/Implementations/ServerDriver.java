@@ -6,12 +6,6 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
-/**
- * The class serves a the entry point for the server application
- *
- * @author Chris Foxley-Evans
- * @version 0.0.1
- */
 public class ServerDriver {
     public static void main(String args[]){
         try {
@@ -23,10 +17,16 @@ public class ServerDriver {
             registry.bind("AuctionServer", stub);
 
             System.out.println("Server is running. Bound to the name \"AuctionServer\" on port 1099");
+
+            server.registerAuction("Nintendo 3DS", 199.99D);
+            server.registerAuction("Playstation 4", 399.50D);
+
+            for (Auction i : server.getActiveAuctions()) {
+                System.out.println(i.auctionID + " " + i.itemDescription);
+            }
         }
         catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
         }
-
     }
 }
