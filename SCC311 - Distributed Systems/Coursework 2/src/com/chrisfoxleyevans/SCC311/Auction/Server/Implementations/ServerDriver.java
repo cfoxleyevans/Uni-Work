@@ -17,13 +17,6 @@ public class ServerDriver {
             registry.bind("AuctionServer", stub);
 
             System.out.println("Server is running. Bound to the name \"AuctionServer\" on port 1099");
-
-            server.registerAuction("Nintendo 3DS", 199.99D);
-            server.registerAuction("Playstation 4", 399.50D);
-
-            for (Auction i : server.getActiveAuctions()) {
-                System.out.println(i.auctionID + " " + i.itemDescription);
-            }
         }
         catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());

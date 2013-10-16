@@ -3,8 +3,11 @@ import javax.crypto.SealedObject;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
-import java.io.*;
-import java.nio.file.Files;
+import javax.crypto.spec.SecretKeySpec;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.rmi.registry.LocateRegistry;
@@ -25,15 +28,14 @@ public class Driver {
             CW_server_interface server = (CW_server_interface) registry.lookup("CW_server");
 
             //perform simple auth
-            simpleAuthentication(server, random.nextInt());
+            //simpleAuthentication(server, random.nextInt());
 
             //perform key based auth
             keyAuthentication(server, random.nextInt());
 
             //check current status
             System.out.println("Current Status: " + server.getStatus(uid));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
         }
     }
@@ -43,23 +45,17 @@ public class Driver {
             //get a response object from the server and write it to a file
             server.getSpec(uid, new Client_request(uid, nonse, passkey))
                     .write_to(new FileOutputStream(new File("spec.docx")));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Problem With Simple Auth: " + e.getMessage());
         }
     }
 
-    public static void keyAuthentication(CW_server_interface server, int nonse){
+    public static void keyAuthentication(CW_server_interface server, int nonse) {
         try {
             //construct a client request
             Client_request request = new Client_request(uid, nonse);
 
-            Path path = Paths.get("32879415.key");
-            byte[] data = Files.readAllBytes(path);
-
-            DESKeySpec desKeySpec = new DESKeySpec(data);
-            SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
-            SecretKey skey = keyFactory.generateSecret(desKeySpec);
+            Object o = new ObjectInputStream(new FileInputStream("32879415.key"));
 
             Cipher cipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
             cipher.init(Cipher.ENCRYPT_MODE, skey);
@@ -69,8 +65,7 @@ public class Driver {
 
             SealedObject resp = server.getSpec(uid, sealedObject);
             System.out.println(resp);
-}
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Problem With Key Auth: " + e.getMessage());
         }
     }

@@ -11,11 +11,13 @@ import java.io.Serializable;
 public class Bid implements Serializable {
 
     //instance vars
+    public int clientID;
     public String username;
     public double bidValue;
 
     //constructor
-    public Bid(String username, double bidValue) {
+    public Bid(int clientID, String username, double bidValue) {
+        this.clientID = clientID;
         this.username = username;
         this.bidValue = bidValue;
     }
