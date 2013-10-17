@@ -47,22 +47,15 @@ public class Driver {
 
     public static void keyAuthentication(CW_server_interface server, int nonse) {
         try {
-            //construct a client request
-            Client_request request = new Client_request(uid, nonse);
-
             //read in the key from the file
             Key key = (Key) new ObjectInputStream(new FileInputStream("32879415.key")).readObject();
 
             //construct a cipher object
             Cipher cipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
             cipher.init(Cipher.ENCRYPT_MODE, key);
-            cipher.doFinal();
-
-            //seal the client request in a sealed object
-            SealedObject sealedObject = new SealedObject(request, cipher);
 
             //get a response from the server
-            SealedObject sealedResponse = server.getSpec(uid, sealedObject);
+            SealedObject sealedResponse = server.getSpec(uid,  new SealedObject(new Client_request(uid, nonse), cipher));
 
             //decrypt the response and write out to file
             cipher.init(Cipher.DECRYPT_MODE, key);
