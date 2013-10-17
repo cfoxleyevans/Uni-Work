@@ -1,17 +1,12 @@
 import javax.crypto.Cipher;
 import javax.crypto.SealedObject;
-import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.DESKeySpec;
-import javax.crypto.spec.SecretKeySpec;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.security.Key;
 import java.util.Random;
 
 public class Driver {
@@ -55,16 +50,24 @@ public class Driver {
             //construct a client request
             Client_request request = new Client_request(uid, nonse);
 
-            Object o = new ObjectInputStream(new FileInputStream("32879415.key"));
+            //read in the key from the file
+            Key key = (Key) new ObjectInputStream(new FileInputStream("32879415.key")).readObject();
 
+            //construct a cipher object
             Cipher cipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
-            cipher.init(Cipher.ENCRYPT_MODE, skey);
+            cipher.init(Cipher.ENCRYPT_MODE, key);
             cipher.doFinal();
 
+            //seal the client request in a sealed object
             SealedObject sealedObject = new SealedObject(request, cipher);
 
-            SealedObject resp = server.getSpec(uid, sealedObject);
-            System.out.println(resp);
+            //get a response from the server
+            SealedObject sealedResponse = server.getSpec(uid, sealedObject);
+
+            //decrypt the response and write out to file
+            cipher.init(Cipher.DECRYPT_MODE, key);
+            Server_response response = (Server_response) sealedResponse.getObject(cipher);
+            response.write_to(new FileOutputStream(new File("sealedSpec.docx")));
         } catch (Exception e) {
             System.out.println("Problem With Key Auth: " + e.getMessage());
         }
