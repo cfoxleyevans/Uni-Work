@@ -23,7 +23,7 @@ public class Driver {
             CW_server_interface server = (CW_server_interface) registry.lookup("CW_server");
 
             //perform simple auth
-            //simpleAuthentication(server, random.nextInt());
+            simpleAuthentication(server, random.nextInt());
 
             //perform key based auth
             keyAuthentication(server, random.nextInt());
