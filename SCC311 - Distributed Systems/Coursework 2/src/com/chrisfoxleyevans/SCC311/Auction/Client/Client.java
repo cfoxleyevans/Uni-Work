@@ -20,7 +20,7 @@ public class Client {
     //constructor
     public Client(String hostname) {
         //read in the users email
-        System.out.print("Please enter you email: ");
+        System.out.print("Please enter you username: ");
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         String username = "";
         try {
@@ -45,7 +45,7 @@ public class Client {
             Registry registry = LocateRegistry.getRegistry(hostname);
             this.server = (IServer) registry.lookup("AuctionServer");
         } catch (Exception e) {
-            System.out.println("ERROR: " + e.getMessage());
+            System.out.println("ERROR: Unable to connect to the server");
             closeApplication("Failed to connect to the server unable to continue");
         }
     }
@@ -56,7 +56,7 @@ public class Client {
         try {
             auctions = server.getActiveAuctions();
         } catch (Exception e) {
-            System.out.println("ERROR: " + e.getMessage());
+            System.out.println("ERROR: Unable to retrieve the active auctions" );
         }
 
         if (auctions.size() > 0) {
@@ -65,6 +65,9 @@ public class Client {
                     System.out.println(i.auctionID + " " + i.itemDescription);
                 }
             }
+        }
+        else {
+            System.out.println("INFO: There are no active auctions");
         }
     }
 
@@ -104,9 +107,9 @@ public class Client {
             double reserveValue = Double.parseDouble(bufferedReader.readLine());
 
             int serverResponse = server.registerAuction(state.clientID, state.username, description, reserveValue);
-            System.out.print("The item was listed with the ID: " + serverResponse);
+            System.out.println("The item was listed with the ID: " + serverResponse);
         } catch (Exception e) {
-            System.out.println("ERROR: " + e.getMessage());
+            System.out.println("ERROR: The server was unable to accept the auction");
         }
     }
 
@@ -143,7 +146,7 @@ public class Client {
                     break;
             }
         } catch (Exception e) {
-            System.out.println("ERROR: " + e.getMessage());
+            System.out.println("ERROR: Problem with the option that you entered" );
         }
     }
 

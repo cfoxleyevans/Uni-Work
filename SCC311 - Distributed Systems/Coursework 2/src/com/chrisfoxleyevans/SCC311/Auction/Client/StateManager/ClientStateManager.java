@@ -21,11 +21,11 @@ public class ClientStateManager {
      */
     public static boolean saveState(ClientState state) {
         try {
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("Client" + state.username + "State"));
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(state.username));
             objectOutputStream.writeObject(state);
             return true;
         } catch (Exception e) {
-            System.out.println("ERROR: " + e.getMessage());
+            System.out.println("ERROR: Unable to write the state file");
             return false;
         }
     }
@@ -37,9 +37,10 @@ public class ClientStateManager {
      */
     public static ClientState loadState(String username) {
         try {
-            ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("Client" + username + "State"));
+            ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(username));
             return (ClientState) objectInputStream.readObject();
         } catch (Exception e) {
+            System.out.println("INFO: No state found for that user creating new state file");
             return null;
         }
     }

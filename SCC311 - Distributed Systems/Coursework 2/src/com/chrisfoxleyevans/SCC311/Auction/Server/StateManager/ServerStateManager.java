@@ -28,7 +28,7 @@ public class ServerStateManager {
             objectOutputStream.writeObject(state);
             return true;
         } catch (Exception e) {
-            System.out.println("ERROR: " + e.getMessage());
+            System.out.println("ERROR: Unable to write the state file");
             return false;
         }
     }
@@ -43,7 +43,7 @@ public class ServerStateManager {
             ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("ServerState"));
             return (ServerState) objectInputStream.readObject();
         } catch (Exception e) {
-            System.out.println("ERROR: " + e.getMessage());
+            System.out.println("INFO: No state found creating new state file");
             return null;
         }
     }

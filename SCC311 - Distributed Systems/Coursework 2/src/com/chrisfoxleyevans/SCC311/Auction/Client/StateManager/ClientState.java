@@ -2,6 +2,7 @@ package com.chrisfoxleyevans.SCC311.Auction.Client.StateManager;
 
 import com.chrisfoxleyevans.SCC311.Auction.Server.Implementations.Bid;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  * @author Chris Foxley-Evans
  * @version 0.0.1
  */
-public class ClientState {
+public class ClientState implements Serializable{
 
     public int clientID;
     public String username;
