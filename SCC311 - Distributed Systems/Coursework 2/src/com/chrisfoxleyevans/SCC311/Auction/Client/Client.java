@@ -56,17 +56,17 @@ public class Client {
         try {
             auctions = server.getActiveAuctions();
         } catch (Exception e) {
-            System.out.println("ERROR: Unable to retrieve the active auctions" );
+            System.out.println("ERROR: Unable to retrieve the active auctions");
         }
 
         if (auctions.size() > 0) {
             for (Auction i : auctions) {
                 if (i.active) {
-                    System.out.println(i.auctionID + " " + i.itemDescription);
+                    System.out.println("AuctionID: " + i.auctionID + " Description: " + i.itemDescription +
+                            " Current Bid: " + i.maxBid.bidValue);
                 }
             }
-        }
-        else {
+        } else {
             System.out.println("INFO: There are no active auctions");
         }
     }
@@ -146,7 +146,7 @@ public class Client {
                     break;
             }
         } catch (Exception e) {
-            System.out.println("ERROR: Problem with the option that you entered" );
+            System.out.println("ERROR: Problem with the option that you entered");
         }
     }
 

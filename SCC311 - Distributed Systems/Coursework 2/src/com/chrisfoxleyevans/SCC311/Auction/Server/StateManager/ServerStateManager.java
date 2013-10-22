@@ -1,12 +1,9 @@
 package com.chrisfoxleyevans.SCC311.Auction.Server.StateManager;
 
-import com.chrisfoxleyevans.SCC311.Auction.Server.Implementations.Auction;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 
 /**
  * This class deal with the persistence file for the server

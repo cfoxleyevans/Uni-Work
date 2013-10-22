@@ -54,14 +54,13 @@ public class Server implements IServer {
         Boolean response = false;
         for (Auction i : state.auctions) {
             if (i.auctionID == auctionID) {
-                if (i.maxBid.bidValue > bidValue) {
-                    response = false;
-                } else {
-                    i.maxBid = new Bid(clientID, username, bidValue);
-                    //display info on the server console
-                    System.out.println("BID ACCEPTED - ClientID: " + clientID + " AuctionID: " + i.auctionID + " BidValue: " + bidValue);
-                    response = true;
-                    ServerStateManager.saveState(state);
+                if (i.clientID != clientID) {
+                    if (i.maxBid.bidValue < bidValue) {
+                        //place the bid
+                        placeBid(i, new Bid(clientID, username, bidValue));
+                        response = true;
+                        ServerStateManager.saveState(state);
+                    }
                 }
             }
         }
@@ -71,6 +70,11 @@ public class Server implements IServer {
     @Override
     public String closeAuction() throws RemoteException {
         return null;
+    }
+
+    private void placeBid(Auction auction, Bid bid) {
+        auction.maxBid = bid;
+        System.out.println("BID ACCEPTED - ClientID: " + bid.clientID + " AuctionID: " + auction.auctionID + " BidValue: " + bid.bidValue);
     }
 }
 
