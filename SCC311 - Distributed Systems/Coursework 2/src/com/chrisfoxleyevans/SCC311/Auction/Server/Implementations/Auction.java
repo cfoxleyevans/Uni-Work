@@ -12,10 +12,9 @@ public class Auction implements Serializable {
 
     public int auctionID;
     public int clientID;
-    public String username;
-    public boolean active;
     public String itemDescription;
     public double reservePrice;
+    public double startPrice;
     public Bid maxBid;
 
     /**
@@ -26,13 +25,11 @@ public class Auction implements Serializable {
      * @param itemDescription The description of the item that is up for auction
      * @param reservePrice    The reserve price of the item that is up for auction
      */
-    public Auction(int auctionID, int clientID, String username, String itemDescription, double reservePrice) {
+    public Auction(int auctionID, int clientID, String itemDescription, double reservePrice, double startPrice) {
         this.auctionID = auctionID;
         this.clientID = clientID;
-        this.username = username;
-        this.active = true;
         this.itemDescription = itemDescription;
         this.reservePrice = reservePrice;
-        this.maxBid = new Bid(0, "", 0);
+        this.maxBid = new Bid(0, "", startPrice);
     }
 }

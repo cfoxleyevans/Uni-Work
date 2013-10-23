@@ -3,6 +3,7 @@ package com.chrisfoxleyevans.SCC311.Auction.Client;
 import com.chrisfoxleyevans.SCC311.Auction.Client.StateManager.ClientState;
 import com.chrisfoxleyevans.SCC311.Auction.Client.StateManager.ClientStateManager;
 import com.chrisfoxleyevans.SCC311.Auction.Server.Implementations.Auction;
+import com.chrisfoxleyevans.SCC311.Auction.Server.Implementations.Bid;
 import com.chrisfoxleyevans.SCC311.Auction.Server.Interfaces.IServer;
 
 import java.io.BufferedReader;
@@ -52,22 +53,14 @@ public class Client {
 
     //public methods
     public void displayAuctions() {
-        ArrayList<Auction> auctions = null;
         try {
-            auctions = server.getActiveAuctions();
-        } catch (Exception e) {
-            System.out.println("ERROR: Unable to retrieve the active auctions");
-        }
-
-        if (auctions.size() > 0) {
+             ArrayList<Auction> auctions = server.getActiveAuctions();
             for (Auction i : auctions) {
-                if (i.active) {
-                    System.out.println("AuctionID: " + i.auctionID + " Description: " + i.itemDescription +
-                            " Current Bid: " + i.maxBid.bidValue);
-                }
+                System.out.println("AuctionID: " + i.auctionID + " Description: " + i.itemDescription
+                        + " Current Price: "  + i.maxBid.bidValue);
             }
-        } else {
-            System.out.println("INFO: There are no active auctions");
+        } catch (Exception e) {
+            System.out.println("ERROR: " + e.getMessage());
         }
     }
 
@@ -84,13 +77,11 @@ public class Client {
 
             //send the bid to the server
             Boolean serverResponse = server.registerBid(state.clientID, auctionID, state.username, bidValue);
-            if (serverResponse) {
+            if (serverResponse != null) {
                 System.out.println("The bid was accepted by the server");
-            } else {
-                System.out.println("The bid was rejected by the server");
             }
         } catch (Exception e) {
-            System.out.println("ERROR: " + e.getMessage());
+            System.out.println("ERROR: " + e.getCause());
 
         }
     }
@@ -103,18 +94,36 @@ public class Client {
             String description = bufferedReader.readLine();
 
             //grab the reserve amount
-            System.out.print("Please enter the reserve amount: ");
+            System.out.print("Please enter the reserve price: ");
             double reserveValue = Double.parseDouble(bufferedReader.readLine());
 
-            int serverResponse = server.registerAuction(state.clientID, state.username, description, reserveValue);
+            //grab the start price
+            System.out.print("Please enter the start price: ");
+            double startPrice = Double.parseDouble(bufferedReader.readLine());
+
+
+            int serverResponse = server.registerAuction(state.clientID, description, reserveValue, startPrice);
             System.out.println("The item was listed with the ID: " + serverResponse);
         } catch (Exception e) {
-            System.out.println("ERROR: The server was unable to accept the auction");
+            System.out.println("ERROR: " + e.getMessage());
         }
     }
 
     public void closeAuction() {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            //grab the auction description
+            System.out.print("Please enter the ID of the auction you wish to close: ");
+            int auctionID = Integer.parseInt(bufferedReader.readLine());
 
+            Bid winningBid = server.closeAuction(auctionID, state.clientID);
+            if (winningBid != null) {
+                System.out.println("The item was won by: " + winningBid.username + " with a bid of " + winningBid.bidValue);
+            }
+
+        } catch (Exception e) {
+            System.out.println("ERROR: " + e.getMessage());
+        }
     }
 
     public void displayMenu() {
