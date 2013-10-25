@@ -55,7 +55,7 @@ public class Driver {
             cipher.init(Cipher.ENCRYPT_MODE, key);
 
             //get a response from the server
-            SealedObject sealedResponse = server.getSpec(uid,  new SealedObject(new Client_request(uid, nonse), cipher));
+            SealedObject sealedResponse = server.getSpec(uid, new SealedObject(new Client_request(uid, nonse), cipher));
 
             //decrypt the response and write out to file
             cipher.init(Cipher.DECRYPT_MODE, key);
