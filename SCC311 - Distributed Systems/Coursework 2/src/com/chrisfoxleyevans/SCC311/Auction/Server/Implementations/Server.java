@@ -1,10 +1,14 @@
 package com.chrisfoxleyevans.SCC311.Auction.Server.Implementations;
 
 import com.chrisfoxleyevans.SCC311.Auction.Server.Interfaces.IServer;
+import com.chrisfoxleyevans.SCC311.Auction.Server.SecurityManager.ClientSecurityDetails;
+import com.chrisfoxleyevans.SCC311.Auction.Server.SecurityManager.ServerSecurityManager;
 import com.chrisfoxleyevans.SCC311.Auction.Server.StateManager.ServerState;
 import com.chrisfoxleyevans.SCC311.Auction.Server.StateManager.ServerStateManager;
 
+import javax.crypto.SealedObject;
 import java.rmi.RemoteException;
+import java.security.Key;
 import java.util.ArrayList;
 
 /**
@@ -32,58 +36,83 @@ public class Server implements IServer {
         }
     }
 
+    public void registerClient(int id, Key key) {
+        boolean idFound = false;
+        for (ClientSecurityDetails i : state.clientSecurityDetailses) {
+            if (i.clientID == id) {
+                idFound = true;
+            }
+        }
+        if (!idFound)
+            state.clientSecurityDetailses.add(new ClientSecurityDetails(id, key));
+    }
+
     @Override
     public ArrayList<Auction> getActiveAuctions() throws RemoteException {
         if (state.auctions.size() <= 0) {
-            throw  new RemoteException("There are no active auctions");
+            throw new RemoteException("There are no active auctions");
         }
         return state.auctions;
     }
 
     @Override
-    public int registerAuction(int clientID, String description, double reservePrice, double startPrice) throws RemoteException {
-        int id = state.auctionID++;
-
-        state.auctions.add(new Auction(id, clientID, description, reservePrice, startPrice));
-
-        System.out.println("AUCTION REGISTERED -  ClientID: " + clientID + " AuctionID: " + id + " Description: " + description +
-                " Reserve price: " + reservePrice + " Start price: " + startPrice);
-
-        ServerStateManager.saveState(state);
-        return id;
+    public synchronized SealedObject registerAuction(int clientID, SealedObject encryptedAuction) throws RemoteException {
+        //find this clients key
+        Key key = findClientKey(clientID);
+        if (key != null) {
+            Auction auction = ServerSecurityManager.decryptAuction(encryptedAuction, key);
+            auction.auctionID = state.auctionID++;
+            state.auctions.add(auction);
+            System.out.println("AUCTION REGISTERED -  ClientID: " + clientID + " AuctionID: " + auction.auctionID +
+                    " Description: " + auction.itemDescription + " Reserve price: " + auction.reservePrice +
+                    " Start price: " + auction.maxBid.bidValue);
+            ServerStateManager.saveState(state);
+            return ServerSecurityManager.encryptAuction(auction, key);
+        } else {
+            throw new RemoteException("Unable to register auction");
+        }
     }
 
     @Override
-    public Boolean registerBid(int clientID, int auctionID, String username, double bidValue) throws RemoteException {
-        //iterate over all of auctions
-        for (Auction i : state.auctions) {
-            //if the auction id's match
-            if (i.auctionID == auctionID) {
-                //make sure that the bidder is not the client that listed the item
-                if (i.clientID != clientID) {
-                    //make sure that the bid is greater than the current bid
-                    if (i.maxBid.bidValue < bidValue) {
-                        //place the bid
-                        placeBid(i, new Bid(clientID, username, bidValue));
-                        //update the state
-                        ServerStateManager.saveState(state);
-                        return true;
-                    } else {
-                        //if the bid is not high enough
-                        throw new RemoteException("The bid value is less than the current bid");
+    public synchronized SealedObject registerBid(int clientID, SealedObject encryptedBid) throws RemoteException {
+        //find the clients key
+        Key key = findClientKey(clientID);
+        if (key != null) {
+            Bid bid = ServerSecurityManager.decryptBid(encryptedBid, key);
+            if (bid != null) {
+                //iterate over all of auctions
+                for (Auction i : state.auctions) {
+                    //if the auction id's match
+                    if (i.auctionID == bid.auctionID) {
+                        //make sure that the bidder is not the client that listed the item
+                        if (i.clientID != clientID) {
+                            //make sure that the bid is greater than the current bid
+                            if (i.maxBid.bidValue < bid.bidValue) {
+                                //place the bid
+                                placeBid(i, bid, clientID);
+                                //update the state
+                                ServerStateManager.saveState(state);
+                                return ServerSecurityManager.encryptBid(bid, key);
+                            } else {
+                                //if the bid is not high enough
+                                throw new RemoteException("The bid value is less than the current bid");
+                            }
+                        } else {
+                            //if the client is the auction owner
+                            throw new RemoteException("You cannot bid on your own auction");
+                        }
                     }
-                } else {
-                    //if the client is the auction owner
-                    throw new RemoteException("You cannot bid on your own auction");
                 }
             }
+
+
         }
         //if the auction cant be found
         throw new RemoteException("No auction with this ID exists");
     }
 
     @Override
-    public Bid closeAuction(int auctionID, int clientID) throws RemoteException {
+    public synchronized Bid closeAuction(int auctionID, int clientID) throws RemoteException {
         //iterate over all of the auctions
         for (Auction i : state.auctions) {
             //if the auction id's match
@@ -122,9 +151,18 @@ public class Server implements IServer {
      * @param auction The auction that is being edited
      * @param bid     The bid that is being placed
      */
-    private void placeBid(Auction auction, Bid bid) {
+    private synchronized void placeBid(Auction auction, Bid bid, int clientID) {
         auction.maxBid = bid;
-        System.out.println("BID ACCEPTED - ClientID: " + bid.clientID + " AuctionID: " + auction.auctionID + " BidValue: " + bid.bidValue);
+        System.out.println("BID ACCEPTED - ClientID: " + clientID + " AuctionID: " + auction.auctionID + " BidValue: " + bid.bidValue);
+    }
+
+    private synchronized Key findClientKey(int clientID) {
+        for (ClientSecurityDetails i : state.clientSecurityDetailses) {
+            if (i.clientID == clientID) {
+                return i.key;
+            }
+        }
+        return null;
     }
 }
 

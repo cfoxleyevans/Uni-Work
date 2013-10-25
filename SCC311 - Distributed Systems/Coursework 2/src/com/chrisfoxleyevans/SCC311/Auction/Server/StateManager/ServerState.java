@@ -1,6 +1,7 @@
 package com.chrisfoxleyevans.SCC311.Auction.Server.StateManager;
 
 import com.chrisfoxleyevans.SCC311.Auction.Server.Implementations.Auction;
+import com.chrisfoxleyevans.SCC311.Auction.Server.SecurityManager.ClientSecurityDetails;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 public class ServerState implements Serializable {
 
     public ArrayList<Auction> auctions;
+    public ArrayList<ClientSecurityDetails> /* my precious */ clientSecurityDetailses;
     public int auctionID;
 
     /**
@@ -22,6 +24,7 @@ public class ServerState implements Serializable {
      */
     public ServerState() {
         this.auctions = new ArrayList<Auction>();
+        this.clientSecurityDetailses = new ArrayList<ClientSecurityDetails>();
         this.auctionID = 0;
     }
 }

@@ -10,19 +10,19 @@ import java.io.Serializable;
  */
 public class Bid implements Serializable {
 
-    public int clientID;
+    public int auctionID;
     public String username;
     public double bidValue;
 
     /**
      * This is the class constructor, it takes the various bid info and returns a valid Bid object
      *
-     * @param clientID The client ID of the bidder
+     * @param auctionID The client ID of the bidder
      * @param username The username of the bidder
      * @param bidValue The value of the bid
      */
-    public Bid(int clientID, String username, double bidValue) {
-        this.clientID = clientID;
+    public Bid(int auctionID, String username, double bidValue) {
+        this.auctionID = auctionID;
         this.username = username;
         this.bidValue = bidValue;
     }

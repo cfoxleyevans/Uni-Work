@@ -1,11 +1,13 @@
 package com.chrisfoxleyevans.SCC311.Auction.Client;
 
+import com.chrisfoxleyevans.SCC311.Auction.Client.SecurityManager.ClientSecurityManager;
 import com.chrisfoxleyevans.SCC311.Auction.Client.StateManager.ClientState;
 import com.chrisfoxleyevans.SCC311.Auction.Client.StateManager.ClientStateManager;
 import com.chrisfoxleyevans.SCC311.Auction.Server.Implementations.Auction;
 import com.chrisfoxleyevans.SCC311.Auction.Server.Implementations.Bid;
 import com.chrisfoxleyevans.SCC311.Auction.Server.Interfaces.IServer;
 
+import javax.crypto.SealedObject;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.rmi.registry.LocateRegistry;
@@ -20,12 +22,16 @@ public class Client {
 
     //constructor
     public Client(String hostname) {
-        //read in the users email
-        System.out.print("Please enter you username: ");
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         String username = "";
+        String password = "";
+        //read in the users email
         try {
+            System.out.print("Please enter you username: ");
             username = bufferedReader.readLine();
+
+            System.out.print("Please enter a password");
+            password = bufferedReader.readLine();
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
         }
@@ -33,7 +39,7 @@ public class Client {
         //attempt to read the saved client state
         ClientState state = ClientStateManager.loadState(username);
         if (state == null) {
-            this.state = new ClientState(username);
+            this.state = new ClientState(username, password);
             Random random = new Random();
             this.state.clientID = random.nextInt(Integer.MAX_VALUE) + 1;
             ClientStateManager.saveState(this.state);
@@ -45,6 +51,7 @@ public class Client {
         try {
             Registry registry = LocateRegistry.getRegistry(hostname);
             this.server = (IServer) registry.lookup("AuctionServer");
+            this.server.registerClient(this.state.clientID, this.state.key);
         } catch (Exception e) {
             System.out.println("ERROR: Unable to connect to the server");
             closeApplication("Failed to connect to the server unable to continue");
@@ -75,10 +82,13 @@ public class Client {
             System.out.print("Please enter the bid amount: ");
             double bidValue = Double.parseDouble(bufferedReader.readLine());
 
-            //send the bid to the server
-            Boolean serverResponse = server.registerBid(state.clientID, auctionID, state.username, bidValue);
+            //send the bid to a server after sealing it
+            SealedObject serverResponse = server.registerBid(state.clientID,
+                    ClientSecurityManager.encryptBid(new Bid(auctionID, state.username, bidValue), state.key));
             if (serverResponse != null) {
                 System.out.println("The bid was accepted by the server");
+                state.bids.add(ClientSecurityManager.decryptBid(serverResponse, state.key));
+                ClientStateManager.saveState(state);
             }
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getCause());
@@ -101,9 +111,12 @@ public class Client {
             System.out.print("Please enter the start price: ");
             double startPrice = Double.parseDouble(bufferedReader.readLine());
 
-
-            int serverResponse = server.registerAuction(state.clientID, description, reserveValue, startPrice);
+            SealedObject serverResponse = server.registerAuction(state.clientID,
+                    ClientSecurityManager.encryptAuction(
+                            new Auction(state.clientID, description, reserveValue, startPrice), state.key));
             System.out.println("The item was listed with the ID: " + serverResponse);
+            state.auctions.add(ClientSecurityManager.decryptAuction(serverResponse, state.key));
+            ClientStateManager.saveState(state);
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
         }

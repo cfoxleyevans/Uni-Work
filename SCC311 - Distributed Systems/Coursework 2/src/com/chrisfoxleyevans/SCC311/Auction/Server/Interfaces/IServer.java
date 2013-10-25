@@ -3,8 +3,10 @@ package com.chrisfoxleyevans.SCC311.Auction.Server.Interfaces;
 import com.chrisfoxleyevans.SCC311.Auction.Server.Implementations.Auction;
 import com.chrisfoxleyevans.SCC311.Auction.Server.Implementations.Bid;
 
+import javax.crypto.SealedObject;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.security.Key;
 import java.util.ArrayList;
 
 /**
@@ -25,30 +27,33 @@ public interface IServer extends Remote {
     public ArrayList<Auction> getActiveAuctions() throws RemoteException;
 
     /**
+     * This method is called by the client to register the key used to seal objects
+     *
+     * @param id  The ID of the client that is registering
+     * @param key The key that this client will use to seal objects
+     * @throws RemoteException
+     */
+    public void registerClient(int id, Key key) throws RemoteException;
+
+    /**
      * This method is invoked by the client to register an auction
      *
      * @param clientID     The ID of the client that is registering the auction
-     * @param description  The description of the item that the client is registering
-     * @param reservePrice The reserve price of the item that the client is registering
-     * @param startPrice   The starting price of the item that the client is registering
      * @return Returns an integer with the registered items AuctionID
      * @throws RemoteException Throws a Remote Exception if there is an issue completing the method
      *                         or if the server is unable to register the bid
      */
-    public int registerAuction(int clientID, String description, double reservePrice, double startPrice) throws RemoteException;
+    public SealedObject registerAuction(int clientID, SealedObject auction) throws RemoteException;
 
     /**
      * This method is invoked by the client to register a bid on an item
      *
      * @param clientID  The ID of the client that is registering the bid
-     * @param auctionID The ID of the auction that the client is bidding on
-     * @param username  The username of the client
-     * @param bidValue  The value of the bid that the client is registering
      * @return Returns true if the bid was registered successfully
      * @throws RemoteException Throws a Remote Exception if there is an issue completing the method
      *                         or if the bid is unable to be registerd
      */
-    public Boolean registerBid(int auctionID, int clientID, String username, double bidValue) throws RemoteException;
+    public SealedObject registerBid(int clientID, SealedObject bid) throws RemoteException;
 
     /**
      * This method is invoked by the client to close an auction
