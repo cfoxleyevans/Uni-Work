@@ -1,4 +1,4 @@
-package com.chrisfoxleyevans.SCC311.Auction.Client;
+package com.chrisfoxleyevans.SCC311.Auction.Client.Implementations;
 
 import com.chrisfoxleyevans.SCC311.Auction.Client.SecurityManager.ClientSecurityManager;
 import com.chrisfoxleyevans.SCC311.Auction.Client.StateManager.ClientState;
@@ -12,9 +12,16 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * This class implements all of the functionality that the client will need
+ *
+ * @author Chris Foxley-Evans
+ * @version 0.0.1
+ */
 public class Client {
     //instance vars
     public ClientState state;
@@ -25,12 +32,12 @@ public class Client {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         String username = "";
         String password = "";
-        //read in the users email
+        //read in the users username and password
         try {
             System.out.print("Please enter you username: ");
             username = bufferedReader.readLine();
 
-            System.out.print("Please enter a password");
+            System.out.print("Please enter a password: ");
             password = bufferedReader.readLine();
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
@@ -44,7 +51,12 @@ public class Client {
             this.state.clientID = random.nextInt(Integer.MAX_VALUE) + 1;
             ClientStateManager.saveState(this.state);
         } else {
-            this.state = state;
+            if (state.key.hashCode() == ClientSecurityManager.generateKey(password).hashCode()) {
+                this.state = state;
+            } else {
+                System.out.println("Sorry that is not the correct password for this user");
+                closeApplication("Password authentication failed");
+            }
         }
 
         //attempt to connect to the server
@@ -61,10 +73,11 @@ public class Client {
     //public methods
     public void displayAuctions() {
         try {
-             ArrayList<Auction> auctions = server.getActiveAuctions();
+            ArrayList<Auction> auctions = ClientSecurityManager.decryptAuctions(server.getActiveAuctions(state.clientID), state.key);
+
             for (Auction i : auctions) {
                 System.out.println("AuctionID: " + i.auctionID + " Description: " + i.itemDescription
-                        + " Current Price: "  + i.maxBid.bidValue);
+                        + " Current Price: " + i.maxBid.bidValue);
             }
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());

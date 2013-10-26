@@ -13,12 +13,7 @@ import java.io.ObjectOutputStream;
  */
 public class ClientStateManager {
 
-    /**
-     * Saves the passed in state object to a file for later use
-     *
-     * @param state The array list that holds all of the current auctions that the server is hosting
-     * @return Returns true if the file is saved to the disk false if not
-     */
+    //public methods
     public static boolean saveState(ClientState state) {
         try {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(state.username));
@@ -30,11 +25,6 @@ public class ClientStateManager {
         }
     }
 
-    /**
-     * Attempts to load the server state from the file
-     *
-     * @return Returns the ArrayList containing the auctions if the file exists or null if not
-     */
     public static ClientState loadState(String username) {
         try {
             ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(username));

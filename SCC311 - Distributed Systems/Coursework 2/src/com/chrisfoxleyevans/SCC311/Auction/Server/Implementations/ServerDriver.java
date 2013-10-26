@@ -7,15 +7,14 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
 /**
- * This class is used to start up an instance of the server
+ * The class server as an entry point to the server app
+ *
+ * @author Chris Foxley-Evans
+ * @version 0.0.1
  */
 public class ServerDriver {
 
-    /**
-     * This is the entry point for the main server application
-     *
-     * @param args Arguments that can be passed into the application (Currently Unused)
-     */
+    //main method
     public static void main(String args[]) {
         try {
             Registry registry = LocateRegistry.createRegistry(1099);

@@ -1,6 +1,14 @@
-package com.chrisfoxleyevans.SCC311.Auction.Client;
+package com.chrisfoxleyevans.SCC311.Auction.Client.Implementations;
 
+/**
+ * The class server as an entry point to the client app
+ *
+ * @author Chris Foxley-Evans
+ * @version 0.0.1
+ */
 public class ClientDriver {
+
+    //main method
     public static void main(String args[]) {
         try {
             Client testClient = new Client("localhost");

@@ -17,6 +17,7 @@ import java.util.ArrayList;
  */
 public class ClientState implements Serializable {
 
+    //instance vars
     public int clientID;
     public String username;
     public String password;
@@ -24,9 +25,7 @@ public class ClientState implements Serializable {
     public ArrayList<Auction> auctions; //items that the user is auctioning
     public ArrayList<Bid> bids; //bids that the user has placed
 
-    /**
-     * This is the class constructor, it returns a new valid state object
-     */
+    //constructor
     public ClientState(String username, String password) {
         this.clientID = 0;
         this.username = username;

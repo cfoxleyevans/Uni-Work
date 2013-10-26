@@ -15,13 +15,12 @@ import java.util.ArrayList;
  */
 public class ServerState implements Serializable {
 
+    //instance vars
     public ArrayList<Auction> auctions;
     public ArrayList<ClientSecurityDetails> /* my precious */ clientSecurityDetailses;
     public int auctionID;
 
-    /**
-     * This is the class constructor, it returns a new valid state object
-     */
+    //constructor
     public ServerState() {
         this.auctions = new ArrayList<Auction>();
         this.clientSecurityDetailses = new ArrayList<ClientSecurityDetails>();

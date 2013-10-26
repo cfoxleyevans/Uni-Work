@@ -9,7 +9,6 @@ import com.chrisfoxleyevans.SCC311.Auction.Server.StateManager.ServerStateManage
 import javax.crypto.SealedObject;
 import java.rmi.RemoteException;
 import java.security.Key;
-import java.util.ArrayList;
 
 /**
  * This class provides the implementation of the IServer interface
@@ -19,14 +18,11 @@ import java.util.ArrayList;
  */
 public class Server implements IServer {
 
+    //instance vars
     public ServerState state;
 
-    /**
-     * This is the class constructor, it will attempt to restore state from the file
-     * if this is not possible then it will start with an empty data structure
-     */
+    //constructor
     public Server() {
-        //attempt to read the saved server state
         ServerState state = ServerStateManager.loadState();
         if (state == null) {
             this.state = new ServerState();
@@ -36,6 +32,7 @@ public class Server implements IServer {
         }
     }
 
+    //public methods
     public void registerClient(int id, Key key) {
         boolean idFound = false;
         for (ClientSecurityDetails i : state.clientSecurityDetailses) {
@@ -48,11 +45,15 @@ public class Server implements IServer {
     }
 
     @Override
-    public ArrayList<Auction> getActiveAuctions() throws RemoteException {
+    public SealedObject getActiveAuctions(int clientID) throws RemoteException {
         if (state.auctions.size() <= 0) {
-            throw new RemoteException("There are no active auctions");
+            Key key = findClientKey(clientID);
+            if (key != null) {
+
+                return ServerSecurityManager.encryptActiveAuctions(state.auctions, key);
+            }
         }
-        return state.auctions;
+        throw new RemoteException("There are no active auctions");
     }
 
     @Override
@@ -145,12 +146,7 @@ public class Server implements IServer {
         throw new RemoteException("No auction with this ID exists");
     }
 
-    /**
-     * This function simply wraps the act of placing a bid
-     *
-     * @param auction The auction that is being edited
-     * @param bid     The bid that is being placed
-     */
+    //private methods
     private synchronized void placeBid(Auction auction, Bid bid, int clientID) {
         auction.maxBid = bid;
         System.out.println("BID ACCEPTED - ClientID: " + clientID + " AuctionID: " + auction.auctionID + " BidValue: " + bid.bidValue);
