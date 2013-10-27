@@ -9,6 +9,7 @@ import com.chrisfoxleyevans.SCC311.Auction.Server.Interfaces.IServer;
 
 import javax.crypto.SealedObject;
 import java.io.BufferedReader;
+import java.io.Console;
 import java.io.InputStreamReader;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -38,7 +39,7 @@ public class Client {
             username = bufferedReader.readLine();
 
             System.out.print("Please enter a password: ");
-            password = bufferedReader.readLine();
+            password =  bufferedReader.readLine();
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
         }
@@ -124,11 +125,20 @@ public class Client {
             System.out.print("Please enter the start price: ");
             double startPrice = Double.parseDouble(bufferedReader.readLine());
 
-            SealedObject serverResponse = server.registerAuction(state.clientID,
-                    ClientSecurityManager.encryptAuction(
-                            new Auction(state.clientID, description, reserveValue, startPrice), state.key));
-            System.out.println("The item was listed with the ID: " + serverResponse);
+            //seal the object and send it to the server
+            SealedObject serverResponse = server.registerAuction(state.clientID, ClientSecurityManager.encryptAuction(
+                    new Auction(state.clientID, description, reserveValue, startPrice), state.key));
+
+            //decrypt the response
+            Auction response = ClientSecurityManager.decryptAuction(serverResponse, state.key);
+
+            //print the response
+            System.out.println("The item was listed with the ID: " + response.auctionID);
+
+            //add the auction to the state
             state.auctions.add(ClientSecurityManager.decryptAuction(serverResponse, state.key));
+
+            //save the state
             ClientStateManager.saveState(state);
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());

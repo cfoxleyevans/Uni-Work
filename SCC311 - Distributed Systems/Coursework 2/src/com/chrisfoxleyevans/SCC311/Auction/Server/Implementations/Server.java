@@ -38,6 +38,7 @@ public class Server implements IServer {
         for (ClientSecurityDetails i : state.clientSecurityDetailses) {
             if (i.clientID == id) {
                 idFound = true;
+                break;
             }
         }
         if (!idFound)
@@ -46,14 +47,12 @@ public class Server implements IServer {
 
     @Override
     public SealedObject getActiveAuctions(int clientID) throws RemoteException {
-        if (state.auctions.size() <= 0) {
-            Key key = findClientKey(clientID);
-            if (key != null) {
-
-                return ServerSecurityManager.encryptActiveAuctions(state.auctions, key);
-            }
+        Key key = findClientKey(clientID);
+        if (key != null) {
+            return ServerSecurityManager.encryptActiveAuctions(state.auctions, key);
+        } else {
+            throw new RemoteException("Problem encrypting the response");
         }
-        throw new RemoteException("There are no active auctions");
     }
 
     @Override
@@ -64,13 +63,15 @@ public class Server implements IServer {
             Auction auction = ServerSecurityManager.decryptAuction(encryptedAuction, key);
             auction.auctionID = state.auctionID++;
             state.auctions.add(auction);
-            System.out.println("AUCTION REGISTERED -  ClientID: " + clientID + " AuctionID: " + auction.auctionID +
+            System.out.println("AUCTION REGISTERED -" +
+                    " ClientID: " + clientID +
+                    " AuctionID: " + auction.auctionID +
                     " Description: " + auction.itemDescription + " Reserve price: " + auction.reservePrice +
                     " Start price: " + auction.maxBid.bidValue);
             ServerStateManager.saveState(state);
             return ServerSecurityManager.encryptAuction(auction, key);
         } else {
-            throw new RemoteException("Unable to register auction");
+            throw new RemoteException("Unable to register auction - problem decrypting the information");
         }
     }
 
