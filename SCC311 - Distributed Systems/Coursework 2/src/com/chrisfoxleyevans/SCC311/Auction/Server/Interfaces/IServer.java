@@ -24,6 +24,6 @@ public interface IServer extends Remote {
 
     public SealedObject registerBid(int clientID, SealedObject bid) throws RemoteException;
 
-    public Bid closeAuction(int auctionID, int clientID) throws RemoteException;
+    public SealedObject closeAuction(int clientID, SealedObject auction) throws RemoteException;
 }
 

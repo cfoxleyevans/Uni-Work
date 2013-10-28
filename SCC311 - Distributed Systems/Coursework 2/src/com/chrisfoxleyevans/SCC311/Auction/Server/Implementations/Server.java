@@ -114,32 +114,37 @@ public class Server implements IServer {
     }
 
     @Override
-    public synchronized Bid closeAuction(int auctionID, int clientID) throws RemoteException {
-        //iterate over all of the auctions
-        for (Auction i : state.auctions) {
-            //if the auction id's match
-            if (i.auctionID == auctionID) {
-                //make sure that the closer owns the auction
-                if (i.clientID == clientID) {
-                    //make sure that the reserve has been met
-                    if (i.maxBid.bidValue > i.reservePrice) {
-                        //remove the auction from the server
-                        state.auctions.remove(i);
-                        //save the state object
-                        ServerStateManager.saveState(state);
-                        //return the winning bid
-                        return i.maxBid;
+    public synchronized SealedObject closeAuction(int clientID, SealedObject encryptedAuction) throws RemoteException {
+        //find the key for this client
+        Key key = findClientKey(clientID);
+        if (key != null) {
+            Auction auction = ServerSecurityManager.decryptAuction(encryptedAuction, key);
+            //iterate over all of the auctions
+            for (Auction i : state.auctions) {
+                //if the auction id's match
+                if (i.auctionID == auction.auctionID) {
+                    //make sure that the closer owns the auction
+                    if (i.clientID == clientID) {
+                        //make sure that the reserve has been met
+                        if (i.maxBid.bidValue > i.reservePrice) {
+                            //remove the auction from the server
+                            state.auctions.remove(i);
+                            //save the state object
+                            ServerStateManager.saveState(state);
+                            //return the winning bid
+                            return ServerSecurityManager.encryptBid(i.maxBid, key);
+                        } else {
+                            //remove the auction from the server
+                            state.auctions.remove(i);
+                            //save the state object
+                            ServerStateManager.saveState(state);
+                            //if the item failed to meet the reserve
+                            throw new RemoteException("The item failed to meet its reserve price");
+                        }
                     } else {
-                        //remove the auction from the server
-                        state.auctions.remove(i);
-                        //save the state object
-                        ServerStateManager.saveState(state);
-                        //if the item failed to meet the reserve
-                        throw new RemoteException("The item failed to meet its reserve price");
+                        //if the client attempts to close an auction that they do not own
+                        throw new RemoteException("You cannot close an auction that you do not own");
                     }
-                } else {
-                    //if the client attempts to close an auction that they do not own
-                    throw new RemoteException("You cannot close an auction that you do not own");
                 }
             }
         }
