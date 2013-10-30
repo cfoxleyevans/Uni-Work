@@ -9,11 +9,9 @@ import com.chrisfoxleyevans.SCC311.Auction.Server.Interfaces.IServer;
 
 import javax.crypto.SealedObject;
 import java.io.BufferedReader;
-import java.io.Console;
 import java.io.InputStreamReader;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -39,7 +37,7 @@ public class Client {
             username = bufferedReader.readLine();
 
             System.out.print("Please enter a password: ");
-            password =  bufferedReader.readLine();
+            password = bufferedReader.readLine();
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
         }
@@ -67,7 +65,7 @@ public class Client {
             this.server.registerClient(this.state.clientID, this.state.key);
         } catch (Exception e) {
             System.out.println("ERROR: Unable to connect to the server");
-            closeApplication("Failed to connect to the server unable to continue");
+            closeApplication("Failed to connect to the server unable to continue.");
         }
     }
 
@@ -76,9 +74,13 @@ public class Client {
         try {
             ArrayList<Auction> auctions = ClientSecurityManager.decryptAuctions(server.getActiveAuctions(state.clientID), state.key);
 
-            for (Auction i : auctions) {
-                System.out.println("AuctionID: " + i.auctionID + " Description: " + i.itemDescription
-                        + " Current Price: " + i.maxBid.bidValue);
+            if (auctions.size() > 0) {
+                for (Auction i : auctions) {
+                    System.out.println("AuctionID: " + i.auctionID + " Description: " + i.itemDescription
+                            + " Current Price: " + i.maxBid.bidValue);
+                }
+            } else {
+                System.out.println("The server has no active auctions.");
             }
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
@@ -96,17 +98,19 @@ public class Client {
             System.out.print("Please enter the bid amount: ");
             double bidValue = Double.parseDouble(bufferedReader.readLine());
 
-            //send the bid to a server after sealing it
-            SealedObject serverResponse = server.registerBid(state.clientID,
-                    ClientSecurityManager.encryptBid(new Bid(auctionID, state.username, bidValue), state.key));
-            if (serverResponse != null) {
-                System.out.println("The bid was accepted by the server");
-                state.bids.add(ClientSecurityManager.decryptBid(serverResponse, state.key));
-                ClientStateManager.saveState(state);
+            if(!ownAuction(auctionID)) {
+                Bid response = ClientSecurityManager.decryptBid(
+                        server.registerBid(state.clientID,
+                        ClientSecurityManager.encryptBid(new Bid(auctionID, state.clientID, bidValue), state.key)),state.key);
+                if (response != null) {
+                    System.out.println("Bid has been placed.");
+                }
+            }
+            else {
+                System.out.println("ERROR: Unable to register the bid.");
             }
         } catch (Exception e) {
-            System.out.println("ERROR: " + e.getCause());
-
+            System.out.println("ERROR: Unable to register the bid.");
         }
     }
 
@@ -133,7 +137,7 @@ public class Client {
             Auction response = ClientSecurityManager.decryptAuction(serverResponse, state.key);
 
             //print the response
-            System.out.println("The item was listed with the ID: " + response.auctionID);
+            System.out.println("The item was listed with the ID: " + response.auctionID + ".");
 
             //add the auction to the state
             state.auctions.add(ClientSecurityManager.decryptAuction(serverResponse, state.key));
@@ -141,24 +145,42 @@ public class Client {
             //save the state
             ClientStateManager.saveState(state);
         } catch (Exception e) {
-            System.out.println("ERROR: " + e.getMessage());
+            System.out.println("ERROR: Unable to register the auction.");
         }
     }
 
     public void closeAuction() {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         try {
-            //grab the auction description
+            //grab the auction ID
             System.out.print("Please enter the ID of the auction you wish to close: ");
             int auctionID = Integer.parseInt(bufferedReader.readLine());
 
-            Bid winningBid = server.closeAuction(auctionID, state.clientID);
-            if (winningBid != null) {
-                System.out.println("The item was won by: " + winningBid.username + " with a bid of " + winningBid.bidValue);
+            //make sure that we own this auction
+            for (Auction i : state.auctions) {
+                if (i.auctionID == auctionID) {
+
+
+                    SealedObject encryptedAuction = ClientSecurityManager.encryptAuction(i, state.key);
+                    SealedObject sealedResponse = server.closeAuction(state.clientID, encryptedAuction);
+                    Bid winningBid = ClientSecurityManager.decryptBid(sealedResponse, state.key);
+
+                    if (winningBid.bidValue < i.reservePrice) {
+                        System.out.println("The auction failed to meet the reserve");
+                    }
+                    else {
+                        System.out.println("The auction was won by: " + winningBid.clientID + " with a bid of: " + winningBid.bidValue);
+                    }
+
+                    state.auctions.remove(i);
+                    ClientStateManager.saveState(state);
+                    break;
+                }
             }
 
         } catch (Exception e) {
-            System.out.println("ERROR: " + e.getMessage());
+            System.out.println("ERROR: Unable to close the auction.");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -193,6 +215,16 @@ public class Client {
         } catch (Exception e) {
             System.out.println("ERROR: Problem with the option that you entered");
         }
+    }
+
+    //private methods
+    private boolean ownAuction(int auctionID) {
+        for (Auction i : state.auctions) {
+            if (i.auctionID == auctionID) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void closeApplication(String message) {

@@ -39,7 +39,7 @@ public class Driver {
         try {
             //get a response object from the server and write it to a file
             server.getSpec(uid, new Client_request(uid, nonse, passkey))
-                    .write_to(new FileOutputStream(new File("spec.docx")));
+                    .write_to(new FileOutputStream(new File("spec.doc")));
         } catch (Exception e) {
             System.out.println("Problem With Simple Auth: " + e.getMessage());
         }
@@ -60,7 +60,7 @@ public class Driver {
             //decrypt the response and write out to file
             cipher.init(Cipher.DECRYPT_MODE, key);
             Server_response response = (Server_response) sealedResponse.getObject(cipher);
-            response.write_to(new FileOutputStream(new File("sealedSpec.docx")));
+            response.write_to(new FileOutputStream(new File("sealedSpec.doc")));
         } catch (Exception e) {
             System.out.println("Problem With Key Auth: " + e.getMessage());
         }

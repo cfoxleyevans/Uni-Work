@@ -46,7 +46,7 @@ public class Server implements IServer {
     }
 
     @Override
-    public SealedObject getActiveAuctions(int clientID) throws RemoteException {
+    public synchronized SealedObject getActiveAuctions(int clientID) throws RemoteException {
         Key key = findClientKey(clientID);
         if (key != null) {
             return ServerSecurityManager.encryptActiveAuctions(state.auctions, key);
@@ -77,85 +77,59 @@ public class Server implements IServer {
 
     @Override
     public synchronized SealedObject registerBid(int clientID, SealedObject encryptedBid) throws RemoteException {
-        //find the clients key
+        /*
+         * Look up the clients key
+         * As long as the key can be found
+         * Find the auction object, make sure the new bid is higher, register the bid
+         * Save the state
+         * Return the encrypted bid object
+         */
         Key key = findClientKey(clientID);
         if (key != null) {
             Bid bid = ServerSecurityManager.decryptBid(encryptedBid, key);
             if (bid != null) {
-                //iterate over all of auctions
                 for (Auction i : state.auctions) {
-                    //if the auction id's match
                     if (i.auctionID == bid.auctionID) {
-                        //make sure that the bidder is not the client that listed the item
-                        if (i.clientID != clientID) {
-                            //make sure that the bid is greater than the current bid
-                            if (i.maxBid.bidValue < bid.bidValue) {
-                                //place the bid
-                                placeBid(i, bid, clientID);
-                                //update the state
-                                ServerStateManager.saveState(state);
-                                return ServerSecurityManager.encryptBid(bid, key);
-                            } else {
-                                //if the bid is not high enough
-                                throw new RemoteException("The bid value is less than the current bid");
-                            }
-                        } else {
-                            //if the client is the auction owner
-                            throw new RemoteException("You cannot bid on your own auction");
+                        if (placeBid(i, bid)) {
+                            return ServerSecurityManager.encryptBid(bid, key);
                         }
                     }
                 }
             }
-
-
         }
-        //if the auction cant be found
-        throw new RemoteException("No auction with this ID exists");
+        throw new RemoteException();
     }
 
     @Override
     public synchronized SealedObject closeAuction(int clientID, SealedObject encryptedAuction) throws RemoteException {
-        //find the key for this client
+        /*
+         * Look up the clients key
+         * As long as the key can be found
+         * Find the auction object, remove it from the DS and return the encrypted max bid
+         */
         Key key = findClientKey(clientID);
         if (key != null) {
             Auction auction = ServerSecurityManager.decryptAuction(encryptedAuction, key);
-            //iterate over all of the auctions
-            for (Auction i : state.auctions) {
-                //if the auction id's match
-                if (i.auctionID == auction.auctionID) {
-                    //make sure that the closer owns the auction
-                    if (i.clientID == clientID) {
-                        //make sure that the reserve has been met
-                        if (i.maxBid.bidValue > i.reservePrice) {
-                            //remove the auction from the server
-                            state.auctions.remove(i);
-                            //save the state object
-                            ServerStateManager.saveState(state);
-                            //return the winning bid
-                            return ServerSecurityManager.encryptBid(i.maxBid, key);
-                        } else {
-                            //remove the auction from the server
-                            state.auctions.remove(i);
-                            //save the state object
-                            ServerStateManager.saveState(state);
-                            //if the item failed to meet the reserve
-                            throw new RemoteException("The item failed to meet its reserve price");
-                        }
-                    } else {
-                        //if the client attempts to close an auction that they do not own
-                        throw new RemoteException("You cannot close an auction that you do not own");
+            if (auction != null) {
+                for (Auction i : state.auctions) {
+                    if (i.auctionID == auction.auctionID) {
+                        state.auctions.remove(i);
+                        ServerStateManager.saveState(state);
+                        return ServerSecurityManager.encryptBid(i.maxBid, key);
                     }
                 }
             }
         }
-        //if the auction cannot be found
-        throw new RemoteException("No auction with this ID exists");
+        throw new RemoteException();
     }
 
     //private methods
-    private synchronized void placeBid(Auction auction, Bid bid, int clientID) {
-        auction.maxBid = bid;
-        System.out.println("BID ACCEPTED - ClientID: " + clientID + " AuctionID: " + auction.auctionID + " BidValue: " + bid.bidValue);
+    private synchronized boolean placeBid(Auction auction, Bid bid) {
+        if (bid.bidValue >= auction.maxBid.bidValue) {
+            auction.maxBid = bid;
+            return true;
+        }
+        return false;
     }
 
     private synchronized Key findClientKey(int clientID) {

@@ -23,6 +23,6 @@ public class Auction implements Serializable {
         this.clientID = clientID;
         this.itemDescription = itemDescription;
         this.reservePrice = reservePrice;
-        this.maxBid = new Bid(0, "", startPrice);
+        this.maxBid = new Bid(0, 0, startPrice);
     }
 }
