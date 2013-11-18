@@ -13,6 +13,12 @@ import java.rmi.registry.Registry;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * This class allows access to just the buyer functionality of the client
+ *
+ * @author Chris Foxley-Evans
+ * @version 0.0.1
+ */
 public class ClientBuyer {
     //instance vars
     public ClientState state;

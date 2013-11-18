@@ -13,6 +13,12 @@ import java.rmi.registry.Registry;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * This class holds the min code for the client side of the application
+ *
+ * @author Chris Foxley-Evans
+ * @version 0.0.1
+ */
 public class Client {
     //instance vars
     public ClientState state;

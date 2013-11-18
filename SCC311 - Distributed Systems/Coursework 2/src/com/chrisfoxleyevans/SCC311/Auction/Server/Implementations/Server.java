@@ -17,10 +17,6 @@ public class Server implements IServer {
 
     public ServerState state;
 
-    /**
-     * This is the class constructor, it will attempt to restore state from the file
-     * if this is not possible then it will start with an empty data structure
-     */
     public Server() {
         //attempt to read the saved server state
         ServerState state = ServerStateManager.loadState();
@@ -116,12 +112,6 @@ public class Server implements IServer {
         throw new RemoteException("No auction with this ID exists");
     }
 
-    /**
-     * This function simply wraps the act of placing a bid
-     *
-     * @param auction The auction that is being edited
-     * @param bid     The bid that is being placed
-     */
     private void placeBid(Auction auction, Bid bid) {
         auction.maxBid = bid;
         System.out.println("BID ACCEPTED - ClientID: " + bid.clientID + " AuctionID: " + auction.auctionID + " BidValue: " + bid.bidValue);

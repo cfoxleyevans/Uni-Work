@@ -11,11 +11,6 @@ import java.rmi.server.UnicastRemoteObject;
  */
 public class ServerDriver {
 
-    /**
-     * This is the entry point for the main server application
-     *
-     * @param args Arguments that can be passed into the application (Currently Unused)
-     */
     public static void main(String args[]) {
         try {
             Registry registry = LocateRegistry.createRegistry(1099);
