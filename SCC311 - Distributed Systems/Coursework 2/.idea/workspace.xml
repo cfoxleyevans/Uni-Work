@@ -23,9 +23,12 @@
     <file path="/ClientSeller.java" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1384810952718" ignored="false" />
     <file path="/ClientBuyerDriver.java" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1384810897937" ignored="false" />
     <file path="/ClientSellerDriver.java" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1384810973024" ignored="false" />
-    <file path="$PROJECT_DIR$/doc/com/chrisfoxleyevans/SCC311/Auction/Client/Client.html" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1384811054051" ignored="false" />
+    <file path="$PROJECT_DIR$/doc/com/chrisfoxleyevans/SCC311/Auction/Client/Client.html" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1384811239334" ignored="false" />
     <file path="$PROJECT_DIR$/doc/index-files/index-5.html" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1384811072965" ignored="false" />
-    <file path="$PROJECT_DIR$/doc/index-files/index-3.html" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1384811072965" ignored="false" />
+    <file path="$PROJECT_DIR$/doc/index-files/index-3.html" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1384811419473" ignored="false" />
+    <file path="$PROJECT_DIR$/doc/com/chrisfoxleyevans/SCC311/Auction/Client/ClientBuyer.html" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1384811239334" ignored="false" />
+    <file path="$PROJECT_DIR$/doc/com/chrisfoxleyevans/SCC311/Auction/Client/ClientSeller.html" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1384811239334" ignored="false" />
+    <file path="$PROJECT_DIR$/doc/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Server.html" changelist="e748ea5f-7539-4612-8cd8-180d1079c551" time="1384811239334" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,8 +79,8 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -146,6 +149,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -180,8 +185,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -438,7 +441,6 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40597016" sideWeight="0.4996215" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4238806" sideWeight="0.50071734" order="7" side_tool="true" content_ui="tabs" />
@@ -448,10 +450,11 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17144907" sideWeight="0.6473214" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35267857" sideWeight="0.49928263" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17144907" sideWeight="0.6473214" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35267857" sideWeight="0.49928263" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -524,155 +527,82 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="64" selection-start="121" selection-end="121" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="method#Server#0;class#Server#0" expanded="false" />
-            <element signature="method#getActiveAuctions#0;class#Server#0" expanded="false" />
-            <element signature="method#registerAuction#0;class#Server#0" expanded="false" />
-            <element signature="method#registerBid#0;class#Server#0" expanded="false" />
-            <element signature="method#closeAuction#0;class#Server#0" expanded="false" />
-            <element signature="method#placeBid#0;class#Server#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="3" column="64" selection-start="121" selection-end="121" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/StateManager/ServerStateManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="3" selection-start="358" selection-end="358" vertical-scroll-proportion="0.44226044">
-          <folding />
-        </state>
+        <state line="15" column="3" selection-start="358" selection-end="358" vertical-scroll-proportion="0.44226044" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/StateManager/ServerState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="3" selection-start="256" selection-end="256" vertical-scroll-proportion="0.22113022">
-          <folding />
-        </state>
+        <state line="9" column="3" selection-start="256" selection-end="256" vertical-scroll-proportion="0.22113022" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Interfaces/IServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="30" selection-start="493" selection-end="493" vertical-scroll-proportion="0.4054054">
-          <folding />
-        </state>
+        <state line="16" column="30" selection-start="493" selection-end="493" vertical-scroll-proportion="0.4054054" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/ServerDriver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="4" selection-start="357" selection-end="357" vertical-scroll-proportion="0.2948403">
-          <folding />
-        </state>
+        <state line="12" column="4" selection-start="357" selection-end="357" vertical-scroll-proportion="0.2948403" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="0" selection-start="1711" selection-end="1711" vertical-scroll-proportion="0.84766585">
-          <folding>
-            <element signature="method#Server#0;class#Server#0" expanded="false" />
-            <element signature="method#getActiveAuctions#0;class#Server#0" expanded="false" />
-            <element signature="method#registerAuction#0;class#Server#0" expanded="false" />
-            <element signature="method#registerBid#0;class#Server#0" expanded="false" />
-            <element signature="method#closeAuction#0;class#Server#0" expanded="false" />
-            <element signature="method#placeBid#0;class#Server#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="52" column="0" selection-start="1711" selection-end="1711" vertical-scroll-proportion="0.84766585" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Bid.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="4" selection-start="356" selection-end="356" vertical-scroll-proportion="0.55773956">
-          <folding />
-        </state>
+        <state line="16" column="4" selection-start="356" selection-end="356" vertical-scroll-proportion="0.55773956" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Auction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="4" selection-start="454" selection-end="454" vertical-scroll-proportion="0.7002457">
-          <folding />
-        </state>
+        <state line="19" column="4" selection-start="454" selection-end="454" vertical-scroll-proportion="0.7002457" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/ClientBuyerDriver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="3" column="0" selection-start="57" selection-end="57" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/ClientBuyer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="52" selection-start="783" selection-end="783" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="method#ClientBuyer#0;class#ClientBuyer#0" expanded="false" />
-            <element signature="method#displayAuctions#0;class#ClientBuyer#0" expanded="false" />
-            <element signature="method#registerBid#0;class#ClientBuyer#0" expanded="false" />
-            <element signature="method#registerAuction#0;class#ClientBuyer#0" expanded="false" />
-            <element signature="method#closeAuction#0;class#ClientBuyer#0" expanded="false" />
-            <element signature="method#displayMenu#0;class#ClientBuyer#0" expanded="false" />
-            <element signature="method#closeApplication#0;class#ClientBuyer#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="21" column="52" selection-start="783" selection-end="783" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="27" selection-start="655" selection-end="655" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="method#Client#0;class#Client#0" expanded="false" />
-            <element signature="method#displayAuctions#0;class#Client#0" expanded="false" />
-            <element signature="method#registerBid#0;class#Client#0" expanded="false" />
-            <element signature="method#registerAuction#0;class#Client#0" expanded="false" />
-            <element signature="method#closeAuction#0;class#Client#0" expanded="false" />
-            <element signature="method#displayMenu#0;class#Client#0" expanded="false" />
-            <element signature="method#closeApplication#0;class#Client#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="16" column="27" selection-start="655" selection-end="655" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/StateManager/ClientState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="49" selection-start="324" selection-end="324" vertical-scroll-proportion="0.1171875">
-          <folding />
-        </state>
+        <state line="9" column="49" selection-start="324" selection-end="324" vertical-scroll-proportion="0.1171875" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/StateManager/ClientStateManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="4" selection-start="359" selection-end="359" vertical-scroll-proportion="0.44226044">
-          <folding>
-            <element signature="method#saveState#0;class#ClientStateManager#0" expanded="false" />
-            <element signature="method#loadState#0;class#ClientStateManager#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="15" column="4" selection-start="359" selection-end="359" vertical-scroll-proportion="0.44226044" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/ClientSellerDriver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="36" selection-start="93" selection-end="93" vertical-scroll-proportion="0.11056511">
-          <folding />
-        </state>
+        <state line="3" column="36" selection-start="93" selection-end="93" vertical-scroll-proportion="0.11056511" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/ClientSeller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="46" selection-start="674" selection-end="674" vertical-scroll-proportion="0.11793612">
-          <folding>
-            <element signature="method#ClientSeller#0;class#ClientSeller#0" expanded="false" />
-            <element signature="method#displayAuctions#0;class#ClientSeller#0" expanded="false" />
-            <element signature="method#registerBid#0;class#ClientSeller#0" expanded="false" />
-            <element signature="method#registerAuction#0;class#ClientSeller#0" expanded="false" />
-            <element signature="method#closeAuction#0;class#ClientSeller#0" expanded="false" />
-            <element signature="method#displayMenu#0;class#ClientSeller#0" expanded="false" />
-            <element signature="method#closeApplication#0;class#ClientSeller#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="16" column="46" selection-start="674" selection-end="674" vertical-scroll-proportion="0.11793612" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/ClientDriver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="42" selection-start="99" selection-end="99" vertical-scroll-proportion="0.07862408">
-          <folding />
-        </state>
+        <state line="3" column="42" selection-start="99" selection-end="99" vertical-scroll-proportion="0.07862408" />
       </provider>
     </entry>
   </component>
