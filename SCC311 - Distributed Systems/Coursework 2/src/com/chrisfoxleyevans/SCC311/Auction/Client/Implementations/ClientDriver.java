@@ -1,11 +1,7 @@
 package com.chrisfoxleyevans.SCC311.Auction.Client.Implementations;
 
 /**
-<<<<<<< HEAD:SCC311 - Distributed Systems/Coursework 2/src/com/chrisfoxleyevans/SCC311/Auction/Client/ClientDriver.java
- * This class creates a client and runs it
-=======
  * The class server as an entry point to the client app
->>>>>>> SCC311Security:SCC311 - Distributed Systems/Coursework 2/src/com/chrisfoxleyevans/SCC311/Auction/Client/Implementations/ClientDriver.java
  *
  * @author Chris Foxley-Evans
  * @version 0.0.1

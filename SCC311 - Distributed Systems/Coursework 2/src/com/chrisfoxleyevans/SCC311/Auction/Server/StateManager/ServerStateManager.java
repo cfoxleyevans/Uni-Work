@@ -13,10 +13,7 @@ import java.io.ObjectOutputStream;
  */
 public class ServerStateManager {
 
-<<<<<<< HEAD
-=======
     //public methods
->>>>>>> SCC311Security
     public static boolean saveState(ServerState state) {
         try {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("serverState"));

@@ -17,14 +17,9 @@ public class Auction implements Serializable {
     public double reservePrice;
     public Bid maxBid;
 
-<<<<<<< HEAD
-    public Auction(int auctionID, int clientID, String itemDescription, double reservePrice, double startPrice) {
-        this.auctionID = auctionID;
-=======
     //constructor
     public Auction(int clientID, String itemDescription, double reservePrice, double startPrice) {
         this.auctionID = 0;
->>>>>>> SCC311Security
         this.clientID = clientID;
         this.itemDescription = itemDescription;
         this.reservePrice = reservePrice;

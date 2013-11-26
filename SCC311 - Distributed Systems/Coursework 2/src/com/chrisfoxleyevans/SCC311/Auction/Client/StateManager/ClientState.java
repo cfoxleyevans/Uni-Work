@@ -9,7 +9,8 @@ import java.security.Key;
 import java.util.ArrayList;
 
 /**
- * This class represents that state of the client
+ * This class represents that state of the client at a given time this can then be written to file
+ * when changes are made.
  *
  * @author Chris Foxley-Evans
  * @version 0.0.1
@@ -24,12 +25,8 @@ public class ClientState implements Serializable {
     public ArrayList<Auction> auctions; //items that the user is auctioning
     public ArrayList<Bid> bids; //bids that the user has placed
 
-<<<<<<< HEAD
-    public ClientState(String username) {
-=======
     //constructor
     public ClientState(String username, String password) {
->>>>>>> SCC311Security
         this.clientID = 0;
         this.username = username;
         this.password = password;

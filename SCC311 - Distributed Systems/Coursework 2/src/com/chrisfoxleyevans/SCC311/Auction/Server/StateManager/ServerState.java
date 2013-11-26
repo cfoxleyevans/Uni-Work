@@ -7,7 +7,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * This class represents that state of the server
+ * This class represents that state of the server at a given time this can then be written to file
+ * when changes are made.
  *
  * @author Chris Foxley-Evans
  * @version 0.0.1
@@ -19,10 +20,7 @@ public class ServerState implements Serializable {
     public ArrayList<ClientSecurityDetails> /* my precious */ clientSecurityDetailses;
     public int auctionID;
 
-<<<<<<< HEAD
-=======
     //constructor
->>>>>>> SCC311Security
     public ServerState() {
         this.auctions = new ArrayList<Auction>();
         this.clientSecurityDetailses = new ArrayList<ClientSecurityDetails>();

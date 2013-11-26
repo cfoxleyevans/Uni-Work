@@ -15,13 +15,9 @@ public class Bid implements Serializable {
     public int clientID;
     public double bidValue;
 
-<<<<<<< HEAD
-    public Bid(int clientID, String username, double bidValue) {
-=======
     //constructor
     public Bid(int auctionID, int clientID, double bidValue) {
         this.auctionID = auctionID;
->>>>>>> SCC311Security
         this.clientID = clientID;
         this.bidValue = bidValue;
     }

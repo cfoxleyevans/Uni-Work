@@ -21,10 +21,7 @@ public class Server implements IServer {
     //instance vars
     public ServerState state;
 
-<<<<<<< HEAD
-=======
     //constructor
->>>>>>> SCC311Security
     public Server() {
         ServerState state = ServerStateManager.loadState();
         if (state == null) {
@@ -126,11 +123,6 @@ public class Server implements IServer {
         throw new RemoteException();
     }
 
-<<<<<<< HEAD
-    private void placeBid(Auction auction, Bid bid) {
-        auction.maxBid = bid;
-        System.out.println("BID ACCEPTED - ClientID: " + bid.clientID + " AuctionID: " + auction.auctionID + " BidValue: " + bid.bidValue);
-=======
     //private methods
     private synchronized boolean placeBid(Auction auction, Bid bid) {
         if (bid.bidValue >= auction.maxBid.bidValue) {
@@ -147,7 +139,6 @@ public class Server implements IServer {
             }
         }
         return null;
->>>>>>> SCC311Security
     }
 }
 

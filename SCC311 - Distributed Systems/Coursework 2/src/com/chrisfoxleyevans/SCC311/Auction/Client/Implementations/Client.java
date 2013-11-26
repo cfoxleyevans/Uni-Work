@@ -16,11 +16,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
-<<<<<<< HEAD:SCC311 - Distributed Systems/Coursework 2/src/com/chrisfoxleyevans/SCC311/Auction/Client/Client.java
- * This class holds the min code for the client side of the application
-=======
  * This class implements all of the functionality that the client will need
->>>>>>> SCC311Security:SCC311 - Distributed Systems/Coursework 2/src/com/chrisfoxleyevans/SCC311/Auction/Client/Implementations/Client.java
  *
  * @author Chris Foxley-Evans
  * @version 0.0.1

@@ -14,10 +14,7 @@ import java.rmi.server.UnicastRemoteObject;
  */
 public class ServerDriver {
 
-<<<<<<< HEAD
-=======
     //main method
->>>>>>> SCC311Security
     public static void main(String args[]) {
         try {
             Registry registry = LocateRegistry.createRegistry(1099);
