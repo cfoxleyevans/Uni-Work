@@ -7,10 +7,17 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
 /**
- * This class is used to start up an instance of the server
+ * The class server as an entry point to the server app
+ *
+ * @author Chris Foxley-Evans
+ * @version 0.0.1
  */
 public class ServerDriver {
 
+<<<<<<< HEAD
+=======
+    //main method
+>>>>>>> SCC311Security
     public static void main(String args[]) {
         try {
             Registry registry = LocateRegistry.createRegistry(1099);

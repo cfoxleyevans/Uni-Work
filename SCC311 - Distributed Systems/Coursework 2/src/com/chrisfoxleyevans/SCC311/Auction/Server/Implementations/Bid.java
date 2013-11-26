@@ -10,13 +10,19 @@ import java.io.Serializable;
  */
 public class Bid implements Serializable {
 
+    //instance vars
+    public int auctionID;
     public int clientID;
-    public String username;
     public double bidValue;
 
+<<<<<<< HEAD
     public Bid(int clientID, String username, double bidValue) {
+=======
+    //constructor
+    public Bid(int auctionID, int clientID, double bidValue) {
+        this.auctionID = auctionID;
+>>>>>>> SCC311Security
         this.clientID = clientID;
-        this.username = username;
         this.bidValue = bidValue;
     }
 }

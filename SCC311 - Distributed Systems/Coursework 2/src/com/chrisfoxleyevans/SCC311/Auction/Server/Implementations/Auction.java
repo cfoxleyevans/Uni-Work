@@ -10,18 +10,24 @@ import java.io.Serializable;
  */
 public class Auction implements Serializable {
 
+    //instance vars
     public int auctionID;
     public int clientID;
     public String itemDescription;
     public double reservePrice;
-    public double startPrice;
     public Bid maxBid;
 
+<<<<<<< HEAD
     public Auction(int auctionID, int clientID, String itemDescription, double reservePrice, double startPrice) {
         this.auctionID = auctionID;
+=======
+    //constructor
+    public Auction(int clientID, String itemDescription, double reservePrice, double startPrice) {
+        this.auctionID = 0;
+>>>>>>> SCC311Security
         this.clientID = clientID;
         this.itemDescription = itemDescription;
         this.reservePrice = reservePrice;
-        this.maxBid = new Bid(0, "", startPrice);
+        this.maxBid = new Bid(0, 0, startPrice);
     }
 }
