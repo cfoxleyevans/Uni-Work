@@ -9,7 +9,10 @@ import com.chrisfoxleyevans.SCC311.Auction.Server.Interfaces.IServer;
 
 import javax.crypto.SealedObject;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ArrayList;
@@ -31,41 +34,52 @@ public class Client {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         String username = "";
         String password = "";
+
         //read in the users username and password
         try {
             System.out.print("Please enter you username: ");
             username = bufferedReader.readLine();
-
             System.out.print("Please enter a password: ");
             password = bufferedReader.readLine();
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("ERROR: " + e.getMessage());
+            closeApplication("Problem reading the input");
         }
 
-        //attempt to read the saved client state
+        //attempt to read the saved client state for this user
         ClientState state = ClientStateManager.loadState(username);
         if (state == null) {
+            //make sure that the new users pass is long enough
+            if (password.length() < 8) {
+                closeApplication("Password you gave is not long enough");
+            }
+
+            //create the new state object
             this.state = new ClientState(username, password);
-            Random random = new Random();
-            this.state.clientID = random.nextInt(Integer.MAX_VALUE) + 1;
+
+            //generate the key
+            this.state.key = ClientSecurityManager.generateKey(password);
+
+            //get the user id from and register with the server
+            try {
+                Registry registry = LocateRegistry.getRegistry(hostname, 1099);
+                this.server = (IServer) registry.lookup("AuctionServer");
+                this.state.clientID = this.server.getNewClientID();
+                this.server.registerClient(this.state.clientID, this.state.key);
+            } catch (Exception e) {
+                System.out.println("ERROR: " + e.getMessage());
+                closeApplication("Unable to create account");
+            }
+
+            //save the state
             ClientStateManager.saveState(this.state);
         } else {
+            //check if the password matches the one in the state file
             if (state.key.hashCode() == ClientSecurityManager.generateKey(password).hashCode()) {
                 this.state = state;
             } else {
-                System.out.println("Sorry that is not the correct password for this user");
                 closeApplication("Password authentication failed");
             }
-        }
-
-        //attempt to connect to the server
-        try {
-            Registry registry = LocateRegistry.getRegistry(hostname);
-            this.server = (IServer) registry.lookup("AuctionServer");
-            this.server.registerClient(this.state.clientID, this.state.key);
-        } catch (Exception e) {
-            System.out.println("ERROR: Unable to connect to the server");
-            closeApplication("Failed to connect to the server unable to continue.");
         }
     }
 
@@ -98,15 +112,13 @@ public class Client {
             System.out.print("Please enter the bid amount: ");
             double bidValue = Double.parseDouble(bufferedReader.readLine());
 
-            if(!ownAuction(auctionID)) {
+            if (!ownAuction(auctionID)) {
                 Bid response = ClientSecurityManager.decryptBid(
-                        server.registerBid(state.clientID,
-                        ClientSecurityManager.encryptBid(new Bid(auctionID, state.clientID, bidValue), state.key)),state.key);
+                        server.registerBid(state.clientID, ClientSecurityManager.encryptBid(new Bid(auctionID, state.clientID, bidValue), state.key)), state.key);
                 if (response != null) {
                     System.out.println("Bid has been placed.");
                 }
-            }
-            else {
+            } else {
                 System.out.println("ERROR: Unable to register the bid.");
             }
         } catch (Exception e) {
@@ -159,16 +171,13 @@ public class Client {
             //make sure that we own this auction
             for (Auction i : state.auctions) {
                 if (i.auctionID == auctionID) {
-
-
                     SealedObject encryptedAuction = ClientSecurityManager.encryptAuction(i, state.key);
                     SealedObject sealedResponse = server.closeAuction(state.clientID, encryptedAuction);
                     Bid winningBid = ClientSecurityManager.decryptBid(sealedResponse, state.key);
 
                     if (winningBid.bidValue < i.reservePrice) {
                         System.out.println("The auction failed to meet the reserve");
-                    }
-                    else {
+                    } else {
                         System.out.println("The auction was won by: " + winningBid.clientID + " with a bid of: " + winningBid.bidValue);
                     }
 

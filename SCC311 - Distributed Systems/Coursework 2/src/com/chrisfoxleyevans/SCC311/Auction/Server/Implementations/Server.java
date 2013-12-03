@@ -33,6 +33,10 @@ public class Server implements IServer {
     }
 
     //public methods
+    public int getNewClientID() {
+        return state.clientSecurityDetailses.size() + 1;
+    }
+
     public void registerClient(int id, Key key) {
         boolean idFound = false;
         for (ClientSecurityDetails i : state.clientSecurityDetailses) {

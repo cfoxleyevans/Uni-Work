@@ -16,6 +16,8 @@ import java.security.Key;
 public interface IServer extends Remote {
 
     //public methods
+    public int getNewClientID() throws RemoteException;
+
     public void registerClient(int id, Key key) throws RemoteException;
 
     public SealedObject getActiveAuctions(int clientID) throws RemoteException;
