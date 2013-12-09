@@ -30,7 +30,7 @@ public class Client {
     public IServer server;
 
     //constructor
-    public Client(String hostname) {
+    public Client(String hostname, int port, String serviceName) {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         String username = "";
         String password = "";
@@ -62,8 +62,10 @@ public class Client {
 
             //get the user id from and register with the server
             try {
-                Registry registry = LocateRegistry.getRegistry(hostname, 1099);
-                this.server = (IServer) registry.lookup("AuctionServer");
+                Registry registry = LocateRegistry.getRegistry(hostname, port);
+
+
+                this.server = (IServer) registry.lookup(serviceName);
                 this.state.clientID = this.server.getNewClientID();
                 this.server.registerClient(this.state.clientID, this.state.key);
             } catch (Exception e) {

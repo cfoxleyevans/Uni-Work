@@ -16,12 +16,14 @@ import java.util.ArrayList;
 public class ServerState implements Serializable {
 
     //instance vars
+    public String serviceName;
     public ArrayList<Auction> auctions;
     public ArrayList<ClientSecurityDetails> /* my precious */ clientSecurityDetailses;
     public int auctionID;
 
     //constructor
-    public ServerState() {
+    public ServerState(String serviceName) {
+        this.serviceName = serviceName;
         this.auctions = new ArrayList<Auction>();
         this.clientSecurityDetailses = new ArrayList<ClientSecurityDetails>();
         this.auctionID = 0;

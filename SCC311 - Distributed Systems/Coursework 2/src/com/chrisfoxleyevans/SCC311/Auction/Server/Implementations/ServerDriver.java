@@ -17,14 +17,21 @@ public class ServerDriver {
     //main method
     public static void main(String args[]) {
         try {
-            Registry registry = LocateRegistry.createRegistry(1099);
+            Registry registry = LocateRegistry.createRegistry(2000);
+            Server server = new Server("AuctionServerZeroState.state");
+            IServer stub = (IServer) UnicastRemoteObject.exportObject(server, 2000);
 
-            Server server = new Server();
-            IServer stub = (IServer) UnicastRemoteObject.exportObject(server, 1099);
+            registry.bind("AuctionServerZero", stub);
+            System.out.println("Server Zero is running. Bound to the name \"AuctionServerZero\" on port 2000");
 
-            registry.bind("AuctionServer", stub);
 
-            System.out.println("Server is running. Bound to the name \"AuctionServer\" on port 1099");
+//            Registry registry = LocateRegistry.createRegistry(2001);
+//            Server server = new Server("AuctionServerOneState.state");
+//            IServer stub = (IServer) UnicastRemoteObject.exportObject(server, 2001);
+//
+//            registry.bind("AuctionServerOne", stub);
+//            System.out.println("Server One is running. Bound to the name \"AuctionServerOne\" on port 2001");
+
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
         }

@@ -11,7 +11,10 @@ public class ClientDriver {
     //main method
     public static void main(String args[]) {
         try {
-            Client testClient = new Client("localhost");
+           Client testClient = new Client("localhost", 2000, "AuctionServerZero");
+
+//            Client testClient = new Client("localhost", 2001, "AuctionServerOne");
+
             if (testClient.server != null) {
                 while (true) {
                     testClient.displayMenu();
