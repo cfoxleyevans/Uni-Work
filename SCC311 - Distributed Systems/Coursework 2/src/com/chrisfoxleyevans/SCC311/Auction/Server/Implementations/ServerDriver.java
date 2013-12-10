@@ -13,24 +13,17 @@ import java.rmi.server.UnicastRemoteObject;
  * @version 0.0.1
  */
 public class ServerDriver {
+    public static int portNumber = 2000;
 
     //main method
     public static void main(String args[]) {
         try {
-            Registry registry = LocateRegistry.createRegistry(2000);
-            Server server = new Server("AuctionServerZeroState.state");
-            IServer stub = (IServer) UnicastRemoteObject.exportObject(server, 2000);
+            Registry registry = LocateRegistry.createRegistry(portNumber);
+            Server server = new Server("AuctionServer" + portNumber + ".state");
+            IServer stub = (IServer) UnicastRemoteObject.exportObject(server, portNumber);
 
-            registry.bind("AuctionServerZero", stub);
-            System.out.println("Server Zero is running. Bound to the name \"AuctionServerZero\" on port 2000");
-
-
-            Registry registryOne = LocateRegistry.createRegistry(2001);
-            Server serverOne = new Server("AuctionServerOneState.state");
-            IServer stubOne = (IServer) UnicastRemoteObject.exportObject(serverOne, 2001);
-
-            registryOne.bind("AuctionServerOne", stubOne);
-            System.out.println("Server One is running. Bound to the name \"AuctionServerOne\" on port 2001");
+            registry.bind("AuctionServer", stub);
+            System.out.println("Server is running. Bound to the name \"AuctionServer\" on port " + portNumber);
 
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
