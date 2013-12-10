@@ -13,12 +13,14 @@ public class Bid implements Serializable {
     //instance vars
     public int auctionID;
     public int clientID;
+    public String clientName;
     public double bidValue;
 
     //constructor
-    public Bid(int auctionID, int clientID, double bidValue) {
+    public Bid(int auctionID, int clientID, String clientName, double bidValue) {
         this.auctionID = auctionID;
         this.clientID = clientID;
+        this.clientName = clientName;
         this.bidValue = bidValue;
     }
 }

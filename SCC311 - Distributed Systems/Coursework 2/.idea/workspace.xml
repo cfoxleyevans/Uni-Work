@@ -84,16 +84,34 @@
       <file leaf-file-name="ServerDriver.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/ServerDriver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="39" selection-start="443" selection-end="443" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="510">
+            <state line="15" column="39" selection-start="443" selection-end="443" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientDriver.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Client.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/Implementations/Client.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="182" column="94" selection-start="7893" selection-end="7893" vertical-scroll-proportion="0.18382353" vertical-offset="2365" max-vertical-offset="3525">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Bid.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Bid.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="37" selection-start="607" selection-end="607" vertical-scroll-proportion="0.0" vertical-offset="27" max-vertical-offset="480">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientDriver.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/Implementations/ClientDriver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="39" selection-start="251" selection-end="251" vertical-scroll-proportion="0.31914893" vertical-offset="0" max-vertical-offset="480">
+            <state line="9" column="39" selection-start="251" selection-end="251" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
               <folding />
             </state>
           </provider>
@@ -114,18 +132,18 @@
         <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/StateManager/ClientState.java" />
         <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/SecurityManager/ServerSecurityManager.java" />
         <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Shared/GenericStateManager.java" />
-        <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Bid.java" />
         <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Auction.java" />
         <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/SecurityManager/ClientSecurityDetails.java" />
         <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/SecurityManager/ClientSecurityManager.java" />
         <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Interfaces/IServer.java" />
-        <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/Implementations/Client.java" />
-        <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/StateManager/ServerStateManager.java" />
-        <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/StateManager/ServerState.java" />
         <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/ReplicationManager/ReplicationManager.java" />
+        <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/StateManager/ServerState.java" />
+        <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/StateManager/ServerStateManager.java" />
         <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Server.java" />
         <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/ServerDriver.java" />
         <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/Implementations/ClientDriver.java" />
+        <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Bid.java" />
+        <option value="$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/Implementations/Client.java" />
       </list>
     </option>
   </component>
@@ -160,7 +178,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -329,6 +346,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -393,19 +411,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -431,6 +436,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -598,7 +616,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1440" height="790" extended-state="0" />
+    <frame x="0" y="22" width="1440" height="790" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -656,6 +674,20 @@
     <option name="showOnlyWarnings" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/ServerDriver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="39" selection-start="443" selection-end="443" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/Implementations/ClientDriver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="39" selection-start="251" selection-end="251" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="480">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Server.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="44" column="56" selection-start="1616" selection-end="1616" vertical-scroll-proportion="0.0" vertical-offset="660" max-vertical-offset="2490">
@@ -804,11 +836,6 @@
         <state line="3" column="64" selection-start="121" selection-end="121" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Bid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="33" selection-start="520" selection-end="520" vertical-scroll-proportion="0.4651163" vertical-offset="0" max-vertical-offset="0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Auction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="34" selection-start="765" selection-end="765" vertical-scroll-proportion="0.627907" vertical-offset="0" max-vertical-offset="0" />
@@ -846,13 +873,6 @@
         <state line="6" column="0" selection-start="126" selection-end="257" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/Implementations/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="0" selection-start="2765" selection-end="2765" vertical-scroll-proportion="0.17352942" vertical-offset="707" max-vertical-offset="3525">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/libs/jgroups-3.4.1.jar!/org/jgroups/Event.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="69" column="28" selection-start="3032" selection-end="3032" vertical-scroll-proportion="-7.08" vertical-offset="843" max-vertical-offset="1185" />
@@ -868,30 +888,6 @@
         <state line="118" column="16" selection-start="5712" selection-end="5712" vertical-scroll-proportion="-4.08" vertical-offset="1653" max-vertical-offset="3435" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/StateManager/ServerStateManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="75" selection-start="453" selection-end="453" vertical-scroll-proportion="0.56395346" vertical-offset="31" max-vertical-offset="375">
-          <folding>
-            <element signature="method#saveState#0;class#ServerStateManager#0" expanded="false" />
-            <element signature="method#loadState#0;class#ServerStateManager#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/StateManager/ServerState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="39" selection-start="832" selection-end="832" vertical-scroll-proportion="0.59128064" vertical-offset="98" max-vertical-offset="495">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="30" selection-start="1284" selection-end="1284" vertical-scroll-proportion="0.54846334" vertical-offset="113" max-vertical-offset="2490">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/ReplicationManager/ReplicationManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="37" column="30" selection-start="1109" selection-end="1109" vertical-scroll-proportion="0.5035461" vertical-offset="237" max-vertical-offset="930">
@@ -899,16 +895,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/StateManager/ServerState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="23" selection-start="808" selection-end="808" vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="495">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/StateManager/ServerStateManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="122" selection-start="587" selection-end="587" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="630">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="140" column="76" selection-start="5636" selection-end="5636" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2490">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/ServerDriver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="39" selection-start="443" selection-end="443" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="510">
+        <state line="15" column="39" selection-start="443" selection-end="443" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/Implementations/ClientDriver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="39" selection-start="251" selection-end="251" vertical-scroll-proportion="0.31914893" vertical-offset="0" max-vertical-offset="480">
+        <state line="9" column="39" selection-start="251" selection-end="251" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Server/Implementations/Bid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="37" selection-start="607" selection-end="607" vertical-scroll-proportion="0.0" vertical-offset="27" max-vertical-offset="480">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/chrisfoxleyevans/SCC311/Auction/Client/Implementations/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="182" column="94" selection-start="7893" selection-end="7893" vertical-scroll-proportion="0.18382353" vertical-offset="2365" max-vertical-offset="3525">
           <folding />
         </state>
       </provider>

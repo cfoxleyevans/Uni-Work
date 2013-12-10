@@ -16,9 +16,9 @@ public class ServerStateManager {
 
 
     //public methods
-    public static boolean saveState(ServerState state, String serviceName) {
+    public static boolean saveState(ServerState state, int portNumber) {
         try {
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("serverState" + serviceName));
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("serverState" + portNumber));
             objectOutputStream.writeObject(state);
             return true;
         } catch (Exception e) {
@@ -27,9 +27,9 @@ public class ServerStateManager {
         }
     }
 
-    public static ServerState loadState(String serviceName) {
+    public static ServerState loadState(int portNumber) {
         try {
-            ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("ServerState" + serviceName));
+            ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("ServerState" + portNumber));
             return (ServerState) objectInputStream.readObject();
         } catch (Exception e) {
             System.out.println("INFO: No state found creating new state file");

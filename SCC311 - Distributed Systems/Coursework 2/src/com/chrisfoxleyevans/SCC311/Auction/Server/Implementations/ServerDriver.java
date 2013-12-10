@@ -13,13 +13,13 @@ import java.rmi.server.UnicastRemoteObject;
  * @version 0.0.1
  */
 public class ServerDriver {
-    public static int portNumber = 2000;
+    public static int portNumber = 2003;
 
     //main method
     public static void main(String args[]) {
         try {
             Registry registry = LocateRegistry.createRegistry(portNumber);
-            Server server = new Server("AuctionServer" + portNumber + ".state");
+            Server server = new Server(portNumber);
             IServer stub = (IServer) UnicastRemoteObject.exportObject(server, portNumber);
 
             registry.bind("AuctionServer", stub);

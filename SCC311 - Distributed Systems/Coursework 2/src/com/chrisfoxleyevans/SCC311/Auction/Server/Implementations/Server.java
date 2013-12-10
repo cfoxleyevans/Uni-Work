@@ -25,11 +25,11 @@ public class Server implements IServer {
     public ReplicationManager replicationManager;
 
     //constructor
-    public Server(String serviceName) {
-        ServerState state = ServerStateManager.loadState(serviceName);
+    public Server(int portNumber) {
+        ServerState state = ServerStateManager.loadState(portNumber);
         if (state == null) {
-            this.state = new ServerState(serviceName);
-            ServerStateManager.saveState(this.state, serviceName);
+            this.state = new ServerState(portNumber);
+            ServerStateManager.saveState(this.state, portNumber);
         } else {
             this.state = state;
         }
@@ -41,7 +41,7 @@ public class Server implements IServer {
     //public methods
     public int getNewClientID() {
         //save the local state and ask the rep manager to distribute it
-        ServerStateManager.saveState(state, state.serviceName);
+        ServerStateManager.saveState(state, state.portNumber);
         replicationManager.send(new Message(null, state));
 
         return state.clientSecurityDetailses.size() + 1;
@@ -84,7 +84,7 @@ public class Server implements IServer {
                     " Start price: " + auction.maxBid.bidValue);
 
             //save the local state and ask the rep manager to distribute it
-            ServerStateManager.saveState(state, state.serviceName);
+            ServerStateManager.saveState(state, state.portNumber);
             replicationManager.send(new Message(null, state));
 
             return ServerSecurityManager.encryptAuction(auction, key);
@@ -110,7 +110,7 @@ public class Server implements IServer {
                     if (i.auctionID == bid.auctionID) {
                         if (placeBid(i, bid)) {
                             //save the local state and ask the rep manager to distribute it
-                            ServerStateManager.saveState(state, state.serviceName);
+                            ServerStateManager.saveState(state, state.portNumber);
                             replicationManager.send(new Message(null, state));
 
                             return ServerSecurityManager.encryptBid(bid, key);
@@ -138,7 +138,7 @@ public class Server implements IServer {
                         state.auctions.remove(i);
 
                         //save the local state and ask the rep manager to distribute it
-                        ServerStateManager.saveState(state, state.serviceName);
+                        ServerStateManager.saveState(state, state.portNumber);
                         replicationManager.send(new Message(null, state));
 
                         return ServerSecurityManager.encryptBid(i.maxBid, key);
