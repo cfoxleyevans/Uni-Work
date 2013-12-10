@@ -43,19 +43,19 @@ public class ReplicationManager extends ReceiverAdapter{
         super.getState(output);
     }
 
+    @Override
+    public void receive(Message msg) {
+        synchronized (server.state) {
+            server.state = (ServerState) msg.getObject();
+        }
+    }
+
     public void send(Message msg) {
         try {
             channel.send(msg);
         }
         catch (Exception e) {
 
-        }
-    }
-
-    @Override
-    public void receive(Message msg) {
-        synchronized (server.state) {
-            server.state = (ServerState) msg.getObject();
         }
     }
 
