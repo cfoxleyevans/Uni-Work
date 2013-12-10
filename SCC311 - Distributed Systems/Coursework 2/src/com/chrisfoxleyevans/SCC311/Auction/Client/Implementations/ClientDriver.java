@@ -7,7 +7,7 @@ package com.chrisfoxleyevans.SCC311.Auction.Client.Implementations;
  * @version 0.0.1
  */
 public class ClientDriver {
-    public static int portNumber = 2003;
+    public static int portNumber = 2002;
 
     //main method
     public static void main(String args[]) {

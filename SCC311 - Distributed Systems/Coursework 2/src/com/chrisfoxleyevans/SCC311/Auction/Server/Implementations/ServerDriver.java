@@ -13,7 +13,7 @@ import java.rmi.server.UnicastRemoteObject;
  * @version 0.0.1
  */
 public class ServerDriver {
-    public static int portNumber = 2003;
+    public static int portNumber = 2002;
 
     //main method
     public static void main(String args[]) {
