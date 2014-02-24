@@ -1,0 +1,44 @@
+ #include <16f727.h>  A    1 :V17
+  A    2 :
+//turn off all optimisation  A    3 :
+#opt 0  A    4 :
+  A    5 :
+//set up the config bits  A    6 :
+#FUSES NOWDT, INTRC           A    7 :
+  A    8 :
+//set the clock speed so delays are correct  A    9 :
+#use delay(clock=16000000)  A   10 :V19V21
+  A   11 :
+  A   12 :
+//hardware definitions  A   13 :
+#define ORANGE_LED 		PIN_E0  A   14 :
+#define RED_LED 		PIN_E1  A   15 :
+  A   16 :
+#define CARRIER_SENSE 	PIN_B4  A   17 :
+  A   18 :
+#define PUSH_BUTTON		PIN_B5  A   19 :
+  A   20 :
+//this function is called to perform set up of the borads hardware  A   21 :
+void setup_hardware() {  A   22 :f17{16
+    //make sure all ports are using digital I/O  A   23 :
+    setup_adc_ports(NO_ANALOGS);  A   24 :
+}  A   25 :}18
+  A   26 :
+//this is the main program code  A   27 :
+void main() {  A   28 :f20{20
+    setup_hardware();  A   29 :
+  A   30 :
+    while(1) {  A   31 :
+    	output_bit(ORANGE_LED, 1);  A   32 :{25
+    	output_bit(ORANGE_LED, 0);  A   33 :
+    	delay_ms(1000);  A   34 :
+  A   35 :
+		output_bit(ORANGE_LED, 0);  A   36 :
+    	output_bit(ORANGE_LED, 1);  A   37 :
+    	delay_ms(1000);  A   38 :
+      A   39 :
+    }  A   40 :}28
+  A   41 :
+}  A   42 :}29E
+ A   42 :
+

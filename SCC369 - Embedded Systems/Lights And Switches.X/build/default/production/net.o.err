@@ -1,0 +1,4 @@
+Warning[215] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\NET.ASM 26 : Processor superseded by command line.  Verify processor symbol.
+Message[301] C:\PROGRAM FILES (X86)\MICROCHIP\MPLABX\MPASMX\P16F648A.INC 33 : MESSAGE: (Processor-header file mismatch.  Verify selected processor.)
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\NET.ASM 57 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\NET.ASM 59 : Register in operand not in bank 0.  Ensure that bank bits are correct.

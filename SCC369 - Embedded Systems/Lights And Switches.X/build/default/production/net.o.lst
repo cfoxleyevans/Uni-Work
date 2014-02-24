@@ -1,0 +1,478 @@
+MPASM 5.53                           NET.ASM   11-20-2013  0:53:15         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 
+                      00002 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                      00003 ;                                                                                       ;
+                      00004 ;       PIC Microcontroller Tutorial Template   ;
+                      00005 ;                                                                                       ;
+                      00006 ;       By Brad Slattery 2009                                   ;
+                      00007 ;       www.bradsprojects.com                                   ;
+                      00008 ;       brad@bradsprojects.com                                  ;
+                      00009 ;                                                                                       ;
+                      00010 ;       'Designing electronic projects,                 ;
+                      00011 ;       to spread the name of Jesus'                    ;
+                      00012 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                      00013 
+                      00014                                                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                            ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                      00015                                                                 ;                                       
+                                                                                                                            
+                      00016                                                                 ;       NOTE: If you are brand new to pr
+                            ogramming, then don't concern yourself to                       ;
+                      00017                                                                 ;       much with all of these initial l
+                            ines of code. You can read up all about this            ;
+                      00018                                                                 ;       at a later date if you wish. I'm
+                             sure that you would rather make an LED flash           ;
+                      00019                                                                 ;       or make something interesting ha
+                            ppen straight away right?                                                       ;
+                      00020                                                                 ;       All you have to know for now is 
+                            that we will be placing our code just underneath        ;
+                      00021                                                                 ;       the SETUP label, and then undern
+                            eath the BEGIN label. it's really quite simple!         ;
+                      00022                                                                 ;                                       
+                                                                                                                            
+                      00023                                                                 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                            ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                      00024 
+                      00025 
+Warning[215]: Processor superseded by command line.  Verify processor symbol.
+                      00026         LIST p=16f648a                          ;       tell assembler what chip we are using (if you ar
+                            e using the 16f628a, then
+                      00027         include "P16f648a.inc"          ;       make sure you change this line and the previous line to 
+                            read p16f628a
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC16F648A processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2013 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+Message[301]: MESSAGE: (Processor-header file mismatch.  Verify selected processor.)
+                      00384         LIST
+2007   3F18           00028         __config h'3f18'                        ;       sets the configuration settings - internal oscil
+                            lator, watchdog timer OFF
+                      00029                                                                 ;       Power Up Timer DISABLED, Master 
+MPASM 5.53                           NET.ASM   11-20-2013  0:53:15         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                            Clear DISABLED, Brown Out Detect DISABLED,
+                      00030                                                                 ;       Low Voltage Programming DISABLED
+                            , Data EE Read Protect Disabled,
+                      00031                                                                 ;       Code Protect OFF. (this will rem
+                            ain the same for all tutorials)
+                      00032 
+                      00033 
+  00000002            00034 PC equ h'02'                                    ;       The program counter will be refered to as PC - T
+                            he program counter is
+                      00035                                                                 ;       a little counter within the micr
+                            ocontroller to let itself know what line number
+                      00036                                                                 ;       it is upto when running a progra
+                            m. We can make the microcontroller jump to a certain
+                      00037                                                                 ;       line number by changing the valu
+                            e stored in PC. (we will do this in a later tutorial)
+                      00038 
+                      00039         cblock h'20'                            ;       Within this cblock and endc, we can define our v
+                            ariables. More info on this, later.
+  00000020            00040         delay_1                                         ;       set aside 1 byte for a variable called d
+                            elay_1
+  00000021            00041         delay_2                                         ;       set aside 1 byte for a variable called d
+                            elay_1
+  00000022            00042         direction                                       ;       set aside 1 byte for a variable called d
+                            irection
+                      00043         endc                                            ;       that's the end of defining our variables
+                      00044 
+                      00045 
+                      00046 
+0000                  00047         org h'0000'                                     ;       This line just tells the microcontroller
+                             what address to start running our program from.
+                      00048                                                                 ;       It will always be 0000 hex for a
+                            ll the tutorials.
+                      00049 
+                      00050 
+0000   3007           00051         movlw h'07'                                     ;       This will turn the comparators OFF.
+0001   009F           00052         movwf CMCON                             ;       (we just want to use the ports as digital ports)
+                      00053 
+                      00054 
+0002   1683           00055         bsf STATUS, RP0                         ;       select bank 1 (to enable us to change the Input 
+                            / Output status of our ports)
+0003   3000           00056         movlw b'00000000'                       ;       set PORTB all outputs (A '0' means output, A '1'
+                             means input. We can set each
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0004   0086           00057         movwf TRISB                                     ;       We can set each bit individualy. Each po
+                            rt having 8-bits or 8 pins.
+0005   3020           00058         movlw b'00100000'                       ;       set PORTA all outputs except for bit 5. Bit 5 is
+                             an input ONLY pin.
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0006   0085           00059         movwf TRISA                             ;       It cannot be set to an output!
+0007   1283           00060         bcf STATUS, RP0                         ;       select bank 0
+                      00061 
+                      00062 
+                      00063 
+MPASM 5.53                           NET.ASM   11-20-2013  0:53:15         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00064 
+0008                  00065 setup                                                   ;       I always have a title labeled 'setup' th
+                            is is where we set everything up
+                      00066 
+0008   3007           00067         movlw d'07'                                     ;       setup our direction variable so that it 
+                            will only allow our
+0009   00A2           00068         movwf direction                         ;       scanner to move seven placed to the left or to t
+                            he right
+                      00069 
+000A   0186           00070         clrf PORTB                                      ;       Turn all LEDs connected to PORTB OFF
+000B   1003           00071         bcf STATUS, C                           ;       clear the carry bit in the status register (make
+                             it a zero)
+000C   3001           00072         movlw b'00000001'                       ;       setup the start position of the scanner.
+000D   0086           00073         movwf PORTB                                     ;       which is the first LED on the right
+                      00074                                                                 ;       i.e. our variables and flags etc
+                            .. so they are ready for the main program
+                      00075 
+                      00076 
+000E                  00077 begin                                                   ;       This is where our main program starts.
+                      00078 
+000E                  00079 shift_left                                              ;       the lines underneath this, take care of 
+                            shifting the LED's left
+000E   0D86           00080         rlf PORTB, f                            ;       shift the data in PORTB one space to the left
+000F   201B           00081         call delay                                      ;       and call the delay to hold that LED on f
+                            or a moment
+0010   0BA2           00082         decfsz direction, f                     ;       take one away from our direction variable, if th
+                            e answer ISN'T ZERO then
+0011   280E           00083                 goto shift_left                 ;       go back and shift left again, but if the answer 
+                            IS ZERO then
+0012   3007           00084         movlw d'07'                                     ;       reset the direction variable to seven,
+0013   00A2           00085         movwf direction                         ;       and then continue with the rest of the code
+                      00086 
+0014                  00087 shift_right                                             ;       the lines underneath this, take care of 
+                            shifting the LED's left
+0014   0C86           00088         rrf PORTB, f                            ;       shift the data in PORTB one space to the right
+0015   201B           00089         call delay                                      ;       and call the delay to hold that LED on f
+                            or a moment
+0016   0BA2           00090         decfsz direction, f                     ;       take one away from our direction variable, if th
+                            e answer ISN'T ZERO then
+0017   2814           00091                 goto shift_right                ;       go back and shift right again, but if the answer
+                             IS ZERO then
+0018   3007           00092         movlw d'07'                                     ;       reset the direction variable to seven,
+0019   00A2           00093         movwf direction                         ;       and continue with the rest of the code
+                      00094 
+001A   280E           00095         goto begin                                      ;       and now go and do it all again (it will 
+                            run in a continuous loop)
+                      00096 
+                      00097 
+                      00098 
+001B                  00099 delay                                                   ;       here is a nice and simple delay routine
+001B   3064           00100         movlw d'100'                            ;       copy the maximum number to our working register 
+                            (decimal 255)
+001C   00A0           00101         movwf delay_1                           ;       and now copy it from the w register to delay_1 a
+MPASM 5.53                           NET.ASM   11-20-2013  0:53:15         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                            nd delay_2
+001D   00A1           00102         movwf delay_2                           ;       Now the rest of the routine will focus on counti
+                            ng down to zero.
+001E                  00103 delay_loop                                              ;       We come back to this label when we have 
+                            not yet reached zero.
+001E   0BA0           00104         decfsz delay_1, f                       ;       decrement whatever is in delay_1 by 1 and store 
+                            the answer back in delay_1
+001F   281E           00105                 goto delay_loop                 ;       if the answer is not zero, then go back to the d
+                            elay_loop label. but if the
+0020   0BA1           00106         decfsz delay_2, f                       ;       answer is zero then decrement delay_2 by one and
+                             store the answer in delay_2
+0021   281E           00107                 goto delay_loop                 ;       if the answer is not zero, then go back to delay
+                            _loop label. but if the answer
+0022   0008           00108         return                                          ;       is zero, then we have completed our dela
+                            y and now we can return to our main program!
+                      00109 
+                      00110 
+                      00111 
+                      00112         end                                                     ;       We always need to have end at th
+                            e end, even if we don't want the program
+MPASM 5.53                           NET.ASM   11-20-2013  0:53:15         PAGE  5
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ADDEN                             00000003
+ADEN                              00000003
+BRGH                              00000002
+C                                 00000000
+C1INV                             00000004
+C1OUT                             00000006
+C2INV                             00000005
+C2OUT                             00000007
+CCP1CON                           00000017
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP1X                             00000005
+CCP1Y                             00000004
+CCPR1                             00000015
+CCPR1H                            00000016
+CCPR1L                            00000015
+CIS                               00000003
+CM0                               00000000
+CM1                               00000001
+CM2                               00000002
+CMCON                             0000001F
+CMIE                              00000006
+CMIF                              00000006
+CREN                              00000004
+CSRC                              00000007
+DATA_CP_OFF                       00003FFF
+DATA_CP_ON                        00003EFF
+DC                                00000001
+EEADR                             0000009B
+EECON1                            0000009C
+EECON2                            0000009D
+EEDATA                            0000009A
+EEIE                              00000007
+EEIF                              00000007
+F                                 00000001
+FERR                              00000002
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+NOT_BO                            00000000
+NOT_BOD                           00000000
+NOT_BOR                           00000000
+NOT_PD                            00000003
+NOT_POR                           00000001
+MPASM 5.53                           NET.ASM   11-20-2013  0:53:15         PAGE  6
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+NOT_RBPU                          00000007
+NOT_T1SYNC                        00000002
+NOT_TO                            00000004
+OERR                              00000001
+OPTION_REG                        00000081
+OSCF                              00000003
+PC                                00000002
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PEIE                              00000006
+PIE1                              0000008C
+PIR1                              0000000C
+PORTA                             00000005
+PORTB                             00000006
+PR2                               00000092
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RA6                               00000006
+RA7                               00000007
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RCIE                              00000005
+RCIF                              00000005
+RCREG                             0000001A
+RCSTA                             00000018
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+RX9                               00000006
+RX9D                              00000000
+SPBRG                             00000099
+SPEN                              00000007
+SREN                              00000005
+STATUS                            00000003
+SYNC                              00000004
+T0CS                              00000005
+MPASM 5.53                           NET.ASM   11-20-2013  0:53:15         PAGE  7
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000010
+T1OSCEN                           00000003
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000012
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR1                              0000000E
+TMR1CS                            00000001
+TMR1H                             0000000F
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             0000000E
+TMR1ON                            00000000
+TMR2                              00000011
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2ON                            00000002
+TOUTPS0                           00000003
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRISA6                            00000006
+TRISA7                            00000007
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+TRMT                              00000001
+TX9                               00000006
+TX9D                              00000000
+TXEN                              00000005
+TXIE                              00000004
+TXIF                              00000004
+TXREG                             00000019
+MPASM 5.53                           NET.ASM   11-20-2013  0:53:15         PAGE  8
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TXSTA                             00000098
+VR0                               00000000
+VR1                               00000001
+VR2                               00000002
+VR3                               00000003
+VRCON                             0000009F
+VREN                              00000007
+VROE                              00000006
+VRR                               00000005
+W                                 00000000
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_BODEN_OFF                        00003FBF
+_BODEN_ON                         00003FFF
+_BOREN_OFF                        00003FBF
+_BOREN_ON                         00003FFF
+_CONFIG                           00002007
+_CPD_OFF                          00003FFF
+_CPD_ON                           00003EFF
+_CP_OFF                           00003FFF
+_CP_ON                            00001FFF
+_DEVID1                           00002006
+_ER_OSC_CLKOUT                    00003FFF
+_ER_OSC_NOCLKOUT                  00003FFE
+_EXTCLK_OSC                       00003FEF
+_FOSC_ECIO                        00003FEF
+_FOSC_EXTRCCLK                    00003FFF
+_FOSC_EXTRCIO                     00003FFE
+_FOSC_HS                          00003FEE
+_FOSC_INTOSCCLK                   00003FFD
+_FOSC_INTOSCIO                    00003FFC
+_FOSC_LP                          00003FEC
+_FOSC_XT                          00003FED
+_HS_OSC                           00003FEE
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_INTOSC_OSC_CLKOUT                00003FFD
+_INTOSC_OSC_NOCLKOUT              00003FFC
+_INTRC_OSC_CLKOUT                 00003FFD
+_INTRC_OSC_NOCLKOUT               00003FFC
+_LP_OSC                           00003FEC
+_LVP_OFF                          00003F7F
+_LVP_ON                           00003FFF
+_MCLRE_OFF                        00003FDF
+_MCLRE_ON                         00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC_CLKOUT                    00003FFF
+_RC_OSC_NOCLKOUT                  00003FFE
+MPASM 5.53                           NET.ASM   11-20-2013  0:53:15         PAGE  9
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FED
+__16F84A                          00000001
+begin                             0000000E
+delay                             0000001B
+delay_1                           00000020
+delay_2                           00000021
+delay_loop                        0000001E
+direction                         00000022
+setup                             00000008
+shift_left                        0000000E
+shift_right                       00000014
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXX------------- ----------------
+2000 : -------X-------- ---------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:    35
+Program Memory Words Free:   989
+
+
+Errors   :     0
+Warnings :     1 reported,     0 suppressed
+Messages :     3 reported,     0 suppressed
+
+

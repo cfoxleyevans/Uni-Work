@@ -1,0 +1,12 @@
+
+begin
+call get(x1);--input number
+x2:=1;
+while x1/=0loop
+x2:=x2*x1;--multiply by next term
+x1:=x1-1--decrement count
+end loop;
+text:="the result is ";
+call put(text);
+call put(x1)-- output factorial
+end

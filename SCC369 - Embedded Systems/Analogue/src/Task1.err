@@ -1,0 +1,5 @@
+>>> Warning 208 "C:\Users\Chris Foxley-Evans\Desktop\Embedded Systems Code\Analogue\src\Task1.c" Line 196(1,2): Function not void and does not return a value
+>>> Warning 203 "C:\Users\Chris Foxley-Evans\Desktop\Embedded Systems Code\Analogue\src\Task1.c" Line 241(1,1): Condition always TRUE
+>>> Warning 216 "C:\Users\Chris Foxley-Evans\Desktop\Embedded Systems Code\Analogue\src\Task1.c" Line 259(1,2): Interrupts disabled during call to prevent re-entrancy:  @PRINTF_U_115200_31766_31767
+      Memory usage:   ROM=12%      RAM=4% - 6%
+      0 Errors,  3 Warnings.

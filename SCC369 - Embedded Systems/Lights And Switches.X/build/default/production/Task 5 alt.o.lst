@@ -1,0 +1,247 @@
+MPASM 5.53                    TASK 5 ALT.ASM   11-20-2013  0:40:55         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001  #include "p16f84a.inc"
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC16F84A processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2013 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+                      00208         LIST
+                      00002 
+0000                  00003 INIT:
+0000   1683           00004     BSF     STATUS, RP0 ;move to bank 1
+                      00005 
+0001   30FF           00006     MOVLW   0XFF        ;set the switches for input
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0002   0085           00007     MOVWF   TRISA
+                      00008 
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0003   0186           00009     CLRF    TRISB       ;set the lights for output
+                      00010 
+0004   1283           00011     BCF     STATUS, RP0 ;move bank to bank 0
+                      00012 
+Warning[207]: Found label after column 1. (VALA)
+  000000C0            00013     VALA     EQU 0xC0   ;define vars
+Warning[207]: Found label after column 1. (VALB)
+  000000C1            00014     VALB     EQU 0xC1
+Warning[207]: Found label after column 1. (VALC)
+  000000C2            00015     VALC     EQU 0xC2
+Warning[207]: Found label after column 1. (COUNT1)
+  000000C3            00016     COUNT1   EQU 0xC3
+Warning[207]: Found label after column 1. (COUNT2)
+  000000C4            00017     COUNT2   EQU 0xC4
+Warning[207]: Found label after column 1. (COUNT3)
+  000000C5            00018     COUNT3   EQU 0xC5
+Warning[207]: Found label after column 1. (COUNT4)
+  000000C6            00019     COUNT4   EQU 0xC6
+Warning[207]: Found label after column 1. (COUNT5)
+  000000C7            00020     COUNT5   EQU 0xC7
+Warning[207]: Found label after column 1. (COUNT6)
+  000000C8            00021     COUNT6   EQU 0xC8
+                      00022 
+                      00023 
+0005                  00024 MAIN:
+0005   3000           00025     MOVLW   0x00        ;move 0 into vala
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0006   00C0           00026     MOVWF   VALA
+                      00027 
+0007   2008           00028     CALL    DISPLAY     ;call the display method
+                      00029 
+0008                  00030 DISPLAY:
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0008   0840           00031     MOVFW   VALA        ;move the current value of vala into portb
+MPASM 5.53                    TASK 5 ALT.ASM   11-20-2013  0:40:55         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0009   0086           00032     MOVWF   PORTB
+                      00033 
+000A   200D           00034     CALL    WAIT        ;call the wait function
+                      00035 
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000B   0AC0           00036     INCF    VALA, f        ;increment the count
+                      00037 
+000C   2808           00038     GOTO    DISPLAY     ;do over
+                      00039 
+000D                  00040 WAIT:                                                   ;       here is a nice and simple delay routine
+000D   30FF           00041         MOVLW   d'255'                          ;       copy the maximum number to our working register 
+                            (decimal 255)
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000E   00C3           00042         MOVWF   COUNT1                          ;       and now copy it from the w register to delay_1 a
+                            nd delay_2
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000F   00C4           00043         MOVWF   COUNT2                          ;       Now the rest of the routine will focus on counti
+                            ng down to zero.
+0010   2811           00044     GOTO    DELAY_LOOP
+0011                  00045 DELAY_LOOP:                                             ;       We come back to this label when we have 
+                            not yet reached zero.
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0011   0BC3           00046         DECFSZ  COUNT1, f                       ;       decrement whatever is in delay_1 by 1 and store 
+                            the answer back in delay_1
+0012   2811           00047     GOTO    DELAY_LOOP                  ;       if the answer is not zero, then go back to the delay_loo
+                            p label. but if the
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0013   0BC4           00048         DECFSZ  COUNT2, f                       ;       answer is zero then decrement delay_2 by one and
+                             store the answer in delay_2
+0014   2811           00049         GOTO    DELAY_LOOP                      ;       if the answer is not zero, then go back to delay
+                            _loop label. but if the answer
+0015   0008           00050     RETURN                                              ;       is zero, then we have completed our dela
+                            y and now we can return to our main program!
+                      00051 
+                      00052     END
+MPASM 5.53                    TASK 5 ALT.ASM   11-20-2013  0:40:55         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+C                                 00000000
+COUNT1                            000000C3
+COUNT2                            000000C4
+COUNT3                            000000C5
+COUNT4                            000000C6
+COUNT5                            000000C7
+COUNT6                            000000C8
+DC                                00000001
+DELAY_LOOP                        00000011
+DISPLAY                           00000008
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INIT                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+MAIN                              00000005
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+OPTION_REG                        00000081
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+MPASM 5.53                    TASK 5 ALT.ASM   11-20-2013  0:40:55         PAGE  4
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RBIF                              00000000
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+VALA                              000000C0
+VALB                              000000C1
+VALC                              000000C2
+W                                 00000000
+WAIT                              0000000D
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_CONFIG                           00002007
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+_DEVID1                           00002006
+_FOSC_EXTRC                       00003FFF
+_FOSC_HS                          00003FFE
+_FOSC_LP                          00003FFC
+_FOSC_XT                          00003FFD
+_HS_OSC                           00003FFE
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+MPASM 5.53                    TASK 5 ALT.ASM   11-20-2013  0:40:55         PAGE  5
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84A                          00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : XXXXXXXXXXXXXXXX XXXXXX---------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:    22
+Program Memory Words Free:  1002
+
+
+Errors   :     0
+Warnings :     9 reported,     0 suppressed
+Messages :     9 reported,     0 suppressed
+
+

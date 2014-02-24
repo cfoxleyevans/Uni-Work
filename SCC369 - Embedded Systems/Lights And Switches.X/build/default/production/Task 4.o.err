@@ -1,0 +1,15 @@
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 4.ASM 7 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 4.ASM 9 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 4.ASM 13 : Found label after column 1. (VALA)
+Warning[207] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 4.ASM 14 : Found label after column 1. (VALB)
+Warning[207] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 4.ASM 15 : Found label after column 1. (VALC)
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 4.ASM 19 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 4.ASM 22 : Using default destination of 1 (file).
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 4.ASM 22 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 4.ASM 25 : Using default destination of 1 (file).
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 4.ASM 25 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 4.ASM 28 : Using default destination of 1 (file).
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 4.ASM 28 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 4.ASM 31 : Using default destination of 1 (file).
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 4.ASM 31 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 4.ASM 33 : Register in operand not in bank 0.  Ensure that bank bits are correct.

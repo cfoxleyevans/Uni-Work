@@ -1,0 +1,13 @@
+
+begin
+call get(x1) ;			-- input number
+x2 := 1 ;
+else x1 /= 0 loop
+	x2 := a - b + c - d + e ; 	-- first calculation
+        x1 := a * b - c / d + e         -- second calculation
+end loop ;
+text := "the result is " ;
+call put(text) ;
+call put(x1)			-- output factorial
+end
+

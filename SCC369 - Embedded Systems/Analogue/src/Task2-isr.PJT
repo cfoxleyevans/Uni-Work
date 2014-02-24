@@ -1,0 +1,32 @@
+[PROJECT]
+Target=Task2-isr.HEX
+Development_Mode=2
+Processor=0x2420
+ToolSuite=CCS
+
+[Directories]
+Include=
+Library=
+LinkerScript=
+
+[Target Data]
+FileList=Task2-isr.c;
+BuildTool=C-COMPILER
+OptionString=+FH
+AdditionalOptionString=
+BuildRequired=1
+
+[Task2-isr.c]
+Type=4
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
+
+[mru-list]
+1=C:\Users\CHRISF~1\Desktop\EMBEDD~1\Analogue\src\TASK2-~1.C
+
+[Windows]
+0=0000 C:\Users\CHRISF~1\Desktop\EMBEDD~1\Analogue\src\TASK2-~1.C 0 0 796 451 3 0
+

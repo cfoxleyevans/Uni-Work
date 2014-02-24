@@ -1,0 +1,1064 @@
+CCS PCH C Compiler, Version 3.230, 29832               19-Feb-14 09:05
+
+               Filename: Task1.LST
+
+               ROM used: 1990 bytes (12%)
+                         Largest free fragment is 14390
+               RAM used: 30 (4%) at main() level
+                         47 (6%) worst case
+               Stack:    6 worst case (3 in main + 3 for interrupts)
+
+*
+0000:  GOTO   06FA
+*
+0008:  MOVWF  05
+000A:  MOVFF  FD8,06
+000E:  MOVF   FE9,W
+0010:  MOVWF  07
+0012:  MOVF   FEA,W
+0014:  MOVWF  08
+0016:  MOVF   FE1,W
+0018:  MOVWF  09
+001A:  MOVF   FE2,W
+001C:  MOVWF  0A
+001E:  MOVF   FD9,W
+0020:  MOVWF  0B
+0022:  MOVF   FDA,W
+0024:  MOVWF  0C
+0026:  MOVF   FF3,W
+0028:  MOVWF  14
+002A:  MOVF   FF4,W
+002C:  MOVWF  15
+002E:  MOVF   FFA,W
+0030:  MOVWF  16
+0032:  MOVF   FE0,W
+0034:  MOVWF  0D
+0036:  MOVLB  0
+0038:  MOVF   00,W
+003A:  MOVWF  0F
+003C:  MOVF   01,W
+003E:  MOVWF  10
+0040:  MOVF   02,W
+0042:  MOVWF  11
+0044:  MOVF   03,W
+0046:  MOVWF  12
+0048:  MOVF   04,W
+004A:  MOVWF  13
+004C:  BTFSS  F9D.1
+004E:  GOTO   0058
+0052:  BTFSC  F9E.1
+0054:  GOTO   0270
+0058:  MOVF   0F,W
+005A:  MOVWF  00
+005C:  MOVF   10,W
+005E:  MOVWF  01
+0060:  MOVF   11,W
+0062:  MOVWF  02
+0064:  MOVF   12,W
+0066:  MOVWF  03
+0068:  MOVF   13,W
+006A:  MOVWF  04
+006C:  MOVF   0D,W
+006E:  MOVWF  FE0
+0070:  BSF    0D.7
+0072:  MOVF   07,W
+0074:  MOVWF  FE9
+0076:  MOVF   08,W
+0078:  MOVWF  FEA
+007A:  MOVF   09,W
+007C:  MOVWF  FE1
+007E:  MOVF   0A,W
+0080:  MOVWF  FE2
+0082:  MOVF   0B,W
+0084:  MOVWF  FD9
+0086:  MOVF   0C,W
+0088:  MOVWF  FDA
+008A:  MOVF   14,W
+008C:  MOVWF  FF3
+008E:  MOVF   15,W
+0090:  MOVWF  FF4
+0092:  MOVF   16,W
+0094:  MOVWF  FFA
+0096:  MOVF   05,W
+0098:  MOVFF  06,FD8
+009C:  RETFIE 0
+....................  #include <18f2420.h> 
+....................  //////// Standard Header file for the PIC18F2420 device ////////////////  
+.................... #device PIC18F2420  
+.................... #list  
+....................  
+.................... #include "18f2420_registers.h" 
+....................  /** 
+....................  * For the pic18f2420 to access SFR's directly 
+....................  *  
+....................  * Draft 0 - might not work, patches welcome! 
+....................  * Send patches to j.vidler@lancaster.ac.uk 
+....................  */ 
+....................  
+.................... #ifndef PIC18F2420_SFRS_H 
+.................... #define PIC18F2420_SFRS_H 
+....................  
+.................... 	#BYTE TOSU = 0xFFF 
+.................... 	#BYTE INDF2 = 0xFDF 
+.................... 	#BYTE CCPR1H = 0xFBF 
+.................... 	#BYTE IPR1 = 0xF9F 
+.................... 	#BYTE TOS = 0xFFE 
+.................... 	#BYTE POSTINC2 = 0xFDE 
+.................... 	#BYTE CCPR1L = 0xFBE 
+.................... 	#BYTE PIR1 = 0xF9E 
+.................... 	#BYTE TOSL = 0xFFD 
+.................... 	#BYTE POSTDEC2 = 0xFDD 
+.................... 	#BYTE CCP1CON = 0xFBD 
+.................... 	#BYTE PIE1 = 0xF9D 
+.................... 	#BYTE STKPTR = 0xFFC 
+.................... 	#BYTE PREINC2 = 0xFDC 
+.................... 	#BYTE CCPR2 = 0xFBC 
+.................... 	#BYTE PCLATU = 0xFFB 
+.................... 	#BYTE PLUSW2 = 0xFDB 
+.................... 	#BYTE CCPR2L = 0xFBB 
+.................... 	#BYTE OSCTUNE = 0xF9B 
+.................... 	#BYTE PCLAT = 0xFFA 
+.................... 	#BYTE FSR2 = 0xFDA 
+.................... 	#BYTE CCP2CON = 0xFBA 
+.................... 	#BYTE PCL = 0xFF9 
+.................... 	#BYTE FSR2L = 0xFD9 
+.................... 	#BYTE TBLPTRU = 0xFF8 
+.................... 	#BYTE STATUS = 0xFD8 
+.................... 	#BYTE BAUDCON = 0xFB8 
+.................... 	#BYTE TBLPTR = 0xFF7 
+.................... 	#BYTE TMR0 = 0xFD7 
+.................... 	#BYTE PWM1CON = 0xFB7 
+.................... 	#BYTE TRISE = 0xF96 
+.................... 	#BYTE TBLPTRL = 0xFF6 
+.................... 	#BYTE TMR0L = 0xFD6 
+.................... 	#BYTE ECCP1AS = 0xFB6 
+.................... 	#BYTE TABLAT = 0xFF5 
+.................... 	#BYTE T0CON = 0xFD5 
+.................... 	#BYTE CVRCON = 0xFB5 
+.................... 	#BYTE TRISD = 0xF95 
+.................... 	#BYTE CMCON = 0xFB4 
+.................... 	#BYTE TRISC = 0xF94 
+.................... 	#BYTE PRODL = 0xFF4 
+.................... 	#BYTE PRODL = 0xFF3 
+.................... 	#BYTE OSCCON = 0xFD3 
+.................... 	#BYTE TMR3 = 0xFB3 
+.................... 	#BYTE TRISB = 0xF93 
+.................... 	#BYTE INTCON = 0xFF2 
+.................... 	#BYTE LVDCON = 0xFD2 
+.................... 	#BYTE TMR3L = 0xFB2 
+.................... 	#BYTE TRISA = 0xF92 
+.................... 	#BYTE INTCON2 = 0xFF1 
+.................... 	#BYTE WDTCON = 0xFD1 
+.................... 	#BYTE T3CON = 0xFB1 
+.................... 	#BYTE INTCON3 = 0xFF0 
+.................... 	#BYTE RCON = 0xFD0 
+.................... 	#BYTE SPBRG = 0xFB0 
+.................... 	#BYTE INDF0 = 0xFEF 
+.................... 	#BYTE TMR1 = 0xFCF 
+.................... 	#BYTE SPBRG = 0xFAF 
+.................... 	#BYTE POSTINC0 = 0xFEE 
+.................... 	#BYTE TMR1L = 0xFCE 
+.................... 	#BYTE RCREG = 0xFAE 
+.................... 	#BYTE POSTDEC0 = 0xFED 
+.................... 	#BYTE T1CON = 0xFCD 
+.................... 	#BYTE TXREG = 0xFAD 
+.................... 	#BYTE LATE = 0xF8D 
+.................... 	#BYTE TMR2 = 0xFCC 
+.................... 	#BYTE TXSTA = 0xFAC 
+.................... 	#BYTE LATD = 0xF8C 
+.................... 	#BYTE PREINC0 = 0xFEC 
+.................... 	#BYTE PLUSW0 = 0xFEB 
+.................... 	#BYTE PR2 = 0xFCB 
+.................... 	#BYTE RCSTA = 0xFAB 
+.................... 	#BYTE LATC = 0xF8B 
+.................... 	#BYTE FSR0 = 0xFEA 
+.................... 	#BYTE T2CON = 0xFCA 
+.................... 	#BYTE LATB = 0xF8A 
+.................... 	#BYTE FSR0L = 0xFE9 
+.................... 	#BYTE SSPBUF = 0xFC9 
+.................... 	#BYTE EEADR = 0xFA9 
+.................... 	#BYTE LATA = 0xF89 
+.................... 	#BYTE WREG = 0xFE8 
+.................... 	#BYTE SSPADD = 0xFC8 
+.................... 	#BYTE EEDATA = 0xFA8 
+.................... 	#BYTE INDF1 = 0xFE7 
+.................... 	#BYTE SSPSTAT = 0xFC7 
+.................... 	#BYTE EECON2 =0xFA7 
+.................... 	#BYTE POSTINC1 = 0xFE6 
+.................... 	#BYTE SSPCON1 = 0xFC6 
+.................... 	#BYTE EECON1 = 0xFA6 
+.................... 	#BYTE POSTDEC1 = 0xFE5 
+.................... 	#BYTE SSPCON2 = 0xFC5 
+.................... 	#BYTE PORTE = 0xF84 
+.................... 	#BYTE PREINC1 = 0xFE4 
+.................... 	#BYTE ADRES = 0xFC4 
+.................... 	#BYTE PLUSW1 = 0xFE3 
+.................... 	#BYTE ADRESL = 0xFC3 
+.................... 	#BYTE PORTD = 0xF83 
+.................... 	#BYTE FSR1 = 0xFE2 
+.................... 	#BYTE ADCON0 = 0xFC2 
+.................... 	#BYTE IPR2 = 0xFA2 
+.................... 	#BYTE PORTC = 0xF82 
+.................... 	#BYTE FSR1L = 0xFE1 
+.................... 	#BYTE ADCON1 = 0xFC1 
+.................... 	#BYTE PIR2 = 0xFA1 
+.................... 	#BYTE PORTB = 0xF81 
+.................... 	#BYTE BSR = 0xFE0 
+.................... 	#BYTE ADCON2 = 0xFC0 
+.................... 	#BYTE PIE2 =0xFA0 
+.................... 	#BYTE PORTA =0xF80 
+....................  
+.................... #endif 
+....................  
+....................   
+.................... #device ADC=10 //causes read_adc() to produce 10 bit results  
+.................... #fuses HS,NOWDT,NOPROTECT,NOLVP,NOPUT  
+.................... #fuses NOBROWNOUT //no brown-out detection  
+.................... #fuses NOFCMEN //no fail-safe clock monitor  
+.................... #fuses NOXINST //disable extended instruction set  
+.................... #fuses NOIESO //disable internal external switchover mode  
+.................... #fuses NOPBADEN //turn off 0-4 a/d on port b (port B is all digital)  
+....................   
+.................... //turn off all optimisation  
+.................... #opt 0  
+....................   
+.................... //set the clock speed  
+.................... #use delay(clock=20000000)  
+*
+03BC:  CLRF   FEA
+03BE:  MOVLW  1E
+03C0:  MOVWF  FE9
+03C2:  MOVF   FEF,W
+03C4:  BTFSC  FD8.2
+03C6:  GOTO   03E4
+03CA:  MOVLW  06
+03CC:  MOVWF  01
+03CE:  CLRF   00
+03D0:  DECFSZ 00,F
+03D2:  BRA    03D0
+03D4:  DECFSZ 01,F
+03D6:  BRA    03CE
+03D8:  MOVLW  7B
+03DA:  MOVWF  00
+03DC:  DECFSZ 00,F
+03DE:  BRA    03DC
+03E0:  DECFSZ FEF,F
+03E2:  BRA    03CA
+03E4:  GOTO   0766 (RETURN)
+....................   
+.................... //set the spi ports  
+.................... #use rs232(baud=115200, xmit=PIN_C6, rcv=PIN_C7)  
+....................   
+.................... //defines for the pins  
+.................... #define LOW_ADDRESS_LATCH	PIN_A2  
+.................... #define	HIGH_ADDRESS_LATCH	PIN_A3  
+.................... #define MSB_ADDRESS			PIN_C0  
+.................... #define	SRAM_OUTPUT_ENABLE	PIN_A4  
+.................... #define	SRAM_WRITE_ENABLE	PIN_A5  
+.................... #define	DAC_FRAME_SYNC		PIN_C2  
+.................... #define	RED_LED				PIN_C4  
+.................... #define MICROPHONE			PIN_A0  
+.................... #define	LINE_IN				PIN_A1  
+.................... #define	BUTTON				PIN_C1	  
+....................   
+.................... #define BUTTON_PRESSED      0  
+.................... #define BUTTON_RELEASED 	1  
+....................   
+.................... //global vars  
+.................... int dac_value = 0;  
+.................... int dac_state = 0;  
+....................   
+....................   
+.................... //this function sets up the hardware on the board  
+.................... void set_up_hardware() {  
+.................... 	  
+.................... 	setup_adc(ADC_CLOCK_INTERNAL);  
+*
+0360:  MOVF   FC0,W
+0362:  ANDLW  C0
+0364:  IORLW  07
+0366:  MOVWF  FC0
+0368:  BSF    FC0.7
+036A:  BSF    FC2.0
+.................... 	setup_adc_ports(AN0_TO_AN1);  
+036C:  MOVF   FC1,W
+036E:  ANDLW  C0
+0370:  IORLW  0D
+0372:  MOVWF  FC1
+....................   
+.................... 	setup_spi(SPI_MASTER | SPI_L_TO_H | SPI_CLK_DIV_4 | SPI_SS_DISABLED);  
+0374:  BCF    FC6.5
+0376:  BCF    F94.5
+0378:  BSF    F94.4
+037A:  BCF    F94.3
+037C:  MOVLW  21
+037E:  MOVWF  FC6
+0380:  MOVLW  00
+0382:  MOVWF  FC7
+....................   
+.................... 	#asm   
+.................... 	//configure SPI clock rate to div4 (not div16) [CCSC=EVIL!]  
+.................... 	MOVLW 0x30	//clock rate div4, idle state for clock is high level  
+0384:  MOVLW  30
+.................... 	MOVWF 0xFC6 //see section 17.3 of 18F2423 manual, and DAC datasheet  
+0386:  MOVWF  FC6
+.................... 	MOVLW 0x40	//transmit occurs on transition from active to idle  
+0388:  MOVLW  40
+.................... 	MOVWF 0xFC7  
+038A:  MOVWF  FC7
+.................... 	#endasm  
+.................... }  
+038C:  GOTO   0736 (RETURN)
+....................   
+.................... //this function is used the set the momeory to a known state  
+.................... void init_memory() {  
+.................... 	//declare the value to write into the latches  
+.................... 	int value = 0;  
+0390:  CLRF   1D
+.................... 	  
+.................... 	//SRAM output enable and write enable  
+.................... 	output_bit(SRAM_OUTPUT_ENABLE, 1);  
+0392:  BSF    F89.4
+0394:  BCF    F92.4
+.................... 	output_bit(SRAM_WRITE_ENABLE, 1);  
+0396:  BSF    F89.5
+0398:  BCF    F92.5
+.................... 	  
+.................... 	//latch lines  
+.................... 	output_bit(LOW_ADDRESS_LATCH, 0);  
+039A:  BCF    F89.2
+039C:  BCF    F92.2
+.................... 	output_bit(HIGH_ADDRESS_LATCH, 0);  
+039E:  BCF    F89.3
+03A0:  BCF    F92.3
+.................... 	  
+.................... 	//latch 0x00 into the address latches  
+.................... 	output_b(value);  
+03A2:  CLRF   F93
+03A4:  MOVFF  1D,F8A
+....................   
+.................... 	//write the value into the lower latch  
+.................... 	output_bit(LOW_ADDRESS_LATCH, 1);  
+03A8:  BSF    F89.2
+03AA:  BCF    F92.2
+.................... 	output_bit(LOW_ADDRESS_LATCH, 0);  
+03AC:  BCF    F89.2
+03AE:  BCF    F92.2
+....................   
+.................... 	//write the bit into the higher latch  
+.................... 	output_bit(HIGH_ADDRESS_LATCH, 1);  
+03B0:  BSF    F89.3
+03B2:  BCF    F92.3
+.................... 	output_bit(HIGH_ADDRESS_LATCH, 0);	  
+03B4:  BCF    F89.3
+03B6:  BCF    F92.3
+.................... }  
+03B8:  GOTO   073A (RETURN)
+....................   
+.................... //this function is used to read a value from a given memory location  
+.................... int read_from_memory(int msb, int higher_address, int lower_address) {  
+.................... 	//declare var to store the read value  
+.................... 	int value = 0;  
+*
+0426:  CLRF   24
+.................... 	  
+.................... 	//latch the lower address  
+.................... 	output_b(lower_address);  
+0428:  CLRF   F93
+042A:  MOVFF  23,F8A
+.................... 	output_bit(LOW_ADDRESS_LATCH, 1);  
+042E:  BSF    F89.2
+0430:  BCF    F92.2
+.................... 	output_bit(LOW_ADDRESS_LATCH, 0);  
+0432:  BCF    F89.2
+0434:  BCF    F92.2
+....................   
+.................... 	//latch the high address  
+.................... 	output_b(higher_address);  
+0436:  CLRF   F93
+0438:  MOVFF  22,F8A
+.................... 	output_bit(HIGH_ADDRESS_LATCH, 1);  
+043C:  BSF    F89.3
+043E:  BCF    F92.3
+.................... 	output_bit(HIGH_ADDRESS_LATCH, 0);  
+0440:  BCF    F89.3
+0442:  BCF    F92.3
+....................   
+.................... 	//set the msb  
+.................... 	output_bit(MSB_ADDRESS, msb);  
+0444:  MOVF   21,F
+0446:  BTFSS  FD8.2
+0448:  GOTO   0452
+044C:  BCF    F8B.0
+044E:  GOTO   0454
+0452:  BSF    F8B.0
+0454:  BCF    F94.0
+....................   
+.................... 	//read the value   
+.................... 	output_bit(SRAM_OUTPUT_ENABLE, 0);  
+0456:  BCF    F89.4
+0458:  BCF    F92.4
+.................... 	value = input_b();  
+045A:  MOVLW  FF
+045C:  MOVWF  F93
+045E:  MOVFF  F81,24
+.................... 	output_bit(SRAM_OUTPUT_ENABLE, 1);  
+0462:  BSF    F89.4
+0464:  BCF    F92.4
+....................   
+.................... 	return value;  
+0466:  MOVF   24,W
+0468:  MOVWF  01
+.................... }  
+046A:  GOTO   0558 (RETURN)
+....................   
+.................... //this function is used to write a value to a given memory location  
+.................... void write_to_memory(int msb, int higher_address, int lower_address, int value) {  
+.................... 	//latch the lower address  
+.................... 	output_b(lower_address);  
+*
+03E8:  CLRF   F93
+03EA:  MOVFF  24,F8A
+.................... 	output_bit(LOW_ADDRESS_LATCH, 1);  
+03EE:  BSF    F89.2
+03F0:  BCF    F92.2
+.................... 	output_bit(LOW_ADDRESS_LATCH, 0);  
+03F2:  BCF    F89.2
+03F4:  BCF    F92.2
+....................   
+.................... 	//latch the high address  
+.................... 	output_b(higher_address);  
+03F6:  CLRF   F93
+03F8:  MOVFF  23,F8A
+.................... 	output_bit(HIGH_ADDRESS_LATCH, 1);  
+03FC:  BSF    F89.3
+03FE:  BCF    F92.3
+.................... 	output_bit(HIGH_ADDRESS_LATCH, 0);  
+0400:  BCF    F89.3
+0402:  BCF    F92.3
+....................   
+.................... 	//set the msb  
+.................... 	output_bit(MSB_ADDRESS, msb);  
+0404:  MOVF   22,F
+0406:  BTFSS  FD8.2
+0408:  GOTO   0412
+040C:  BCF    F8B.0
+040E:  GOTO   0414
+0412:  BSF    F8B.0
+0414:  BCF    F94.0
+....................   
+.................... 	output_b(value);  
+0416:  CLRF   F93
+0418:  MOVFF  25,F8A
+.................... 	output_bit(SRAM_WRITE_ENABLE, 0);  
+041C:  BCF    F89.5
+041E:  BCF    F92.5
+.................... 	output_bit(SRAM_WRITE_ENABLE, 1);  
+0420:  BSF    F89.5
+0422:  BCF    F92.5
+.................... }  
+0424:  RETLW  00
+....................   
+.................... //this function is used to make sure that the memory is working as expected  
+.................... void mem_check() {  
+.................... 	int i,j,k,value;  
+.................... 	//write 255 into even slots and 255 into odd slots  
+.................... 	printf("INFO: WRITING TO MEMORY\n\r");  
+*
+046E:  CLRF   21
+0470:  MOVF   21,W
+0472:  CALL   009E
+0476:  INCF   21,F
+0478:  MOVWF  00
+047A:  MOVF   00,W
+047C:  BTFSS  F9E.4
+047E:  GOTO   047C
+0482:  MOVWF  FAD
+0484:  MOVLW  19
+0486:  SUBWF  21,W
+0488:  BTFSS  FD8.2
+048A:  GOTO   0470
+.................... 	for(i = 0; i < 2; i++) {  
+048E:  CLRF   1D
+0490:  MOVF   1D,W
+0492:  SUBLW  01
+0494:  BTFSS  FD8.0
+0496:  GOTO   0504
+.................... 		for(j = 0; j < 255; j++) {  
+049A:  CLRF   1E
+049C:  INCFSZ 1E,W
+049E:  GOTO   04A6
+04A2:  GOTO   04FE
+.................... 			for(k = 0; k < 255; k++) {  
+04A6:  CLRF   1F
+04A8:  INCFSZ 1F,W
+04AA:  GOTO   04B2
+04AE:  GOTO   04F8
+.................... 				if(k % 2 == 0) {  
+04B2:  MOVF   1F,W
+04B4:  ANDLW  01
+04B6:  XORLW  00
+04B8:  BTFSS  FD8.2
+04BA:  GOTO   04D6
+.................... 					write_to_memory(i,j,k,k);  
+04BE:  MOVFF  1D,22
+04C2:  MOVFF  1E,23
+04C6:  MOVFF  1F,24
+04CA:  MOVFF  1F,25
+04CE:  CALL   03E8
+.................... 					//printf("INFO: WRITTEN 255 TO (%u,%u,%u)\n\r", i, j, k);  
+.................... 				}	  
+.................... 				else {  
+04D2:  GOTO   04F2
+.................... 					write_to_memory(i,j,k,255 - k);  
+04D6:  MOVLW  FF
+04D8:  BSF    FD8.0
+04DA:  SUBFWB 1F,W
+04DC:  MOVWF  21
+04DE:  MOVFF  1D,22
+04E2:  MOVFF  1E,23
+04E6:  MOVFF  1F,24
+04EA:  MOVFF  21,25
+04EE:  CALL   03E8
+.................... 					//printf("INFO: WRITTEN 254 TO (%u,%u,%u)\n\r", i, j, k);  
+.................... 				}	  
+.................... 			}  
+04F2:  INCF   1F,F
+04F4:  GOTO   04A8
+.................... 		}  
+04F8:  INCF   1E,F
+04FA:  GOTO   049C
+.................... 	}  
+04FE:  INCF   1D,F
+0500:  GOTO   0490
+.................... 	  
+.................... 	//read back the memory chek to make sure ok  
+.................... 	printf("INFO: READING FROM MEMORY\n\r");  
+0504:  CLRF   21
+0506:  MOVF   21,W
+0508:  CALL   00D2
+050C:  INCF   21,F
+050E:  MOVWF  00
+0510:  MOVF   00,W
+0512:  BTFSS  F9E.4
+0514:  GOTO   0512
+0518:  MOVWF  FAD
+051A:  MOVLW  1B
+051C:  SUBWF  21,W
+051E:  BTFSS  FD8.2
+0520:  GOTO   0506
+.................... 	for(i = 0; i < 2; i++) {  
+0524:  CLRF   1D
+0526:  MOVF   1D,W
+0528:  SUBLW  01
+052A:  BTFSS  FD8.0
+052C:  GOTO   06D6
+.................... 		for(j = 0; j < 255; j++) {  
+0530:  CLRF   1E
+0532:  INCFSZ 1E,W
+0534:  GOTO   053C
+0538:  GOTO   06D0
+.................... 			for(k = 0; k < 255; k++) {  
+053C:  CLRF   1F
+053E:  INCFSZ 1F,W
+0540:  GOTO   0548
+0544:  GOTO   06CA
+.................... 				value = read_from_memory(i, j, k);  
+0548:  MOVFF  1D,21
+054C:  MOVFF  1E,22
+0550:  MOVFF  1F,23
+0554:  GOTO   0426
+0558:  MOVFF  01,20
+.................... 				if(k % 2 == 0 && value != k) {  
+055C:  MOVF   1F,W
+055E:  ANDLW  01
+0560:  XORLW  00
+0562:  BTFSS  FD8.2
+0564:  GOTO   0610
+0568:  MOVF   1F,W
+056A:  SUBWF  20,W
+056C:  BTFSC  FD8.2
+056E:  GOTO   0610
+.................... 					printf("ERROR: BAD READ FROM ((%u,%u,%u)\n\r", i, j, k);  
+0572:  CLRF   21
+0574:  MOVF   21,W
+0576:  CALL   0108
+057A:  INCF   21,F
+057C:  MOVWF  00
+057E:  MOVF   00,W
+0580:  BTFSS  F9E.4
+0582:  GOTO   0580
+0586:  MOVWF  FAD
+0588:  MOVLW  17
+058A:  SUBWF  21,W
+058C:  BTFSS  FD8.2
+058E:  GOTO   0574
+0592:  CLRF   18
+0594:  BTFSC  FF2.7
+0596:  BSF    18.7
+0598:  BCF    FF2.7
+059A:  MOVFF  1D,2A
+059E:  MOVLW  1B
+05A0:  MOVWF  2B
+05A2:  CALL   01E8
+05A6:  BTFSC  18.7
+05A8:  BSF    FF2.7
+05AA:  MOVLW  2C
+05AC:  BTFSS  F9E.4
+05AE:  GOTO   05AC
+05B2:  MOVWF  FAD
+05B4:  CLRF   18
+05B6:  BTFSC  FF2.7
+05B8:  BSF    18.7
+05BA:  BCF    FF2.7
+05BC:  MOVFF  1E,2A
+05C0:  MOVLW  1B
+05C2:  MOVWF  2B
+05C4:  CALL   01E8
+05C8:  BTFSC  18.7
+05CA:  BSF    FF2.7
+05CC:  MOVLW  2C
+05CE:  BTFSS  F9E.4
+05D0:  GOTO   05CE
+05D4:  MOVWF  FAD
+05D6:  CLRF   18
+05D8:  BTFSC  FF2.7
+05DA:  BSF    18.7
+05DC:  BCF    FF2.7
+05DE:  MOVFF  1F,2A
+05E2:  MOVLW  1B
+05E4:  MOVWF  2B
+05E6:  CALL   01E8
+05EA:  BTFSC  18.7
+05EC:  BSF    FF2.7
+05EE:  MOVLW  29
+05F0:  BTFSS  F9E.4
+05F2:  GOTO   05F0
+05F6:  MOVWF  FAD
+05F8:  MOVLW  0A
+05FA:  BTFSS  F9E.4
+05FC:  GOTO   05FA
+0600:  MOVWF  FAD
+0602:  MOVLW  0D
+0604:  BTFSS  F9E.4
+0606:  GOTO   0604
+060A:  MOVWF  FAD
+.................... 				}  
+.................... 				else if (k % 2 == 1 && value != 255 - k) {  
+060C:  GOTO   06C4
+0610:  MOVF   1F,W
+0612:  ANDLW  01
+0614:  SUBLW  01
+0616:  BTFSS  FD8.2
+0618:  GOTO   06C4
+061C:  MOVLW  FF
+061E:  BSF    FD8.0
+0620:  SUBFWB 1F,W
+0622:  SUBWF  20,W
+0624:  BTFSC  FD8.2
+0626:  GOTO   06C4
+.................... 					printf("ERROR: BAD READ FROM ((%u,%u,%u)\n\r", i, j, k);  
+062A:  CLRF   21
+062C:  MOVF   21,W
+062E:  CALL   0108
+0632:  INCF   21,F
+0634:  MOVWF  00
+0636:  MOVF   00,W
+0638:  BTFSS  F9E.4
+063A:  GOTO   0638
+063E:  MOVWF  FAD
+0640:  MOVLW  17
+0642:  SUBWF  21,W
+0644:  BTFSS  FD8.2
+0646:  GOTO   062C
+064A:  CLRF   18
+064C:  BTFSC  FF2.7
+064E:  BSF    18.7
+0650:  BCF    FF2.7
+0652:  MOVFF  1D,2A
+0656:  MOVLW  1B
+0658:  MOVWF  2B
+065A:  CALL   01E8
+065E:  BTFSC  18.7
+0660:  BSF    FF2.7
+0662:  MOVLW  2C
+0664:  BTFSS  F9E.4
+0666:  GOTO   0664
+066A:  MOVWF  FAD
+066C:  CLRF   18
+066E:  BTFSC  FF2.7
+0670:  BSF    18.7
+0672:  BCF    FF2.7
+0674:  MOVFF  1E,2A
+0678:  MOVLW  1B
+067A:  MOVWF  2B
+067C:  CALL   01E8
+0680:  BTFSC  18.7
+0682:  BSF    FF2.7
+0684:  MOVLW  2C
+0686:  BTFSS  F9E.4
+0688:  GOTO   0686
+068C:  MOVWF  FAD
+068E:  CLRF   18
+0690:  BTFSC  FF2.7
+0692:  BSF    18.7
+0694:  BCF    FF2.7
+0696:  MOVFF  1F,2A
+069A:  MOVLW  1B
+069C:  MOVWF  2B
+069E:  CALL   01E8
+06A2:  BTFSC  18.7
+06A4:  BSF    FF2.7
+06A6:  MOVLW  29
+06A8:  BTFSS  F9E.4
+06AA:  GOTO   06A8
+06AE:  MOVWF  FAD
+06B0:  MOVLW  0A
+06B2:  BTFSS  F9E.4
+06B4:  GOTO   06B2
+06B8:  MOVWF  FAD
+06BA:  MOVLW  0D
+06BC:  BTFSS  F9E.4
+06BE:  GOTO   06BC
+06C2:  MOVWF  FAD
+.................... 				}  
+.................... 			}  
+06C4:  INCF   1F,F
+06C6:  GOTO   053E
+.................... 		}  
+06CA:  INCF   1E,F
+06CC:  GOTO   0532
+.................... 	}  
+06D0:  INCF   1D,F
+06D2:  GOTO   0526
+.................... 	printf("INFO: MEMCHECK FINISHED\n\r");  
+06D6:  CLRF   21
+06D8:  MOVF   21,W
+06DA:  CALL   0146
+06DE:  INCF   21,F
+06E0:  MOVWF  00
+06E2:  MOVF   00,W
+06E4:  BTFSS  F9E.4
+06E6:  GOTO   06E4
+06EA:  MOVWF  FAD
+06EC:  MOVLW  19
+06EE:  SUBWF  21,W
+06F0:  BTFSS  FD8.2
+06F2:  GOTO   06D8
+.................... }  
+06F6:  GOTO   076E (RETURN)
+....................   
+.................... //this function is used to write a value to the dac  
+.................... void convert_d_to_a(int data) {  
+.................... 	int high_byte, low_byte = 0;  
+*
+017A:  CLRF   29
+....................   
+.................... 	high_byte = (data >> 4) | 0x40;  
+017C:  SWAPF  27,W
+017E:  MOVWF  00
+0180:  MOVLW  0F
+0182:  ANDWF  00,F
+0184:  MOVF   00,W
+0186:  IORLW  40
+0188:  MOVWF  28
+.................... 	low_byte =  (data << 4) | 0x00;  
+018A:  SWAPF  27,W
+018C:  MOVWF  00
+018E:  MOVLW  F0
+0190:  ANDWF  00,F
+0192:  MOVF   00,W
+0194:  MOVWF  29
+.................... 	  
+.................... 	output_bit(DAC_FRAME_SYNC, 0);  
+0196:  BCF    F8B.2
+0198:  BCF    F94.2
+.................... 	spi_write(high_byte);  
+019A:  MOVF   FC9,W
+019C:  MOVFF  28,FC9
+01A0:  BTFSS  FC7.0
+01A2:  GOTO   01A0
+.................... 	spi_write(low_byte);  
+01A6:  MOVF   FC9,W
+01A8:  MOVFF  29,FC9
+01AC:  BTFSS  FC7.0
+01AE:  GOTO   01AC
+.................... 	output_bit(DAC_FRAME_SYNC, 1);  
+01B2:  BSF    F8B.2
+01B4:  BCF    F94.2
+.................... }  
+01B6:  RETLW  00
+....................   
+....................   
+.................... unsigned long write_triangle_wave() {  
+.................... 	//decalre the loop counter  
+.................... 	int i = 0;  
+....................   
+.................... 	//loop to write the up part of the wave  
+.................... 	for(i= 0; i < 255; i++) {  
+.................... 		convert_d_to_a(i);  
+.................... 		printf("%lu\n\r", read_adc());  
+.................... 	}  
+.................... 		  
+.................... 	//loop to write the down part of the wave		  
+.................... 	for(i = 255; i > 0; i--) {  
+.................... 		convert_d_to_a(i);  
+.................... 		printf("%lu\n\r", read_adc());  
+.................... 	}  
+.................... }  
+....................   
+.................... #INT_TIMER2  
+.................... void write_to_dac() {  
+.................... 	//if going up  
+.................... 	if (!dac_state) {  
+*
+0270:  MOVF   1A,F
+0272:  BTFSS  FD8.2
+0274:  GOTO   02E6
+.................... 		//write the value and test if at the upper limit  
+.................... 		convert_d_to_a(dac_value);  
+0278:  MOVFF  19,27
+027C:  CALL   017A
+.................... 		if (++dac_value == 255) {  
+0280:  INCF   19,F
+0282:  INCFSZ 19,W
+0284:  GOTO   029A
+.................... 			//if at the upper limit then flip the state  
+.................... 			dac_state = dac_state == 0 ?1 : 0;  
+0288:  MOVF   1A,F
+028A:  BTFSS  FD8.2
+028C:  GOTO   0296
+0290:  MOVLW  01
+0292:  GOTO   0298
+0296:  MOVLW  00
+0298:  MOVWF  1A
+.................... 		}  
+.................... 		printf("%u\n\r", (int)(read_adc() >> 2));  
+029A:  BSF    FC2.1
+029C:  BTFSC  FC2.1
+029E:  GOTO   029C
+02A2:  MOVFF  FC4,03
+02A6:  MOVF   FC3,W
+02A8:  MOVWF  27
+02AA:  MOVFF  03,28
+02AE:  RRCF   28,W
+02B0:  MOVWF  03
+02B2:  RRCF   27,W
+02B4:  MOVWF  02
+02B6:  RRCF   03,F
+02B8:  RRCF   02,F
+02BA:  MOVLW  3F
+02BC:  ANDWF  03,F
+02BE:  MOVF   02,W
+02C0:  MOVWF  29
+02C2:  MOVFF  29,2A
+02C6:  MOVLW  1B
+02C8:  MOVWF  2B
+02CA:  CALL   01E8
+02CE:  MOVLW  0A
+02D0:  BTFSS  F9E.4
+02D2:  GOTO   02D0
+02D6:  MOVWF  FAD
+02D8:  MOVLW  0D
+02DA:  BTFSS  F9E.4
+02DC:  GOTO   02DA
+02E0:  MOVWF  FAD
+.................... 	}   
+.................... 	else if (dac_state) {  
+02E2:  GOTO   035A
+02E6:  MOVF   1A,F
+02E8:  BTFSC  FD8.2
+02EA:  GOTO   035A
+.................... 		convert_d_to_a(dac_value);  
+02EE:  MOVFF  19,27
+02F2:  CALL   017A
+.................... 		if (--dac_value == 0) {  
+02F6:  DECF   19,F
+02F8:  MOVF   19,F
+02FA:  BTFSS  FD8.2
+02FC:  GOTO   0312
+.................... 			dac_state = dac_state == 0 ?1 : 0;  
+0300:  MOVF   1A,F
+0302:  BTFSS  FD8.2
+0304:  GOTO   030E
+0308:  MOVLW  01
+030A:  GOTO   0310
+030E:  MOVLW  00
+0310:  MOVWF  1A
+.................... 	    }  
+.................... 	    printf("%u\n\r", (int)(read_adc() >> 2));  
+0312:  BSF    FC2.1
+0314:  BTFSC  FC2.1
+0316:  GOTO   0314
+031A:  MOVFF  FC4,03
+031E:  MOVF   FC3,W
+0320:  MOVWF  27
+0322:  MOVFF  03,28
+0326:  RRCF   28,W
+0328:  MOVWF  03
+032A:  RRCF   27,W
+032C:  MOVWF  02
+032E:  RRCF   03,F
+0330:  RRCF   02,F
+0332:  MOVLW  3F
+0334:  ANDWF  03,F
+0336:  MOVF   02,W
+0338:  MOVWF  29
+033A:  MOVFF  29,2A
+033E:  MOVLW  1B
+0340:  MOVWF  2B
+0342:  CALL   01E8
+0346:  MOVLW  0A
+0348:  BTFSS  F9E.4
+034A:  GOTO   0348
+034E:  MOVWF  FAD
+0350:  MOVLW  0D
+0352:  BTFSS  F9E.4
+0354:  GOTO   0352
+0358:  MOVWF  FAD
+.................... 	}  
+.................... }  
+....................   
+035A:  BCF    F9E.1
+035C:  GOTO   0058
+.................... void main(void) {  
+.................... 	//var definitions  
+*
+06FA:  CLRF   FF8
+06FC:  BCF    FD0.7
+06FE:  BSF    0D.7
+0700:  CLRF   FEA
+0702:  CLRF   FE9
+0704:  MOVF   FC1,W
+0706:  ANDLW  C0
+0708:  IORLW  0F
+070A:  MOVWF  FC1
+070C:  MOVLW  07
+070E:  MOVWF  FB4
+0710:  MOVF   F92,W
+0712:  MOVWF  F92
+0714:  MOVF   FB4,W
+0716:  BCF    FA1.6
+0718:  BSF    FB8.3
+071A:  MOVLW  2A
+071C:  MOVWF  FAF
+071E:  MOVLW  00
+0720:  MOVWF  FB0
+0722:  MOVLW  26
+0724:  MOVWF  FAC
+0726:  MOVLW  90
+0728:  MOVWF  FAB
+072A:  CLRF   19
+072C:  CLRF   1A
+.................... 	int button_state = 0;  
+072E:  CLRF   1B
+.................... 	int play_wave = 0;  
+0730:  CLRF   1C
+....................   
+.................... 	//set up the hardware  
+.................... 	set_up_hardware();  
+0732:  GOTO   0360
+.................... 	init_memory();  
+0736:  GOTO   0390
+.................... 	set_adc_channel(LINE_IN);  
+073A:  MOVLW  04
+073C:  MOVWF  01
+073E:  MOVF   FC2,W
+0740:  ANDLW  C3
+0742:  IORWF  01,W
+0744:  MOVWF  FC2
+....................   
+.................... 	//set up the interupts  
+.................... 	setup_timer_2(T2_DIV_BY_4, 250, 2); //2.5k interupts per second  
+0746:  MOVLW  08
+0748:  MOVWF  01
+074A:  MOVF   01,W
+074C:  IORLW  05
+074E:  MOVWF  FCA
+0750:  MOVLW  FA
+0752:  MOVWF  FCB
+....................    	set_timer2(0);  
+0754:  CLRF   FCC
+....................    	enable_interrupts(GLOBAL);  
+0756:  MOVLW  C0
+0758:  IORWF  FF2,F
+....................   
+....................   	//delay to unplug the programmer  
+.................... 	delay_ms(5000);  
+075A:  MOVLW  14
+075C:  MOVWF  1D
+075E:  MOVLW  FA
+0760:  MOVWF  1E
+0762:  GOTO   03BC
+0766:  DECFSZ 1D,F
+0768:  BRA    075E
+....................   
+.................... 	//check the moemory  
+.................... 	mem_check();  
+076A:  GOTO   046E
+....................   
+.................... 	//main loop  
+.................... 	while(1) {  
+.................... 		if(input(BUTTON) == BUTTON_PRESSED && button_state == 0) {  
+076E:  BSF    F94.1
+0770:  MOVLW  00
+0772:  BTFSC  F82.1
+0774:  MOVLW  01
+0776:  XORLW  00
+0778:  BTFSS  FD8.2
+077A:  GOTO   078A
+077E:  MOVF   1B,F
+0780:  BTFSS  FD8.2
+0782:  GOTO   078A
+.................... 			button_state = 1;  
+0786:  MOVLW  01
+0788:  MOVWF  1B
+.................... 		}  
+.................... 		if(input(BUTTON) == BUTTON_RELEASED && button_state == 1) {  
+078A:  BSF    F94.1
+078C:  MOVLW  00
+078E:  BTFSC  F82.1
+0790:  MOVLW  01
+0792:  SUBLW  01
+0794:  BTFSS  FD8.2
+0796:  GOTO   07C4
+079A:  DECFSZ 1B,W
+079C:  GOTO   07C4
+.................... 			//reset the button state and flip the play wave flag   
+.................... 			button_state = 0;  
+07A0:  CLRF   1B
+.................... 			play_wave = play_wave == 0 ?1 : 0;  
+07A2:  MOVF   1C,F
+07A4:  BTFSS  FD8.2
+07A6:  GOTO   07B0
+07AA:  MOVLW  01
+07AC:  GOTO   07B2
+07B0:  MOVLW  00
+07B2:  MOVWF  1C
+.................... 			if(play_wave) {  
+07B4:  MOVF   1C,F
+07B6:  BTFSC  FD8.2
+07B8:  GOTO   07C2
+.................... 				enable_interrupts(INT_TIMER2);  
+07BC:  BSF    F9D.1
+....................    				  
+.................... 			}  
+.................... 			else {  
+07BE:  GOTO   07C4
+.................... 				disable_interrupts(INT_TIMER2);  
+07C2:  BCF    F9D.1
+.................... 			}  
+.................... 		}  
+.................... 	}  
+07C4:  GOTO   076E
+.................... } 
+07C8:  SLEEP 
+
+Configuration Fuses:
+   Word  1: 0200   HS NOIESO NOFCMEN RESERVED
+   Word  2: 1E19   NOBROWNOUT NOWDT BORV20 NOPUT WDT32768
+   Word  3: 8100   NOPBADEN CCP2C1 NOLPT1OSC MCLR RESERVED
+   Word  4: 0081   STVREN NODEBUG NOLVP NOXINST RESERVED
+   Word  5: C00F   NOPROTECT NOCPD NOCPB
+   Word  6: E00F   NOWRT NOWRTD NOWRTC NOWRTB
+   Word  7: 400F   NOEBTR NOEBTRB

@@ -1,0 +1,17 @@
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 6 ALT.ASM 7 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 6 ALT.ASM 9 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 6 ALT.ASM 13 : Found label after column 1. (VALA)
+Warning[207] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 6 ALT.ASM 14 : Found label after column 1. (VALB)
+Warning[207] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 6 ALT.ASM 15 : Found label after column 1. (VALC)
+Warning[207] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 6 ALT.ASM 17 : Found label after column 1. (COUNTER1)
+Warning[207] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 6 ALT.ASM 18 : Found label after column 1. (COUNTER2)
+Warning[207] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 6 ALT.ASM 19 : Found label after column 1. (COUNTER3)
+Warning[207] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 6 ALT.ASM 20 : Found label after column 1. (COUNTER4)
+Warning[207] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 6 ALT.ASM 21 : Found label after column 1. (COUNTER5)
+Warning[207] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 6 ALT.ASM 22 : Found label after column 1. (COUNTER6)
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 6 ALT.ASM 49 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 6 ALT.ASM 51 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 6 ALT.ASM 53 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 6 ALT.ASM 60 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 6 ALT.ASM 62 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 6 ALT.ASM 64 : Register in operand not in bank 0.  Ensure that bank bits are correct.

@@ -1,0 +1,51 @@
+MPLINK 4.51, LINKER
+Linker Map File - Created Tue Dec 03 15:58:59 2013
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x00006a
+     .config_2007_CLOCK.O       code   0x002007    program   0x000002
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000034      
+                            0x002007    0x002007      
+            54 out of 1094 program addresses used, program memory utilization is 4%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    CLOCK   0x000023    program     static C:\Users\Chris\Google Drive\Documents\Lancaster University\year 3\SCC369 - Embedded Systems\Code\Clock.X\src\Clock.asm
+                INCBLOCK1   0x000023    program     static C:\Users\Chris\Google Drive\Documents\Lancaster University\year 3\SCC369 - Embedded Systems\Code\Clock.X\src\Clock.asm
+                INCBLOCK2   0x00002b    program     static C:\Users\Chris\Google Drive\Documents\Lancaster University\year 3\SCC369 - Embedded Systems\Code\Clock.X\src\Clock.asm
+                INCBLOCK3   0x00002b    program     static C:\Users\Chris\Google Drive\Documents\Lancaster University\year 3\SCC369 - Embedded Systems\Code\Clock.X\src\Clock.asm
+                INCBLOCK4   0x00002b    program     static C:\Users\Chris\Google Drive\Documents\Lancaster University\year 3\SCC369 - Embedded Systems\Code\Clock.X\src\Clock.asm
+                     INIT   0x000000    program     static C:\Users\Chris\Google Drive\Documents\Lancaster University\year 3\SCC369 - Embedded Systems\Code\Clock.X\src\Clock.asm
+                    LOOP1   0x00002f    program     static C:\Users\Chris\Google Drive\Documents\Lancaster University\year 3\SCC369 - Embedded Systems\Code\Clock.X\src\Clock.asm
+                    LOOP2   0x000032    program     static C:\Users\Chris\Google Drive\Documents\Lancaster University\year 3\SCC369 - Embedded Systems\Code\Clock.X\src\Clock.asm
+                     MAIN   0x000020    program     static C:\Users\Chris\Google Drive\Documents\Lancaster University\year 3\SCC369 - Embedded Systems\Code\Clock.X\src\Clock.asm
+                     WAIT   0x00002b    program     static C:\Users\Chris\Google Drive\Documents\Lancaster University\year 3\SCC369 - Embedded Systems\Code\Clock.X\src\Clock.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                     INIT   0x000000    program     static C:\Users\Chris\Google Drive\Documents\Lancaster University\year 3\SCC369 - Embedded Systems\Code\Clock.X\src\Clock.asm
+                     MAIN   0x000020    program     static C:\Users\Chris\Google Drive\Documents\Lancaster University\year 3\SCC369 - Embedded Systems\Code\Clock.X\src\Clock.asm
+                    CLOCK   0x000023    program     static C:\Users\Chris\Google Drive\Documents\Lancaster University\year 3\SCC369 - Embedded Systems\Code\Clock.X\src\Clock.asm
+                INCBLOCK1   0x000023    program     static C:\Users\Chris\Google Drive\Documents\Lancaster University\year 3\SCC369 - Embedded Systems\Code\Clock.X\src\Clock.asm
+                INCBLOCK2   0x00002b    program     static C:\Users\Chris\Google Drive\Documents\Lancaster University\year 3\SCC369 - Embedded Systems\Code\Clock.X\src\Clock.asm
+                INCBLOCK3   0x00002b    program     static C:\Users\Chris\Google Drive\Documents\Lancaster University\year 3\SCC369 - Embedded Systems\Code\Clock.X\src\Clock.asm
+                INCBLOCK4   0x00002b    program     static C:\Users\Chris\Google Drive\Documents\Lancaster University\year 3\SCC369 - Embedded Systems\Code\Clock.X\src\Clock.asm
+                     WAIT   0x00002b    program     static C:\Users\Chris\Google Drive\Documents\Lancaster University\year 3\SCC369 - Embedded Systems\Code\Clock.X\src\Clock.asm
+                    LOOP1   0x00002f    program     static C:\Users\Chris\Google Drive\Documents\Lancaster University\year 3\SCC369 - Embedded Systems\Code\Clock.X\src\Clock.asm
+                    LOOP2   0x000032    program     static C:\Users\Chris\Google Drive\Documents\Lancaster University\year 3\SCC369 - Embedded Systems\Code\Clock.X\src\Clock.asm
+
+

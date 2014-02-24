@@ -1,0 +1,746 @@
+ #include <18f2420.h> A    1 :V17
+ //////// Standard Header file for the PIC18F2420 device ////////////////  B    1 :I1
+#device PIC18F2420  B    2 :
+#nolist  B    3N:X0
+//////// Program memory: 8192x16  Data RAM: 768  Stack: 31  B    4N:
+//////// I/O: 25   Analog Pins: 10  B    5N:
+//////// Data EEPROM: 256  B    6N:
+//////// C Scratch area: 00   ID Location: 2000  B    7N:
+//////// Fuses: LP,XT,HS,RC,EC,EC_IO,H4,RC_IO,PROTECT,NOPROTECT  B    8N:
+//////// Fuses: BROWNOUT_NOSL,BROWNOUT_SW,NOBROWNOUT,BROWNOUT,WDT1,WDT2,WDT4  B    9N:
+//////// Fuses: WDT8,WDT16,WDT32,WDT64,WDT128,WDT,NOWDT,BORV20,BORV27,BORV42  B   10N:
+//////// Fuses: BORV45,PUT,NOPUT,CPD,NOCPD,NOSTVREN,STVREN,NODEBUG,DEBUG  B   11N:
+//////// Fuses: NOLVP,LVP,WRT,NOWRT,WRTD,NOWRTD,IESO,NOIESO,FCMEN,NOFCMEN  B   12N:
+//////// Fuses: PBADEN,NOPBADEN,CCP2B3,CCP2C1,WRTC,NOWRTC,WRTB,NOWRTB,EBTR  B   13N:
+//////// Fuses: NOEBTR,EBTRB,NOEBTRB,CPB,NOCPB,LPT1OSC,NOLPT1OSC,MCLR,NOMCLR  B   14N:
+//////// Fuses: XINST,NOXINST,INTRC,INTRC_IO,WDT256,WDT512,WDT1024,WDT2048  B   15N:
+//////// Fuses: WDT4096,WDT8192,WDT16384,WDT32768  B   16N:
+////////   B   17N:
+////////////////////////////////////////////////////////////////// I/O  B   18N:
+// Discrete I/O Functions: SET_TRIS_x(), OUTPUT_x(), INPUT_x(),  B   19N:
+//                         PORT_B_PULLUPS(), INPUT(),  B   20N:
+//                         OUTPUT_LOW(), OUTPUT_HIGH(),  B   21N:
+//                         OUTPUT_FLOAT(), OUTPUT_BIT()  B   22N:
+// Constants used to identify pins in the above are:  B   23N:
+  B   24N:
+#define PIN_A0  31744  B   25N:
+#define PIN_A1  31745  B   26N:
+#define PIN_A2  31746  B   27N:
+#define PIN_A3  31747  B   28N:
+#define PIN_A4  31748  B   29N:
+#define PIN_A5  31749  B   30N:
+#define PIN_A6  31750  B   31N:
+#define PIN_A7  31751  B   32N:
+  B   33N:
+#define PIN_B0  31752  B   34N:
+#define PIN_B1  31753  B   35N:
+#define PIN_B2  31754  B   36N:
+#define PIN_B3  31755  B   37N:
+#define PIN_B4  31756  B   38N:
+#define PIN_B5  31757  B   39N:
+#define PIN_B6  31758  B   40N:
+#define PIN_B7  31759  B   41N:
+  B   42N:
+#define PIN_C0  31760  B   43N:
+#define PIN_C1  31761  B   44N:
+#define PIN_C2  31762  B   45N:
+#define PIN_C3  31763  B   46N:
+#define PIN_C4  31764  B   47N:
+#define PIN_C5  31765  B   48N:
+#define PIN_C6  31766  B   49N:
+#define PIN_C7  31767  B   50N:
+  B   51N:
+#define PIN_E3  31779  B   52N:
+  B   53N:
+////////////////////////////////////////////////////////////////// Useful defines  B   54N:
+#define FALSE 0  B   55N:
+#define TRUE 1  B   56N:
+  B   57N:
+#define BYTE int  B   58N:
+#define BOOLEAN short int  B   59N:
+  B   60N:
+#define getc getch  B   61N:
+#define fgetc getch  B   62N:
+#define getchar getch  B   63N:
+#define putc putchar  B   64N:
+#define fputc putchar  B   65N:
+#define fgets gets  B   66N:
+#define fputs puts  B   67N:
+  B   68N:
+////////////////////////////////////////////////////////////////// Control  B   69N:
+// Control Functions:  RESET_CPU(), SLEEP(), RESTART_CAUSE()  B   70N:
+// Constants returned from RESTART_CAUSE() are:  B   71N:
+  B   72N:
+#define WDT_TIMEOUT      4       B   73N:
+#define MCLR_FROM_SLEEP  8       B   74N:
+#define NORMAL_POWER_UP  12      B   75N:
+#define BROWNOUT_RESTART 14      B   76N:
+  B   77N:
+////////////////////////////////////////////////////////////////// Timer 0  B   78N:
+// Timer 0 (AKA RTCC)Functions: SETUP_COUNTERS() or SETUP_TIMER_0(),  B   79N:
+//                              SET_TIMER0() or SET_RTCC(),  B   80N:
+//                              GET_TIMER0() or GET_RTCC()  B   81N:
+// Constants used for SETUP_TIMER_0() are:  B   82N:
+#define RTCC_INTERNAL   0  B   83N:
+#define RTCC_EXT_L_TO_H 32  B   84N:
+#define RTCC_EXT_H_TO_L 48  B   85N:
+  B   86N:
+#define RTCC_DIV_1      8  B   87N:
+#define RTCC_DIV_2      0  B   88N:
+#define RTCC_DIV_4      1  B   89N:
+#define RTCC_DIV_8      2  B   90N:
+#define RTCC_DIV_16     3  B   91N:
+#define RTCC_DIV_32     4  B   92N:
+#define RTCC_DIV_64     5  B   93N:
+#define RTCC_DIV_128    6  B   94N:
+#define RTCC_DIV_256    7  B   95N:
+  B   96N:
+#define RTCC_OFF        0x80    B   97N:
+  B   98N:
+#define RTCC_8_BIT      0x40    B   99N:
+  B  100N:
+// Constants used for SETUP_COUNTERS() are the above  B  101N:
+// constants for the 1st param and the following for  B  102N:
+// the 2nd param:  B  103N:
+  B  104N:
+////////////////////////////////////////////////////////////////// WDT  B  105N:
+// Watch Dog Timer Functions: SETUP_WDT() or SETUP_COUNTERS() (see above)  B  106N:
+//                            RESTART_WDT()  B  107N:
+//  B  108N:
+#define WDT_ON      0x100     B  109N:
+#define WDT_OFF     0         B  110N:
+  B  111N:
+////////////////////////////////////////////////////////////////// Timer 1  B  112N:
+// Timer 1 Functions: SETUP_TIMER_1, GET_TIMER1, SET_TIMER1  B  113N:
+// Constants used for SETUP_TIMER_1() are:  B  114N:
+//      (or (via |) together constants from each group)  B  115N:
+#define T1_DISABLED         0  B  116N:
+#define T1_INTERNAL         0x85  B  117N:
+#define T1_EXTERNAL         0x87  B  118N:
+#define T1_EXTERNAL_SYNC    0x83  B  119N:
+  B  120N:
+#define T1_CLK_OUT          8  B  121N:
+  B  122N:
+#define T1_DIV_BY_1         0  B  123N:
+#define T1_DIV_BY_2         0x10  B  124N:
+#define T1_DIV_BY_4         0x20  B  125N:
+#define T1_DIV_BY_8         0x30  B  126N:
+  B  127N:
+////////////////////////////////////////////////////////////////// Timer 2  B  128N:
+// Timer 2 Functions: SETUP_TIMER_2, GET_TIMER2, SET_TIMER2  B  129N:
+// Constants used for SETUP_TIMER_2() are:  B  130N:
+#define T2_DISABLED         0  B  131N:
+#define T2_DIV_BY_1         4  B  132N:
+#define T2_DIV_BY_4         5  B  133N:
+#define T2_DIV_BY_16        6  B  134N:
+  B  135N:
+////////////////////////////////////////////////////////////////// Timer 3  B  136N:
+// Timer 3 Functions: SETUP_TIMER_3, GET_TIMER3, SET_TIMER3  B  137N:
+// Constants used for SETUP_TIMER_3() are:  B  138N:
+//      (or (via |) together constants from each group)  B  139N:
+#define T3_DISABLED         0  B  140N:
+#define T3_INTERNAL         0x85  B  141N:
+#define T3_EXTERNAL         0x87  B  142N:
+#define T3_EXTERNAL_SYNC    0x83  B  143N:
+  B  144N:
+#define T3_DIV_BY_1         0  B  145N:
+#define T3_DIV_BY_2         0x10  B  146N:
+#define T3_DIV_BY_4         0x20  B  147N:
+#define T3_DIV_BY_8         0x30  B  148N:
+  B  149N:
+////////////////////////////////////////////////////////////////// CCP  B  150N:
+// CCP Functions: SETUP_CCPx, SET_PWMx_DUTY  B  151N:
+// CCP Variables: CCP_x, CCP_x_LOW, CCP_x_HIGH  B  152N:
+// Constants used for SETUP_CCPx() are:  B  153N:
+#define CCP_OFF                         0  B  154N:
+#define CCP_CAPTURE_FE                  4  B  155N:
+#define CCP_CAPTURE_RE                  5  B  156N:
+#define CCP_CAPTURE_DIV_4               6  B  157N:
+#define CCP_CAPTURE_DIV_16              7  B  158N:
+#define CCP_COMPARE_SET_ON_MATCH        8  B  159N:
+#define CCP_COMPARE_CLR_ON_MATCH        9  B  160N:
+#define CCP_COMPARE_INT                 0xA  B  161N:
+#define CCP_COMPARE_INT_AND_TOGGLE      0x2         B  162N:
+#define CCP_COMPARE_RESET_TIMER         0xB  B  163N:
+#define CCP_PWM                         0xC  B  164N:
+#define CCP_PWM_PLUS_1                  0x1c  B  165N:
+#define CCP_PWM_PLUS_2                  0x2c  B  166N:
+#define CCP_PWM_PLUS_3                  0x3c  B  167N:
+#define CCP_USE_TIMER3                  0x100         B  168N:
+long CCP_1;  B  169N:V18
+#byte   CCP_1    =                      0xfbe         B  170N:
+#byte   CCP_1_LOW=                      0xfbe         B  171N:
+#byte   CCP_1_HIGH=                     0xfbf         B  172N:V19
+long CCP_2;  B  173N:V20V21
+#byte   CCP_2    =                      0xfbb         B  174N:
+#byte   CCP_2_LOW=                      0xfbb         B  175N:
+#byte   CCP_2_HIGH=                     0xfbc         B  176N:V22
+////////////////////////////////////////////////////////////////// SPI  B  177N:
+// SPI Functions: SETUP_SPI, SPI_WRITE, SPI_READ, SPI_DATA_IN  B  178N:
+// Constants used in SETUP_SSP() are:  B  179N:
+#define SPI_MASTER       0x20  B  180N:
+#define SPI_SLAVE        0x24  B  181N:
+#define SPI_L_TO_H       0  B  182N:
+#define SPI_H_TO_L       0x10  B  183N:
+#define SPI_CLK_DIV_4    0  B  184N:
+#define SPI_CLK_DIV_16   1  B  185N:
+#define SPI_CLK_DIV_64   2  B  186N:
+#define SPI_CLK_T2       3  B  187N:
+#define SPI_SS_DISABLED  1  B  188N:
+  B  189N:
+#define SPI_SAMPLE_AT_END 0x8000  B  190N:
+#define SPI_XMIT_L_TO_H  0x4000  B  191N:
+  B  192N:
+////////////////////////////////////////////////////////////////// UART  B  193N:
+// Constants used in setup_uart() are:  B  194N:
+// FALSE - Turn UART off  B  195N:
+// TRUE  - Turn UART on  B  196N:
+#define UART_ADDRESS           2  B  197N:
+#define UART_DATA              4  B  198N:
+#define UART_AUTODETECT        8  B  199N:
+#define UART_AUTODETECT_NOWAIT 9  B  200N:
+#define UART_WAKEUP_ON_RDA     10  B  201N:
+////////////////////////////////////////////////////////////////// COMP  B  202N:
+// Comparator Variables: C1OUT, C2OUT  B  203N:
+// Constants used in setup_comparator() are:  B  204N:
+#define A0_A3_A1_A3  0xfff04  B  205N:
+#define A0_A3_A1_A2_OUT_ON_A4_A5  0xfcf03  B  206N:
+#define A0_A3_A1_A3_OUT_ON_A4_A5  0xbcf05  B  207N:
+#define NC_NC_NC_NC  0x0ff07  B  208N:
+#define A0_A3_A1_A2  0xfff02  B  209N:
+#define A0_A3_NC_NC_OUT_ON_A4  0x9ef01  B  210N:
+#define A0_VR_A1_VR 0x3ff06  B  211N:
+#define A3_VR_A2_VR 0xcff0e  B  212N:
+  B  213N:
+#bit C1OUT = 0xfb4.6       B  214N:V23
+#bit C2OUT = 0xfb4.7       B  215N:V24
+  B  216N:
+////////////////////////////////////////////////////////////////// VREF  B  217N:
+// Constants used in setup_vref() are:  B  218N:
+//  B  219N:
+#define VREF_LOW  0xa0  B  220N:
+#define VREF_HIGH 0x80  B  221N:
+// Or (with |) the above with a number 0-15  B  222N:
+#define VREF_F5   0x40  B  223N:
+#define VREF_COMP 0x10  B  224N:
+  B  225N:
+////////////////////////////////////////////////////////////////// VREF  B  226N:
+// Constants used in setup_low_volt_detect() are:  B  227N:
+//  B  228N:
+#define LVD_LVDIN   0x1F  B  229N:
+#define LVD_45 0x1E  B  230N:
+#define LVD_42 0x1D  B  231N:
+#define LVD_40 0x1C  B  232N:
+#define LVD_38 0x1B  B  233N:
+#define LVD_36 0x1A  B  234N:
+#define LVD_35 0x19  B  235N:
+#define LVD_33 0x18  B  236N:
+#define LVD_30 0x17  B  237N:
+#define LVD_28 0x16  B  238N:
+#define LVD_27 0x15  B  239N:
+#define LVD_25 0x14  B  240N:
+#define LVD_23 0x13      B  241N:
+#define LVD_21 0x12      B  242N:
+#define LVD_19 0x11      B  243N:
+  B  244N:
+#define LVD_TRIGGER_BELOW 0  B  245N:
+#define LVD_TRIGGER_ABOVE 0x80  B  246N:
+  B  247N:
+  B  248N:
+////////////////////////////////////////////////////////////////// INTERNAL RC  B  249N:
+// Constants used in setup_oscillator() are:  B  250N:
+// First param:  B  251N:
+#define OSC_31KHZ   0  B  252N:
+#define OSC_125KHZ  0x10  B  253N:
+#define OSC_250KHZ  0x20  B  254N:
+#define OSC_500KHZ  0x30  B  255N:
+#define OSC_1MHZ    0x40  B  256N:
+#define OSC_2MHZ    0x50  B  257N:
+#define OSC_4MHZ    0x60  B  258N:
+#define OSC_8MHZ    0x70  B  259N:
+// The following may be OR'ed in with the above using |  B  260N:
+#define OSC_TIMER1  1  B  261N:
+#define OSC_INTRC   2  B  262N:
+#define OSC_NORMAL  0  B  263N:
+// The following may be OR'ed in with the above using |  B  264N:
+#define OSC_IDLE_MODE  0x8000  B  265N:
+#define OSC_31250   0x8000  B  266N:
+#define OSC_PLL_ON  0x4000  B  267N:
+#define OSC_PLL_OFF 0  B  268N:
+// A second optional parameter may be used with this part to fine  B  269N:
+// tune the speed (signed int,0-31)  B  270N:
+// Result may be (ignore all other bits)  B  271N:
+#define OSC_STATE_STABLE 4  B  272N:
+#define OSC_STATE_EXT_RUNNING 8  B  273N:
+  B  274N:
+  B  275N:
+////////////////////////////////////////////////////////////////// ADC  B  276N:
+// ADC Functions: SETUP_ADC(), SETUP_ADC_PORTS() (aka SETUP_PORT_A),  B  277N:
+//                SET_ADC_CHANNEL(), READ_ADC()  B  278N:
+// Constants used for SETUP_ADC() are:  B  279N:
+#define ADC_OFF               0           // ADC Off  B  280N:
+#define ADC_CLOCK_DIV_2   0x100  B  281N:
+#define ADC_CLOCK_DIV_4    0x04  B  282N:
+#define ADC_CLOCK_DIV_8    0x01  B  283N:
+#define ADC_CLOCK_DIV_16   0x05  B  284N:
+#define ADC_CLOCK_DIV_32   0x02  B  285N:
+#define ADC_CLOCK_DIV_64   0x06  B  286N:
+#define ADC_CLOCK_INTERNAL 0x07           // Internal 2-6us  B  287N:
+// The following may be OR'ed in with the above using |  B  288N:
+#define ADC_TAD_MUL_0      0x00  B  289N:
+#define ADC_TAD_MUL_2      0x08  B  290N:
+#define ADC_TAD_MUL_4      0x10  B  291N:
+#define ADC_TAD_MUL_6      0x18  B  292N:
+#define ADC_TAD_MUL_8      0x20  B  293N:
+#define ADC_TAD_MUL_12     0x28  B  294N:
+#define ADC_TAD_MUL_16     0x30  B  295N:
+#define ADC_TAD_MUL_20     0x38  B  296N:
+  B  297N:
+// Constants used in SETUP_ADC_PORTS() are:  B  298N:
+#define NO_ANALOGS   0x0F   // None  B  299N:
+#define ALL_ANALOG   0x00   // A0 A1 A2 A3 A5 B2 B3 B1 B4 B0                B  300N:
+#define AN0_TO_AN11  0x03   // A0 A1 A2 A3 A5 B2 B3 B1 B4                   B  301N:
+#define AN0_TO_AN10  0x04   // A0 A1 A2 A3 A5 B2 B3 B1                      B  302N:
+#define AN0_TO_AN9   0x05   // A0 A1 A2 A3 A5 B2 B3                         B  303N:
+#define AN0_TO_AN8   0x06   // A0 A1 A2 A3 A5 B2                            B  304N:
+#define AN0_TO_AN4   0x0A   // A0 A1 A2 A3 A5  B  305N:
+#define AN0_TO_AN3   0x0B   // A0 A1 A2 A3  B  306N:
+#define AN0_TO_AN2   0x0C   // A0 A1 A2  B  307N:
+#define AN0_TO_AN1   0x0D   // A0 A1  B  308N:
+#define AN0          0x0E   // A0  B  309N:
+#define AN0_TO_AN11_ANALOG     0x03   //!old only provided for compatibility  B  310N:
+#define AN0_TO_AN10_ANALOG     0x04   //!old only provided for compatibility  B  311N:
+#define AN0_TO_AN9_ANALOG      0x05   //!old only provided for compatibility  B  312N:
+#define AN0_TO_AN8_ANALOG      0x06   //!old only provided for compatibility  B  313N:
+#define AN0_TO_AN4_ANALOG      0x0A   //!old only provided for compatibility  B  314N:
+#define AN0_TO_AN3_ANALOG      0x0B   //!old only provided for compatibility  B  315N:
+#define AN0_TO_AN2_ANALOG      0x0C   //!old only provided for compatibility  B  316N:
+#define AN0_TO_AN1_ANALOG      0x0D   //!old only provided for compatibility  B  317N:
+#define AN0_ANALOG             0x0E   //!old only provided for compatibility  B  318N:
+  B  319N:
+// The following may be OR'ed in with the above using |  B  320N:
+#define VSS_VDD               0x00              // Range 0-Vdd  B  321N:
+#define VREF_VREF             0x30              // Range VrefL-VrefH  B  322N:
+#define VREF_VDD              0x20              // Range VrefL-Vdd  B  323N:
+#define VSS_VREF              0x10              // Range 0-VrefH  B  324N:
+  B  325N:
+  B  326N:
+// Constants used in READ_ADC() are:  B  327N:
+#define ADC_START_AND_READ     7   // This is the default if nothing is specified  B  328N:
+#define ADC_START_ONLY         1  B  329N:
+#define ADC_READ_ONLY          6  B  330N:
+  B  331N:
+  B  332N:
+  B  333N:
+////////////////////////////////////////////////////////////////// INT  B  334N:
+// Interrupt Functions: ENABLE_INTERRUPTS(), DISABLE_INTERRUPTS(),  B  335N:
+//                      EXT_INT_EDGE()  B  336N:
+//  B  337N:
+// Constants used in EXT_INT_EDGE() are:  B  338N:
+#define L_TO_H              0x40  B  339N:
+#define H_TO_L                 0  B  340N:
+// Constants used in ENABLE/DISABLE_INTERRUPTS() are:  B  341N:
+#define GLOBAL                    0xF2C0  B  342N:
+#define INT_RTCC                  0xF220  B  343N:
+#define INT_TIMER0                0xF220  B  344N:
+#define INT_TIMER1                0x9D01  B  345N:
+#define INT_TIMER2                0x9D02  B  346N:
+#define INT_TIMER3                0xA002  B  347N:
+#define INT_EXT                   0xF210  B  348N:
+#define INT_EXT1                  0xF008  B  349N:
+#define INT_EXT2                  0xF010  B  350N:
+#define INT_RB                    0xF208  B  351N:
+#define INT_AD                    0x9D40  B  352N:
+#define INT_RDA                   0x9D20  B  353N:
+#define INT_TBE                   0x9D10  B  354N:
+#define INT_SSP                   0x9D08  B  355N:
+#define INT_CCP1                  0x9D04  B  356N:
+#define INT_CCP2                  0xA001  B  357N:
+#define INT_BUSCOL                0xA008  B  358N:
+#define INT_LOWVOLT               0xA004  B  359N:
+#define INT_COMP                  0xA040  B  360N:
+#define INT_EEPROM                0xA010  B  361N:
+#define INT_OSCF                  0xA080  B  362N:
+  B  363N:
+#list  B  364 :X1E
+ B  364 :
+#include "18f2420_registers.h" A    2 :
+ /** C    1 :I2
+ * For the pic18f2420 to access SFR's directly C    2 :
+ *  C    3 :
+ * Draft 0 - might not work, patches welcome! C    4 :
+ * Send patches to j.vidler@lancaster.ac.uk C    5 :
+ */ C    6 :
+ C    6 :
+#ifndef PIC18F2420_SFRS_H C    8 :
+#define PIC18F2420_SFRS_H C    9 :
+ C    9 :
+	#BYTE TOSU = 0xFFF C   11 :V25
+	#BYTE INDF2 = 0xFDF C   12 :V26
+	#BYTE CCPR1H = 0xFBF C   13 :V27
+	#BYTE IPR1 = 0xF9F C   14 :V28
+	#BYTE TOS = 0xFFE C   15 :V29
+	#BYTE POSTINC2 = 0xFDE C   16 :V30
+	#BYTE CCPR1L = 0xFBE C   17 :V31
+	#BYTE PIR1 = 0xF9E C   18 :V32
+	#BYTE TOSL = 0xFFD C   19 :V33
+	#BYTE POSTDEC2 = 0xFDD C   20 :V34
+	#BYTE CCP1CON = 0xFBD C   21 :V35
+	#BYTE PIE1 = 0xF9D C   22 :V36
+	#BYTE STKPTR = 0xFFC C   23 :V37
+	#BYTE PREINC2 = 0xFDC C   24 :V38
+	#BYTE CCPR2 = 0xFBC C   25 :V39
+	#BYTE PCLATU = 0xFFB C   26 :V40
+	#BYTE PLUSW2 = 0xFDB C   27 :V41
+	#BYTE CCPR2L = 0xFBB C   28 :V42
+	#BYTE OSCTUNE = 0xF9B C   29 :V43
+	#BYTE PCLAT = 0xFFA C   30 :V44
+	#BYTE FSR2 = 0xFDA C   31 :V45
+	#BYTE CCP2CON = 0xFBA C   32 :V46
+	#BYTE PCL = 0xFF9 C   33 :V47
+	#BYTE FSR2L = 0xFD9 C   34 :V48
+	#BYTE TBLPTRU = 0xFF8 C   35 :V49
+	#BYTE STATUS = 0xFD8 C   36 :V50
+	#BYTE BAUDCON = 0xFB8 C   37 :V51
+	#BYTE TBLPTR = 0xFF7 C   38 :V52
+	#BYTE TMR0 = 0xFD7 C   39 :V53
+	#BYTE PWM1CON = 0xFB7 C   40 :V54
+	#BYTE TRISE = 0xF96 C   41 :V55
+	#BYTE TBLPTRL = 0xFF6 C   42 :V56
+	#BYTE TMR0L = 0xFD6 C   43 :V57
+	#BYTE ECCP1AS = 0xFB6 C   44 :V58
+	#BYTE TABLAT = 0xFF5 C   45 :V59
+	#BYTE T0CON = 0xFD5 C   46 :V60
+	#BYTE CVRCON = 0xFB5 C   47 :V61
+	#BYTE TRISD = 0xF95 C   48 :V62
+	#BYTE CMCON = 0xFB4 C   49 :V63
+	#BYTE TRISC = 0xF94 C   50 :V64
+	#BYTE PRODL = 0xFF4 C   51 :V65
+	#BYTE PRODL = 0xFF3 C   52 :V66
+	#BYTE OSCCON = 0xFD3 C   53 :
+	#BYTE TMR3 = 0xFB3 C   54 :V67
+	#BYTE TRISB = 0xF93 C   55 :V68
+	#BYTE INTCON = 0xFF2 C   56 :V69
+	#BYTE LVDCON = 0xFD2 C   57 :V70
+	#BYTE TMR3L = 0xFB2 C   58 :V71
+	#BYTE TRISA = 0xF92 C   59 :V72
+	#BYTE INTCON2 = 0xFF1 C   60 :V73
+	#BYTE WDTCON = 0xFD1 C   61 :V74
+	#BYTE T3CON = 0xFB1 C   62 :V75
+	#BYTE INTCON3 = 0xFF0 C   63 :V76
+	#BYTE RCON = 0xFD0 C   64 :V77
+	#BYTE SPBRG = 0xFB0 C   65 :V78
+	#BYTE INDF0 = 0xFEF C   66 :V79
+	#BYTE TMR1 = 0xFCF C   67 :V80
+	#BYTE SPBRG = 0xFAF C   68 :V81
+	#BYTE POSTINC0 = 0xFEE C   69 :
+	#BYTE TMR1L = 0xFCE C   70 :V82
+	#BYTE RCREG = 0xFAE C   71 :V83
+	#BYTE POSTDEC0 = 0xFED C   72 :V84
+	#BYTE T1CON = 0xFCD C   73 :V85
+	#BYTE TXREG = 0xFAD C   74 :V86
+	#BYTE LATE = 0xF8D C   75 :V87
+	#BYTE TMR2 = 0xFCC C   76 :V88
+	#BYTE TXSTA = 0xFAC C   77 :V89
+	#BYTE LATD = 0xF8C C   78 :V90
+	#BYTE PREINC0 = 0xFEC C   79 :V91
+	#BYTE PLUSW0 = 0xFEB C   80 :V92
+	#BYTE PR2 = 0xFCB C   81 :V93
+	#BYTE RCSTA = 0xFAB C   82 :V94
+	#BYTE LATC = 0xF8B C   83 :V95
+	#BYTE FSR0 = 0xFEA C   84 :V96
+	#BYTE T2CON = 0xFCA C   85 :V97
+	#BYTE LATB = 0xF8A C   86 :V98
+	#BYTE FSR0L = 0xFE9 C   87 :V99
+	#BYTE SSPBUF = 0xFC9 C   88 :V100
+	#BYTE EEADR = 0xFA9 C   89 :V101
+	#BYTE LATA = 0xF89 C   90 :V102
+	#BYTE WREG = 0xFE8 C   91 :V103
+	#BYTE SSPADD = 0xFC8 C   92 :V104
+	#BYTE EEDATA = 0xFA8 C   93 :V105
+	#BYTE INDF1 = 0xFE7 C   94 :V106
+	#BYTE SSPSTAT = 0xFC7 C   95 :V107
+	#BYTE EECON2 =0xFA7 C   96 :V108
+	#BYTE POSTINC1 = 0xFE6 C   97 :V109
+	#BYTE SSPCON1 = 0xFC6 C   98 :V110
+	#BYTE EECON1 = 0xFA6 C   99 :V111
+	#BYTE POSTDEC1 = 0xFE5 C  100 :V112
+	#BYTE SSPCON2 = 0xFC5 C  101 :V113
+	#BYTE PORTE = 0xF84 C  102 :V114
+	#BYTE PREINC1 = 0xFE4 C  103 :V115
+	#BYTE ADRES = 0xFC4 C  104 :V116
+	#BYTE PLUSW1 = 0xFE3 C  105 :V117
+	#BYTE ADRESL = 0xFC3 C  106 :V118
+	#BYTE PORTD = 0xF83 C  107 :V119
+	#BYTE FSR1 = 0xFE2 C  108 :V120
+	#BYTE ADCON0 = 0xFC2 C  109 :V121
+	#BYTE IPR2 = 0xFA2 C  110 :V122
+	#BYTE PORTC = 0xF82 C  111 :V123
+	#BYTE FSR1L = 0xFE1 C  112 :V124
+	#BYTE ADCON1 = 0xFC1 C  113 :V125
+	#BYTE PIR2 = 0xFA1 C  114 :V126
+	#BYTE PORTB = 0xF81 C  115 :V127
+	#BYTE BSR = 0xFE0 C  116 :V128
+	#BYTE ADCON2 = 0xFC0 C  117 :V129
+	#BYTE PIE2 =0xFA0 C  118 :V130
+	#BYTE PORTA =0xF80 C  119 :V131
+ C  119 :
+#endif C  121 :E
+ C  121 :
+  A    3 :
+#device ADC=10 //causes read_adc() to produce 10 bit results  A    4 :
+#fuses HS,NOWDT,NOPROTECT,NOLVP,NOPUT  A    5 :
+#fuses NOBROWNOUT //no brown-out detection  A    6 :
+#fuses NOFCMEN //no fail-safe clock monitor  A    7 :
+#fuses NOXINST //disable extended instruction set  A    8 :
+#fuses NOIESO //disable internal external switchover mode  A    9 :
+#fuses NOPBADEN //turn off 0-4 a/d on port b (port B is all digital)  A   10 :
+  A   11 :
+//turn off all optimisation  A   12 :
+#opt 0  A   13 :
+  A   14 :
+//set the clock speed  A   15 :
+#use delay(clock=20000000)  A   16 :V133V135
+  A   17 :
+//set the spi ports  A   18 :
+#use rs232(baud=115200, xmit=PIN_C6, rcv=PIN_C7)  A   19 :
+  A   20 :
+//defines for the pins  A   21 :
+#define LOW_ADDRESS_LATCH	PIN_A2  A   22 :
+#define	HIGH_ADDRESS_LATCH	PIN_A3  A   23 :
+#define MSB_ADDRESS			PIN_C0  A   24 :
+#define	SRAM_OUTPUT_ENABLE	PIN_A4  A   25 :
+#define	SRAM_WRITE_ENABLE	PIN_A5  A   26 :
+#define	DAC_FRAME_SYNC		PIN_C2  A   27 :
+#define	RED_LED				PIN_C4  A   28 :
+#define MICROPHONE			PIN_A0  A   29 :
+#define	LINE_IN				PIN_A1  A   30 :
+#define	BUTTON				PIN_C1	  A   31 :
+  A   32 :
+#define BUTTON_PRESSED      0  A   33 :
+#define BUTTON_RELEASED 	1  A   34 :
+  A   35 :
+//global vars  A   36 :
+int dac_value = 0;  A   37 :V139V140
+int dac_state = 0;  A   38 :V141
+  A   39 :
+  A   40 :
+//this function sets up the hardware on the board  A   41 :
+void set_up_hardware() {  A   42 :f475{18
+	  A   43 :
+	setup_adc(ADC_CLOCK_INTERNAL);  A   44 :
+	setup_adc_ports(AN0_TO_AN1);  A   45 :
+  A   46 :
+	setup_spi(SPI_MASTER | SPI_L_TO_H | SPI_CLK_DIV_4 | SPI_SS_DISABLED);  A   47 :
+  A   48 :
+	#asm   A   49 :
+	//configure SPI clock rate to div4 (not div16) [CCSC=EVIL!]  A   50 :
+	MOVLW 0x30	//clock rate div4, idle state for clock is high level  A   51 :
+	MOVWF 0xFC6 //see section 17.3 of 18F2423 manual, and DAC datasheet  A   52 :
+	MOVLW 0x40	//transmit occurs on transition from active to idle  A   53 :
+	MOVWF 0xFC7  A   54 :
+	#endasm  A   55 :
+}  A   56 :}20
+  A   57 :
+//this function is used the set the momeory to a known state  A   58 :
+void init_memory() {  A   59 :f476{22
+	//declare the value to write into the latches  A   60 :
+	int value = 0;  A   61 :V144
+	  A   62 :
+	//SRAM output enable and write enable  A   63 :
+	output_bit(SRAM_OUTPUT_ENABLE, 1);  A   64 :
+	output_bit(SRAM_WRITE_ENABLE, 1);  A   65 :
+	  A   66 :
+	//latch lines  A   67 :
+	output_bit(LOW_ADDRESS_LATCH, 0);  A   68 :
+	output_bit(HIGH_ADDRESS_LATCH, 0);  A   69 :
+	  A   70 :
+	//latch 0x00 into the address latches  A   71 :
+	output_b(value);  A   72 :
+  A   73 :
+	//write the value into the lower latch  A   74 :
+	output_bit(LOW_ADDRESS_LATCH, 1);  A   75 :
+	output_bit(LOW_ADDRESS_LATCH, 0);  A   76 :
+  A   77 :
+	//write the bit into the higher latch  A   78 :
+	output_bit(HIGH_ADDRESS_LATCH, 1);  A   79 :
+	output_bit(HIGH_ADDRESS_LATCH, 0);	  A   80 :
+}  A   81 :}32
+  A   82 :
+//this function is used to read a value from a given memory location  A   83 :
+int read_from_memory(int msb, int higher_address, int lower_address) {  A   84 :f478V146V147V148{34
+	//declare var to store the read value  A   85 :
+	int value = 0;  A   86 :V149
+	  A   87 :
+	//latch the lower address  A   88 :
+	output_b(lower_address);  A   89 :
+	output_bit(LOW_ADDRESS_LATCH, 1);  A   90 :
+	output_bit(LOW_ADDRESS_LATCH, 0);  A   91 :
+  A   92 :
+	//latch the high address  A   93 :
+	output_b(higher_address);  A   94 :
+	output_bit(HIGH_ADDRESS_LATCH, 1);  A   95 :
+	output_bit(HIGH_ADDRESS_LATCH, 0);  A   96 :
+  A   97 :
+	//set the msb  A   98 :
+	output_bit(MSB_ADDRESS, msb);  A   99 :
+  A  100 :
+	//read the value   A  101 :
+	output_bit(SRAM_OUTPUT_ENABLE, 0);  A  102 :
+	value = input_b();  A  103 :
+	output_bit(SRAM_OUTPUT_ENABLE, 1);  A  104 :
+  A  105 :
+	return value;  A  106 :
+}  A  107 :}45
+  A  108 :
+//this function is used to write a value to a given memory location  A  109 :
+void write_to_memory(int msb, int higher_address, int lower_address, int value) {  A  110 :f482V151V152V153V154{47
+	//latch the lower address  A  111 :
+	output_b(lower_address);  A  112 :
+	output_bit(LOW_ADDRESS_LATCH, 1);  A  113 :
+	output_bit(LOW_ADDRESS_LATCH, 0);  A  114 :
+  A  115 :
+	//latch the high address  A  116 :
+	output_b(higher_address);  A  117 :
+	output_bit(HIGH_ADDRESS_LATCH, 1);  A  118 :
+	output_bit(HIGH_ADDRESS_LATCH, 0);  A  119 :
+  A  120 :
+	//set the msb  A  121 :
+	output_bit(MSB_ADDRESS, msb);  A  122 :
+  A  123 :
+	output_b(value);  A  124 :
+	output_bit(SRAM_WRITE_ENABLE, 0);  A  125 :
+	output_bit(SRAM_WRITE_ENABLE, 1);  A  126 :
+}  A  127 :}58
+  A  128 :
+//this function is used to make sure that the memory is working as expected  A  129 :
+void mem_check() {  A  130 :f483{60
+	int i,j,k,value;  A  131 :V156V157V158V159
+	//write 255 into even slots and 255 into odd slots  A  132 :
+	printf("INFO: WRITING TO MEMORY\n\r");  A  133 :
+	for(i = 0; i < 2; i++) {  A  134 :
+		for(j = 0; j < 255; j++) {  A  135 :{73
+			for(k = 0; k < 255; k++) {  A  136 :{80
+				if(k % 2 == 0) {  A  137 :{87
+					write_to_memory(i,j,k,k);  A  138 :{90
+					//printf("INFO: WRITTEN 255 TO (%u,%u,%u)\n\r", i, j, k);  A  139 :
+				}	  A  140 :}91
+				else {  A  141 :
+					write_to_memory(i,j,k,255 - k);  A  142 :{93
+					//printf("INFO: WRITTEN 254 TO (%u,%u,%u)\n\r", i, j, k);  A  143 :
+				}	  A  144 :}94
+			}  A  145 :}95
+		}  A  146 :}96
+	}  A  147 :}97
+	  A  148 :
+	//read back the memory chek to make sure ok  A  149 :
+	printf("INFO: READING FROM MEMORY\n\r");  A  150 :
+	for(i = 0; i < 2; i++) {  A  151 :
+		for(j = 0; j < 255; j++) {  A  152 :{109
+			for(k = 0; k < 255; k++) {  A  153 :{116
+				value = read_from_memory(i, j, k);  A  154 :{123
+				if(k % 2 == 0 && value != k) {  A  155 :
+					printf("ERROR: BAD READ FROM ((%u,%u,%u)\n\r", i, j, k);  A  156 :{128V164V165V167V168
+				}  A  157 :}156
+				else if (k % 2 == 1 && value != 255 - k) {  A  158 :
+					printf("ERROR: BAD READ FROM ((%u,%u,%u)\n\r", i, j, k);  A  159 :{162
+				}  A  160 :}173
+			}  A  161 :}174
+		}  A  162 :}175
+	}  A  163 :}176
+	printf("INFO: MEMCHECK FINISHED\n\r");  A  164 :
+}  A  165 :}182
+  A  166 :
+//this function is used to write a value to the dac  A  167 :
+void convert_d_to_a(int data) {  A  168 :f494V172{184
+	int high_byte, low_byte = 0;  A  169 :V173V174
+  A  170 :
+	high_byte = (data >> 4) | 0x40;  A  171 :
+	low_byte =  (data << 4) | 0x00;  A  172 :
+	  A  173 :
+	output_bit(DAC_FRAME_SYNC, 0);  A  174 :
+	spi_write(high_byte);  A  175 :
+	spi_write(low_byte);  A  176 :
+	output_bit(DAC_FRAME_SYNC, 1);  A  177 :
+}  A  178 :}190
+  A  179 :
+  A  180 :
+unsigned long write_triangle_wave() {  A  181 :f498{192
+	//decalre the loop counter  A  182 :
+	int i = 0;  A  183 :V176
+  A  184 :
+	//loop to write the up part of the wave  A  185 :
+	for(i= 0; i < 255; i++) {  A  186 :
+		convert_d_to_a(i);  A  187 :{200
+		printf("%lu\n\r", read_adc());  A  188 :V179
+	}  A  189 :}225
+		  A  190 :
+	//loop to write the down part of the wave		  A  191 :
+	for(i = 255; i > 0; i--) {  A  192 :
+		convert_d_to_a(i);  A  193 :{232
+		printf("%lu\n\r", read_adc());  A  194 :
+	}  A  195 :}239
+}  A  196 :}240
+  A  197 :
+#INT_TIMER2  A  198 :
+void write_to_dac() {  A  199 :f502{242
+	//if going up  A  200 :
+	if (!dac_state) {  A  201 :
+		//write the value and test if at the upper limit  A  202 :
+		convert_d_to_a(dac_value);  A  203 :{246
+		if (++dac_value == 255) {  A  204 :
+			//if at the upper limit then flip the state  A  205 :
+			dac_state = dac_state == 0 ?1 : 0;  A  206 :{249
+		}  A  207 :}253
+		printf("%u\n\r", (int)(read_adc() >> 2));  A  208 :
+	}   A  209 :}260
+	else if (dac_state) {  A  210 :
+		convert_d_to_a(dac_value);  A  211 :{264
+		if (--dac_value == 0) {  A  212 :
+			dac_state = dac_state == 0 ?1 : 0;  A  213 :{267
+	    }  A  214 :}271
+	    printf("%u\n\r", (int)(read_adc() >> 2));  A  215 :
+	}  A  216 :}278
+}  A  217 :}279
+  A  218 :
+void main(void) {  A  219 :f505{281
+	//var definitions  A  220 :
+	int button_state = 0;  A  221 :V185
+	int play_wave = 0;  A  222 :V186
+  A  223 :
+	//set up the hardware  A  224 :
+	set_up_hardware();  A  225 :
+	init_memory();  A  226 :
+	set_adc_channel(LINE_IN);  A  227 :
+  A  228 :
+	//set up the interupts  A  229 :
+	setup_timer_2(T2_DIV_BY_4, 250, 2); //2.5k interupts per second  A  230 :
+   	set_timer2(0);  A  231 :
+   	enable_interrupts(GLOBAL);  A  232 :
+  A  233 :
+  	//delay to unplug the programmer  A  234 :
+	delay_ms(5000);  A  235 :
+  A  236 :
+	//check the moemory  A  237 :
+	mem_check();  A  238 :
+  A  239 :
+	//main loop  A  240 :
+	while(1) {  A  241 :
+		if(input(BUTTON) == BUTTON_PRESSED && button_state == 0) {  A  242 :{287
+			button_state = 1;  A  243 :{294
+		}  A  244 :}295
+		if(input(BUTTON) == BUTTON_RELEASED && button_state == 1) {  A  245 :
+			//reset the button state and flip the play wave flag   A  246 :
+			button_state = 0;  A  247 :{302
+			play_wave = play_wave == 0 ?1 : 0;  A  248 :
+			if(play_wave) {  A  249 :
+				enable_interrupts(INT_TIMER2);  A  250 :{308
+   				  A  251 :
+			}  A  252 :}309
+			else {  A  253 :
+				disable_interrupts(INT_TIMER2);  A  254 :{311
+			}  A  255 :}313
+		}  A  256 :}314
+	}  A  257 :}315
+} A  258 :}316E
+

@@ -1,0 +1,66 @@
+Error[150]   SRC\TASK 6.ASM 16 : Labels must be defined in a code or data section when making an object file
+Error[152]   SRC\TASK 6.ASM 17 : Executable code and data must be defined in an appropriate section
+Error[152]   SRC\TASK 6.ASM 19 : Executable code and data must be defined in an appropriate section
+Message[302] SRC\TASK 6.ASM 20 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   SRC\TASK 6.ASM 20 : Executable code and data must be defined in an appropriate section
+Message[302] SRC\TASK 6.ASM 22 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   SRC\TASK 6.ASM 22 : Executable code and data must be defined in an appropriate section
+Error[152]   SRC\TASK 6.ASM 24 : Executable code and data must be defined in an appropriate section
+Error[150]   SRC\TASK 6.ASM 30 : Labels must be defined in a code or data section when making an object file
+Error[152]   SRC\TASK 6.ASM 31 : Executable code and data must be defined in an appropriate section
+Error[152]   SRC\TASK 6.ASM 32 : Executable code and data must be defined in an appropriate section
+Error[152]   SRC\TASK 6.ASM 33 : Executable code and data must be defined in an appropriate section
+Error[151]   SRC\TASK 6.ASM 35 : Operand contains unresolvable labels or is too complex
+Error[152]   SRC\TASK 6.ASM 35 : Executable code and data must be defined in an appropriate section
+Error[150]   SRC\TASK 6.ASM 41 : Labels must be defined in a code or data section when making an object file
+Error[152]   SRC\TASK 6.ASM 42 : Executable code and data must be defined in an appropriate section
+Error[152]   SRC\TASK 6.ASM 43 : Executable code and data must be defined in an appropriate section
+Error[151]   SRC\TASK 6.ASM 44 : Operand contains unresolvable labels or is too complex
+Error[152]   SRC\TASK 6.ASM 44 : Executable code and data must be defined in an appropriate section
+Error[152]   SRC\TASK 6.ASM 46 : Executable code and data must be defined in an appropriate section
+Error[152]   SRC\TASK 6.ASM 47 : Executable code and data must be defined in an appropriate section
+Error[151]   SRC\TASK 6.ASM 48 : Operand contains unresolvable labels or is too complex
+Error[152]   SRC\TASK 6.ASM 48 : Executable code and data must be defined in an appropriate section
+Error[151]   SRC\TASK 6.ASM 50 : Operand contains unresolvable labels or is too complex
+Error[152]   SRC\TASK 6.ASM 50 : Executable code and data must be defined in an appropriate section
+Error[150]   SRC\TASK 6.ASM 56 : Labels must be defined in a code or data section when making an object file
+Error[151]   SRC\TASK 6.ASM 57 : Operand contains unresolvable labels or is too complex
+Error[152]   SRC\TASK 6.ASM 57 : Executable code and data must be defined in an appropriate section
+Error[151]   SRC\TASK 6.ASM 58 : Operand contains unresolvable labels or is too complex
+Error[152]   SRC\TASK 6.ASM 58 : Executable code and data must be defined in an appropriate section
+Error[152]   SRC\TASK 6.ASM 59 : Executable code and data must be defined in an appropriate section
+Error[151]   SRC\TASK 6.ASM 60 : Operand contains unresolvable labels or is too complex
+Error[152]   SRC\TASK 6.ASM 60 : Executable code and data must be defined in an appropriate section
+Error[152]   SRC\TASK 6.ASM 61 : Executable code and data must be defined in an appropriate section
+Error[150]   SRC\TASK 6.ASM 67 : Labels must be defined in a code or data section when making an object file
+Error[152]   SRC\TASK 6.ASM 68 : Executable code and data must be defined in an appropriate section
+Error[152]   SRC\TASK 6.ASM 69 : Executable code and data must be defined in an appropriate section
+Error[150]   SRC\TASK 6.ASM 75 : Labels must be defined in a code or data section when making an object file
+Error[151]   SRC\TASK 6.ASM 76 : Operand contains unresolvable labels or is too complex
+Error[152]   SRC\TASK 6.ASM 76 : Executable code and data must be defined in an appropriate section
+Error[151]   SRC\TASK 6.ASM 77 : Operand contains unresolvable labels or is too complex
+Error[152]   SRC\TASK 6.ASM 77 : Executable code and data must be defined in an appropriate section
+Error[152]   SRC\TASK 6.ASM 78 : Executable code and data must be defined in an appropriate section
+Error[151]   SRC\TASK 6.ASM 79 : Operand contains unresolvable labels or is too complex
+Error[152]   SRC\TASK 6.ASM 79 : Executable code and data must be defined in an appropriate section
+Error[152]   SRC\TASK 6.ASM 80 : Executable code and data must be defined in an appropriate section
+Error[150]   SRC\TASK 6.ASM 87 : Labels must be defined in a code or data section when making an object file
+Error[152]   SRC\TASK 6.ASM 88 : Executable code and data must be defined in an appropriate section
+Error[152]   SRC\TASK 6.ASM 89 : Executable code and data must be defined in an appropriate section
+Error[150]   SRC\TASK 6.ASM 95 : Labels must be defined in a code or data section when making an object file
+Error[152]   SRC\TASK 6.ASM 96 : Executable code and data must be defined in an appropriate section
+Error[152]   SRC\TASK 6.ASM 97 : Executable code and data must be defined in an appropriate section
+Error[152]   SRC\TASK 6.ASM 98 : Executable code and data must be defined in an appropriate section
+Error[151]   SRC\TASK 6.ASM 100 : Operand contains unresolvable labels or is too complex
+Error[152]   SRC\TASK 6.ASM 100 : Executable code and data must be defined in an appropriate section
+Error[150]   SRC\TASK 6.ASM 101 : Labels must be defined in a code or data section when making an object file
+Error[152]   SRC\TASK 6.ASM 102 : Executable code and data must be defined in an appropriate section
+Error[151]   SRC\TASK 6.ASM 103 : Operand contains unresolvable labels or is too complex
+Error[152]   SRC\TASK 6.ASM 103 : Executable code and data must be defined in an appropriate section
+Error[152]   SRC\TASK 6.ASM 105 : Executable code and data must be defined in an appropriate section
+Error[150]   SRC\TASK 6.ASM 106 : Labels must be defined in a code or data section when making an object file
+Error[152]   SRC\TASK 6.ASM 107 : Executable code and data must be defined in an appropriate section
+Error[151]   SRC\TASK 6.ASM 108 : Operand contains unresolvable labels or is too complex
+Error[152]   SRC\TASK 6.ASM 108 : Executable code and data must be defined in an appropriate section
+Error[151]   SRC\TASK 6.ASM 109 : Operand contains unresolvable labels or is too complex
+Error[152]   SRC\TASK 6.ASM 109 : Executable code and data must be defined in an appropriate section

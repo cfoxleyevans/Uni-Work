@@ -1,0 +1,37 @@
+ÀÄmain
+   ÃÄMAIN  0/75  Ram=1
+   ³  ÃÄ@cinit1  (Inline)  Ram=0
+   ³  ÃÄsetup_hardware  0/77  Ram=0
+   ³  ³  ÀÄlcd_init  (Inline)  Ram=2
+   ³  ³     ÃÄ@delay_ms1  0/21  Ram=1
+   ³  ³     ÃÄlcd_send_nibble  0/59  Ram=1
+   ³  ³     ÃÄ@delay_ms1  0/21  Ram=1
+   ³  ³     ÃÄlcd_send_nibble  0/59  Ram=1
+   ³  ³     ÃÄ@const605  0/8  Ram=0
+   ³  ³     ÃÄlcd_send_byte  0/48  Ram=3
+   ³  ³     ³  ÃÄlcd_send_nibble  0/59  Ram=1
+   ³  ³     ³  ÀÄlcd_send_nibble  0/59  Ram=1
+   ³  ³     ÀÄ@delay_ms1  0/21  Ram=1
+   ³  ÃÄ@delay_ms1  0/21  Ram=1
+   ³  ÃÄlcd_clear  0/7  Ram=0
+   ³  ³  ÀÄlcd_send_byte  0/48  Ram=3
+   ³  ³     ÀÄ*
+   ³  ÀÄlcd_put_int  0/149  Ram=4
+   ³     ÃÄ@DIV1616  0/37  Ram=5
+   ³     ÃÄlcd_send_byte  0/48  Ram=3
+   ³     ³  ÀÄ*
+   ³     ÃÄ@MUL1616  0/21  Ram=5
+   ³     ÃÄ@DIV1616  0/37  Ram=5
+   ³     ÃÄlcd_send_byte  0/48  Ram=3
+   ³     ³  ÀÄ*
+   ³     ÃÄ@MUL1616  0/21  Ram=5
+   ³     ÃÄ@MUL88  0/37  Ram=2
+   ³     ÃÄ@DIV1616  0/37  Ram=5
+   ³     ÃÄlcd_send_byte  0/48  Ram=3
+   ³     ³  ÀÄ*
+   ³     ÃÄ@MUL1616  0/21  Ram=5
+   ³     ÃÄ@MUL88  0/37  Ram=2
+   ³     ÃÄ@MUL88  0/37  Ram=2
+   ³     ÀÄlcd_send_byte  0/48  Ram=3
+   ³        ÀÄ*
+   ÀÄcount_ticks  0/15  Ram=1

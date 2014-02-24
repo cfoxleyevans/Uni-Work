@@ -1,0 +1,11 @@
+
+begin
+call get(x1) ;			-- input number
+x2 := 1 ;
+if x1 /= 0 then
+	x2 := x2 * x1 ; 	-- multiply by next term
+text := "the result is " ;
+call put(text) ;
+call put(x1)			-- output factorial
+end
+

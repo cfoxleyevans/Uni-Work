@@ -1,0 +1,135 @@
+Error[150]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 3 : Labels must be defined in a code or data section when making an object file
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 4 : Executable code and data must be defined in an appropriate section
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 6 : Executable code and data must be defined in an appropriate section
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 7 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 7 : Executable code and data must be defined in an appropriate section
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 9 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 9 : Executable code and data must be defined in an appropriate section
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 11 : Executable code and data must be defined in an appropriate section
+Warning[207] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 13 : Found label after column 1. (VALA)
+Warning[207] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 14 : Found label after column 1. (VALB)
+Warning[207] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 15 : Found label after column 1. (VALC)
+Warning[207] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 16 : Found label after column 1. (COUNT1)
+Warning[207] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 17 : Found label after column 1. (COUNT2)
+Warning[207] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 18 : Found label after column 1. (COUNT3)
+Warning[207] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 19 : Found label after column 1. (COUNT4)
+Warning[207] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 20 : Found label after column 1. (COUNT5)
+Warning[207] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 21 : Found label after column 1. (COUNT6)
+Error[150]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 24 : Labels must be defined in a code or data section when making an object file
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 25 : Executable code and data must be defined in an appropriate section
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 26 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 26 : Executable code and data must be defined in an appropriate section
+Error[151]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 28 : Operand contains unresolvable labels or is too complex
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 28 : Executable code and data must be defined in an appropriate section
+Error[150]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 30 : Labels must be defined in a code or data section when making an object file
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 31 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 31 : Executable code and data must be defined in an appropriate section
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 32 : Executable code and data must be defined in an appropriate section
+Error[151]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 34 : Operand contains unresolvable labels or is too complex
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 34 : Executable code and data must be defined in an appropriate section
+Error[151]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 35 : Operand contains unresolvable labels or is too complex
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 35 : Executable code and data must be defined in an appropriate section
+Error[151]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 36 : Operand contains unresolvable labels or is too complex
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 36 : Executable code and data must be defined in an appropriate section
+Error[151]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 37 : Operand contains unresolvable labels or is too complex
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 37 : Executable code and data must be defined in an appropriate section
+Error[151]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 38 : Operand contains unresolvable labels or is too complex
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 38 : Executable code and data must be defined in an appropriate section
+Error[151]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 39 : Operand contains unresolvable labels or is too complex
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 39 : Executable code and data must be defined in an appropriate section
+Error[151]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 40 : Operand contains unresolvable labels or is too complex
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 40 : Executable code and data must be defined in an appropriate section
+Error[151]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 41 : Operand contains unresolvable labels or is too complex
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 41 : Executable code and data must be defined in an appropriate section
+Error[151]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 42 : Operand contains unresolvable labels or is too complex
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 42 : Executable code and data must be defined in an appropriate section
+Error[151]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 43 : Operand contains unresolvable labels or is too complex
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 43 : Executable code and data must be defined in an appropriate section
+Error[151]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 44 : Operand contains unresolvable labels or is too complex
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 44 : Executable code and data must be defined in an appropriate section
+Error[151]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 45 : Operand contains unresolvable labels or is too complex
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 45 : Executable code and data must be defined in an appropriate section
+Error[151]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 46 : Operand contains unresolvable labels or is too complex
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 46 : Executable code and data must be defined in an appropriate section
+Message[305] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 50 : Using default destination of 1 (file).
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 50 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 50 : Executable code and data must be defined in an appropriate section
+Error[151]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 52 : Operand contains unresolvable labels or is too complex
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 52 : Executable code and data must be defined in an appropriate section
+Warning[207] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 55 : Found label after column 1. (WAIT)
+Error[150]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 55 : Labels must be defined in a code or data section when making an object file
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 56 : Executable code and data must be defined in an appropriate section
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 57 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 57 : Executable code and data must be defined in an appropriate section
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 58 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 58 : Executable code and data must be defined in an appropriate section
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 59 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 59 : Executable code and data must be defined in an appropriate section
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 60 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 60 : Executable code and data must be defined in an appropriate section
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 61 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 61 : Executable code and data must be defined in an appropriate section
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 62 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 62 : Executable code and data must be defined in an appropriate section
+Error[151]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 64 : Operand contains unresolvable labels or is too complex
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 64 : Executable code and data must be defined in an appropriate section
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 65 : Executable code and data must be defined in an appropriate section
+Error[150]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 67 : Labels must be defined in a code or data section when making an object file
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 68 : Executable code and data must be defined in an appropriate section
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 69 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 69 : Executable code and data must be defined in an appropriate section
+Message[305] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 70 : Using default destination of 1 (file).
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 70 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 70 : Executable code and data must be defined in an appropriate section
+Error[151]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 71 : Operand contains unresolvable labels or is too complex
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 71 : Executable code and data must be defined in an appropriate section
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 72 : Executable code and data must be defined in an appropriate section
+Error[150]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 73 : Labels must be defined in a code or data section when making an object file
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 74 : Executable code and data must be defined in an appropriate section
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 75 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 75 : Executable code and data must be defined in an appropriate section
+Message[305] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 76 : Using default destination of 1 (file).
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 76 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 76 : Executable code and data must be defined in an appropriate section
+Error[151]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 77 : Operand contains unresolvable labels or is too complex
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 77 : Executable code and data must be defined in an appropriate section
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 78 : Executable code and data must be defined in an appropriate section
+Error[150]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 79 : Labels must be defined in a code or data section when making an object file
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 80 : Executable code and data must be defined in an appropriate section
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 81 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 81 : Executable code and data must be defined in an appropriate section
+Message[305] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 82 : Using default destination of 1 (file).
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 82 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 82 : Executable code and data must be defined in an appropriate section
+Error[151]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 83 : Operand contains unresolvable labels or is too complex
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 83 : Executable code and data must be defined in an appropriate section
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 84 : Executable code and data must be defined in an appropriate section
+Error[150]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 85 : Labels must be defined in a code or data section when making an object file
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 86 : Executable code and data must be defined in an appropriate section
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 87 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 87 : Executable code and data must be defined in an appropriate section
+Message[305] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 88 : Using default destination of 1 (file).
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 88 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 88 : Executable code and data must be defined in an appropriate section
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 89 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 89 : Executable code and data must be defined in an appropriate section
+Error[151]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 90 : Operand contains unresolvable labels or is too complex
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 90 : Executable code and data must be defined in an appropriate section
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 91 : Executable code and data must be defined in an appropriate section
+Error[150]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 92 : Labels must be defined in a code or data section when making an object file
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 93 : Executable code and data must be defined in an appropriate section
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 94 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 94 : Executable code and data must be defined in an appropriate section
+Message[305] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 95 : Using default destination of 1 (file).
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 95 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 95 : Executable code and data must be defined in an appropriate section
+Error[151]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 96 : Operand contains unresolvable labels or is too complex
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 96 : Executable code and data must be defined in an appropriate section
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 97 : Executable code and data must be defined in an appropriate section
+Error[150]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 98 : Labels must be defined in a code or data section when making an object file
+Message[305] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 99 : Using default destination of 1 (file).
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 99 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 99 : Executable code and data must be defined in an appropriate section
+Error[151]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 100 : Operand contains unresolvable labels or is too complex
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 100 : Executable code and data must be defined in an appropriate section
+Error[152]   C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\TASK 5.ASM 101 : Executable code and data must be defined in an appropriate section

@@ -1,0 +1,382 @@
+MPASM 5.53                        TASK 5.ASM   11-20-2013  0:50:46         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001  #include "p16f84a.inc"
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC16F84A processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2013 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+                      00208         LIST
+                      00002 
+0000                  00003 INIT:
+0000   1683           00004     BSF     STATUS, RP0 ;move to bank 1
+                      00005 
+0001   30FF           00006     MOVLW   0XFF        ;set the switches for input
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0002   0085           00007     MOVWF   TRISA
+                      00008 
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0003   0186           00009     CLRF    TRISB       ;set the lights for output
+                      00010 
+0004   1283           00011     BCF     STATUS, RP0 ;move bank to bank 0
+                      00012 
+Warning[207]: Found label after column 1. (VALA)
+  000000C0            00013     VALA     EQU 0xC0   ;define vars
+Warning[207]: Found label after column 1. (VALB)
+  000000C1            00014     VALB     EQU 0xC1
+Warning[207]: Found label after column 1. (VALC)
+  000000C2            00015     VALC     EQU 0xC2
+Warning[207]: Found label after column 1. (COUNT1)
+  000000C3            00016     COUNT1   EQU 0xC3
+Warning[207]: Found label after column 1. (COUNT2)
+  000000C4            00017     COUNT2   EQU 0xC4
+Warning[207]: Found label after column 1. (COUNT3)
+  000000C5            00018     COUNT3   EQU 0xC5
+Warning[207]: Found label after column 1. (COUNT4)
+  000000C6            00019     COUNT4   EQU 0xC6
+Warning[207]: Found label after column 1. (COUNT5)
+  000000C7            00020     COUNT5   EQU 0xC7
+Warning[207]: Found label after column 1. (COUNT6)
+  000000C8            00021     COUNT6   EQU 0xC8
+                      00022     
+                      00023 
+0005                  00024 MAIN:
+0005   3000           00025     MOVLW   0x00        ;move 0 into vala
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0006   00C0           00026     MOVWF   VALA
+                      00027 
+0007   2008           00028     CALL    DISPLAY     ;call the display method
+                      00029 
+0008                  00030 DISPLAY:
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0008   0840           00031     MOVFW   VALA        ;move the current value of vala into portb
+MPASM 5.53                        TASK 5.ASM   11-20-2013  0:50:46         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0009   0086           00032     MOVWF   PORTB
+                      00033 
+000A   2011           00034     CALL    WAIT        ;call the wait function
+000B   2011           00035     CALL    WAIT
+000C   2011           00036     CALL    WAIT
+000D   2011           00037     CALL    WAIT
+000E   2011           00038     CALL    WAIT
+                      00039     
+                      00040    
+                      00041 
+                      00042 
+Message[305]: Using default destination of 1 (file).
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+000F   0AC0           00043     INCF    VALA        ;increment the count
+                      00044 
+0010   2808           00045     GOTO    DISPLAY     ;do over
+                      00046 
+                      00047 
+Warning[207]: Found label after column 1. (WAIT)
+0011                  00048    WAIT:
+0011   0000           00049     NOP
+0012   0000           00050     NOP
+0013   0000           00051     NOP
+0014   0000           00052     NOP
+0015   0000           00053     NOP
+0016   0000           00054     NOP
+0017   0000           00055     NOP
+0018   0000           00056     NOP
+0019   0000           00057     NOP
+001A   0000           00058     NOP
+001B   30FF           00059     MOVLW   0xFF
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+001C   00C3           00060     MOVWF   COUNT1      ;decrement the counter if not zero call the next loop
+                      00061 
+001D   201F           00062     CALL    LOOP1       ;call the first loop
+001E   0008           00063     RETURN
+                      00064 
+001F                  00065 LOOP1:
+001F   0000           00066     NOP
+0020   0000           00067     NOP
+0021   0000           00068     NOP
+0022   0000           00069     NOP
+0023   0000           00070     NOP
+0024   0000           00071     NOP
+0025   0000           00072     NOP
+0026   0000           00073     NOP
+0027   0000           00074     NOP
+0028   0000           00075     NOP
+0029   30FF           00076     MOVLW   0xFF
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+002A   00C4           00077     MOVWF   COUNT2      ;decrement the counter if not zero call the next loop
+Message[305]: Using default destination of 1 (file).
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+MPASM 5.53                        TASK 5.ASM   11-20-2013  0:50:46         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+002B   0BC3           00078     DECFSZ  COUNT1      
+002C   202E           00079     CALL    LOOP2
+002D   0008           00080     RETURN
+002E                  00081 LOOP2:
+002E   0000           00082     NOP
+002F   0000           00083     NOP
+0030   0000           00084     NOP
+0031   0000           00085     NOP
+0032   0000           00086     NOP
+0033   0000           00087     NOP
+0034   0000           00088     NOP
+0035   0000           00089     NOP
+0036   0000           00090     NOP
+0037   0000           00091     NOP
+0038   30FF           00092     MOVLW   0xFF
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0039   00C5           00093     MOVWF   COUNT3
+Message[305]: Using default destination of 1 (file).
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+003A   0BC4           00094     DECFSZ  COUNT2
+003B   203D           00095     CALL    LOOP3
+003C   0008           00096     RETURN
+003D                  00097 LOOP3:
+003D   0000           00098     NOP
+003E   0000           00099     NOP
+003F   0000           00100     NOP
+0040   0000           00101     NOP
+0041   0000           00102     NOP
+0042   0000           00103     NOP
+0043   0000           00104     NOP
+0044   0000           00105     NOP
+0045   0000           00106     NOP
+0046   0000           00107     NOP
+0047   30FF           00108     MOVLW   0xFF
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0048   00C6           00109     MOVWF   COUNT4
+Message[305]: Using default destination of 1 (file).
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0049   0BC5           00110     DECFSZ  COUNT3
+004A   283D           00111     GOTO    LOOP3
+004B   0008           00112     RETURN
+004C                  00113 LOOP4:
+004C   0000           00114     NOP
+004D   0000           00115     NOP
+004E   0000           00116     NOP
+004F   0000           00117     NOP
+0050   0000           00118     NOP
+0051   0000           00119     NOP
+0052   0000           00120     NOP
+0053   0000           00121     NOP
+0054   0000           00122     NOP
+0055   0000           00123     NOP
+0056   30FF           00124     MOVLW   0xFF
+MPASM 5.53                        TASK 5.ASM   11-20-2013  0:50:46         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0057   00C7           00125     MOVWF   COUNT5
+Message[305]: Using default destination of 1 (file).
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0058   0BC6           00126     DECFSZ  COUNT4
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0059   00C7           00127     MOVWF   COUNT5
+005A   284C           00128     GOTO    LOOP4
+005B   0008           00129     RETURN
+005C                  00130 LOOP5:
+005C   0000           00131     NOP
+005D   0000           00132     NOP
+005E   0000           00133     NOP
+005F   0000           00134     NOP
+0060   0000           00135     NOP
+0061   0000           00136     NOP
+0062   0000           00137     NOP
+0063   0000           00138     NOP
+0064   0000           00139     NOP
+0065   0000           00140     NOP
+0066   30FF           00141     MOVLW   0xFF
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0067   00C8           00142     MOVWF   COUNT6
+Message[305]: Using default destination of 1 (file).
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0068   0BC7           00143     DECFSZ  COUNT5
+0069   285C           00144     GOTO    LOOP5
+006A   0008           00145     RETURN
+006B                  00146 LOOP6:
+006B   0000           00147     NOP
+006C   0000           00148     NOP
+006D   0000           00149     NOP
+006E   0000           00150     NOP
+006F   0000           00151     NOP
+0070   0000           00152     NOP
+0071   0000           00153     NOP
+0072   0000           00154     NOP
+0073   0000           00155     NOP
+0074   0000           00156     NOP
+Message[305]: Using default destination of 1 (file).
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0075   0BC8           00157     DECFSZ  COUNT6
+0076   286B           00158     GOTO    LOOP6
+0077   0008           00159     RETURN
+                      00160 
+                      00161     END
+MPASM 5.53                        TASK 5.ASM   11-20-2013  0:50:46         PAGE  5
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+C                                 00000000
+COUNT1                            000000C3
+COUNT2                            000000C4
+COUNT3                            000000C5
+COUNT4                            000000C6
+COUNT5                            000000C7
+COUNT6                            000000C8
+DC                                00000001
+DISPLAY                           00000008
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INIT                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+LOOP1                             0000001F
+LOOP2                             0000002E
+LOOP3                             0000003D
+LOOP4                             0000004C
+LOOP5                             0000005C
+LOOP6                             0000006B
+MAIN                              00000005
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+OPTION_REG                        00000081
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+MPASM 5.53                        TASK 5.ASM   11-20-2013  0:50:46         PAGE  6
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+VALA                              000000C0
+VALB                              000000C1
+VALC                              000000C2
+W                                 00000000
+WAIT                              00000011
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_CONFIG                           00002007
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+_DEVID1                           00002006
+_FOSC_EXTRC                       00003FFF
+_FOSC_HS                          00003FFE
+_FOSC_LP                          00003FFC
+_FOSC_XT                          00003FFD
+_HS_OSC                           00003FFE
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+MPASM 5.53                        TASK 5.ASM   11-20-2013  0:50:46         PAGE  7
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_IDLOC3                           00002003
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84A                          00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0040 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXX--------
+
+All other memory blocks unused.
+
+Program Memory Words Used:   120
+Program Memory Words Free:   904
+
+
+Errors   :     0
+Warnings :    10 reported,     0 suppressed
+Messages :    25 reported,     0 suppressed
+
+

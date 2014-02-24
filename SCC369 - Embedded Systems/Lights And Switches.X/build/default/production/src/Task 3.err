@@ -1,0 +1,14 @@
+Error[150]   SRC\TASK 3.ASM 16 : Labels must be defined in a code or data section when making an object file
+Error[152]   SRC\TASK 3.ASM 17 : Executable code and data must be defined in an appropriate section
+Error[152]   SRC\TASK 3.ASM 19 : Executable code and data must be defined in an appropriate section
+Message[302] SRC\TASK 3.ASM 20 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   SRC\TASK 3.ASM 20 : Executable code and data must be defined in an appropriate section
+Message[302] SRC\TASK 3.ASM 22 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Error[152]   SRC\TASK 3.ASM 22 : Executable code and data must be defined in an appropriate section
+Error[152]   SRC\TASK 3.ASM 24 : Executable code and data must be defined in an appropriate section
+Error[150]   SRC\TASK 3.ASM 30 : Labels must be defined in a code or data section when making an object file
+Error[152]   SRC\TASK 3.ASM 31 : Executable code and data must be defined in an appropriate section
+Error[152]   SRC\TASK 3.ASM 33 : Executable code and data must be defined in an appropriate section
+Error[152]   SRC\TASK 3.ASM 35 : Executable code and data must be defined in an appropriate section
+Error[151]   SRC\TASK 3.ASM 37 : Operand contains unresolvable labels or is too complex
+Error[152]   SRC\TASK 3.ASM 37 : Executable code and data must be defined in an appropriate section

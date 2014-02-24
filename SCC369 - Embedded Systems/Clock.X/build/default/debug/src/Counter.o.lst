@@ -1,0 +1,320 @@
+MPASM 5.53                       COUNTER.ASM   12-2-2013  20:32:53         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 #include "p16f84a.inc"
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC16F84A processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2013 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+                      00208         LIST
+                      00002 
+                      00003 ; CONFIG
+                      00004 ; __config 0xFFF3
+2007   3FF3           00005  __CONFIG _FOSC_EXTRC & _WDTE_OFF & _PWRTE_ON & _CP_OFF
+                      00006 
+                      00007 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                      00008 ; DECLARATIONS                                                        ;
+                      00009 ; This section of code is where constant definitions are made         ;
+                      00010 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  00000015            00011 NUMBER0         EQU  0x15   ;memory locations for the number patterns
+  00000016            00012 NUMBER1         EQU  0x16 
+  00000017            00013 NUMBER2         EQU  0x17  
+  00000018            00014 NUMBER3         EQU  0x18 
+  00000019            00015 NUMBER4         EQU  0x19 
+  00000020            00016 NUMBER5         EQU  0x20  
+  00000021            00017 NUMBER6         EQU  0x21  
+  00000022            00018 NUMBER7         EQU  0x22
+  00000023            00019 NUMBER8         EQU  0x23 
+  00000034            00020 NUMBER9         EQU  0x34 
+                      00021 
+  00000015            00022 NUMBERS_BASE    EQU 0X15    ;the base index of the patterns
+                      00023 
+  00000010            00024 COUNTER1        EQU 0X10    ;a general purpose counter
+  00000011            00025 COUNTER2        EQU 0X11
+                      00026 
+  00000012            00027 LOOPC1          EQU 0x12    ;loops vars for the wait routine
+  00000013            00028 LOOPC2          EQU 0x13
+                      00029 
+                      00030 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                      00031 ; INIT                                                                ;
+                      00032 ; This section of code is where any pre program setup is done         ;
+                      00033 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+0000                  00034 INIT:
+0000   1683           00035     BANKSEL TRISA           ;move to bank 0
+                      00036 
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0001   0185           00037         CLRF    TRISA                   ;set the digits for output      
+                      00038                 
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0002   1605           00039         BSF             TRISA, 0x04             ;set the switch for input
+                      00040 
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0003   0186           00041     CLRF    TRISB           ;set the lights for output
+MPASM 5.53                       COUNTER.ASM   12-2-2013  20:32:53         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00042         
+0004   1283           00043     BANKSEL PORTA           ;move bank to bank 0
+                      00044         
+0005   0185           00045         CLRF    PORTA                   ;turn on just the first block
+0006   1405           00046         BSF     PORTA, 0x00      
+                      00047 
+0007   3088           00048     MOVLW   b'10001000'         ;move the bit pattern for 0 into W
+0008   0095           00049     MOVWF   NUMBER0                     ;move this into the base address for the nubmers
+                      00050     
+0009   30EB           00051         MOVLW   b'11101011'
+000A   0096           00052     MOVWF   NUMBER1                     
+                      00053     
+000B   304C           00054         MOVLW    b'01001100'
+000C   0097           00055     MOVWF   NUMBER2             
+                      00056     
+000D   3049           00057         MOVLW    b'01001001'   
+000E   0098           00058     MOVWF   NUMBER3                     
+                      00059     
+000F   302B           00060         MOVLW    b'00101011'   
+0010   0099           00061     MOVWF   NUMBER4     
+                      00062             
+0011   3019           00063         MOVLW   b'00011001' 
+0012   00A0           00064     MOVWF   NUMBER5             
+                      00065     
+0013   3038           00066         MOVLW   b'00111000'   
+0014   00A1           00067     MOVWF   NUMBER6             
+                      00068     
+0015   30CB           00069         MOVLW    b'11001011'   
+0016   00A2           00070     MOVWF   NUMBER7                     
+                      00071     
+0017   3008           00072         MOVLW   b'00001000'  
+0018   00A3           00073     MOVWF   NUMBER8             
+                      00074     
+0019   300B           00075         MOVLW   b'00001011'     ;load the last bit parrten into w
+001A   00B4           00076     MOVWF   NUMBER9                     ;move this into the top address for the numbers
+                      00077 
+001B                  00078 MAIN:
+001B   3015           00079     MOVLW   NUMBERS_BASE    ;move the base address into the pointer register
+001C   0084           00080     MOVWF   FSR
+                      00081 
+001D   3000           00082         MOVLW   INDF
+001E   0086           00083         MOVWF   PORTB
+001F   2030           00084         CALL    WAIT
+                      00085 
+Message[305]: Using default destination of 1 (file).
+0020   0A84           00086         INCF    FSR
+0021   3000           00087         MOVLW   INDF
+0022   0086           00088         MOVWF   PORTB
+0023   2030           00089     CALL    WAIT
+                      00090 
+Message[305]: Using default destination of 1 (file).
+0024   0A84           00091         INCF    FSR
+0025   3000           00092         MOVLW   INDF
+MPASM 5.53                       COUNTER.ASM   12-2-2013  20:32:53         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0026   0086           00093         MOVWF   PORTB
+0027   2030           00094     CALL    WAIT
+                      00095 
+Message[305]: Using default destination of 1 (file).
+0028   0A84           00096         INCF    FSR
+0029   3000           00097         MOVLW   INDF
+002A   0086           00098         MOVWF   PORTB
+002B   2030           00099     CALL    WAIT
+                      00100 
+Message[305]: Using default destination of 1 (file).
+002C   0A84           00101         INCF    FSR
+002D   3000           00102         MOVLW   INDF
+002E   0086           00103         MOVWF   PORTB
+                      00104 
+002F   281B           00105     GOTO MAIN
+                      00106 
+                      00107 
+                      00108 
+                      00109 
+                      00110 
+                      00111 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                      00112 ; WAIT                                                                ;
+                      00113 ; This subroutine causes the processor to stall for a short period    ;
+                      00114 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+0030                  00115 WAIT:
+0030   30FF           00116     MOVLW   0xFF        ;store 255 in both of the counters
+0031   0090           00117     MOVWF   COUNTER1
+0032   0090           00118     MOVWF   COUNTER1
+                      00119 
+0033   2834           00120     GOTO    LOOP1       ;go into the first loop
+0034                  00121 LOOP1:
+0034   0B90           00122     DECFSZ  COUNTER1, F ;decrement the loop counter untill it gets to 0
+0035   2837           00123     GOTO    LOOP2       ;move into the second loop
+                      00124 
+0036   0008           00125     RETURN              ;return the the point where the wait sub was called
+0037                  00126 LOOP2:
+0037   0B91           00127     DECFSZ  COUNTER2, F ;decrement the loop counter untill it gets to 0
+0038   2837           00128     GOTO    LOOP2       ;loop around
+0039   2834           00129     GOTO    LOOP1       ;go back to the first loop
+                      00130 
+                      00131     END
+MPASM 5.53                       COUNTER.ASM   12-2-2013  20:32:53         PAGE  4
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+C                                 00000000
+COUNTER1                          00000010
+COUNTER2                          00000011
+DC                                00000001
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INIT                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+LOOP1                             00000034
+LOOP2                             00000037
+LOOPC1                            00000012
+LOOPC2                            00000013
+MAIN                              0000001B
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+NUMBER0                           00000015
+NUMBER1                           00000016
+NUMBER2                           00000017
+NUMBER3                           00000018
+NUMBER4                           00000019
+NUMBER5                           00000020
+NUMBER6                           00000021
+NUMBER7                           00000022
+NUMBER8                           00000023
+NUMBER9                           00000034
+NUMBERS_BASE                      00000015
+OPTION_REG                        00000081
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+MPASM 5.53                       COUNTER.ASM   12-2-2013  20:32:53         PAGE  5
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+W                                 00000000
+WAIT                              00000030
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_CONFIG                           00002007
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+_DEVID1                           00002006
+_FOSC_EXTRC                       00003FFF
+_FOSC_HS                          00003FFE
+_FOSC_LP                          00003FFC
+_FOSC_XT                          00003FFD
+_HS_OSC                           00003FFE
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+MPASM 5.53                       COUNTER.ASM   12-2-2013  20:32:53         PAGE  6
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84A                          00000001
+__DEBUG                           
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXX------
+2000 : -------X-------- ---------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:    58
+Program Memory Words Free:   966
+
+
+Errors   :     0
+Warnings :     0 reported,     0 suppressed
+Messages :     7 reported,     0 suppressed
+
+

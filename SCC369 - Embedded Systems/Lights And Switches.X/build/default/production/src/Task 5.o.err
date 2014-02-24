@@ -1,0 +1,4 @@
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\SRC\TASK 5.ASM 20 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\SRC\TASK 5.ASM 22 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[305] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\SRC\TASK 5.ASM 62 : Using default destination of 1 (file).
+Message[305] C:\USERS\CHRIS\MPLABXPROJECTS\LIGHTS AND SWITCHES.X\SRC\TASK 5.ASM 67 : Using default destination of 1 (file).
