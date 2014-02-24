@@ -64,39 +64,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AbstractSyntaxAnalyser.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AbstractSyntaxAnalyser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="36" selection-start="1059" selection-end="1059" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="705">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SyntaxAnalyser.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="SyntaxAnalyser.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SyntaxAnalyser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="288" selection-end="288" vertical-scroll-proportion="0.0" vertical-offset="111" max-vertical-offset="1110">
+            <state line="24" column="78" selection-start="567" selection-end="625" vertical-scroll-proportion="0.5042254" vertical-offset="2" max-vertical-offset="945">
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="method#statementList#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#statment#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#ifStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#whileStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#procdeureStatment#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#untilStatment#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#argumentList#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#condition#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#conditionalOperator#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#expression#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#term#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#factor#0;class#SyntaxAnalyser#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Compile.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Compile.java">
+      <file leaf-file-name="Generate.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Generate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="16" selection-start="932" selection-end="932" vertical-scroll-proportion="0.0" vertical-offset="513" max-vertical-offset="1020">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LexicalAnalyser.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/LexicalAnalyser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="319" column="24" selection-start="8822" selection-end="8822" vertical-scroll-proportion="0.0" vertical-offset="4188" max-vertical-offset="4875">
+            <state line="15" column="0" selection-start="284" selection-end="284" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
               <folding />
             </state>
           </provider>
@@ -105,12 +98,11 @@
       <file leaf-file-name="AbstractGenerate.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AbstractGenerate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="0" selection-start="815" selection-end="815" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
+            <state line="61" column="0" selection-start="1321" selection-end="1321" vertical-scroll-proportion="0.0" vertical-offset="38" max-vertical-offset="735">
               <folding>
                 <element signature="docComment;method#insertTerminal#0;class#AbstractGenerate#0" expanded="false" />
                 <element signature="method#insertTerminal#0;class#AbstractGenerate#0" expanded="false" />
                 <element signature="docComment;method#commenceNonterminal#0;class#AbstractGenerate#0" expanded="false" />
-                <element signature="method#commenceNonterminal#0;class#AbstractGenerate#0" expanded="false" />
                 <element signature="docComment;method#finishNonterminal#0;class#AbstractGenerate#0" expanded="false" />
                 <element signature="method#finishNonterminal#0;class#AbstractGenerate#0" expanded="false" />
                 <element signature="docComment;method#reportSuccess#0;class#AbstractGenerate#0" expanded="false" />
@@ -120,11 +112,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Generate.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Generate.java">
+      <file leaf-file-name="AbstractSyntaxAnalyser.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AbstractSyntaxAnalyser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="213" selection-end="213" vertical-scroll-proportion="0.30405405" vertical-offset="0" max-vertical-offset="444">
-              <folding />
+            <state line="39" column="77" selection-start="1114" selection-end="1114" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
+              <folding>
+                <element signature="docComment;method#parse#0;class#AbstractSyntaxAnalyser#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Compile.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Compile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="47" column="93" selection-start="897" selection-end="897" vertical-scroll-proportion="0.0" vertical-offset="280" max-vertical-offset="1095">
+              <folding>
+                <element signature="docComment;method#go#0;class#Compile#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -139,16 +144,19 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Generate.java" />
-        <option value="$PROJECT_DIR$/src/SyntaxAnalyser.java" />
         <option value="$PROJECT_DIR$/src/LexicalAnalyser.java" />
+        <option value="$PROJECT_DIR$/src/AbstractGenerate.java" />
+        <option value="$PROJECT_DIR$/src/SyntaxAnalyser.java" />
+        <option value="$PROJECT_DIR$/src/Compile.java" />
+        <option value="$PROJECT_DIR$/src/AbstractSyntaxAnalyser.java" />
+        <option value="$PROJECT_DIR$/src/Generate.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="74" />
     <option name="y" value="52" />
-    <option name="width" value="1149" />
+    <option name="width" value="1290" />
     <option name="height" value="830" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -394,7 +402,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="74" y="52" width="1149" height="830" extended-state="0" />
+    <frame x="74" y="52" width="1290" height="830" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -414,12 +422,12 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24932249" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3292683" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22115384" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39972898" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -481,14 +489,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/LexicalAnalyser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="313" column="4" selection-start="8570" selection-end="8570" vertical-scroll-proportion="1.9313304" vertical-offset="0" max-vertical-offset="1020">
+          <folding>
+            <element signature="class#ReservedWord#0;class#LexicalAnalyser#0" expanded="false" />
+            <element signature="docComment;method#setReservedWord#0;class#LexicalAnalyser#0" expanded="false" />
+            <element signature="method#setReservedWord#0;class#LexicalAnalyser#0" expanded="false" />
+            <element signature="method#initialiseScanner#0;class#LexicalAnalyser#0" expanded="false" />
+            <element signature="docComment;method#LexicalAnalyser#0;class#LexicalAnalyser#0" expanded="false" />
+            <element signature="method#LexicalAnalyser#0;class#LexicalAnalyser#0" expanded="false" />
+            <element signature="docComment;method#getNextCharacter#0;class#LexicalAnalyser#0" expanded="false" />
+            <element signature="method#getNextCharacter#0;class#LexicalAnalyser#0" expanded="false" />
+            <element signature="docComment;method#getNextToken#0;class#LexicalAnalyser#0" expanded="false" />
+            <element signature="method#getNextToken#0;class#LexicalAnalyser#0" expanded="false" />
+            <element signature="method#main#0;class#LexicalAnalyser#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Compile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="93" selection-start="897" selection-end="897" vertical-scroll-proportion="0.0" vertical-offset="280" max-vertical-offset="1095">
+          <folding>
+            <element signature="docComment;method#go#0;class#Compile#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AbstractSyntaxAnalyser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="77" selection-start="1114" selection-end="1114" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
+          <folding>
+            <element signature="docComment;method#parse#0;class#AbstractSyntaxAnalyser#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AbstractGenerate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="815" selection-end="815" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="705">
+        <state line="61" column="0" selection-start="1321" selection-end="1321" vertical-scroll-proportion="0.0" vertical-offset="38" max-vertical-offset="735">
           <folding>
             <element signature="docComment;method#insertTerminal#0;class#AbstractGenerate#0" expanded="false" />
             <element signature="method#insertTerminal#0;class#AbstractGenerate#0" expanded="false" />
             <element signature="docComment;method#commenceNonterminal#0;class#AbstractGenerate#0" expanded="false" />
-            <element signature="method#commenceNonterminal#0;class#AbstractGenerate#0" expanded="false" />
             <element signature="docComment;method#finishNonterminal#0;class#AbstractGenerate#0" expanded="false" />
             <element signature="method#finishNonterminal#0;class#AbstractGenerate#0" expanded="false" />
             <element signature="docComment;method#reportSuccess#0;class#AbstractGenerate#0" expanded="false" />
@@ -497,40 +541,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AbstractSyntaxAnalyser.java">
+    <entry file="file://$PROJECT_DIR$/src/Generate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="36" selection-start="1059" selection-end="1059" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="705">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Compile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="16" selection-start="932" selection-end="932" vertical-scroll-proportion="0.0" vertical-offset="513" max-vertical-offset="1020">
+        <state line="15" column="0" selection-start="284" selection-end="284" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SyntaxAnalyser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="288" selection-end="288" vertical-scroll-proportion="0.0" vertical-offset="111" max-vertical-offset="1110">
+        <state line="24" column="78" selection-start="567" selection-end="625" vertical-scroll-proportion="0.5042254" vertical-offset="2" max-vertical-offset="945">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#statementList#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#statment#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#ifStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#whileStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#procdeureStatment#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#untilStatment#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#argumentList#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#condition#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#conditionalOperator#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#expression#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#term#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#factor#0;class#SyntaxAnalyser#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LexicalAnalyser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="319" column="24" selection-start="8822" selection-end="8822" vertical-scroll-proportion="0.0" vertical-offset="4188" max-vertical-offset="4875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Generate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="213" selection-end="213" vertical-scroll-proportion="0.30405405" vertical-offset="0" max-vertical-offset="444">
-          <folding />
         </state>
       </provider>
     </entry>

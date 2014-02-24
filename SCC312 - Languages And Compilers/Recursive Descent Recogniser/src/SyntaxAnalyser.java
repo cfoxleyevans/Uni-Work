@@ -1,10 +1,8 @@
-import com.apple.jobjc.appkit._NSProgressIndicatorThreadInfoOpaque;
-import com.sun.tools.javac.code.Symbol;
-
 import java.io.IOException;
 
 /**
- * Created by chris on 24/02/2014.
+ * @author Chris Foxley-Evans
+ * @version 0.0.1
  */
 public class SyntaxAnalyser extends AbstractSyntaxAnalyser {
 
@@ -19,6 +17,21 @@ public class SyntaxAnalyser extends AbstractSyntaxAnalyser {
 
     @Override
     void acceptTerminal(int symbol) throws IOException, CompilationException {
+        if(nextToken.symbol == symbol) {
+            myGenerate.insertTerminal(nextToken);
+        }
+        else {
+            myGenerate.reportError(nextToken,
+                    "ERROR: Found symbol " + nextToken + " expected " + symbol);
+
+        }
+    }
+
+    void statementList() throws IOException, CompilationException {
+
+    }
+
+    void statment() throws IOException, CompilationException {
 
     }
 

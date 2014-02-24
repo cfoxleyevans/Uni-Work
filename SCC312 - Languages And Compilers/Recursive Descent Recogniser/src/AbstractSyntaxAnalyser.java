@@ -16,9 +16,11 @@ public abstract class AbstractSyntaxAnalyser
 {
 	/** The lexical analyser to process input using. */
 	LexicalAnalyser lex ;
-	/** A cache of the token to be processed next. */
+
+    /** A cache of the token to be processed next. */
 	Token nextToken ;
-	/** A code generator, descendant of AbstractGenerate. */
+
+    /** A code generator, descendant of AbstractGenerate. */
 	Generate myGenerate = null;
 
 	/** Begin processing the first (top level) token.*/
@@ -35,6 +37,7 @@ public abstract class AbstractSyntaxAnalyser
 	*/
 	public void parse(PrintStream ps)throws IOException
 	{
+        //starts the parse process by calling the top symbol method of the sa
 		myGenerate = new Generate();
 		try {
 			nextToken = lex.getNextToken() ;
@@ -42,8 +45,7 @@ public abstract class AbstractSyntaxAnalyser
 			acceptTerminal(Token.eofSymbol) ;
 			myGenerate.reportSuccess() ;
 		}
-		catch (CompilationException ex)
-		{
+		catch (CompilationException ex) {
 			ps.println(ex);
 		}
 	} // end of method parse
