@@ -1,2 +1,0 @@
-erase *.class
-erase *.txt
