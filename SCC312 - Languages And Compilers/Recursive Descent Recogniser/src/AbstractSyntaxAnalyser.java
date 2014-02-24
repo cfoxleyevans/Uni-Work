@@ -21,7 +21,7 @@ public abstract class AbstractSyntaxAnalyser
 	Token nextToken ;
 
     /** A code generator, descendant of AbstractGenerate. */
-	Generate myGenerate = null;
+	Generate generator = null;
 
 	/** Begin processing the first (top level) token.*/
 	abstract void _statementPart_() throws IOException, CompilationException;
@@ -38,12 +38,12 @@ public abstract class AbstractSyntaxAnalyser
 	public void parse(PrintStream ps)throws IOException
 	{
         //starts the parse process by calling the top symbol method of the sa
-		myGenerate = new Generate();
+		generator = new Generate();
 		try {
 			nextToken = lex.getNextToken() ;
 			_statementPart_() ;
 			acceptTerminal(Token.eofSymbol) ;
-			myGenerate.reportSuccess() ;
+			generator.reportSuccess() ;
 		}
 		catch (CompilationException ex) {
 			ps.println(ex);
