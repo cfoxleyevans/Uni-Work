@@ -84,19 +84,35 @@
       <file leaf-file-name="SyntaxAnalyser.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SyntaxAnalyser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="468" column="33" selection-start="16210" selection-end="16210" vertical-scroll-proportion="0.6910755" vertical-offset="3463" max-vertical-offset="3900">
+            <state line="71" column="8" selection-start="2524" selection-end="2524" vertical-scroll-proportion="0.45255473" vertical-offset="324" max-vertical-offset="3645">
               <folding>
+                <element signature="docComment;field#filename#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="docComment;method#SyntaxAnalyser#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="method#SyntaxAnalyser#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="docComment;method#_statementPart_#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="method#_statementPart_#0;class#SyntaxAnalyser#0" expanded="false" />
-                <element signature="method#acceptTerminal#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="docComment;method#acceptTerminal#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="docComment;method#statementList#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="method#statementList#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="docComment;method#statement#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="docComment;method#assignmentStatement#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="method#assignmentStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="docComment;method#ifStatement#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="method#ifStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="docComment;method#whileStatement#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="method#whileStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="docComment;method#procedureStatement#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="method#procedureStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="docComment;method#untilStatement#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="method#untilStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="docComment;method#argumentList#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="method#argumentList#0;class#SyntaxAnalyser#0" expanded="false" />
-                <element signature="method#conditionalOperator#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="docComment;method#condition#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="docComment;method#conditionalOperator#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="docComment;method#expression#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#expression#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="docComment;method#term#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="docComment;method#factor#0;class#SyntaxAnalyser#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -518,17 +534,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="134" column="58" selection-start="4049" selection-end="4049" vertical-scroll-proportion="0.0" vertical-offset="1095" max-vertical-offset="1095">
           <folding>
+            <element signature="docComment;field#filename#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#SyntaxAnalyser#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#SyntaxAnalyser#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#_statementPart_#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#_statementPart_#0;class#SyntaxAnalyser#0" expanded="false" />
-            <element signature="method#acceptTerminal#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#acceptTerminal#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#statementList#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#statementList#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#statement#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#assignmentStatement#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#assignmentStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#ifStatement#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#ifStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#whileStatement#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#whileStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#procedureStatement#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#procedureStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#untilStatement#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#untilStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#argumentList#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#argumentList#0;class#SyntaxAnalyser#0" expanded="false" />
-            <element signature="method#conditionalOperator#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#condition#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#conditionalOperator#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#expression#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#expression#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#term#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#factor#0;class#SyntaxAnalyser#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -612,19 +644,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SyntaxAnalyser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="468" column="33" selection-start="16210" selection-end="16210" vertical-scroll-proportion="0.6910755" vertical-offset="3463" max-vertical-offset="3900">
+        <state line="71" column="8" selection-start="2524" selection-end="2524" vertical-scroll-proportion="0.45255473" vertical-offset="324" max-vertical-offset="3645">
           <folding>
+            <element signature="docComment;field#filename#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#SyntaxAnalyser#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#SyntaxAnalyser#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#_statementPart_#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#_statementPart_#0;class#SyntaxAnalyser#0" expanded="false" />
-            <element signature="method#acceptTerminal#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#acceptTerminal#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#statementList#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#statementList#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#statement#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#assignmentStatement#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#assignmentStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#ifStatement#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#ifStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#whileStatement#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#whileStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#procedureStatement#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#procedureStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#untilStatement#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#untilStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#argumentList#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#argumentList#0;class#SyntaxAnalyser#0" expanded="false" />
-            <element signature="method#conditionalOperator#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#condition#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#conditionalOperator#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#expression#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#expression#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#term#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="docComment;method#factor#0;class#SyntaxAnalyser#0" expanded="false" />
           </folding>
         </state>
       </provider>

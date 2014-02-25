@@ -39,7 +39,7 @@ public class SyntaxAnalyser extends AbstractSyntaxAnalyser {
     @Override
     void _statementPart_() throws IOException, CompilationException {
         //accept the begin token
-        myGenerator.commenceNonterminal("<program>");
+        myGenerator.commenceNonterminal("<statement part>");
         acceptTerminal(Token.beginSymbol);
 
         //parse the statement list
@@ -48,7 +48,7 @@ public class SyntaxAnalyser extends AbstractSyntaxAnalyser {
         acceptTerminal(Token.endSymbol);
 
         //tell the myGenerator that this non terminal is finished
-        myGenerator.finishNonterminal("<program>");
+        myGenerator.finishNonterminal("<statement part>");
     }
 
     /**
@@ -67,7 +67,10 @@ public class SyntaxAnalyser extends AbstractSyntaxAnalyser {
         } else {
             //generate a helpful error message and pass it to the code generator
             myGenerator.reportError(nextToken,
-                    "ERROR:[FILE:\"" + filename + "\"] [LINE:" + nextToken.lineNumber + "]");
+                    "ERROR:[FILE:\"" + filename + "\"] [LINE:" + nextToken.lineNumber + "]" +
+                            "Found Token: " + nextToken.text + " (" + Token.getName(nextToken.symbol) +")" +
+                            " Expecting: " + Token.getName(symbol)
+            );
         }
     }
 
@@ -125,7 +128,14 @@ public class SyntaxAnalyser extends AbstractSyntaxAnalyser {
             default:
                 //generate a helpful error message and pass it to the code generator
                 myGenerator.reportError(nextToken,
-                        "ERROR:[FILE:\"" + filename + "\"] [LINE:" + nextToken.lineNumber + "]");
+                        "ERROR:[FILE:\"" + filename + "\"] [LINE:" + nextToken.lineNumber + "]" +
+                                "Found Token: " + nextToken.text + " (" + Token.getName(nextToken.symbol) +")" +
+                                " Expecting: " + Token.getName(Token.identifier) +
+                                " (" + Token.getName(Token.ifSymbol) +
+                                " ," + Token.getName(Token.whileSymbol) +
+                                " ," + Token.getName(Token.callSymbol) +
+                                " ," + Token.getName(Token.untilSymbol) + ")"
+                );
         }
 
         //tell the code generator that we have finished the statment
@@ -337,7 +347,12 @@ public class SyntaxAnalyser extends AbstractSyntaxAnalyser {
             default:
                 //generate a helpful error message and pass it to the code generator
                 myGenerator.reportError(nextToken,
-                        "ERROR:[FILE:\"" + filename + "\"] [LINE:" + nextToken.lineNumber + "]");
+                        "ERROR:[FILE:\"" + filename + "\"] [LINE:" + nextToken.lineNumber + "]" +
+                                "Found Token: " + nextToken.text + " (" + Token.getName(nextToken.symbol) +")" +
+                                " Expecting: " + Token.getName(Token.identifier) +
+                                " (" + Token.getName(Token.numberConstant) +
+                                " ," + Token.getName(Token.stringConstant) +")"
+                );
         }
 
         //tell the code generator that we have finished the condition
@@ -376,7 +391,15 @@ public class SyntaxAnalyser extends AbstractSyntaxAnalyser {
             default:
                 //generate a helpful error message and pass it to the code generator
                 myGenerator.reportError(nextToken,
-                        "ERROR:[FILE:\"" + filename + "\"] [LINE:" + nextToken.lineNumber + "]");
+                        "ERROR:[FILE:\"" + filename + "\"] [LINE:" + nextToken.lineNumber + "]" +
+                                "Found Token: " + nextToken.text + " (" + Token.getName(nextToken.symbol) +")" +
+                                " Expecting: " + Token.getName(Token.greaterThanSymbol) +
+                                " (" + Token.getName(Token.greaterEqualSymbol) +
+                                " ," + Token.getName(Token.equalSymbol) +
+                                " ," + Token.getName(Token.notEqualSymbol) +
+                                " ," + Token.getName(Token.lessThanSymbol) +
+                                " ," + Token.getName(Token.lessEqualSymbol) + ")"
+                );
         }
         //tell the code generator that we have finished the conditional operator
         myGenerator.finishNonterminal("<conditional operator>");
@@ -464,7 +487,12 @@ public class SyntaxAnalyser extends AbstractSyntaxAnalyser {
             default:
                 //generate a helpful error message and pass it to the code generator
                 myGenerator.reportError(nextToken,
-                        "ERROR:[FILE:\"" + filename + "\"] [LINE:" + nextToken.lineNumber + "]");
+                        "ERROR:[FILE:\"" + filename + "\"] [LINE:" + nextToken.lineNumber + "]" +
+                        "Found Token: " + nextToken.text + " (" + Token.getName(nextToken.symbol) +")" +
+                        " Expecting: " + Token.getName(Token.identifier) +
+                        " (" + Token.getName(Token.leftParenthesis) +
+                        " ," + Token.getName(Token.rightParenthesis) + ")"
+                );
         }
         //tell the code generator that we have finished the factor
         myGenerator.commenceNonterminal("<factor>");
