@@ -1,27 +1,45 @@
 import java.io.IOException;
 
 /**
- * @author Chris Foxley-Evans
- * @version 0.0.1
+ * This is the implementation of a basic Recursive Descent Parser For SCC312 Compilation CW
+ * The Grammar for the language is set out in the CW document
+ * @author Chris Foxley-Evans 32879415
+ * @version 0.0.5
  */
 public class SyntaxAnalyser extends AbstractSyntaxAnalyser {
 
-    public SyntaxAnalyser(String filename) {
+    /**
+     * This stores the name of the file to provide more detail in messages
+     */
+    public String filename;
 
+
+    /**
+     * This is the class constructor
+     * @param filename This is the filename of the file that should be analysed
+     */
+    public SyntaxAnalyser(String filename) {
+        //try to create a new lexical analyzer for the file
         try {
             lex = new LexicalAnalyser(filename);
+            this.filename = filename;
 
         } catch (IOException e) {
-            System.out.println("ERROR: UNABLE TO CREATE TO LA");
-            System.exit(0);
+            //if we have reached here print error and exit
+            System.out.println("ERROR: UNABLE TO CREATE TO LA FOR FILE:" + filename);
+            System.exit(-1);
         }
     }
 
-    //process the top level symbol
+    /**
+     * This function processes the distinguished symbol for the language
+     * @throws IOException
+     * @throws CompilationException
+     */
     @Override
     void _statementPart_() throws IOException, CompilationException {
         //accept the begin token
-        myGenerator.commenceNonterminal("<statement part>");
+        myGenerator.commenceNonterminal("<program>");
         acceptTerminal(Token.beginSymbol);
 
         //parse the statement list
@@ -30,40 +48,64 @@ public class SyntaxAnalyser extends AbstractSyntaxAnalyser {
         acceptTerminal(Token.endSymbol);
 
         //tell the myGenerator that this non terminal is finished
-        myGenerator.finishNonterminal("<statement part>");
+        myGenerator.finishNonterminal("<program>");
     }
 
-    //accept a terminal ask the myGenerator to print it to the listing
+    /**
+     * This function accepts the current symbol from the Lexical Analyzer
+     * @param symbol This is the symbol that is expected
+     * @throws IOException
+     * @throws CompilationException
+     */
     @Override
     void acceptTerminal(int symbol) throws IOException, CompilationException {
+        //if the symbol is the one we expect
         if (nextToken.symbol == symbol) {
+            //insert the symbol into the cod generator and get the next token
             myGenerator.insertTerminal(nextToken);
             nextToken = lex.getNextToken();
         } else {
+            //generate a helpful error message and pass it to the code generator
             myGenerator.reportError(nextToken,
-                    "ERROR: Not expecting symbol: " + Token.getName(nextToken.symbol) + " at line: " + nextToken.lineNumber
-                            + " Expecting: " + Token.getName(symbol));
+                    "ERROR:[FILE:\"" + filename + "\"] [LINE:" + nextToken.lineNumber + "]");
         }
     }
 
+    /**
+     * This function is used to parse a Statement List
+     * @throws IOException
+     * @throws CompilationException
+     */
     void statementList() throws IOException, CompilationException {
+        //tell the code generator we have begun a statement list
         myGenerator.commenceNonterminal("<statement list>");
 
+        //parse the statement
         statement();
 
+        //while there a semi colon in the input string
         while (nextToken.symbol == Token.semicolonSymbol) {
             //accept the semi colon
             acceptTerminal(Token.semicolonSymbol);
 
-            //move to the next terminal and process
+            //parse the statement
             statement();
         }
+
+        //tell the code generator that we have finished the statement list
         myGenerator.finishNonterminal("<statement list>");
     }
 
+    /**
+     * This function is used to parse a Statement
+     * @throws IOException
+     * @throws CompilationException
+     */
     void statement() throws IOException, CompilationException {
+        //tell the code generator that we have begun a statement
         myGenerator.commenceNonterminal("<statement>");
 
+        //check the next token from the lexical analyzer and call the appropriate parse method
         switch (nextToken.symbol) {
             case Token.identifier:
                 assignmentStatement();
@@ -75,141 +117,213 @@ public class SyntaxAnalyser extends AbstractSyntaxAnalyser {
                 whileStatement();
                 break;
             case Token.callSymbol:
-                procdeureStatment();
+                procedureStatement();
                 break;
             case Token.untilSymbol:
-                untilStatment();
+                untilStatement();
                 break;
             default:
+                //generate a helpful error message and pass it to the code generator
                 myGenerator.reportError(nextToken,
-                        "ERROR: Not expecting symbol: " + Token.getName(nextToken.symbol) + " at line: "
-                                + nextToken.lineNumber);
+                        "ERROR:[FILE:\"" + filename + "\"] [LINE:" + nextToken.lineNumber + "]");
         }
+
+        //tell the code generator that we have finished the statment
         myGenerator.finishNonterminal("<statement>");
     }
 
-    //process an assignment statement
+    /**
+     * This function is used to parse an Assignment Statement
+     * @throws IOException
+     * @throws CompilationException
+     */
     void assignmentStatement() throws IOException, CompilationException {
+        //tell the code generator that we have begun an assignment statement
         myGenerator.commenceNonterminal("<assignment statement>");
 
+        //accept the identifier token
         acceptTerminal(Token.identifier);
 
+        //accept the becomes token
         acceptTerminal(Token.becomesSymbol);
 
+        //if the next token is a string accept it if it is not parse the expression
         if (nextToken.symbol == Token.stringConstant) {
             acceptTerminal(Token.stringConstant);
         } else {
             expression();
         }
 
+        //tell the code generator that we have finished the assignment statement
         myGenerator.finishNonterminal("<assignment statement>");
     }
 
-    //process an if statment
+    /**
+     * This function is used to parse an If Statement
+     * @throws IOException
+     * @throws CompilationException
+     */
     void ifStatement() throws IOException, CompilationException {
+        //tell the code generator that we have begun an if statement
         myGenerator.commenceNonterminal("<if statement>");
 
+        //accept the if token
         acceptTerminal(Token.ifSymbol);
 
+        //parse the condition
         condition();
 
+        //accept the the then token
         acceptTerminal(Token.thenSymbol);
 
+        //parse the statement list
         statementList();
 
+        //if the next token is an else token then parse the extra components
         if (nextToken.symbol == Token.elseSymbol) {
+
+            //accept the else token
+            acceptTerminal(Token.elseSymbol);
+
+            //parse the statement list
             statementList();
-
-            acceptTerminal(Token.endSymbol);
-
-            acceptTerminal(Token.ifSymbol);
-        } else {
-            acceptTerminal(Token.endSymbol);
-
-            acceptTerminal(Token.ifSymbol);
         }
 
+        //accept the end token
+        acceptTerminal(Token.endSymbol);
+
+        //accept the if token
+        acceptTerminal(Token.ifSymbol);
+
+        //tell the code generator that we have finished the if statement
         myGenerator.finishNonterminal("<if statement>");
     }
 
-    //process the sequence of tokens for a while statement
+    /**
+     * This function is used to parse a While Statement
+     * @throws IOException
+     * @throws CompilationException
+     */
     void whileStatement() throws IOException, CompilationException {
+        //tell the code generator that we have begun the while statment
         myGenerator.commenceNonterminal("<while statement>");
 
+        //accept the while token
         acceptTerminal(Token.whileSymbol);
 
+        //parse the condition
         condition();
 
+        //accept the loop token
         acceptTerminal(Token.loopSymbol);
 
+        //parse the statement list
         statementList();
 
+        //accept the end token
         acceptTerminal(Token.endSymbol);
+
+        //accept the loop token
         acceptTerminal(Token.loopSymbol);
 
+        //tell the code generator that we have finished the while statement
         myGenerator.finishNonterminal("<while statement>");
     }
 
-    //process the procedure statment
-    void procdeureStatment() throws IOException, CompilationException {
+    /**
+     * This function is used to parse a Procedure Statement
+     * @throws IOException
+     * @throws CompilationException
+     */
+    void procedureStatement() throws IOException, CompilationException {
+        //tell the code generator that we have begun a procedure statement
         myGenerator.commenceNonterminal("<procedure statement>");
 
+        //accept the call token
         acceptTerminal(Token.callSymbol);
 
+        //accept the identifier
         acceptTerminal(Token.identifier);
 
+        //accept the left paren
         acceptTerminal(Token.leftParenthesis);
 
+        //parse the argument list
         argumentList();
 
+        //accept the right paren
         acceptTerminal(Token.rightParenthesis);
 
+        //tell the code generator that we have finished the procedure statement
         myGenerator.commenceNonterminal("<procedure statement>");
     }
 
-    //process the sequence of tokens for a until statment
-    void untilStatment() throws IOException, CompilationException {
-        myGenerator.commenceNonterminal("<unitl statement>");
+    /**
+     * This function is used to parse an Until Statement
+     * @throws IOException
+     * @throws CompilationException
+     */
+    void untilStatement() throws IOException, CompilationException {
+        //tell the code generator that we have begun an until statement
+        myGenerator.commenceNonterminal("<until statement>");
+
+        //accept the do token
         acceptTerminal(Token.doSymbol);
 
-
+        //parse the statement list
         statementList();
 
-
+        //accept the until token
         acceptTerminal(Token.untilSymbol);
 
-
+        //parse the condition
         condition();
 
-        myGenerator.finishNonterminal("<unitl statement>");
+        //tell the code generator that we have finished the until statement
+        myGenerator.finishNonterminal("<until statement>");
     }
 
-    //process an argument list
+    /**
+     * This function is used to parse an Argument List
+     * @throws IOException
+     * @throws CompilationException
+     */
     void argumentList() throws IOException, CompilationException {
+        //tell the code generator that we have begun an argument list
         myGenerator.commenceNonterminal("<argument list>");
 
-
+        //accept the identifier token
         acceptTerminal(Token.identifier);
 
-
+        //while there is a comma in the input string
         while (nextToken.symbol == Token.commaSymbol) {
+            //accept the comma token
             acceptTerminal(Token.commaSymbol);
 
-
-            argumentList();
+            //accept the next identifier token
+            acceptTerminal(Token.identifier);
         }
 
+        //tell the code generator that we have finished the argument list
         myGenerator.finishNonterminal("<argument list>");
     }
 
-    //process a condition
+    /**
+     * This function is used to parse a condition
+     * @throws IOException
+     * @throws CompilationException
+     */
     void condition() throws IOException, CompilationException {
+        //tell the code generator that we have begun a condition
         myGenerator.commenceNonterminal("<condition>");
 
+        //accept the identifier token
         acceptTerminal(Token.identifier);
 
+        //parse the conditional operator
         conditionalOperator();
 
+        //check the next token from the lexical analyzer and call the appropriate accept method
         switch (nextToken.symbol) {
             case Token.identifier:
                 acceptTerminal(Token.identifier);
@@ -221,19 +335,25 @@ public class SyntaxAnalyser extends AbstractSyntaxAnalyser {
                 acceptTerminal(Token.stringConstant);
                 break;
             default:
-                myGenerator.reportError(nextToken, "ERROR: Not expecting symbol: " + nextToken.symbol + " at line: "
-                        + nextToken.lineNumber);
-
+                //generate a helpful error message and pass it to the code generator
+                myGenerator.reportError(nextToken,
+                        "ERROR:[FILE:\"" + filename + "\"] [LINE:" + nextToken.lineNumber + "]");
         }
 
+        //tell the code generator that we have finished the condition
         myGenerator.commenceNonterminal("<condition>");
     }
 
-    //accept the terminals that are valid for the conditional operator
-    //if the symbol is not found report an error
+    /**
+     * This function is used to parse a condition operator
+      * @throws IOException
+     * @throws CompilationException
+     */
     void conditionalOperator() throws IOException, CompilationException {
+        //tell the code generator that we have begun a conditional operator
         myGenerator.commenceNonterminal("<conditional operator>");
 
+        //check the next token from the lexical analyzer and call the appropriate accept method
         switch (nextToken.symbol) {
             case Token.greaterThanSymbol:
                 acceptTerminal(Token.greaterThanSymbol);
@@ -254,18 +374,28 @@ public class SyntaxAnalyser extends AbstractSyntaxAnalyser {
                 acceptTerminal(Token.lessEqualSymbol);
                 break;
             default:
-                myGenerator.reportError(nextToken, "ERROR: Not expecting symbol: " + nextToken.symbol + " at line: "
-                        + nextToken.lineNumber);
+                //generate a helpful error message and pass it to the code generator
+                myGenerator.reportError(nextToken,
+                        "ERROR:[FILE:\"" + filename + "\"] [LINE:" + nextToken.lineNumber + "]");
         }
+        //tell the code generator that we have finished the conditional operator
         myGenerator.finishNonterminal("<conditional operator>");
     }
 
-    //proces a expression
+    /**
+     * This function is used to parse an expression
+     * @throws IOException
+     * @throws CompilationException
+     */
     void expression() throws IOException, CompilationException {
+        //tell the code generator that we have begun and expression
         myGenerator.commenceNonterminal("<expression>");
 
+        //parse the term
         term();
 
+        //if there is a plus/minus token on the input string then check which and accept the token
+        //then parse the term
         while (nextToken.symbol == Token.plusSymbol || nextToken.symbol == Token.minusSymbol) {
             if (nextToken.symbol == Token.plusSymbol) {
                 acceptTerminal(Token.plusSymbol);
@@ -276,16 +406,24 @@ public class SyntaxAnalyser extends AbstractSyntaxAnalyser {
                 term();
             }
         }
-
+        //tell the code generator that we have finished the expression
         myGenerator.commenceNonterminal("<expression>");
     }
 
-    //process a term
+    /**
+     * This function is used to parse a term
+     * @throws IOException
+     * @throws CompilationException
+     */
     void term() throws IOException, CompilationException {
+        //tell the code generator that we have begun a term
         myGenerator.commenceNonterminal("<term>");
 
+        //parse the factor
         factor();
 
+        //if there if a times/divide symbol on the input string then check which and accept the token
+        //then factor the term
         while (nextToken.symbol == Token.timesSymbol || nextToken.symbol == Token.divideSymbol) {
             if (nextToken.symbol == Token.timesSymbol) {
                 acceptTerminal(Token.timesSymbol);
@@ -296,15 +434,21 @@ public class SyntaxAnalyser extends AbstractSyntaxAnalyser {
                 factor();
             }
         }
-
-
+        //tell the code generator that we have finished the term
         myGenerator.commenceNonterminal("<term>");
     }
 
-    //process a factor
+    /**
+     * This function is used to parse a factor
+     * @throws IOException
+     * @throws CompilationException
+     */
     void factor() throws IOException, CompilationException {
+        //tell the code generator that we have begun a factor
         myGenerator.commenceNonterminal("<factor>");
 
+        //check the next token from the lexical analyzer and call the appropriate accept method
+        //in the case of the left paren accept this then parse the expression then accept the right paren
         switch (nextToken.symbol) {
             case Token.identifier:
                 acceptTerminal(Token.identifier);
@@ -318,12 +462,11 @@ public class SyntaxAnalyser extends AbstractSyntaxAnalyser {
                 acceptTerminal(Token.rightParenthesis);
                 break;
             default:
-                myGenerator.reportError(nextToken, "ERROR: Not expecting symbol: " +
-                        Token.getName(nextToken.symbol) + " at line: " + nextToken.lineNumber + "Expecting: " +
-                        Token.getName(Token.identifier) + ", " +
-                        Token.getName(Token.numberConstant) + ", " + Token.getName(Token.leftParenthesis));
+                //generate a helpful error message and pass it to the code generator
+                myGenerator.reportError(nextToken,
+                        "ERROR:[FILE:\"" + filename + "\"] [LINE:" + nextToken.lineNumber + "]");
         }
-
+        //tell the code generator that we have finished the factor
         myGenerator.commenceNonterminal("<factor>");
     }
 }

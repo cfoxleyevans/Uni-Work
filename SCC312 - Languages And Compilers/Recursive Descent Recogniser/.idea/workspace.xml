@@ -55,23 +55,8 @@
       </breakpoint>
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <line_breakpoints>
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint url="file://$PROJECT_DIR$/src/LexicalAnalyser.java" line="253" class="LexicalAnalyser" package="">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Compile.java" line="55" class="Compile" package="">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -96,35 +81,52 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CompilationException.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CompilationException.java">
+      <file leaf-file-name="SyntaxAnalyser.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SyntaxAnalyser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="38" selection-start="358" selection-end="358" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="360">
-              <folding />
+            <state line="468" column="33" selection-start="16210" selection-end="16210" vertical-scroll-proportion="0.6910755" vertical-offset="3463" max-vertical-offset="3900">
+              <folding>
+                <element signature="method#SyntaxAnalyser#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#_statementPart_#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#acceptTerminal#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#statementList#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#assignmentStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#ifStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#whileStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#procedureStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#untilStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#argumentList#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#conditionalOperator#0;class#SyntaxAnalyser#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SyntaxAnalyser.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/SyntaxAnalyser.java">
+      <file leaf-file-name="Compile.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Compile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="134" column="58" selection-start="4049" selection-end="4049" vertical-scroll-proportion="1.4457831" vertical-offset="0" max-vertical-offset="1095">
+            <state line="58" column="13" selection-start="1500" selection-end="1500" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="1020">
               <folding>
-                <element signature="method#SyntaxAnalyser#0;class#SyntaxAnalyser#0" expanded="false" />
-                <element signature="method#acceptTerminal#0;class#SyntaxAnalyser#0" expanded="false" />
-                <element signature="method#statementList#0;class#SyntaxAnalyser#0" expanded="false" />
-                <element signature="method#statement#0;class#SyntaxAnalyser#0" expanded="false" />
-                <element signature="method#assignmentStatement#0;class#SyntaxAnalyser#0" expanded="false" />
-                <element signature="method#ifStatement#0;class#SyntaxAnalyser#0" expanded="false" />
-                <element signature="method#whileStatement#0;class#SyntaxAnalyser#0" expanded="false" />
-                <element signature="method#procdeureStatment#0;class#SyntaxAnalyser#0" expanded="false" />
-                <element signature="method#untilStatment#0;class#SyntaxAnalyser#0" expanded="false" />
-                <element signature="method#argumentList#0;class#SyntaxAnalyser#0" expanded="false" />
-                <element signature="method#condition#0;class#SyntaxAnalyser#0" expanded="false" />
-                <element signature="method#conditionalOperator#0;class#SyntaxAnalyser#0" expanded="false" />
-                <element signature="method#expression#0;class#SyntaxAnalyser#0" expanded="false" />
-                <element signature="method#term#0;class#SyntaxAnalyser#0" expanded="false" />
-                <element signature="method#factor#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="docComment;method#go#0;class#Compile#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractGenerate.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AbstractGenerate.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="51" column="0" selection-start="1497" selection-end="1497" vertical-scroll-proportion="0.0" vertical-offset="71" max-vertical-offset="495">
+              <folding>
+                <element signature="docComment;method#insertTerminal#0;class#AbstractGenerate#0" expanded="false" />
+                <element signature="method#insertTerminal#0;class#AbstractGenerate#0" expanded="false" />
+                <element signature="docComment;method#commenceNonterminal#0;class#AbstractGenerate#0" expanded="false" />
+                <element signature="method#commenceNonterminal#0;class#AbstractGenerate#0" expanded="false" />
+                <element signature="docComment;method#finishNonterminal#0;class#AbstractGenerate#0" expanded="false" />
+                <element signature="method#finishNonterminal#0;class#AbstractGenerate#0" expanded="false" />
+                <element signature="docComment;method#reportSuccess#0;class#AbstractGenerate#0" expanded="false" />
+                <element signature="method#reportSuccess#0;class#AbstractGenerate#0" expanded="false" />
+                <element signature="docComment;method#reportError#0;class#AbstractGenerate#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -161,7 +163,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="195" />
     <option name="y" value="22" />
-    <option name="width" value="1140" />
+    <option name="width" value="1245" />
     <option name="height" value="830" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -224,8 +226,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -282,19 +284,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -320,6 +309,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -432,31 +434,31 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="195" y="22" width="1140" height="830" extended-state="0" />
+    <frame x="195" y="22" width="1245" height="830" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35501355" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33012047" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3306233" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2513661" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39972898" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3699187" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22942643" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3699187" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39972898" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
     <layout-to-restore>
@@ -475,13 +477,13 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24932249" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -505,12 +507,36 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Compile.java">
+    <entry file="file://$PROJECT_DIR$/src/CompilationException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="13" selection-start="1186" selection-end="1186" vertical-scroll-proportion="0.98253274" vertical-offset="0" max-vertical-offset="1095">
+        <state line="16" column="38" selection-start="358" selection-end="358" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SyntaxAnalyser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="134" column="58" selection-start="4049" selection-end="4049" vertical-scroll-proportion="0.0" vertical-offset="1095" max-vertical-offset="1095">
           <folding>
-            <element signature="docComment;method#go#0;class#Compile#0" expanded="false" />
+            <element signature="method#SyntaxAnalyser#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#_statementPart_#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#acceptTerminal#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#statementList#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#assignmentStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#ifStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#whileStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#procedureStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#untilStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#argumentList#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#conditionalOperator#0;class#SyntaxAnalyser#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Generate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="274" selection-end="274" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="255">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -523,22 +549,6 @@
             <element signature="docComment;method#LexicalAnalyser#0;class#LexicalAnalyser#0" expanded="false" />
             <element signature="docComment;method#getNextCharacter#0;class#LexicalAnalyser#0" expanded="false" />
             <element signature="docComment;method#getNextToken#0;class#LexicalAnalyser#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AbstractGenerate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="0" selection-start="1053" selection-end="1053" vertical-scroll-proportion="0.45193687" vertical-offset="0" max-vertical-offset="697">
-          <folding>
-            <element signature="docComment;method#insertTerminal#0;class#AbstractGenerate#0" expanded="false" />
-            <element signature="method#insertTerminal#0;class#AbstractGenerate#0" expanded="false" />
-            <element signature="docComment;method#commenceNonterminal#0;class#AbstractGenerate#0" expanded="false" />
-            <element signature="method#commenceNonterminal#0;class#AbstractGenerate#0" expanded="false" />
-            <element signature="docComment;method#finishNonterminal#0;class#AbstractGenerate#0" expanded="false" />
-            <element signature="method#finishNonterminal#0;class#AbstractGenerate#0" expanded="false" />
-            <element signature="docComment;method#reportSuccess#0;class#AbstractGenerate#0" expanded="false" />
-            <element signature="method#reportSuccess#0;class#AbstractGenerate#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -562,8 +572,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CompilationException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="38" selection-start="358" selection-end="358" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="360">
+        <state line="16" column="38" selection-start="358" selection-end="358" vertical-scroll-proportion="0.5491991" vertical-offset="0" max-vertical-offset="437">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Compile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="13" selection-start="1500" selection-end="1500" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="1020">
+          <folding>
+            <element signature="docComment;method#go#0;class#Compile#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AbstractGenerate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="0" selection-start="1497" selection-end="1497" vertical-scroll-proportion="0.0" vertical-offset="71" max-vertical-offset="495">
+          <folding>
+            <element signature="docComment;method#insertTerminal#0;class#AbstractGenerate#0" expanded="false" />
+            <element signature="method#insertTerminal#0;class#AbstractGenerate#0" expanded="false" />
+            <element signature="docComment;method#commenceNonterminal#0;class#AbstractGenerate#0" expanded="false" />
+            <element signature="method#commenceNonterminal#0;class#AbstractGenerate#0" expanded="false" />
+            <element signature="docComment;method#finishNonterminal#0;class#AbstractGenerate#0" expanded="false" />
+            <element signature="method#finishNonterminal#0;class#AbstractGenerate#0" expanded="false" />
+            <element signature="docComment;method#reportSuccess#0;class#AbstractGenerate#0" expanded="false" />
+            <element signature="method#reportSuccess#0;class#AbstractGenerate#0" expanded="false" />
+            <element signature="docComment;method#reportError#0;class#AbstractGenerate#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -576,23 +612,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SyntaxAnalyser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="58" selection-start="4049" selection-end="4049" vertical-scroll-proportion="1.4457831" vertical-offset="0" max-vertical-offset="1095">
+        <state line="468" column="33" selection-start="16210" selection-end="16210" vertical-scroll-proportion="0.6910755" vertical-offset="3463" max-vertical-offset="3900">
           <folding>
             <element signature="method#SyntaxAnalyser#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#_statementPart_#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#acceptTerminal#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#statementList#0;class#SyntaxAnalyser#0" expanded="false" />
-            <element signature="method#statement#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#assignmentStatement#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#ifStatement#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#whileStatement#0;class#SyntaxAnalyser#0" expanded="false" />
-            <element signature="method#procdeureStatment#0;class#SyntaxAnalyser#0" expanded="false" />
-            <element signature="method#untilStatment#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#procedureStatement#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#untilStatement#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#argumentList#0;class#SyntaxAnalyser#0" expanded="false" />
-            <element signature="method#condition#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#conditionalOperator#0;class#SyntaxAnalyser#0" expanded="false" />
-            <element signature="method#expression#0;class#SyntaxAnalyser#0" expanded="false" />
-            <element signature="method#term#0;class#SyntaxAnalyser#0" expanded="false" />
-            <element signature="method#factor#0;class#SyntaxAnalyser#0" expanded="false" />
           </folding>
         </state>
       </provider>
