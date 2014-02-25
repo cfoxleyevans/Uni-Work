@@ -1,0 +1,6 @@
+CompilationException: ERROR: Not expecting symbol: IDENTIFIER at line: 1 Expecting: begin
+CompilationException: ERROR: Not expecting symbol: EOF at line: 11 Expecting: if
+CompilationException: ERROR: Not expecting symbol: end at line: 7
+CompilationException: ERROR: Not expecting symbol: ; at line: 7 Expecting: loop
+CompilationException: ERROR: Not expecting symbol: else at line: 4
+CompilationException: ERROR: Not expecting symbol: call at line: 12 Expecting: EOF
