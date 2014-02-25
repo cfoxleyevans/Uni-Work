@@ -30,7 +30,7 @@ public class Client {
     public IServer server;
 
     //constructor
-    public Client(String hostname) {
+    public Client(String hostname, int port, String serviceName) {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         String username = "";
         String password = "";
@@ -62,8 +62,9 @@ public class Client {
 
             //get the user id from and register with the server
             try {
-                Registry registry = LocateRegistry.getRegistry(hostname, 1099);
-                this.server = (IServer) registry.lookup("AuctionServer");
+                Registry registry = LocateRegistry.getRegistry(hostname, port);
+
+                this.server = (IServer) registry.lookup(serviceName);
                 this.state.clientID = this.server.getNewClientID();
                 this.server.registerClient(this.state.clientID, this.state.key);
             } catch (Exception e) {
@@ -81,6 +82,7 @@ public class Client {
                 closeApplication("Password authentication failed");
             }
         }
+        System.out.println("Connected the the server, ServiceName: " + serviceName + " PortNumber: " + port);
     }
 
     //public methods
@@ -114,7 +116,7 @@ public class Client {
 
             if (!ownAuction(auctionID)) {
                 Bid response = ClientSecurityManager.decryptBid(
-                        server.registerBid(state.clientID, ClientSecurityManager.encryptBid(new Bid(auctionID, state.clientID, bidValue), state.key)), state.key);
+                        server.registerBid(state.clientID, ClientSecurityManager.encryptBid(new Bid(auctionID, state.clientID, state.username, bidValue), state.key)), state.key);
                 if (response != null) {
                     System.out.println("Bid has been placed.");
                 }
@@ -178,7 +180,7 @@ public class Client {
                     if (winningBid.bidValue < i.reservePrice) {
                         System.out.println("The auction failed to meet the reserve");
                     } else {
-                        System.out.println("The auction was won by: " + winningBid.clientID + " with a bid of: " + winningBid.bidValue);
+                        System.out.println("The auction was won by : " + winningBid.clientName + " with a bid of: " + winningBid.bidValue);
                     }
 
                     state.auctions.remove(i);

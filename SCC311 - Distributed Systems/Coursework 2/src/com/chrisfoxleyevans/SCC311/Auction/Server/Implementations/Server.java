@@ -1,10 +1,14 @@
 package com.chrisfoxleyevans.SCC311.Auction.Server.Implementations;
 
 import com.chrisfoxleyevans.SCC311.Auction.Server.Interfaces.IServer;
+import com.chrisfoxleyevans.SCC311.Auction.Server.ReplicationManager.ReplicationManager;
 import com.chrisfoxleyevans.SCC311.Auction.Server.SecurityManager.ClientSecurityDetails;
 import com.chrisfoxleyevans.SCC311.Auction.Server.SecurityManager.ServerSecurityManager;
 import com.chrisfoxleyevans.SCC311.Auction.Server.StateManager.ServerState;
 import com.chrisfoxleyevans.SCC311.Auction.Server.StateManager.ServerStateManager;
+import org.jgroups.Message;
+import org.jgroups.util.Util;
+import sun.print.resources.serviceui;
 
 import javax.crypto.SealedObject;
 import java.rmi.RemoteException;
@@ -20,20 +24,28 @@ public class Server implements IServer {
 
     //instance vars
     public ServerState state;
+    public ReplicationManager replicationManager;
 
     //constructor
-    public Server() {
-        ServerState state = ServerStateManager.loadState();
+    public Server(int portNumber) {
+        ServerState state = ServerStateManager.loadState(portNumber);
         if (state == null) {
-            this.state = new ServerState();
-            ServerStateManager.saveState(this.state);
+            this.state = new ServerState(portNumber);
+            ServerStateManager.saveState(this.state, portNumber);
         } else {
             this.state = state;
         }
+
+
+        this.replicationManager = new ReplicationManager(this);
     }
 
     //public methods
     public int getNewClientID() {
+        //save the local state and ask the rep manager to distribute it
+        ServerStateManager.saveState(state, state.portNumber);
+        replicationManager.send(new Message(null, state));
+
         return state.clientSecurityDetailses.size() + 1;
     }
 
@@ -72,7 +84,11 @@ public class Server implements IServer {
                     " AuctionID: " + auction.auctionID +
                     " Description: " + auction.itemDescription + " Reserve price: " + auction.reservePrice +
                     " Start price: " + auction.maxBid.bidValue);
-            ServerStateManager.saveState(state);
+
+            //save the local state and ask the rep manager to distribute it
+            ServerStateManager.saveState(state, state.portNumber);
+            replicationManager.send(new Message(null, state));
+
             return ServerSecurityManager.encryptAuction(auction, key);
         } else {
             throw new RemoteException("Unable to register auction - problem decrypting the information");
@@ -95,6 +111,10 @@ public class Server implements IServer {
                 for (Auction i : state.auctions) {
                     if (i.auctionID == bid.auctionID) {
                         if (placeBid(i, bid)) {
+                            //save the local state and ask the rep manager to distribute it
+                            ServerStateManager.saveState(state, state.portNumber);
+                            replicationManager.send(new Message(null, state));
+
                             return ServerSecurityManager.encryptBid(bid, key);
                         }
                     }
@@ -118,7 +138,11 @@ public class Server implements IServer {
                 for (Auction i : state.auctions) {
                     if (i.auctionID == auction.auctionID) {
                         state.auctions.remove(i);
-                        ServerStateManager.saveState(state);
+
+                        //save the local state and ask the rep manager to distribute it
+                        ServerStateManager.saveState(state, state.portNumber);
+                        replicationManager.send(new Message(null, state));
+
                         return ServerSecurityManager.encryptBid(i.maxBid, key);
                     }
                 }

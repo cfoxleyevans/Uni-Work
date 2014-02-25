@@ -34,8 +34,6 @@ public class ClientSecurityManager {
             Cipher cipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
             cipher.init(Cipher.DECRYPT_MODE, key);
 
-
-
             return (ArrayList<Auction>) auctions.getObject(cipher);
         } catch (Exception e) {
             return null;
