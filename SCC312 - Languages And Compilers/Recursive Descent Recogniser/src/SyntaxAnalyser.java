@@ -130,7 +130,7 @@ public class SyntaxAnalyser extends AbstractSyntaxAnalyser {
                 myGenerator.reportError(nextToken,
                         "ERROR:[FILE:\"" + filename + "\"] [LINE:" + nextToken.lineNumber + "]" +
                                 "Found Token: " + nextToken.text + " (" + Token.getName(nextToken.symbol) +")" +
-                                " Expecting: " + Token.getName(Token.identifier) +
+                                " Expecting: <statement>(FIRST)" +
                                 " (" + Token.getName(Token.ifSymbol) +
                                 " ," + Token.getName(Token.whileSymbol) +
                                 " ," + Token.getName(Token.callSymbol) +
@@ -349,7 +349,7 @@ public class SyntaxAnalyser extends AbstractSyntaxAnalyser {
                 myGenerator.reportError(nextToken,
                         "ERROR:[FILE:\"" + filename + "\"] [LINE:" + nextToken.lineNumber + "]" +
                                 "Found Token: " + nextToken.text + " (" + Token.getName(nextToken.symbol) +")" +
-                                " Expecting: " + Token.getName(Token.identifier) +
+                                " Expecting: <condition>(FIRST)" +
                                 " (" + Token.getName(Token.numberConstant) +
                                 " ," + Token.getName(Token.stringConstant) +")"
                 );
@@ -393,7 +393,7 @@ public class SyntaxAnalyser extends AbstractSyntaxAnalyser {
                 myGenerator.reportError(nextToken,
                         "ERROR:[FILE:\"" + filename + "\"] [LINE:" + nextToken.lineNumber + "]" +
                                 "Found Token: " + nextToken.text + " (" + Token.getName(nextToken.symbol) +")" +
-                                " Expecting: " + Token.getName(Token.greaterThanSymbol) +
+                                " Expecting: <conditional operator>(FIRST)" +
                                 " (" + Token.getName(Token.greaterEqualSymbol) +
                                 " ," + Token.getName(Token.equalSymbol) +
                                 " ," + Token.getName(Token.notEqualSymbol) +
@@ -489,9 +489,10 @@ public class SyntaxAnalyser extends AbstractSyntaxAnalyser {
                 myGenerator.reportError(nextToken,
                         "ERROR:[FILE:\"" + filename + "\"] [LINE:" + nextToken.lineNumber + "]" +
                         "Found Token: " + nextToken.text + " (" + Token.getName(nextToken.symbol) +")" +
-                        " Expecting: " + Token.getName(Token.identifier) +
-                        " (" + Token.getName(Token.leftParenthesis) +
-                        " ," + Token.getName(Token.rightParenthesis) + ")"
+                        " Expecting: <factor>(FIRST)" +
+                        " (" + Token.getName(Token.identifier) +
+                        " ," + Token.getName(Token.numberConstant) +
+                        " ," + Token.getName(Token.leftParenthesis) + ")"
                 );
         }
         //tell the code generator that we have finished the factor

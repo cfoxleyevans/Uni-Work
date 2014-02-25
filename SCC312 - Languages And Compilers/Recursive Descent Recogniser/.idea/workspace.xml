@@ -81,10 +81,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SyntaxAnalyser.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="SyntaxAnalyser.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SyntaxAnalyser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="8" selection-start="2524" selection-end="2524" vertical-scroll-proportion="0.45255473" vertical-offset="324" max-vertical-offset="3645">
+            <state line="2" column="0" selection-start="29" selection-end="247" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1035">
               <folding>
                 <element signature="docComment;field#filename#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="docComment;method#SyntaxAnalyser#0;class#SyntaxAnalyser#0" expanded="false" />
@@ -92,9 +92,11 @@
                 <element signature="docComment;method#_statementPart_#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="method#_statementPart_#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="docComment;method#acceptTerminal#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#acceptTerminal#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="docComment;method#statementList#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="method#statementList#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="docComment;method#statement#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#statement#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="docComment;method#assignmentStatement#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="method#assignmentStatement#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="docComment;method#ifStatement#0;class#SyntaxAnalyser#0" expanded="false" />
@@ -108,50 +110,24 @@
                 <element signature="docComment;method#argumentList#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="method#argumentList#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="docComment;method#condition#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#condition#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="docComment;method#conditionalOperator#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#conditionalOperator#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="docComment;method#expression#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="method#expression#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="docComment;method#term#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#term#0;class#SyntaxAnalyser#0" expanded="false" />
                 <element signature="docComment;method#factor#0;class#SyntaxAnalyser#0" expanded="false" />
+                <element signature="method#factor#0;class#SyntaxAnalyser#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Compile.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Compile.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="13" selection-start="1500" selection-end="1500" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="1020">
-              <folding>
-                <element signature="docComment;method#go#0;class#Compile#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractGenerate.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AbstractGenerate.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="0" selection-start="1497" selection-end="1497" vertical-scroll-proportion="0.0" vertical-offset="71" max-vertical-offset="495">
-              <folding>
-                <element signature="docComment;method#insertTerminal#0;class#AbstractGenerate#0" expanded="false" />
-                <element signature="method#insertTerminal#0;class#AbstractGenerate#0" expanded="false" />
-                <element signature="docComment;method#commenceNonterminal#0;class#AbstractGenerate#0" expanded="false" />
-                <element signature="method#commenceNonterminal#0;class#AbstractGenerate#0" expanded="false" />
-                <element signature="docComment;method#finishNonterminal#0;class#AbstractGenerate#0" expanded="false" />
-                <element signature="method#finishNonterminal#0;class#AbstractGenerate#0" expanded="false" />
-                <element signature="docComment;method#reportSuccess#0;class#AbstractGenerate#0" expanded="false" />
-                <element signature="method#reportSuccess#0;class#AbstractGenerate#0" expanded="false" />
-                <element signature="docComment;method#reportError#0;class#AbstractGenerate#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Generate.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Generate.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Generate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="274" selection-end="274" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+            <state line="12" column="92" selection-start="546" selection-end="546" vertical-scroll-proportion="0.41189933" vertical-offset="0" max-vertical-offset="437">
               <folding />
             </state>
           </provider>
@@ -170,9 +146,9 @@
         <option value="$PROJECT_DIR$/src/LexicalAnalyser.java" />
         <option value="$PROJECT_DIR$/src/Compile.java" />
         <option value="$PROJECT_DIR$/src/AbstractGenerate.java" />
-        <option value="$PROJECT_DIR$/src/Generate.java" />
         <option value="$PROJECT_DIR$/src/AbstractSyntaxAnalyser.java" />
         <option value="$PROJECT_DIR$/src/SyntaxAnalyser.java" />
+        <option value="$PROJECT_DIR$/src/Generate.java" />
       </list>
     </option>
   </component>
@@ -540,9 +516,11 @@
             <element signature="docComment;method#_statementPart_#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#_statementPart_#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="docComment;method#acceptTerminal#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#acceptTerminal#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="docComment;method#statementList#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#statementList#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="docComment;method#statement#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#statement#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="docComment;method#assignmentStatement#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#assignmentStatement#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="docComment;method#ifStatement#0;class#SyntaxAnalyser#0" expanded="false" />
@@ -556,11 +534,15 @@
             <element signature="docComment;method#argumentList#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#argumentList#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="docComment;method#condition#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#condition#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="docComment;method#conditionalOperator#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#conditionalOperator#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="docComment;method#expression#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#expression#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="docComment;method#term#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#term#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="docComment;method#factor#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#factor#0;class#SyntaxAnalyser#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -611,7 +593,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Compile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="13" selection-start="1500" selection-end="1500" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="1020">
+        <state line="58" column="13" selection-start="1500" selection-end="1500" vertical-scroll-proportion="1.235698" vertical-offset="120" max-vertical-offset="1020">
           <folding>
             <element signature="docComment;method#go#0;class#Compile#0" expanded="false" />
           </folding>
@@ -620,7 +602,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AbstractGenerate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="0" selection-start="1497" selection-end="1497" vertical-scroll-proportion="0.0" vertical-offset="71" max-vertical-offset="495">
+        <state line="51" column="0" selection-start="1497" selection-end="1497" vertical-scroll-proportion="0.7877358" vertical-offset="71" max-vertical-offset="495">
           <folding>
             <element signature="docComment;method#insertTerminal#0;class#AbstractGenerate#0" expanded="false" />
             <element signature="method#insertTerminal#0;class#AbstractGenerate#0" expanded="false" />
@@ -635,16 +617,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Generate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="274" selection-end="274" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SyntaxAnalyser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="8" selection-start="2524" selection-end="2524" vertical-scroll-proportion="0.45255473" vertical-offset="324" max-vertical-offset="3645">
+        <state line="2" column="0" selection-start="29" selection-end="247" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1035">
           <folding>
             <element signature="docComment;field#filename#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="docComment;method#SyntaxAnalyser#0;class#SyntaxAnalyser#0" expanded="false" />
@@ -652,9 +627,11 @@
             <element signature="docComment;method#_statementPart_#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#_statementPart_#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="docComment;method#acceptTerminal#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#acceptTerminal#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="docComment;method#statementList#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#statementList#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="docComment;method#statement#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#statement#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="docComment;method#assignmentStatement#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#assignmentStatement#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="docComment;method#ifStatement#0;class#SyntaxAnalyser#0" expanded="false" />
@@ -668,12 +645,23 @@
             <element signature="docComment;method#argumentList#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#argumentList#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="docComment;method#condition#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#condition#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="docComment;method#conditionalOperator#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#conditionalOperator#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="docComment;method#expression#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="method#expression#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="docComment;method#term#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#term#0;class#SyntaxAnalyser#0" expanded="false" />
             <element signature="docComment;method#factor#0;class#SyntaxAnalyser#0" expanded="false" />
+            <element signature="method#factor#0;class#SyntaxAnalyser#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Generate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="92" selection-start="546" selection-end="546" vertical-scroll-proportion="0.41189933" vertical-offset="0" max-vertical-offset="437">
+          <folding />
         </state>
       </provider>
     </entry>
