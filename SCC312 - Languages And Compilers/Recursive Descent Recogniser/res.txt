@@ -1,0 +1,6 @@
+CompilationException: ERROR:[FILE:"Programs/program2"] [LINE:1]Found Token: begim (IDENTIFIER) Expecting: begin
+CompilationException: ERROR:[FILE:"Programs/program3"] [LINE:11]Found Token:  (EOF) Expecting: if
+CompilationException: ERROR:[FILE:"Programs/program4"] [LINE:7]Found Token: end (end) Expecting: <statement>(FIRST) (if ,while ,call ,until)
+CompilationException: ERROR:[FILE:"Programs/program5"] [LINE:7]Found Token: ; (;) Expecting: loop
+CompilationException: ERROR:[FILE:"Programs/program7"] [LINE:4]Found Token: else (else) Expecting: <statement>(FIRST) (if ,while ,call ,until)
+CompilationException: ERROR:[FILE:"Programs/program8"] [LINE:12]Found Token: call (call) Expecting: EOF
