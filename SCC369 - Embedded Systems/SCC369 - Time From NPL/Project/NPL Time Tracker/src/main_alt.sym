@@ -1,0 +1,192 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+020     @INTERRUPT_AREA
+021     @INTERRUPT_AREA
+022     @INTERRUPT_AREA
+023     @INTERRUPT_AREA
+024     @INTERRUPT_AREA
+025     @INTERRUPT_AREA
+026     @INTERRUPT_AREA
+027     @INTERRUPT_AREA
+028     @INTERRUPT_AREA
+029     @INTERRUPT_AREA
+02A     @INTERRUPT_AREA
+02B     @TRIS_C
+02C-02D ticks
+02E-02F signal_off_start
+030-031 signal_on_start
+032-033 prev_signal_on_start
+034     seconds_passed
+035     year
+036     month
+037     day
+038     week_day
+039     hour
+03A     mins
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+07F     @INTERRUPT_AREA
+0A0-0DA a_bits
+0DB     lcd_init.i
+0DB     lcd_display_time.day
+0DB     MAIN.@SCRATCH1
+0DC     lcd_display_time.month
+0DC     lcd_init.@SCRATCH1
+0DD     lcd_display_time.year
+0DE     lcd_display_time.week_day
+0DF     lcd_display_time.hours
+0E0     lcd_display_time.mins
+0E1     lcd_display_time.seconds
+0E2     lcd_put_2_digit_int.value
+0E2     @PSTRINGC7_620.@SCRATCH1
+0E3     lcd_put_2_digit_int.thousands
+0E3     @PSTRINGC7_620.@SCRATCH2
+0E4     lcd_put_2_digit_int.hundreds
+0E4     @PSTRINGC7_620.@SCRATCH3
+0E5     lcd_putc.c
+0E5     lcd_put_2_digit_int.tens
+0E5     @PSTRINGC7_620.@SCRATCH4
+0E6     lcd_put_2_digit_int.ones
+0E6     lcd_gotoxy.x
+0E6     @delay_ms1.P1
+0E7     lcd_gotoxy.y
+0E7-0E8 @MUL1616.P1
+0E7     lcd_put_2_digit_int.@SCRATCH1
+0E8     lcd_gotoxy.address
+0E8     lcd_put_2_digit_int.@SCRATCH2
+0E9     @MUL88.P1
+0E9-0EA @MUL1616.P2
+0E9-0EA @DIV1616.P3
+0E9     lcd_gotoxy.@SCRATCH1
+0EA     @MUL88.P1
+0EA     lcd_send_byte.address
+0EB-0EC @DIV1616.P1
+0EB     lcd_send_byte.n
+0EB     @MUL1616.@SCRATCH1
+0EC     lcd_send_byte.@SCRATCH1
+0ED     lcd_send_nibble.nibble
+0ED     @DIV1616.@SCRATCH1
+0EE-0EF port_b_isr.signal_off_length
+0FF     @INTERRUPT_AREA
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+110-111 port_b_isr.prev_signal_on_length
+112     process_bits.i
+112     port_b_isr.@SCRATCH1
+113     port_b_isr.@SCRATCH2
+17F     @INTERRUPT_AREA
+1FF     @INTERRUPT_AREA
+27F     @INTERRUPT_AREA
+2FF     @INTERRUPT_AREA
+37F     @INTERRUPT_AREA
+3FF     @INTERRUPT_AREA
+47F     @INTERRUPT_AREA
+4FF     @INTERRUPT_AREA
+57F     @INTERRUPT_AREA
+5FF     @INTERRUPT_AREA
+67F     @INTERRUPT_AREA
+6FF     @INTERRUPT_AREA
+77F     @INTERRUPT_AREA
+7FF     @INTERRUPT_AREA
+87F     @INTERRUPT_AREA
+8FF     @INTERRUPT_AREA
+97F     @INTERRUPT_AREA
+9FF     @INTERRUPT_AREA
+A7F     @INTERRUPT_AREA
+AFF     @INTERRUPT_AREA
+B7F     @INTERRUPT_AREA
+BFF     @INTERRUPT_AREA
+C7F     @INTERRUPT_AREA
+CFF     @INTERRUPT_AREA
+D7F     @INTERRUPT_AREA
+DFF     @INTERRUPT_AREA
+E7F     @INTERRUPT_AREA
+EFF     @INTERRUPT_AREA
+F7F     @INTERRUPT_AREA
+FFF     @INTERRUPT_AREA
+
+ROM Allocation:
+000058  LCD_INIT_STRING.call
+00005C  LCD_INIT_STRING.data
+000060  @const658.call
+000062  @const660.call
+000064  @const661.call
+000067  @const662.call
+000069  @const663.call
+00006C  @const664.call
+00006E  @const665.call
+000070  @const666.call
+000072  @const667.call
+000073  @const668.call
+000074  @const669.call
+000076  @const670.call
+000077  @const671.call
+000078  @const672.call
+000079  @const673.call
+00007E  timer_2_isr
+000085  process_bits
+00028D  @goto10818
+0002B4  port_b_isr
+00037C  @delay_ms1
+000391  lcd_send_nibble
+0003D6  lcd_send_byte
+00040E  setup_hardware
+000428  lcd_init
+000479  lcd_putc
+000498  lcd_gotoxy
+0004C7  @PSTRINGC7_620
+00053D  @DIV1616
+000576  @MUL1616
+000597  @MUL88
+0005BE  lcd_put_2_digit_int
+000657  @cinit1
+000657  MAIN
+00067F  @cinit2
+0006B2  lcd_clear
+0006B2  lcd_display_time
+
+Project Directory:
+    C:\Users\Chris Foxley-Evans\Desktop\Embedded Systems Code\NPL Time Tracker\src\
+
+Project Files:
+    main_alt.c                                              [10-Mar-14 23:46  CRC=09DB1EE9]
+    ..\..\..\..\..\..\PROGRA~2\PICC\devices\16f727.h        [15-Jan-14 15:32  CRC=12A5FEBD]
+    flex_lcd.c                                              [10-Mar-14 23:52  CRC=DA98E93A]
+
+Source signature=D1B2F01A
+
+Units:
+    main_alt (main)
+
+Compiler Settings:
+    Processor:      PIC16F727
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      0
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    ICD Provisions: Yes
+    Predefined symbols:
+       #define __DEBUG 1
+       #define __16F727 TRUE
+
+Compiler operating in Evaluation Mode
+To obtain a fully enabled compiler visit www.ccsinfo.com/products
+
+Output Files:
+    Errors:      main_alt.err
+    INHX8:       main_alt.hex
+    Symbols:     main_alt.sym
+    List:        main_alt.lst
+    Debug/COFF:  main_alt.cof
+    Project:     main_alt.ccspjt
+    Call Tree:   main_alt.tre
