@@ -230,7 +230,7 @@ void lcd_clear() {
   delay_ms(2);
 }
 
-void lcd_display_time(int day, int month, int year, int week_day, int hours, int mins, int seconds) {
+void lcd_display_time(int day, int month, int year, int week_day, int hours, int mins, int seconds, bst) {
     lcd_clear();
     switch(week_day) {
         case 0: 
@@ -273,5 +273,6 @@ void lcd_display_time(int day, int month, int year, int week_day, int hours, int
     lcd_putc(":");
     lcd_put_2_digit_int(seconds);
 
-    lcd_putc("   IC PP");
+    lcd_putc(" +");
+    lcd_put_1_digit_int(bst);
 }

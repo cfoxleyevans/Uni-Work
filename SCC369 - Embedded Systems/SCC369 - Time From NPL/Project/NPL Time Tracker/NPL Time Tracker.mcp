@@ -29,24 +29,40 @@ file_001=.
 file_002=.
 file_003=.
 file_004=.
+file_005=.
+file_006=.
+file_007=.
+file_008=.
 [GENERATED_FILES]
 file_000=no
 file_001=no
 file_002=no
 file_003=no
 file_004=no
+file_005=no
+file_006=no
+file_007=no
+file_008=no
 [OTHER_FILES]
 file_000=no
 file_001=yes
 file_002=yes
 file_003=yes
 file_004=yes
+file_005=yes
+file_006=yes
+file_007=yes
+file_008=yes
 [FILE_INFO]
-file_000=C:\Users\Chris Foxley-Evans\Desktop\Embedded Systems Code\NPL Time Tracker\src\main_alt.c
+file_000=src\main_alt.c
 file_001=C:\Users\Chris Foxley-Evans\Desktop\Embedded Systems Code\NPL Time Tracker\src\main.SYM
 file_002=C:\Users\Chris Foxley-Evans\Desktop\Embedded Systems Code\NPL Time Tracker\src\main.TRE
 file_003=C:\Users\Chris Foxley-Evans\Desktop\Embedded Systems Code\NPL Time Tracker\src\main_alt.SYM
 file_004=C:\Users\Chris Foxley-Evans\Desktop\Embedded Systems Code\NPL Time Tracker\src\main_alt.TRE
+file_005=C:\Users\Chris Foxley-Evans\Desktop\Embedded Systems Code\NPL Time Tracker\src\working_code.SYM
+file_006=C:\Users\Chris Foxley-Evans\Desktop\Embedded Systems Code\NPL Time Tracker\src\working_code.TRE
+file_007=C:\Users\Chris Foxley-Evans\Desktop\Embedded Systems Code\NPL Time Tracker\src\github.SYM
+file_008=C:\Users\Chris Foxley-Evans\Desktop\Embedded Systems Code\NPL Time Tracker\src\github.TRE
 [SUITE_INFO]
 suite_guid={BA86BF99-4C07-4CE2-A9E7-C2A337910996}
 suite_state=

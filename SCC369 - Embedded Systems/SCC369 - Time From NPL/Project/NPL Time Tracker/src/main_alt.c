@@ -54,9 +54,10 @@ int               day                         = 0;
 int               week_day                    = 0;
 int               hour                        = 0;
 int               mins                        = 0;
+int bst = 0;
 
-int     a_bits[59];
-
+int     a_bits[61];
+int     b_bits[61];
 /******************************************************************************
 * Function: setup_hardware                                                    *
 * Purpose: This is used to configure all of the hardware on the board         *
@@ -328,6 +329,7 @@ void port_b_isr(void) {
     //150ms then we have found 00
     if(signal_off_length >= 7 && signal_off_length <= 13 &&prev_signal_on_length > 15) {
         a_bits[seconds_passed] = 0;
+        b_bits[seconds_passed] = 0;
         seconds_passed++;
     }
 
@@ -335,10 +337,16 @@ void port_b_isr(void) {
     //150ms then we have found 10
     if(signal_off_length >= 17 && signal_off_length <= 23 &&prev_signal_on_length > 15) {
         a_bits[seconds_passed] = 1;
+        b_bits[seconds_passed] = 0;
         seconds_passed++;
     }
 
-    //more code needs to be here to detect the b bit
+
+    if(signal_off_length >= 27 && signal_off_length <= 33 &&prev_signal_on_length > 15) {
+        a_bits[seconds_passed] = 1;
+        b_bits[seconds_passed] = 1;
+        seconds_passed++;
+    }
 
     //if the signal was off more than 470ms then we have found the min marker
     //reset all of the data and process what we have stored
@@ -350,6 +358,7 @@ void port_b_isr(void) {
         week_day = 0;
         hour = 0;
         mins = 0;
+        bst = b_bits[58];
         process_bits();     
     }
 }
@@ -375,7 +384,7 @@ void main(void) {
 
     //update the display every 750ms
     while(1) {
-        lcd_display_time(day, month, year, week_day, hour, mins, seconds_passed);
+        lcd_display_time(day, month, year, week_day, hour, mins, seconds_passed, bst);
         delay_ms(750);
     }   
 }

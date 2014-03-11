@@ -1,4 +1,4 @@
->>> Warning 203 "main_alt.c" Line 377(1,1): Condition always TRUE
-      Memory usage:   ROM=24%      RAM=26% - 33%
+>>> Warning 203 "main_alt.c" Line 386(1,1): Condition always TRUE
+      Memory usage:   ROM=27%      RAM=44% - 51%
       0 Errors,  1 Warnings.
 Build Successful.
