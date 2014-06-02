@@ -3,7 +3,7 @@ Uni-Work
 
 Private repo for my personal use.
 
-Serves two purposes.....
+Served two purposes.....
 
 1) This will be a central place for me to place all of the code that i work on, 
    during my second and third years at Lancaster university. It means that i can employ version
